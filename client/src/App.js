@@ -1,10 +1,20 @@
 
+import { Routes, Route } from 'react-router-dom';
+import LoginManager from './Components/LoginManager/LoginManager';
+import LoginWaiter from './Components/LoginWaiter/LoginWaiter';
+import Main from './Components/Main/Main';
 
 function App() {
   return (
-   
-          <div> Learn React</div>
-      
+    <>
+        
+         <Routes>
+         {/* <Main /> */}
+         <Route path='/' element={<Main />} />
+          <Route path='/manager' element={<LoginManager />} />
+          <Route path='/server' element={<LoginWaiter />} />
+         </Routes>
+    </>
   );
 }
 
