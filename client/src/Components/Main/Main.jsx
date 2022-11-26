@@ -33,7 +33,7 @@ const Main = () => {
     <div className={style.main}>
       <div
         style={{
-          width: 256,
+          width: 170,
         }}
       >
         <Button
