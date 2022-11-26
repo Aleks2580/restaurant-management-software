@@ -20,7 +20,7 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem(<Link to="/server">Server</Link>, "1", <PieChartOutlined />),
+  getItem(<Link to="/waiter">Waiter</Link>, "1", <PieChartOutlined />),
   getItem(<Link to="/manager">Manager</Link>, "2", <DesktopOutlined />),
   getItem("Option 3", "3", <ContainerOutlined />),
 ];
