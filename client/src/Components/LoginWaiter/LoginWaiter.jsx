@@ -36,7 +36,7 @@ export default function Waiter() {
         initialValues={{ remember: true }}
         autoComplete="off"
       >
-        <span>Enter your 6 digit password</span>
+        <span className={style.span}>Enter your 6 digit password</span>
         <div className={style.digits}>
           {digits.map((el) => (
             <Button
