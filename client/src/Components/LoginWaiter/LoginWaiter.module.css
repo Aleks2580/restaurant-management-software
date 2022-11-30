@@ -34,6 +34,24 @@
 .button_waiter {
   width: 70px;
   height: 70px;
+  position:relative;
+  display:inline-block;
+  margin:5px;
+}
+
+.button_waiter:after {
+  content:"";
+  height:100%;
+  width:100%;
+  padding:4px;
+  position: absolute;
+  bottom:-15px;
+  left:-4px;
+  z-index:-1;
+  background-color:#2B1800;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 50%;
 }
 
 .form {
