@@ -8,7 +8,7 @@ import {
   PieChartOutlined,
 } from "@ant-design/icons";
 import { Button, Menu } from "antd";
-import style from "./Main.module.css";
+import style from "./Home.module.css";
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -24,7 +24,7 @@ const items = [
   getItem(<Link to="/manager">Manager</Link>, "2", <DesktopOutlined />),
   getItem("Option 3", "3", <ContainerOutlined />),
 ];
-const Main = () => {
+const Home = () => {
   const [collapsed, setCollapsed] = useState(false);
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -57,4 +57,4 @@ const Main = () => {
     </div>
   );
 };
-export default Main;
+export default Home;

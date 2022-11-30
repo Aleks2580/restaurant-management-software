@@ -1,21 +1,31 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Form } from "antd";
 import style from "./LoginWaiter.module.css";
 import { useState } from "react";
 import { digits, waiters } from "./mockdata";
 
 export default function Waiter() {
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
+
   const inputHandler = (e) => {
     setInput((prev) => prev + e.target.innerText);
   };
-  console.log(input);
+
   const resetHandler = () => {
     setInput("");
   };
+
   const submitHandler = () => {
-    waiters.password === input ? console.log("OK") : console.log("Denied!");
+    if (waiters.password === input) {
+      navigate("/waiter/main");
+    } else {
+      setInput("");
+      navigate("/wrong_password");
+    }
   };
+
   return (
     <div className={style.waiter}>
       <Form
