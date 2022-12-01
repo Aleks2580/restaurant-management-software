@@ -46,6 +46,12 @@
   background-color: rgba(0, 0, 0, 0.637);
 }
 
+.button_waiter:hover {
+  background-color: antiquewhite !important;
+  color: rgba(0, 0, 0, 0.637) !important;
+  font-weight: bold;
+}
+
 
 
 .form {
@@ -59,15 +65,28 @@
 .form_buttons {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
+  
 }
 .button {
     margin-right: 10px;
     background-color: rgba(0, 0, 0, 0.637);
-  }
+}
+
+.button:hover {
+  background-color: antiquewhite !important;
+  color: rgba(0, 0, 0, 0.637) !important;
+  font-weight: bold;
+}
 
 .button_reset {
   background-color: rgba(0, 0, 0, 0.637);
+}
+
+.button_reset:hover {
+  background-color: antiquewhite !important;
+  color: rgba(0, 0, 0, 0.637) !important;
+  font-weight: bold;
 }
 
 .span {

@@ -5,6 +5,7 @@ import LoginWaiter from './Components/LoginWaiter/LoginWaiter';
 import MainWaiter from './Components/MainWaiter/MainWaiter';
 import Home from './Components/Home/Home';
 import WrongPassword from './Components/WrongPassword/WrongPassword';
+import MainManager from './Components/MainManager/MainManager';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/manager' element={<LoginManager />} />
           <Route path='/waiter' element={<LoginWaiter />} />
           <Route path='/waiter/main' element={<MainWaiter />} />
+          <Route path='/manager/main' element={<MainManager />} />
           <Route path='/wrong_password' element={<WrongPassword />} />
          </Routes>
     </>

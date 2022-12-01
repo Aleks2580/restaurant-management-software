@@ -14,3 +14,82 @@
   justify-content: center;
   align-items: center;
 }
+
+.digits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 5px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.digits :first-child {
+  grid-column: 2/3;
+  grid-row: 4/5;
+}
+
+
+.input_manager {
+  margin-bottom: 35px;
+  text-align: center;
+  border: none;
+  letter-spacing: 5px;
+  align-self: center;
+  font-size: 36px;
+  background: none;
+}
+
+.button_manager {
+  width: 70px;
+  height: 70px;
+  border-radius: 0% !important;
+  background-color: rgba(0, 0, 0, 0.637);
+}
+
+.button_manager:hover {
+  background-color: antiquewhite !important;
+  color: rgba(0, 0, 0, 0.637) !important;
+  font-weight: bold;
+}
+
+
+
+.form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form_buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.button {
+    margin-right: 10px;
+    background-color: rgba(0, 0, 0, 0.637);
+}
+
+.button:hover {
+  background-color: antiquewhite !important;
+  color: rgba(0, 0, 0, 0.637) !important;
+  font-weight: bold;
+}
+
+.button_reset {
+  background-color: rgba(0, 0, 0, 0.637);
+}
+
+.button_reset:hover {
+  background-color: antiquewhite !important;
+  color: rgba(0, 0, 0, 0.637) !important;
+  font-weight: bold;
+}
+
+.span {
+  font-size: 18px;
+}

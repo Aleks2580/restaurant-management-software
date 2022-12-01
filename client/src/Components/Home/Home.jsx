@@ -47,7 +47,6 @@ const Home = () => {
           {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </Button>
         <Menu
-          // defaultSelectedKeys={["1"]}
           defaultOpenKeys={["sub1"]}
           mode="inline"
           theme="dark"
