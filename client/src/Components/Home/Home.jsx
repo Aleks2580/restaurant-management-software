@@ -25,7 +25,7 @@ const items = [
   getItem("Option 3", "3", <ContainerOutlined />),
 ];
 const Home = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
