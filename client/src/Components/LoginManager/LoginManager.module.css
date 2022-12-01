@@ -1,0 +1,16 @@
+.manager {
+  height: 98vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(249, 250, 251, 0.982),
+      rgba(17, 24, 39, 0.782)
+    ),
+    url('../../../public/img/manager.jpg');
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

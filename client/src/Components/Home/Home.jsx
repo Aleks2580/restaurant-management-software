@@ -33,10 +33,11 @@ const Home = () => {
     <div className={style.main}>
       <div
         style={{
-          width: 170,
+          width: 150,
         }}
       >
         <Button
+          className={style.button_menu}
           type="primary"
           onClick={toggleCollapsed}
           style={{
@@ -54,6 +55,36 @@ const Home = () => {
           items={items}
         />
       </div>
+      <p className={style.popout}>
+        <span>R</span>
+        <span>E</span>
+        <span>S</span>
+        <span>T</span>
+        <span>A</span>
+        <span>U</span>
+        <span>R</span>
+        <span>A</span>
+        <span>N</span>
+        <span>T</span>
+        <br />
+        <span>M</span>
+        <span>A</span>
+        <span>N</span>
+        <span>A</span>
+        <span>G</span>
+        <span>E</span>
+        <span>M</span>
+        <span>E</span>
+        <span>N</span>
+        <span>T</span>
+        <br />
+        <span>S</span>
+        <span>Y</span>
+        <span>S</span>
+        <span>T</span>
+        <span>E</span>
+        <span>M</span>
+      </p>
     </div>
   );
 };

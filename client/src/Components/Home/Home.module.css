@@ -1,7 +1,94 @@
 .main {
-  max-width: 100vw;
   height: 98vh;
-  background: url('../../../public/img/home.png') no-repeat;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(251, 250, 249, 0.929),
+      rgba(17, 24, 39, 0.126)
+    ),
+    url('../../../public/img/home.png');
   background-size: cover;
   background-position: center;
+  position: relative;
+}
+
+.button_menu {
+  color: rgba(255, 255, 255, 0.65);
+  background: #001529;
+  border-radius: 0%;
+  
+}
+
+.button_menu:hover {
+  color: #001529 !important;
+  background-color:  rgba(197, 90, 32, 0.65) !important ;
+}
+
+.popout {
+  font-family: Futura, sans-serif;
+  font-weight: 900;
+  font-size: 60px;
+  margin-left: 150px;
+  margin-top: 120px;
+}
+@-webkit-keyframes ani {
+  0% {
+    transform: translate3d(0, 0, 0);
+    text-shadow: 0em 0em 0 lightblue;
+    color: rgba(0, 0, 0, 0.523);
+  }
+  30% {
+    transform: translate3d(0, 0, 0);
+    text-shadow: 0em 0em 0 lightblue;
+    color: rgba(0, 0, 0, 0.523);
+  }
+  70% {
+    transform: translate3d(0.08em, -0.08em, 0);
+    text-shadow: -0.08em 0.08em lightblue;
+    color: rgba(0, 0, 0, 0.523);
+  }
+  100% {
+    transform: translate3d(0.08em, -0.08em, 0);
+    text-shadow: -0.08em 0.08em lightblue;
+    color: rgba(0, 0, 0, 0.523);
+  }
+}
+@keyframes ani {
+  0% {
+    transform: translate3d(0, 0, 0);
+    text-shadow: 0em 0em 0 lightblue;
+    color: rgba(0, 0, 0, 0.523);
+  }
+  30% {
+    transform: translate3d(0, 0, 0);
+    text-shadow: 0em 0em 0 lightblue;
+    color: rgba(0, 0, 0, 0.523);
+  }
+  70% {
+    transform: translate3d(0.08em, -0.08em, 0);
+    text-shadow: -0.08em 0.08em lightblue;
+    color: rgba(0, 0, 0, 0.523);
+  }
+  100% {
+    transform: translate3d(0.08em, -0.08em, 0);
+    text-shadow: -0.08em 0.08em lightblue;
+    color: rgba(0, 0, 0, 0.523);
+  }
+}
+.popout span {
+  position: relative;
+  display: inline-block;
+  -webkit-animation: ani 1s infinite alternate cubic-bezier(0.86, 0, 0.07, 1);
+          animation: ani 1s infinite alternate cubic-bezier(0.86, 0, 0.07, 1);
+}
+.popout span:nth-last-child(1n) {
+  -webkit-animation-delay: -0.1666666667s;
+          animation-delay: -0.1666666667s;
+}
+.popout span:nth-last-child(2n) {
+  -webkit-animation-delay: -0.3333333333s;
+          animation-delay: -0.3333333333s;
+}
+.popout span:nth-last-child(3n) {
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s;
 }
