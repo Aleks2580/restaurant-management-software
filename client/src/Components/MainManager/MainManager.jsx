@@ -26,8 +26,21 @@ const items = [
     <UploadOutlined />
   ),
   getItem(<Link to="/manager/main/users">Users</Link>, "2", <UserOutlined />),
-  getItem("Option 3", "3", <VideoCameraOutlined />),
-  getItem("Option 3", "3", <VideoCameraOutlined />),
+  getItem(
+    <Link to="/manager/main/users">Statistics</Link>,
+    "3",
+    <VideoCameraOutlined />
+  ),
+  getItem(
+    <Link to="/manager/main/users">Products</Link>,
+    "4",
+    <VideoCameraOutlined />
+  ),
+  getItem(
+    <Link to="/manager/main/users">Stock</Link>,
+    "5",
+    <VideoCameraOutlined />
+  ),
 ];
 
 const MainManager = () => (
