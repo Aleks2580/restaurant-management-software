@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   UploadOutlined,
   UserOutlined,
@@ -8,6 +9,22 @@ import { Layout, Menu } from "antd";
 import style from "./MainManager.module.css";
 import { StyleProvider } from "@ant-design/cssinjs";
 const { Header, Content, Footer, Sider } = Layout;
+
+function getItem(label, key, icon, children, type) {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  };
+}
+const items = [
+  getItem(<Link to="/">Dashboard</Link>, "1", <UploadOutlined />),
+  getItem(<Link to="/">Sales</Link>, "2", <UserOutlined />),
+  getItem("Option 3", "3", <VideoCameraOutlined />),
+  getItem("Option 3", "3", <VideoCameraOutlined />),
+];
 
 const MainManager = () => (
   <Layout className={style.layout}>
@@ -27,17 +44,8 @@ const MainManager = () => (
         className={style.menu}
         theme="light"
         mode="inline"
-        defaultSelectedKeys={["4"]}
-        items={[
-          UserOutlined,
-          VideoCameraOutlined,
-          UploadOutlined,
-          UserOutlined,
-        ].map((icon, index) => ({
-          key: String(index + 1),
-          icon: React.createElement(icon),
-          label: `nav ${index + 1}`,
-        }))}
+        defaultSelectedKeys={["1"]}
+        items={items}
       />
     </Sider>
     <Layout className={style.layout_secondary}>
