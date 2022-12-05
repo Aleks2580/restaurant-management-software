@@ -2,8 +2,8 @@
   height: 98vh;
   background-image: linear-gradient(
       to right bottom,
-      rgba(249, 250, 251, 0.982),
-      rgba(17, 24, 39, 0.782)
+      rgb(242, 247, 237),
+      rgba(47, 228, 244, 0.563)
     ),
     url('../../../public/img/waiter.jpg');
   background-size: cover;

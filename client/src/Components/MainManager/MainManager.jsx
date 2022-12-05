@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import {
   UploadOutlined,
   UserOutlined,
@@ -20,8 +20,12 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem(<Link to="/">Dashboard</Link>, "1", <UploadOutlined />),
-  getItem(<Link to="/">Sales</Link>, "2", <UserOutlined />),
+  getItem(
+    <Link to="/manager/main/dashboard">Dashboard</Link>,
+    "1",
+    <UploadOutlined />
+  ),
+  getItem(<Link to="/manager/main/users">Users</Link>, "2", <UserOutlined />),
   getItem("Option 3", "3", <VideoCameraOutlined />),
   getItem("Option 3", "3", <VideoCameraOutlined />),
 ];
@@ -73,7 +77,7 @@ const MainManager = () => (
             minHeight: 360,
           }}
         >
-          content
+          <Outlet />
         </div>
       </Content>
       <Footer
