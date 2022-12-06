@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import {
-  UploadOutlined,
+  DashboardOutlined,
   UserOutlined,
-  VideoCameraOutlined,
+  DatabaseOutlined,
+  FileDoneOutlined,
+  InfoCircleOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import style from "./MainManager.module.css";
@@ -23,23 +25,23 @@ const items = [
   getItem(
     <Link to="/manager/main/dashboard">Dashboard</Link>,
     "1",
-    <UploadOutlined />
+    <DashboardOutlined />
   ),
   getItem(<Link to="/manager/main/users">Users</Link>, "2", <UserOutlined />),
   getItem(
     <Link to="/manager/main/users">Statistics</Link>,
     "3",
-    <VideoCameraOutlined />
+    <DatabaseOutlined />
   ),
   getItem(
     <Link to="/manager/main/users">Products</Link>,
     "4",
-    <VideoCameraOutlined />
+    <FileDoneOutlined />
   ),
   getItem(
     <Link to="/manager/main/users">Stock</Link>,
     "5",
-    <VideoCameraOutlined />
+    <InfoCircleOutlined />
   ),
 ];
 
