@@ -5,7 +5,7 @@
       rgba(249, 250, 251, 0.932),
       rgba(244, 164, 51, 0.943)
     ),
-    url('../../../public/img/main_manager.jpg');
+    url('../../../../public/img/main_manager.jpg');
   background-size: cover;
   background-position: top;
   position: relative;

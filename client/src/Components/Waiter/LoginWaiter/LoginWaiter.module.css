@@ -5,7 +5,7 @@
       rgb(242, 247, 237),
       rgba(47, 228, 244, 0.563)
     ),
-    url('../../../public/img/waiter.jpg');
+    url('../../../../public/img/waiter.jpg');
   background-size: cover;
   background-position: top;
   position: relative;

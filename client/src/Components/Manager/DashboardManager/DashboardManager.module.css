@@ -1,0 +1,64 @@
+.dashboard {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.info {
+  width: 350px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid rgba(0, 0, 0, 0.185) 1px;
+  border-radius: 10px;
+  position: relative;
+  
+}
+
+.total_paid_orders {
+  width: 350px;
+  height: 200px;
+  border: solid black 1px
+}
+
+.reservations {
+  width: 350px;
+  height: 200px;
+  border: solid black 1px
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  margin-left: 20px;
+  gap: 10px;
+  font-size: 16px;
+  color: rgb(59, 58, 58);
+  
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  color: gray;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.icon {
+  font-size: 120px;
+  font-weight: bold;
+  position: absolute;
+  color: rgba(85, 133, 13, 0.191);
+  top: 35%;
+  left: 65%;
+}
+
+.digit {
+  font-size: 24px;
+  font-weight: 600;
+  color: gray
+}
