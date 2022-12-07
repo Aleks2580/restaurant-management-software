@@ -12,11 +12,11 @@ export default function LayoutWaiter() {
         <div className={style.table_first_row}>105</div>
       </div>
       <div className={style.second_row}>
-        <div>6</div>
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-        <div>10</div>
+        <div className={style.table_second_row}>201</div>
+        <div className={style.table_second_row}>202</div>
+        <div className={style.table_second_row}>203</div>
+        <div className={style.table_second_row}>204</div>
+        <div className={style.table_second_row}>205</div>
       </div>
       <div className={style.third_row}>
         <div>11</div>
