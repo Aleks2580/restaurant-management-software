@@ -6,6 +6,7 @@ import {
   DatabaseOutlined,
   FileDoneOutlined,
   InfoCircleOutlined,
+  TeamOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import style from "./MainManager.module.css";
@@ -43,6 +44,11 @@ const items = [
     "5",
     <InfoCircleOutlined />
   ),
+  getItem(
+    <Link to="/manager/main/users">Reservations</Link>,
+    "6",
+    <TeamOutlined />
+  ),
 ];
 
 const MainManager = () => (
@@ -63,14 +69,13 @@ const MainManager = () => (
         className={style.menu}
         theme="light"
         mode="inline"
-        defaultSelectedKeys={["1"]}
+        //defaultSelectedKeys={["1"]}
         items={items}
       />
     </Sider>
     <Layout className={style.layout_secondary}>
       <Header
         className={style.header}
-        // className="site-layout-sub-header-background"
         style={{
           padding: 0,
         }}

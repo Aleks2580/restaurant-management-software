@@ -1,4 +1,51 @@
 .layout {
   height: 98vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(249, 250, 251, 0.932),
+      rgba(244, 164, 51, 0.943)
+    ),
+    url('../../../../public/img/main_manager.jpg');
+  background-size: cover;
+  background-position: top;
+  position: relative;
+}
+
+.sider {
+  background-color: transparent !important;
+  margin-top: 90px;
   
+}
+.menu {
+  background-color: transparent !important;
+  border-inline-end: none !important;
+}
+.header {
+  background-color: transparent !important;
+  }
+
+  .header_div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+.content {
+  background-color: transparent !important;
+}
+
+.footer {
+  background-color: transparent !important;
+}
+
+.layout_secondary {
+  background-color: transparent !important;
+}
+
+.time {
+  margin-right: 25px;
+}
+
+.welcome {
+  margin-left: 50px;
 }
