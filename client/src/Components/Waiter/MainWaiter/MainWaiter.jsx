@@ -2,12 +2,40 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
+  LayoutOutlined,
+  TeamOutlined,
+  SecurityScanOutlined,
 } from "@ant-design/icons";
 import style from "./MainWaiter.module.css";
 const { Header, Footer, Sider, Content } = Layout;
+
+function getItem(label, key, icon, children, type) {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  };
+}
+const items = [
+  getItem(
+    <Link to="/waiter/main/layout">Layout</Link>,
+    "1",
+    <LayoutOutlined />
+  ),
+  getItem(
+    <Link to="/waiter/main/orders">Current Orders</Link>,
+    "2",
+    <SecurityScanOutlined />
+  ),
+
+  getItem(
+    <Link to="/waiter/main/reservations">Reservations</Link>,
+    "3",
+    <TeamOutlined />
+  ),
+];
 const MainWaiter = () => (
   <Layout className={style.layout}>
     <Sider
@@ -27,16 +55,7 @@ const MainWaiter = () => (
         theme="light"
         mode="inline"
         // defaultSelectedKeys={["4"]}
-        items={[
-          UserOutlined,
-          VideoCameraOutlined,
-          UploadOutlined,
-          UserOutlined,
-        ].map((icon, index) => ({
-          key: String(index + 1),
-          icon: React.createElement(icon),
-          label: `nav ${index + 1}`,
-        }))}
+        items={items}
       />
     </Sider>
     <Layout className={style.layout_secondary}>
