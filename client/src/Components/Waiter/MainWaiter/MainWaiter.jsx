@@ -5,6 +5,7 @@ import {
   LayoutOutlined,
   TeamOutlined,
   SecurityScanOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import style from "./MainWaiter.module.css";
 const { Header, Footer, Sider, Content } = Layout;
@@ -35,6 +36,7 @@ const items = [
     "3",
     <TeamOutlined />
   ),
+  getItem(<Link to="/">Logout</Link>, "4", <LogoutOutlined />),
 ];
 const MainWaiter = () => (
   <Layout className={style.layout}>

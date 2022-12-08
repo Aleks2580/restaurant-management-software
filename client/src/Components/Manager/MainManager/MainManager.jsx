@@ -7,6 +7,7 @@ import {
   FileDoneOutlined,
   InfoCircleOutlined,
   TeamOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import style from "./MainManager.module.css";
@@ -49,6 +50,7 @@ const items = [
     "6",
     <TeamOutlined />
   ),
+  getItem(<Link to="/">Logout</Link>, "7", <LogoutOutlined />),
 ];
 
 const MainManager = () => (
