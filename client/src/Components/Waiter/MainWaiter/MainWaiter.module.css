@@ -2,10 +2,10 @@
   height: 98vh;
   background-image: linear-gradient(
       to right bottom,
-      rgba(249, 250, 251, 0.932),
-      rgba(244, 164, 51, 0.943)
+      rgba(200, 225, 249, 0.952),
+      rgba(227, 173, 48, 0.968)
     ),
-    url('../../../../public/img/main_manager.jpg');
+    url('../../../../public/img/main_waiter.jpg');
   background-size: cover;
   background-position: top;
   position: relative;

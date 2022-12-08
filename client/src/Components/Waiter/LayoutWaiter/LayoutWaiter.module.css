@@ -16,7 +16,8 @@
 
 }
 .second_row {
-  margin-top: 150px;
+  margin: 150px 50px;
+  
   display: flex;
   justify-content: space-between;
 }
@@ -30,5 +31,20 @@
   border: 1px solid black;
   margin-left: 50px;
   margin-right: 50px;
+}
+
+.third_row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.table_third_row {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 100%;
 
 }
