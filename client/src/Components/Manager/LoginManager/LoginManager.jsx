@@ -4,6 +4,7 @@ import { Button, Form } from "antd";
 import style from "./LoginManager.module.css";
 import { useState } from "react";
 import { digits, managers } from "./mockdata";
+import { RollbackOutlined } from "@ant-design/icons";
 
 export default function Waiter() {
   const navigate = useNavigate();
@@ -26,8 +27,13 @@ export default function Waiter() {
     }
   };
 
+  const goBackHandler = () => {
+    navigate("/");
+  };
+
   return (
     <div className={style.manager}>
+      <RollbackOutlined onClick={goBackHandler} className={style.icon_back} />
       <Form
         className={style.form}
         name="basic"

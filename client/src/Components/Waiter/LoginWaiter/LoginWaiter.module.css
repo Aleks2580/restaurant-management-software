@@ -92,3 +92,11 @@
 .span {
   font-size: 18px;
 }
+
+.icon_back {
+  font-size: 34px;
+  color: rgba(0, 0, 0, 0.637);
+  position: absolute;
+  top: 1%;
+  left: 1%;
+}
