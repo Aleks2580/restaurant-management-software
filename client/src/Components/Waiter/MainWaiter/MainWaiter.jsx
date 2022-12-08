@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import {
@@ -41,15 +40,16 @@ const items = [
   getItem(<Link to="/">Logout</Link>, "4", <LogoutOutlined />),
 ];
 export default function MainWaiter() {
-  const dateTimeRef = useRef(null);
+  const time = useRef(null);
 
   useEffect(() => {
-    setInterval(() => {
-      dateTimeRef.current.innerText = new Date().toLocaleTimeString(
+    const clock = setInterval(() => {
+      time.current.innerText = new Date().toLocaleTimeString(
         navigator.language,
         { hour: "2-digit", minute: "2-digit" }
       );
     }, 1000);
+    return () => clearInterval(clock);
   }, []);
 
   return (
@@ -83,7 +83,7 @@ export default function MainWaiter() {
         >
           <div className={style.header_div}>
             <span className={style.welcome}>Welcome, Name!</span>
-            <span ref={dateTimeRef} className={style.time}></span>
+            <span ref={time} className={style.time} />
           </div>
         </Header>
         <Content

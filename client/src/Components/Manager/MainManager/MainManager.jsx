@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import {
   DashboardOutlined,
@@ -53,62 +53,75 @@ const items = [
   getItem(<Link to="/">Logout</Link>, "7", <LogoutOutlined />),
 ];
 
-const MainManager = () => (
-  <Layout className={style.layout}>
-    <Sider
-      className={style.sider}
-      breakpoint="lg"
-      collapsedWidth="0"
-      onBreakpoint={(broken) => {
-        console.log(broken);
-      }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
-      }}
-    >
-      <div className="logo" />
-      <Menu
-        className={style.menu}
-        theme="light"
-        mode="inline"
-        //defaultSelectedKeys={["1"]}
-        items={items}
-      />
-    </Sider>
-    <Layout className={style.layout_secondary}>
-      <Header
-        className={style.header}
-        style={{
-          padding: 0,
+export default function MainManager() {
+  const time = useRef(null);
+
+  useEffect(() => {
+    const clock = setInterval(() => {
+      time.current.innerText = new Date().toLocaleTimeString(
+        navigator.language,
+        { hour: "2-digit", minute: "2-digit" }
+      );
+    }, 1000);
+    return () => clearInterval(clock);
+  }, []);
+
+  return (
+    <Layout className={style.layout}>
+      <Sider
+        className={style.sider}
+        breakpoint="lg"
+        collapsedWidth="0"
+        onBreakpoint={(broken) => {
+          console.log(broken);
+        }}
+        onCollapse={(collapsed, type) => {
+          console.log(collapsed, type);
         }}
       >
-        <div className={style.header_div}>
-          <span className={style.welcome}>Welcome, Admin!</span>
-          <span className={style.time}>16:46</span>
-        </div>
-      </Header>
-      <Content
-        style={{
-          margin: "24px 16px 0",
-        }}
-      >
-        <div
-          className={style.content}
+        <div className="logo" />
+        <Menu
+          className={style.menu}
+          theme="light"
+          mode="inline"
+          //defaultSelectedKeys={["1"]}
+          items={items}
+        />
+      </Sider>
+      <Layout className={style.layout_secondary}>
+        <Header
+          className={style.header}
           style={{
-            padding: 24,
-            minHeight: 360,
+            padding: 0,
           }}
         >
-          <Outlet />
-        </div>
-      </Content>
-      <Footer
-        className={style.footer}
-        style={{
-          textAlign: "center",
-        }}
-      ></Footer>
+          <div className={style.header_div}>
+            <span className={style.welcome}>Welcome, Admin!</span>
+            <span ref={time} className={style.time} />
+          </div>
+        </Header>
+        <Content
+          style={{
+            margin: "24px 16px 0",
+          }}
+        >
+          <div
+            className={style.content}
+            style={{
+              padding: 24,
+              minHeight: 360,
+            }}
+          >
+            <Outlet />
+          </div>
+        </Content>
+        <Footer
+          className={style.footer}
+          style={{
+            textAlign: "center",
+          }}
+        ></Footer>
+      </Layout>
     </Layout>
-  </Layout>
-);
-export default MainManager;
+  );
+}
