@@ -27,6 +27,7 @@
   .header_div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
 
@@ -43,9 +44,17 @@
 }
 
 .time {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(61, 61, 61);
   margin-right: 25px;
+  letter-spacing: 1px;
 }
 
 .welcome {
   margin-left: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(61, 61, 61);
+  letter-spacing: 1px;
 }
