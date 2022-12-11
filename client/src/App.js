@@ -10,6 +10,8 @@ import UsersManager from './Components/Manager/UsersManager/UsersManager';
 import LayoutWaiter from './Components/Waiter/LayoutWaiter/LayoutWaiter';
 import CurrentOrdersWaiter from './Components/Waiter/CurrentOrdersWaiter/CurrentOrdersWaiter'
 import ReservationsWaiter from './Components/Waiter/ReservationsWaiter/ReservationsWaiter'
+import AllUsers from './Components/Manager/UsersManager/AllUsers';
+import NewUserForm from './Components/Manager/UsersManager/NewUserForm';
 
 
 function App() {
@@ -27,7 +29,10 @@ function App() {
           </Route>
           <Route path='/manager/main' element={<MainManager />}>
             <Route path='dashboard' element={<DashboardManager />} />
-            <Route path='users' element={<UsersManager />} />
+            <Route path='users' element={<UsersManager />}>
+              <Route path='all' element={<AllUsers />} />
+              <Route path='new' element={<NewUserForm />} />
+            </Route>
           </Route>
           <Route path='/wrong_password' element={<WrongPassword />} />
          </Routes>
