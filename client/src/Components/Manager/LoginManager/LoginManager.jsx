@@ -2,13 +2,27 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from "antd";
 import style from "./LoginManager.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { digits, managers } from "./mockdata";
 import { RollbackOutlined } from "@ant-design/icons";
 
 export default function Waiter() {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
+  const [checkPassword, setCheckPassword] = useState(false);
+
+  useEffect(() => {
+    if (input.length === 6 && managers.password === input) {
+      navigate("/manager/main");
+    } else if (input.length === 6 && managers.password !== input) {
+      setInput("");
+      //navigate("/wrong_password");
+      setCheckPassword(true);
+      setTimeout(() => {
+        setCheckPassword(false);
+      }, 2000);
+    }
+  }, [input]);
 
   const inputHandler = (e) => {
     setInput((prev) => prev + e.target.innerText);
@@ -64,6 +78,12 @@ export default function Waiter() {
               .join("")}
           />
         </div>
+
+        {checkPassword ? (
+          <div className={style.incorrect}>Incorrect password</div>
+        ) : (
+          ""
+        )}
 
         <Form.Item>
           <div className={style.form_buttons}>

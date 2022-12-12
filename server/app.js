@@ -17,7 +17,7 @@ const { PORT, SESSION_SECRET } = process.env;
 
 
 const sessionConfig = {
-  name: 'SessionAliElbrus',
+  name: 'SessionRestaurant',
   store: new FileStore(),
   secret: SESSION_SECRET ?? 'vasdg34erh35h24g31f23g3gh3hth',
   resave: false,
