@@ -4,7 +4,7 @@ import { Button, Form } from "antd";
 import style from "./LoginManager.module.css";
 import { useState, useEffect } from "react";
 import { digits, managers } from "./mockdata";
-import { RollbackOutlined } from "@ant-design/icons";
+import { RollbackOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 export default function Waiter() {
   const navigate = useNavigate();
@@ -16,7 +16,6 @@ export default function Waiter() {
       navigate("/manager/main");
     } else if (input.length === 6 && managers.password !== input) {
       setInput("");
-      //navigate("/wrong_password");
       setCheckPassword(true);
       setTimeout(() => {
         setCheckPassword(false);
@@ -30,15 +29,6 @@ export default function Waiter() {
 
   const resetHandler = () => {
     setInput("");
-  };
-
-  const submitHandler = () => {
-    if (managers.password === input) {
-      navigate("/manager/main");
-    } else {
-      setInput("");
-      navigate("/wrong_password");
-    }
   };
 
   const goBackHandler = () => {
@@ -80,21 +70,16 @@ export default function Waiter() {
         </div>
 
         {checkPassword ? (
-          <div className={style.incorrect}>Incorrect password</div>
+          <div className={style.incorrect}>
+            <CloseCircleOutlined />
+            Incorrect password
+          </div>
         ) : (
           ""
         )}
 
         <Form.Item>
           <div className={style.form_buttons}>
-            <Button
-              onClick={submitHandler}
-              className={style.button}
-              type="primary"
-              htmlType="submit"
-            >
-              Submit
-            </Button>
             <Button
               onClick={resetHandler}
               className={style.button_reset}
