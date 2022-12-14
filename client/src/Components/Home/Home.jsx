@@ -20,9 +20,17 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem(<Link to="/waiter">Waiter</Link>, "1", <PieChartOutlined />),
-  getItem(<Link to="/manager">Manager</Link>, "2", <DesktopOutlined />),
-  getItem("Option 3", "3", <ContainerOutlined />),
+  getItem(
+    <Link to="/waiter">Waiter</Link>,
+    "1",
+    <PieChartOutlined className={style.icon} />
+  ),
+  getItem(
+    <Link to="/manager">Manager</Link>,
+    "2",
+    <DesktopOutlined className={style.icon} />
+  ),
+  getItem("Option 3", "3", <ContainerOutlined className={style.icon} />),
 ];
 const Home = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -40,50 +48,19 @@ const Home = () => {
           className={style.button_menu}
           type="primary"
           onClick={toggleCollapsed}
-          style={{
-            marginBottom: 16,
-          }}
         >
           {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </Button>
         <Menu
+          className={style.menu}
           defaultOpenKeys={["sub1"]}
           mode="inline"
-          theme="dark"
+          // theme="dark"
           inlineCollapsed={collapsed}
           items={items}
         />
       </div>
-      <p className={style.popout}>
-        <span>R</span>
-        <span>E</span>
-        <span>S</span>
-        <span>T</span>
-        <span>A</span>
-        <span>U</span>
-        <span>R</span>
-        <span>A</span>
-        <span>N</span>
-        <span>T</span>
-        <br />
-        <span>M</span>
-        <span>A</span>
-        <span>N</span>
-        <span>A</span>
-        <span>G</span>
-        <span>E</span>
-        <span>M</span>
-        <span>E</span>
-        <span>N</span>
-        <span>T</span>
-        <br />
-        <span>S</span>
-        <span>Y</span>
-        <span>S</span>
-        <span>T</span>
-        <span>E</span>
-        <span>M</span>
-      </p>
+      <p className={style.popout}>RESTAURANT MANAGEMENT SYSTEM</p>
     </div>
   );
 };
