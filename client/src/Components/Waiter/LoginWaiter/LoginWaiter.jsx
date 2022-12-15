@@ -17,13 +17,23 @@ export default function Waiter() {
     setInput("");
   };
 
-  const submitHandler = () => {
-    if (waiters.password === input) {
-      navigate("/waiter/main");
-    } else {
-      setInput("");
-      navigate("/wrong_password");
-    }
+  const submitHandler = async () => {
+    const response = await fetch("http://localhost:4000/manager", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ input }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    console.log(result);
+    // if (waiters.password === input) {
+    //   navigate("/waiter/main");
+    // } else {
+    //   setInput("");
+    //   navigate("/wrong_password");
+    // }
   };
 
   const goBackHandler = () => {

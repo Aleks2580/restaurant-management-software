@@ -6,6 +6,8 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const path = require('path');
 
+const loginRouter = require('./src/routes/loginRouter');
+
 const app = express();
 app.use(morgan('dev'));
 app.use(cors({ credentials: true, origin: ['http://localhost:3000'] }));
@@ -13,7 +15,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
+
+
 const { PORT, SESSION_SECRET } = process.env;
+
+
 
 
 const sessionConfig = {
@@ -29,6 +35,8 @@ const sessionConfig = {
 };
 
 app.use(session(sessionConfig));
+
+app.use('/manager', loginRouter);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);

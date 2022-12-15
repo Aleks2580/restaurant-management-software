@@ -8,27 +8,50 @@ import { RollbackOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 export default function Waiter() {
   const navigate = useNavigate();
-  const [input, setInput] = useState("");
+  const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState(false);
 
-  useEffect(() => {
-    if (input.length === 6 && managers.password === input) {
-      navigate("/manager/main");
-    } else if (input.length === 6 && managers.password !== input) {
-      setInput("");
-      setCheckPassword(true);
-      setTimeout(() => {
-        setCheckPassword(false);
-      }, 2000);
-    }
-  }, [input]);
-
   const inputHandler = (e) => {
-    setInput((prev) => prev + e.target.innerText);
+    setPassword((prev) => prev + e.target.innerText);
   };
 
+  useEffect(() => {
+    // if (input.length === 6 && managers.password === input) {
+    //   navigate("/manager/main");
+    // } else if (input.length === 6 && managers.password !== input) {
+    //   setInput("");
+    //   setCheckPassword(true);
+    //   setTimeout(() => {
+    //     setCheckPassword(false);
+    //   }, 2000);
+    // }
+    if (password.length === 6) {
+      (async function () {
+        const response = await fetch("http://localhost:4000/manager", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password }),
+          credentials: "include",
+        });
+        const result = await response.json();
+        console.log(result);
+        if (result === "Password is incorrect") {
+          setPassword("");
+          setCheckPassword(true);
+          setTimeout(() => {
+            setCheckPassword(false);
+          }, 2000);
+        } else {
+          navigate("/manager/main");
+        }
+      })();
+    }
+  }, [password]);
+
   const resetHandler = () => {
-    setInput("");
+    setPassword("");
   };
 
   const goBackHandler = () => {
@@ -62,7 +85,8 @@ export default function Waiter() {
         <div>
           <input
             className={style.input_manager}
-            value={input
+            name="password"
+            value={password
               .split("")
               .map((el) => (el = "*"))
               .join("")}
