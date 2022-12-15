@@ -6,7 +6,8 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const path = require('path');
 
-const loginRouter = require('./src/routes/loginRouter');
+const loginManager = require('./src/routes/loginManager');
+const logout = require('./src/routes/logout');
 
 const app = express();
 app.use(morgan('dev'));
@@ -36,7 +37,8 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 
-app.use('/manager', loginRouter);
+app.use('/manager', loginManager);
+app.use('/logout', logout);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);

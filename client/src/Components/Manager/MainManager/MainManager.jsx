@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import {
   DashboardOutlined,
   UserOutlined,
@@ -23,38 +23,53 @@ function getItem(label, key, icon, children, type) {
     type,
   };
 }
-const items = [
-  getItem(
-    <Link to="/manager/main/dashboard">Dashboard</Link>,
-    "1",
-    <DashboardOutlined />
-  ),
-  getItem(<Link to="/manager/main/users">Users</Link>, "2", <UserOutlined />),
-  getItem(
-    <Link to="/manager/main/users">Statistics</Link>,
-    "3",
-    <DatabaseOutlined />
-  ),
-  getItem(
-    <Link to="/manager/main/users">Products</Link>,
-    "4",
-    <FileDoneOutlined />
-  ),
-  getItem(
-    <Link to="/manager/main/users">Stock</Link>,
-    "5",
-    <InfoCircleOutlined />
-  ),
-  getItem(
-    <Link to="/manager/main/users">Reservations</Link>,
-    "6",
-    <TeamOutlined />
-  ),
-  getItem(<Link to="/">Logout</Link>, "7", <LogoutOutlined />),
-];
+// const items = [
+//   getItem(
+//     <Link to="/manager/main/dashboard">Dashboard</Link>,
+//     "1",
+//     <DashboardOutlined />
+//   ),
+//   getItem(<Link to="/manager/main/users">Users</Link>, "2", <UserOutlined />),
+//   getItem(
+//     <Link to="/manager/main/users">Statistics</Link>,
+//     "3",
+//     <DatabaseOutlined />
+//   ),
+//   getItem(
+//     <Link to="/manager/main/users">Products</Link>,
+//     "4",
+//     <FileDoneOutlined />
+//   ),
+//   getItem(
+//     <Link to="/manager/main/users">Stock</Link>,
+//     "5",
+//     <InfoCircleOutlined />
+//   ),
+//   getItem(
+//     <Link to="/manager/main/users">Reservations</Link>,
+//     "6",
+//     <TeamOutlined />
+//   ),
+//   getItem(
+//     <Link onClick={handleLogout} to="/">
+//       Logout
+//     </Link>,
+//     "7",
+//     <LogoutOutlined />
+//   ),
+// ];
 
 export default function MainManager() {
   const time = useRef(null);
+  const navigate = useNavigate();
+
+  async function handleLogout() {
+    const response = await fetch("http://localhost:4000/logout", {
+      method: "GET",
+      credentials: "include",
+    });
+    navigate("/");
+  }
 
   useEffect(() => {
     const clock = setInterval(() => {
@@ -85,7 +100,45 @@ export default function MainManager() {
           theme="light"
           mode="inline"
           //defaultSelectedKeys={["1"]}
-          items={items}
+          items={[
+            getItem(
+              <Link to="/manager/main/dashboard">Dashboard</Link>,
+              "1",
+              <DashboardOutlined />
+            ),
+            getItem(
+              <Link to="/manager/main/users">Users</Link>,
+              "2",
+              <UserOutlined />
+            ),
+            getItem(
+              <Link to="/manager/main/users">Statistics</Link>,
+              "3",
+              <DatabaseOutlined />
+            ),
+            getItem(
+              <Link to="/manager/main/users">Products</Link>,
+              "4",
+              <FileDoneOutlined />
+            ),
+            getItem(
+              <Link to="/manager/main/users">Stock</Link>,
+              "5",
+              <InfoCircleOutlined />
+            ),
+            getItem(
+              <Link to="/manager/main/users">Reservations</Link>,
+              "6",
+              <TeamOutlined />
+            ),
+            getItem(
+              <Link onClick={handleLogout} to="/">
+                Logout
+              </Link>,
+              "7",
+              <LogoutOutlined />
+            ),
+          ]}
         />
       </Sider>
       <Layout className={style.layout_secondary}>

@@ -3,28 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { Button, Form } from "antd";
 import style from "./LoginManager.module.css";
 import { useState, useEffect } from "react";
-import { digits, managers } from "./mockdata";
+import { digits } from "./mockdata";
 import { RollbackOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 export default function Waiter() {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState(false);
+  const [checkRole, setCheckRole] = useState(false);
 
   const inputHandler = (e) => {
     setPassword((prev) => prev + e.target.innerText);
   };
 
   useEffect(() => {
-    // if (input.length === 6 && managers.password === input) {
-    //   navigate("/manager/main");
-    // } else if (input.length === 6 && managers.password !== input) {
-    //   setInput("");
-    //   setCheckPassword(true);
-    //   setTimeout(() => {
-    //     setCheckPassword(false);
-    //   }, 2000);
-    // }
     if (password.length === 6) {
       (async function () {
         const response = await fetch("http://localhost:4000/manager", {
@@ -36,12 +28,18 @@ export default function Waiter() {
           credentials: "include",
         });
         const result = await response.json();
-        console.log(result);
+
         if (result === "Password is incorrect") {
           setPassword("");
           setCheckPassword(true);
           setTimeout(() => {
             setCheckPassword(false);
+          }, 2000);
+        } else if (result.role !== "manager") {
+          setPassword("");
+          setCheckRole(true);
+          setTimeout(() => {
+            setCheckRole(false);
           }, 2000);
         } else {
           navigate("/manager/main");
@@ -97,6 +95,15 @@ export default function Waiter() {
           <div className={style.incorrect}>
             <CloseCircleOutlined />
             Incorrect password
+          </div>
+        ) : (
+          ""
+        )}
+
+        {checkRole ? (
+          <div className={style.incorrect}>
+            <CloseCircleOutlined />
+            Access denied
           </div>
         ) : (
           ""
