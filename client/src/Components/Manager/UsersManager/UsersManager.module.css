@@ -24,3 +24,8 @@
 .content {
   margin: 0 auto;
 }
+
+.menu {
+  background-color: transparent !important;
+  border-inline-end: none !important;
+}

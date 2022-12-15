@@ -1,14 +1,41 @@
 import React from "react";
-import { Button } from "antd";
+import { Menu } from "antd";
 import style from "./UsersManager.module.css";
 import { Link, Outlet } from "react-router-dom";
+import { ContactsOutlined, PlusOutlined } from "@ant-design/icons";
 
 export default function UsersManager() {
+  function getItem(label, key, icon, children, type) {
+    return {
+      key,
+      icon,
+      children,
+      label,
+      type,
+    };
+  }
   return (
     <>
       <div className={style.main_div}>
         <div className={style.buttons}>
-          <Link to="/manager/main/users/all">
+          <Menu
+            className={style.menu}
+            theme="light"
+            mode="inline"
+            items={[
+              getItem(
+                <Link to="/manager/main/users/all">All users</Link>,
+                "1",
+                <ContactsOutlined />
+              ),
+              getItem(
+                <Link to="/manager/main/users/new">New user</Link>,
+                "2",
+                <PlusOutlined />
+              ),
+            ]}
+          />
+          {/* <Link to="/manager/main/users/all">
             <Button className={style.button} type="primary">
               All users
             </Button>
@@ -17,7 +44,7 @@ export default function UsersManager() {
             <Button className={style.button} type="primary">
               New user
             </Button>
-          </Link>
+          </Link> */}
         </div>
         <div className={style.content}>
           <Outlet />

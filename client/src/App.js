@@ -3,7 +3,6 @@ import LoginManager from './Components/Manager/LoginManager/LoginManager';
 import LoginWaiter from './Components/Waiter/LoginWaiter/LoginWaiter';
 import MainWaiter from './Components/Waiter/MainWaiter/MainWaiter';
 import Home from './Components/Home/Home';
-import WrongPassword from './Components/WrongPassword/WrongPassword';
 import MainManager from './Components/Manager/MainManager/MainManager';
 import DashboardManager from './Components/Manager/DashboardManager/DashboardManager';
 import UsersManager from './Components/Manager/UsersManager/UsersManager';
@@ -34,7 +33,6 @@ function App() {
               <Route path='new' element={<NewUserForm />} />
             </Route>
           </Route>
-          <Route path='/wrong_password' element={<WrongPassword />} />
          </Routes>
     </>
   );
