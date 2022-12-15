@@ -8,6 +8,7 @@ const path = require('path');
 
 const login = require('./src/routes/login');
 const logout = require('./src/routes/logout');
+const users = require('./src/routes/users');
 
 const app = express();
 app.use(morgan('dev'));
@@ -39,6 +40,7 @@ app.use(session(sessionConfig));
 
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/users', users);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);
