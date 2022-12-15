@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
   DashboardOutlined,
   UserOutlined,
@@ -11,7 +11,6 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import style from "./MainManager.module.css";
-import { StyleProvider } from "@ant-design/cssinjs";
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children, type) {
@@ -23,41 +22,6 @@ function getItem(label, key, icon, children, type) {
     type,
   };
 }
-// const items = [
-//   getItem(
-//     <Link to="/manager/main/dashboard">Dashboard</Link>,
-//     "1",
-//     <DashboardOutlined />
-//   ),
-//   getItem(<Link to="/manager/main/users">Users</Link>, "2", <UserOutlined />),
-//   getItem(
-//     <Link to="/manager/main/users">Statistics</Link>,
-//     "3",
-//     <DatabaseOutlined />
-//   ),
-//   getItem(
-//     <Link to="/manager/main/users">Products</Link>,
-//     "4",
-//     <FileDoneOutlined />
-//   ),
-//   getItem(
-//     <Link to="/manager/main/users">Stock</Link>,
-//     "5",
-//     <InfoCircleOutlined />
-//   ),
-//   getItem(
-//     <Link to="/manager/main/users">Reservations</Link>,
-//     "6",
-//     <TeamOutlined />
-//   ),
-//   getItem(
-//     <Link onClick={handleLogout} to="/">
-//       Logout
-//     </Link>,
-//     "7",
-//     <LogoutOutlined />
-//   ),
-// ];
 
 export default function MainManager() {
   const time = useRef(null);

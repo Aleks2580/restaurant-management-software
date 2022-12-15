@@ -2,38 +2,47 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Form } from "antd";
 import style from "./LoginWaiter.module.css";
-import { useState } from "react";
-import { digits, waiters } from "./mockdata";
-import { RollbackOutlined } from "@ant-design/icons";
+import { useState, useEffect } from "react";
+import { digits } from "./mockdata";
+import { RollbackOutlined, CloseCircleOutlined } from "@ant-design/icons";
+
 export default function Waiter() {
   const navigate = useNavigate();
-  const [input, setInput] = useState("");
+  const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState(false);
 
   const inputHandler = (e) => {
-    setInput((prev) => prev + e.target.innerText);
+    setPassword((prev) => prev + e.target.innerText);
   };
+
+  useEffect(() => {
+    if (password.length === 6) {
+      (async function () {
+        const response = await fetch("http://localhost:4000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password }),
+          credentials: "include",
+        });
+        const result = await response.json();
+
+        if (result === "Password is incorrect") {
+          setPassword("");
+          setCheckPassword(true);
+          setTimeout(() => {
+            setCheckPassword(false);
+          }, 2000);
+        } else {
+          navigate("/waiter/main");
+        }
+      })();
+    }
+  }, [password]);
 
   const resetHandler = () => {
-    setInput("");
-  };
-
-  const submitHandler = async () => {
-    const response = await fetch("http://localhost:4000/manager", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ input }),
-      credentials: "include",
-    });
-    const result = await response.json();
-    console.log(result);
-    // if (waiters.password === input) {
-    //   navigate("/waiter/main");
-    // } else {
-    //   setInput("");
-    //   navigate("/wrong_password");
-    // }
+    setPassword("");
   };
 
   const goBackHandler = () => {
@@ -67,23 +76,24 @@ export default function Waiter() {
         <div>
           <input
             className={style.input_waiter}
-            value={input
+            value={password
               .split("")
               .map((el) => (el = "*"))
               .join("")}
           />
         </div>
 
+        {checkPassword ? (
+          <div className={style.incorrect}>
+            <CloseCircleOutlined />
+            Incorrect password
+          </div>
+        ) : (
+          ""
+        )}
+
         <Form.Item>
           <div className={style.form_buttons}>
-            <Button
-              onClick={submitHandler}
-              className={style.button}
-              type="primary"
-              htmlType="submit"
-            >
-              Submit
-            </Button>
             <Button
               onClick={resetHandler}
               className={style.button_reset}

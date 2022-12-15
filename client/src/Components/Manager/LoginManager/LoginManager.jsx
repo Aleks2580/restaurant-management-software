@@ -19,7 +19,7 @@ export default function Waiter() {
   useEffect(() => {
     if (password.length === 6) {
       (async function () {
-        const response = await fetch("http://localhost:4000/manager", {
+        const response = await fetch("http://localhost:4000/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
