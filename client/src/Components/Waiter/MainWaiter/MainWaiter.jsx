@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import {
   LayoutOutlined,
@@ -20,27 +20,10 @@ function getItem(label, key, icon, children, type) {
     type,
   };
 }
-const items = [
-  getItem(
-    <Link to="/waiter/main/layout">Layout</Link>,
-    "1",
-    <LayoutOutlined />
-  ),
-  getItem(
-    <Link to="/waiter/main/orders">Current Orders</Link>,
-    "2",
-    <SecurityScanOutlined />
-  ),
 
-  getItem(
-    <Link to="/waiter/main/reservations">Reservations</Link>,
-    "3",
-    <TeamOutlined />
-  ),
-  getItem(<Link to="/">Logout</Link>, "4", <LogoutOutlined />),
-];
 export default function MainWaiter() {
   const time = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const clock = setInterval(() => {
@@ -51,6 +34,14 @@ export default function MainWaiter() {
     }, 1000);
     return () => clearInterval(clock);
   }, []);
+
+  async function handleLogout() {
+    const response = await fetch("http://localhost:4000/logout", {
+      method: "GET",
+      credentials: "include",
+    });
+    navigate("/");
+  }
 
   return (
     <Layout className={style.layout}>
@@ -71,7 +62,31 @@ export default function MainWaiter() {
           theme="light"
           mode="inline"
           // defaultSelectedKeys={["4"]}
-          items={items}
+          items={[
+            getItem(
+              <Link to="/waiter/main/layout">Layout</Link>,
+              "1",
+              <LayoutOutlined />
+            ),
+            getItem(
+              <Link to="/waiter/main/orders">Current Orders</Link>,
+              "2",
+              <SecurityScanOutlined />
+            ),
+
+            getItem(
+              <Link to="/waiter/main/reservations">Reservations</Link>,
+              "3",
+              <TeamOutlined />
+            ),
+            getItem(
+              <Link onClick={handleLogout} to="/">
+                Logout
+              </Link>,
+              "4",
+              <LogoutOutlined />
+            ),
+          ]}
         />
       </Sider>
       <Layout className={style.layout_secondary}>
