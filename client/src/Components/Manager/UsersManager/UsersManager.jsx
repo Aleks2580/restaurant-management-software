@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu } from "antd";
+import { Menu, Checkbox } from "antd";
 import style from "./UsersManager.module.css";
 import { Link, Outlet } from "react-router-dom";
 import { ContactsOutlined, PlusOutlined } from "@ant-design/icons";

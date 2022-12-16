@@ -9,7 +9,8 @@ const path = require('path');
 const login = require('./src/routes/login');
 const logout = require('./src/routes/logout');
 const users = require('./src/routes/users');
-const addUser = require('./src/routes/addUser')
+const addUser = require('./src/routes/addUser');
+const usersFilter = require('./src/routes/usersFilter')
 
 const app = express();
 app.use(morgan('dev'));
@@ -17,6 +18,7 @@ app.use(cors({ credentials: true, origin: ['http://localhost:3000'] }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
+
 
 
 
@@ -43,6 +45,7 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/users', users);
 app.use('/add_user', addUser);
+app.use('/users_filter', usersFilter);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);
