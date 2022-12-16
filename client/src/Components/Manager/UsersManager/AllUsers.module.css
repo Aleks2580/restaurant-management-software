@@ -1,4 +1,19 @@
 .users {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 25px;
+  
+}
+
+.all_users {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkboxes {
+  font-size: 18px;
+  margin-bottom: 30px;
 }

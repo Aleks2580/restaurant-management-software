@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import OneUser from "./OneUser";
 import style from "./AllUsers.module.css";
-import { Spin } from "antd";
+import { Spin, Checkbox } from "antd";
 
 export default function AllUsers() {
   const [users, setUsers] = useState();
@@ -21,10 +21,16 @@ export default function AllUsers() {
   }, []);
 
   return !loading ? (
-    <div className={style.users}>
-      {users?.map((el) => (
-        <OneUser el={el} key={el.id} />
-      ))}
+    <div className={style.all_users}>
+      <div className={style.checkboxes}>
+        <Checkbox>manager</Checkbox>
+        <Checkbox>waiter</Checkbox>
+      </div>
+      <div className={style.users}>
+        {users?.map((el) => (
+          <OneUser el={el} key={el.id} />
+        ))}
+      </div>
     </div>
   ) : (
     <Spin size="large" />
