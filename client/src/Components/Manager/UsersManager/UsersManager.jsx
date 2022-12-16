@@ -35,16 +35,6 @@ export default function UsersManager() {
               ),
             ]}
           />
-          {/* <Link to="/manager/main/users/all">
-            <Button className={style.button} type="primary">
-              All users
-            </Button>
-          </Link>
-          <Link to="/manager/main/users/new">
-            <Button className={style.button} type="primary">
-              New user
-            </Button>
-          </Link> */}
         </div>
         <div className={style.content}>
           <Outlet />

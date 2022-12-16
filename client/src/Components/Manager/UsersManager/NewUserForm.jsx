@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Input, message } from "antd";
 import style from "./NewUserForm.module.css";
 
 export default function NewUserForm() {
@@ -10,7 +10,8 @@ export default function NewUserForm() {
     setInput({ ...input, [e.target.name]: e.target.value });
   }
 
-  async function submitHandler(e) {
+  async function submitHandler() {
+    const key = "updatable";
     const response = await fetch("http://localhost:4000/add_user", {
       method: "POST",
       headers: {
@@ -20,93 +21,55 @@ export default function NewUserForm() {
       credentials: "include",
     });
     const result = await response.json();
+
+    message.loading({
+      content: "Creating new user...",
+      key,
+    });
+    setTimeout(() => {
+      message.success({
+        content: "New user has been created",
+        key,
+        duration: 2,
+      });
+    }, 1000);
+    setInput({ fullName: "", password: "", role: "" });
   }
 
-  console.log(input);
-
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+  console.log();
   return (
-    <Form
-      name="basic"
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="Username"
+    <div className={style.form}>
+      <Input
+        onChange={inputHandler}
         name="fullName"
-        rules={[
-          {
-            required: true,
-            message: "Please input name!",
-          },
-        ]}
-      >
-        <Input onChange={inputHandler} name="fullName" />
-      </Form.Item>
+        placeholder="full name"
+        value={input.fullName}
+        className={style.input}
+      />
 
-      <Form.Item
-        label="Password"
+      <Input.Password
+        onChange={inputHandler}
         name="password"
-        rules={[
-          {
-            required: true,
-            message: "Please input password!",
-          },
-        ]}
-      >
-        <Input.Password
-          onChange={inputHandler}
-          name="password"
-          placeholder="6 digits"
-        />
-      </Form.Item>
+        placeholder="6 digit password"
+        value={input.password}
+        className={style.input}
+      />
 
-      <Form.Item
-        label="Role"
+      <Input
+        onChange={inputHandler}
         name="role"
-        rules={[
-          {
-            required: true,
-            message: "Please input role!",
-          },
-        ]}
-      >
-        <Input
-          onChange={inputHandler}
-          name="role"
-          placeholder="manager or waiter"
-        />
-      </Form.Item>
+        value={input.role}
+        placeholder="role: manager or waiter"
+        className={style.input}
+      />
 
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
+      <Button
+        onClick={submitHandler}
+        className={style.button}
+        htmlType="submit"
       >
-        <Button
-          onClick={submitHandler}
-          className={style.button}
-          htmlType="submit"
-        >
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        Submit
+      </Button>
+    </div>
   );
 }
