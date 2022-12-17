@@ -1,5 +1,6 @@
 .card {
   width: 150px;
+  height: 180px;
   display: flex;
   flex-direction: column;
   text-align: center;
