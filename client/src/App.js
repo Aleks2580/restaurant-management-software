@@ -11,6 +11,7 @@ import CurrentOrdersWaiter from './Components/Waiter/CurrentOrdersWaiter/Current
 import ReservationsWaiter from './Components/Waiter/ReservationsWaiter/ReservationsWaiter'
 import AllUsers from './Components/Manager/UsersManager/AllUsers';
 import NewUserForm from './Components/Manager/UsersManager/NewUserForm';
+import EditUser from './Components/Manager/UsersManager/EditUser';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path='users' element={<UsersManager />}>
               <Route path='all' element={<AllUsers />} />
               <Route path='new' element={<NewUserForm />} />
+              <Route path='edit' element={<EditUser />} />
             </Route>
           </Route>
          </Routes>

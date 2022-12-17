@@ -75,6 +75,7 @@ export default function MainManager() {
               "2",
               <UserOutlined />
             ),
+
             getItem(
               <Link to="/manager/main/users">Statistics</Link>,
               "3",

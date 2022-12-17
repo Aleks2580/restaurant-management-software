@@ -3,8 +3,10 @@ import { useState } from "react";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import style from "./OneUser.module.css";
 import { Modal } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function OneUser({ el }) {
+  const navigate = useNavigate();
   const [display, setDisplay] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,9 +35,15 @@ export default function OneUser({ el }) {
     setIsModalOpen(true);
   };
 
+  const editHandler = () => {
+    console.log(el.fullName, el.password, el.role, el.id);
+    navigate("../edit");
+  };
+
   return (
     <>
       <Modal
+        className={style.modal}
         title="Confirmation"
         open={isModalOpen}
         onOk={handleOk}
@@ -51,7 +59,9 @@ export default function OneUser({ el }) {
           </div>
           <div className={style.icons}>
             <DeleteOutlined onClick={deleteHandler} className={style.icon} />
-            <EditOutlined className={style.icon} />
+            {/* <Link to="../edit"> */}
+            <EditOutlined onClick={editHandler} className={style.icon} />
+            {/* </Link> */}
           </div>
         </div>
       ) : null}
