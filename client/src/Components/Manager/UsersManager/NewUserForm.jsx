@@ -36,7 +36,6 @@ export default function NewUserForm() {
     setInput({ fullName: "", password: "", role: "" });
   }
 
-  console.log();
   return (
     <div className={style.form}>
       <Input

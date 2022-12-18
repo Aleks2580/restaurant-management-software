@@ -66,7 +66,6 @@ export default function AllUsers() {
     <div className={style.all_users}>
       <div className={style.checkboxes}>
         <Checkbox
-          // onClick={handleFilter}
           onClick={handleCheckbox}
           name="manager"
           value={checkboxes.manager}
@@ -74,7 +73,6 @@ export default function AllUsers() {
           manager
         </Checkbox>
         <Checkbox
-          // onClick={handleFilter}
           onClick={handleCheckbox}
           name="waiter"
           value={checkboxes.waiter}

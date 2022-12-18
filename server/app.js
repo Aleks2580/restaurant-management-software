@@ -11,7 +11,8 @@ const logout = require('./src/routes/logout');
 const users = require('./src/routes/users');
 const addUser = require('./src/routes/addUser');
 const usersFilter = require('./src/routes/usersFilter');
-const deleteUser = require('./src/routes/deleteUser')
+const deleteUser = require('./src/routes/deleteUser');
+const editUser = require('./src/routes/editUser');
 
 const app = express();
 app.use(morgan('dev'));
@@ -48,6 +49,7 @@ app.use('/users', users);
 app.use('/add_user', addUser);
 app.use('/users_filter', usersFilter);
 app.use('/delete_user', deleteUser);
+app.use('/edit_user', editUser);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);
