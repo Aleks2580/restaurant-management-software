@@ -8,7 +8,8 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import style from "./MainWaiter.module.css";
-
+import { logoutUser } from "../../../store/loginUser/actionCreators";
+import { useDispatch, useSelector } from "react-redux";
 const { Header, Footer, Sider, Content } = Layout;
 
 function getItem(label, key, icon, children, type) {
@@ -24,6 +25,8 @@ function getItem(label, key, icon, children, type) {
 export default function MainWaiter() {
   const time = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const name = useSelector((state) => state.loginUser.name);
 
   useEffect(() => {
     const clock = setInterval(() => {
@@ -40,6 +43,7 @@ export default function MainWaiter() {
       method: "GET",
       credentials: "include",
     });
+    dispatch(logoutUser());
     navigate("/");
   }
 
@@ -97,7 +101,7 @@ export default function MainWaiter() {
           }}
         >
           <div className={style.header_div}>
-            <span className={style.welcome}>Welcome, Name!</span>
+            <span className={style.welcome}>Welcome, {name}!</span>
             <span ref={time} className={style.time} />
           </div>
         </Header>

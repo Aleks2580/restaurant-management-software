@@ -11,6 +11,8 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import style from "./MainManager.module.css";
+import { logoutUser } from "../../../store/loginUser/actionCreators";
+import { useDispatch, useSelector } from "react-redux";
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children, type) {
@@ -26,12 +28,15 @@ function getItem(label, key, icon, children, type) {
 export default function MainManager() {
   const time = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const name = useSelector((state) => state.loginUser.name);
 
   async function handleLogout() {
     const response = await fetch("http://localhost:4000/logout", {
       method: "GET",
       credentials: "include",
     });
+    dispatch(logoutUser());
     navigate("/");
   }
 
@@ -114,7 +119,7 @@ export default function MainManager() {
           }}
         >
           <div className={style.header_div}>
-            <span className={style.welcome}>Welcome, Admin!</span>
+            <span className={style.welcome}>Welcome, {name}!</span>
             <span ref={time} className={style.time} />
           </div>
         </Header>

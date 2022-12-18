@@ -5,9 +5,12 @@ import style from "./LoginWaiter.module.css";
 import { useState, useEffect } from "react";
 import { digits } from "./mockdata";
 import { RollbackOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { loginUser } from "../../../store/loginUser/actionCreators";
+import { useDispatch } from "react-redux";
 
 export default function Waiter() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState(false);
 
@@ -35,6 +38,7 @@ export default function Waiter() {
             setCheckPassword(false);
           }, 2000);
         } else {
+          dispatch(loginUser(result));
           navigate("/waiter/main");
         }
       })();
