@@ -1,0 +1,39 @@
+.calendar {
+  width: 300px;
+ 
+  margin-bottom: 20px;
+}
+
+.when {
+  margin-bottom: 10px;
+}
+
+.what_time {
+  margin-bottom: 10px;
+}
+
+.time {
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 250px;
+  margin-bottom: 20px;
+  
+}
+
+.who {
+  margin-bottom: 10px;
+}
+
+.how_many {
+  margin-bottom: 10px;
+}
+
+.button {
+  background-color:rgb(168, 221, 244);
+  width: 100px;
+  align-self: center;
+  display: block;
+
+}
