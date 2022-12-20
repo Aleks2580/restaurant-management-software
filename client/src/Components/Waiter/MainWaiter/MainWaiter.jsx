@@ -108,6 +108,8 @@ export default function MainWaiter() {
         <Content
           style={{
             margin: "24px 16px 0",
+            display: "flex",
+            justifyContent: "center",
           }}
         >
           <div

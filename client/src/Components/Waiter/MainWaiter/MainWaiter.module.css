@@ -32,7 +32,14 @@
 
 
 .content {
+  /* margin-left: 60px; */
   background-color: transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+   flex-wrap: wrap;
+   width: 1100px;
 }
 
 .footer {
