@@ -1,10 +1,10 @@
 import React from "react";
 import { Menu } from "antd";
-import style from "./UsersManager.module.css";
+import style from "./ReservationsManager.module.css";
 import { Link, Outlet } from "react-router-dom";
-import { ContactsOutlined, PlusOutlined } from "@ant-design/icons";
+import { LoginOutlined, CheckOutlined } from "@ant-design/icons";
 
-export default function UsersManager() {
+export default function ReservationsManager() {
   function getItem(label, key, icon, children, type) {
     return {
       key,
@@ -24,14 +24,18 @@ export default function UsersManager() {
             mode="inline"
             items={[
               getItem(
-                <Link to="/manager/main/users/all">All users</Link>,
+                <Link to="/manager/main/reservations/new">
+                  New reservation
+                </Link>,
                 "1",
-                <ContactsOutlined />
+                <LoginOutlined />
               ),
               getItem(
-                <Link to="/manager/main/users/new">New user</Link>,
+                <Link to="/manager/main/reservations/upcoming">
+                  Upcoming reservations
+                </Link>,
                 "2",
-                <PlusOutlined />
+                <CheckOutlined />
               ),
             ]}
           />

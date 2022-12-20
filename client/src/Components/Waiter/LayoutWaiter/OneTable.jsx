@@ -45,12 +45,15 @@ export default function OneTable({ el }) {
           >
             <p>Create a new order?</p>
           </Modal>
-          <div onClick={createOrderHandler} className={style.table_first_row}>
+          <div
+            onClick={createOrderHandler}
+            className={style.table_first_row_green}
+          >
             {el.number}
           </div>
         </>
       ) : (
-        <div onClick={viewOrder} className={style.table_first_row}>
+        <div onClick={viewOrder} className={style.table_first_row_red}>
           {el.number}
         </div>
       )}

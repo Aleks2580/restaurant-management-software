@@ -97,7 +97,7 @@ export default function MainManager() {
               <InfoCircleOutlined />
             ),
             getItem(
-              <Link to="/manager/main/users">Reservations</Link>,
+              <Link to="/manager/main/reservations">Reservations</Link>,
               "6",
               <TeamOutlined />
             ),

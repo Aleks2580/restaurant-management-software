@@ -12,7 +12,9 @@ import ReservationsWaiter from './Components/Waiter/ReservationsWaiter/Reservati
 import AllUsers from './Components/Manager/UsersManager/AllUsers';
 import NewUserForm from './Components/Manager/UsersManager/NewUserForm';
 import EditUser from './Components/Manager/UsersManager/EditUser';
-
+import ReservationsManager from './Components/Manager/ReservationsManager/ReservationsManager';
+import UpcomingReservations from './Components/Manager/ReservationsManager/UpcomingReservations';
+import NewReservation from './Components/Manager/ReservationsManager/NewReservation';
 
 function App() {
   return (
@@ -33,6 +35,11 @@ function App() {
               <Route path='all' element={<AllUsers />} />
               <Route path='new' element={<NewUserForm />} />
               <Route path='edit' element={<EditUser />} />
+            </Route>
+            <Route path='reservations' element={<ReservationsManager />}>
+              <Route path='new' element={<NewReservation />} />
+              <Route path='upcoming' element={<UpcomingReservations />} />
+              {/* <Route path='edit' element={<EditUser />} /> */}
             </Route>
           </Route>
          </Routes>
