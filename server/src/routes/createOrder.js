@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { User } = require('../../db/models');
+const { Table } = require('../../db/models');
 
 router.post('/', async (req, res) => {
-  const { fullName, password, role, id} = req.body
+  const { id } = req.body;
+  console.log(id);
   try {
-    await User.update({ fullName, password, role }, { where: { id } });
+    await Table.update({ available: false }, { where: { id } });
     res.json('Done')
   } catch (error) {
     res.json(`Error while editing user ${error}`);
