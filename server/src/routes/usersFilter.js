@@ -3,7 +3,9 @@ const { User } = require('../../db/models');
 
 router.post('/', async (req, res) => {
   const { role } = req.body;
-  if (role === 'all') {
+  const roleUser = role.all;
+
+  if (roleUser === 'all') {
     try {
       const roles = await User.findAll({ raw: true });
       res.json({ roles });
@@ -12,7 +14,7 @@ router.post('/', async (req, res) => {
     }
   } else {
     try {
-      const roles = await User.findAll({ where: { role } });
+      const roles = await User.findAll({ where: { role: roleUser } });
       res.json({ roles });
     } catch (error) {
       res.json(`Something went wrong ${error}`);

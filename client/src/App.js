@@ -15,8 +15,17 @@ import EditUser from './Components/Manager/UsersManager/EditUser';
 import ReservationsManager from './Components/Manager/ReservationsManager/ReservationsManager';
 import UpcomingReservations from './Components/Manager/ReservationsManager/UpcomingReservations';
 import NewReservation from './Components/Manager/ReservationsManager/NewReservation';
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(() => {
+    (async function () {
+      const response = await fetch("")
+    })()
+  }, [])
+
+
   return (
     <>
         

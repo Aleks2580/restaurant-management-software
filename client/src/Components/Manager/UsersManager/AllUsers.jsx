@@ -8,7 +8,6 @@ export default function AllUsers() {
   const [users, setUsers] = useState();
   const [loading, setLoading] = useState(true);
   const [role, setRole] = useState();
-  const [filteredUsers, setFilteredUsers] = useState();
 
   useEffect(() => {
     (async function () {
@@ -23,13 +22,15 @@ export default function AllUsers() {
   }, []);
 
   const handleCheckbox = async (e) => {
-    setRole(e.target.value);
+    setRole({ ...role, [e.target.name]: e.target.value });
     const response = await fetch("http://localhost:4000/users_filter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ role }),
+      body: JSON.stringify({
+        role: { ...role, [e.target.name]: e.target.value },
+      }),
       credentials: "include",
     });
     const result = await response.json();
@@ -69,9 +70,6 @@ export default function AllUsers() {
         </div>
       </div>
       <div className={style.users}>
-        {/* {!role
-          ? users?.map((el) => <OneUser el={el} key={el.id} />)
-          : filteredUsers?.map((el) => <OneUser el={el} key={el.id} />)} */}
         {users?.map((el) => (
           <OneUser el={el} key={el.id} />
         ))}
