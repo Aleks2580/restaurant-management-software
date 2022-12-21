@@ -6,20 +6,25 @@ import style from "./NewReservation.module.css";
 const format = "HH:mm";
 
 export default function NewReservation() {
-  const onPanelChange = (value, mode) => {
-    console.log(value.format("YYYY-MM-DD"), mode);
+  const handleDate = (value) => {
+    console.log(typeof value.format("YYYY-MM-DD"));
+  };
+
+  const handleTime = (value) => {
+    console.log(typeof value.format("HH:mm"));
   };
   return (
     <>
       <div className={style.calendar}>
         <div className={style.when}>When?</div>
-        <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+        <Calendar fullscreen={false} onSelect={handleDate} />
       </div>
       <div className={style.what_time}>What time?</div>
       <TimePicker
         className={style.time}
         //defaultValue={dayjs("12:08", format)}
         format={format}
+        onSelect={handleTime}
       />
       <div className={style.who}>Who?</div>
       <Input
