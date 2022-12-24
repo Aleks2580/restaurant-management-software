@@ -14,7 +14,8 @@ const usersFilter = require('./src/routes/usersFilter');
 const deleteUser = require('./src/routes/deleteUser');
 const editUser = require('./src/routes/editUser');
 const tables = require('./src/routes/tables');
-const createOrder = require('./src/routes/createOrder')
+const createOrder = require('./src/routes/createOrder');
+const checkUser = require('./src/routes/checkUser')
 
 const app = express();
 app.use(morgan('dev'));
@@ -54,6 +55,7 @@ app.use('/delete_user', deleteUser);
 app.use('/edit_user', editUser);
 app.use('/tables', tables);
 app.use('/create_order', createOrder);
+app.use('/check_user', checkUser);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);

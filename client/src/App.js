@@ -16,8 +16,11 @@ import ReservationsManager from './Components/Manager/ReservationsManager/Reserv
 import UpcomingReservations from './Components/Manager/ReservationsManager/UpcomingReservations';
 import NewReservation from './Components/Manager/ReservationsManager/NewReservation';
 import { useEffect } from 'react';
+import {loginUser} from "./store/loginUser/actionCreators"; 
+import { useDispatch } from "react-redux";  
 
 function App() {
+  const dispatch = useDispatch()
 
   useEffect(() => {
     (async function () {
@@ -26,6 +29,7 @@ function App() {
           credentials: "include",
         });
       const result = await response.json()  
+      dispatch(loginUser(result))
     })()
   }, [])
 
