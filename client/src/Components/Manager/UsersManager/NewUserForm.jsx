@@ -22,18 +22,20 @@ export default function NewUserForm() {
     });
     const result = await response.json();
 
-    message.loading({
-      content: "Creating new user...",
-      key,
-    });
-    setTimeout(() => {
-      message.success({
-        content: "New user has been created",
+    if (result) {
+      message.loading({
+        content: "Creating new user...",
         key,
-        duration: 2,
       });
-    }, 1000);
-    setInput({ fullName: "", password: "", role: "" });
+      setTimeout(() => {
+        message.success({
+          content: "New user has been created",
+          key,
+          duration: 2,
+        });
+      }, 1000);
+      setInput({ fullName: "", password: "", role: "" });
+    }
   }
 
   return (

@@ -37,20 +37,22 @@ export default function NewReservation() {
     });
     const result = await response.json();
 
-    message.loading({
-      content: "Creating new reservation...",
-      key,
-    });
-    setTimeout(() => {
-      message.success({
-        content: "New reservation has been created",
+    if (result) {
+      message.loading({
+        content: "Creating new reservation...",
         key,
-        duration: 2,
       });
-    }, 1000);
-    setInput({ name: "", guests: "" });
-    setDate("");
-    setTime("");
+      setTimeout(() => {
+        message.success({
+          content: "New reservation has been created",
+          key,
+          duration: 2,
+        });
+      }, 1000);
+      setInput({ name: "", guests: "" });
+      setDate("");
+      setTime("");
+    }
   };
   return (
     <>
