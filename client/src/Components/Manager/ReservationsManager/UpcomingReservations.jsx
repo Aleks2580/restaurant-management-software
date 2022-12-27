@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, Divider, List, Skeleton } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import InfiniteScroll from "react-infinite-scroll-component";
 import style from "./OneReservation.module.css";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const loadMoreData = () => {
+  const loadMoreData = async () => {
     if (loading) {
       return;
     }
     setLoading(true);
-    fetch(
-      "https://randomuser.me/api/?results=10&inc=name,gender,email,nat,picture&noinfo"
-    )
-      .then((res) => res.json())
-      .then((body) => {
-        setData([...data, ...body.results]);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    const response = await fetch("http://localhost:4000/reservations", {
+      method: "GET",
+      credentials: "include",
+    });
+    const result = await response.json();
+    setData(result.data);
+    setLoading(false);
   };
   useEffect(() => {
     loadMoreData();
@@ -31,7 +28,7 @@ const App = () => {
       id="scrollableDiv"
       style={{
         height: 400,
-        width: 600,
+        width: 400,
         overflow: "auto",
         padding: "0 16px",
         border: "1px solid rgba(140, 140, 140, 0.35)",
@@ -40,7 +37,7 @@ const App = () => {
       <InfiniteScroll
         dataLength={data.length}
         next={loadMoreData}
-        hasMore={data.length < 50}
+        hasMore={data.length < 1}
         loader={
           <Skeleton
             avatar
@@ -56,13 +53,19 @@ const App = () => {
         <List
           dataSource={data}
           renderItem={(item) => (
-            <List.Item key={item.email}>
+            <List.Item key={item.id}>
               <List.Item.Meta
-                avatar={<Avatar src={item.picture.large} />}
-                title={<a href="https://ant.design">{item.name.last}</a>}
-                description={item.email}
+                // avatar={<Avatar icon={<UserOutlined />} />}
+                title={item.name}
+                description={
+                  <>
+                    <p>{item.time}</p>
+                    <p>{item.date}</p>
+                  </>
+                }
               />
-              <div>Content</div>
+              <div>Edit</div>
+              <div>Delete</div>
             </List.Item>
           )}
         />
