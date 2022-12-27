@@ -1,17 +1,56 @@
-import React from "react";
-import { TimePicker, Calendar, Input, Button } from "antd";
+import React, { useState } from "react";
+import { TimePicker, Calendar, Input, Button, message } from "antd";
 import dayjs from "dayjs";
 import style from "./NewReservation.module.css";
 
 const format = "HH:mm";
 
 export default function NewReservation() {
+  const [input, setInput] = useState({
+    name: "",
+    guests: "",
+  });
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
+  const inputHandler = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
   const handleDate = (value) => {
-    console.log(typeof value.format("YYYY-MM-DD"));
+    setDate(value.format("YYYY-MM-DD"));
   };
 
   const handleTime = (value) => {
-    console.log(typeof value.format("HH:mm"));
+    setTime(value.format("HH:mm"));
+  };
+
+  const submitHandler = async () => {
+    const key = "updatable";
+    const response = await fetch("http://localhost:4000/add_reservation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...input, date, time }),
+      credentials: "include",
+    });
+    const result = await response.json();
+
+    message.loading({
+      content: "Creating new reservation...",
+      key,
+    });
+    setTimeout(() => {
+      message.success({
+        content: "New reservation has been created",
+        key,
+        duration: 2,
+      });
+    }, 1000);
+    setInput({ name: "", guests: "" });
+    setDate("");
+    setTime("");
   };
   return (
     <>
@@ -25,25 +64,26 @@ export default function NewReservation() {
         //defaultValue={dayjs("12:08", format)}
         format={format}
         onSelect={handleTime}
+        //value={time}
       />
       <div className={style.who}>Who?</div>
       <Input
-        //onChange={inputHandler}
-        name="fullName"
+        onChange={inputHandler}
+        name="name"
         placeholder="full name"
-        //value={input.fullName}
+        value={input.name}
         className={style.input}
       />
       <div className={style.how_many}>How many people?</div>
       <Input
-        //onChange={inputHandler}
-        name="fullName"
+        onChange={inputHandler}
+        name="guests"
         placeholder="number of guests"
-        //value={input.fullName}
+        value={input.guests}
         className={style.input}
       />
       <Button
-        //onClick={submitHandler}
+        onClick={submitHandler}
         className={style.button}
         htmlType="submit"
       >
