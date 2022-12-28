@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, Divider, List, Skeleton } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import InfiniteScroll from "react-infinite-scroll-component";
-import style from "./OneReservation.module.css";
+import style from "./UpcomingReservations.module.css";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ const App = () => {
       id="scrollableDiv"
       style={{
         height: 400,
-        width: 400,
+        width: 600,
         overflow: "auto",
         padding: "0 16px",
         border: "1px solid rgba(140, 140, 140, 0.35)",
@@ -37,7 +37,7 @@ const App = () => {
       <InfiniteScroll
         dataLength={data.length}
         next={loadMoreData}
-        hasMore={data.length < 1}
+        hasMore={data.length < 5}
         loader={
           <Skeleton
             avatar
@@ -55,17 +55,18 @@ const App = () => {
           renderItem={(item) => (
             <List.Item key={item.id}>
               <List.Item.Meta
-                // avatar={<Avatar icon={<UserOutlined />} />}
-                title={item.name}
                 description={
-                  <>
-                    <p>{item.time}</p>
-                    <p>{item.date}</p>
-                  </>
+                  <div className={style.data}>
+                    <div className={style.date}>{item.date}</div>
+                    <div className={style.time}>{item.time}</div>
+                    <div className={style.name}>{item.name}</div>
+                  </div>
                 }
               />
-              <div>Edit</div>
-              <div>Delete</div>
+              <div className={style.icons}>
+                <EditOutlined className={style.edit} />
+                <DeleteOutlined className={style.delete} />
+              </div>
             </List.Item>
           )}
         />
