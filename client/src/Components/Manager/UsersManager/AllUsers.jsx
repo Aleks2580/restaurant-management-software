@@ -21,7 +21,7 @@ export default function AllUsers() {
     })();
   }, []);
 
-  const handleCheckbox = async (e) => {
+  const handleRadioButton = async (e) => {
     setRole({ ...role, [e.target.name]: e.target.value });
     const response = await fetch("http://localhost:4000/users_filter", {
       method: "POST",
@@ -37,8 +37,6 @@ export default function AllUsers() {
     setUsers(result.roles);
   };
 
-  console.log(role);
-
   return !loading ? (
     <div className={style.all_users}>
       <div className={style.checkboxes}>
@@ -46,7 +44,7 @@ export default function AllUsers() {
           <input
             id="all"
             type="radio"
-            onChange={handleCheckbox}
+            onChange={handleRadioButton}
             value="all"
             name="all"
           />
@@ -54,7 +52,7 @@ export default function AllUsers() {
           <input
             id="manager"
             type="radio"
-            onChange={handleCheckbox}
+            onChange={handleRadioButton}
             value="manager"
             name="all"
           />
@@ -62,7 +60,7 @@ export default function AllUsers() {
           <input
             id="waiter"
             type="radio"
-            onChange={handleCheckbox}
+            onChange={handleRadioButton}
             value="waiter"
             name="all"
           />

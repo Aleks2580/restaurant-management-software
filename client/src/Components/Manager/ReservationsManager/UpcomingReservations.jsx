@@ -1,77 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Divider, List, Skeleton } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import InfiniteScroll from "react-infinite-scroll-component";
 import style from "./UpcomingReservations.module.css";
+import OneReservation from "./OneReservation";
 
-const App = () => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const loadMoreData = async () => {
-    if (loading) {
-      return;
-    }
-    setLoading(true);
-    const response = await fetch("http://localhost:4000/reservations", {
-      method: "GET",
-      credentials: "include",
-    });
-    const result = await response.json();
-    setData(result.data);
-    setLoading(false);
-  };
+export default function UpcomingReservations() {
+  const [reservations, setReservations] = useState();
+
+  // const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState([]);
+
+  //   const response = await fetch("http://localhost:4000/reservations", {
+  //     method: "GET",
+  //     credentials: "include",
+  //   });
+  //   const result = await response.json();
+  //   setData(result.data);
+  //   setLoading(false);
+  // };
   useEffect(() => {
-    loadMoreData();
+    (async function () {
+      const response = await fetch("http://localhost:4000/reservations", {
+        method: "GET",
+        credentials: "include",
+      });
+      const result = await response.json();
+      setReservations(result.data);
+      //setLoading(false);
+    })();
   }, []);
+
+  // const handleDelete = async (e) => {
+  //   const response = await fetch("http://localhost:4000/delete_reservation", {
+  //     method: "DELETE",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ id: data.id }),
+  //     credentials: "include",
+  //   });
+  //   console.log(data);
+  // };
   return (
-    <div
-      id="scrollableDiv"
-      style={{
-        height: 400,
-        width: 600,
-        overflow: "auto",
-        padding: "0 16px",
-        border: "1px solid rgba(140, 140, 140, 0.35)",
-      }}
-    >
-      <InfiniteScroll
-        dataLength={data.length}
-        next={loadMoreData}
-        hasMore={data.length < 5}
-        loader={
-          <Skeleton
-            avatar
-            paragraph={{
-              rows: 1,
-            }}
-            active
-          />
-        }
-        endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
-        scrollableTarget="scrollableDiv"
-      >
-        <List
-          dataSource={data}
-          renderItem={(item) => (
-            <List.Item key={item.id}>
-              <List.Item.Meta
-                description={
-                  <div className={style.data}>
-                    <div className={style.date}>{item.date}</div>
-                    <div className={style.time}>{item.time}</div>
-                    <div className={style.name}>{item.name}</div>
-                  </div>
-                }
-              />
-              <div className={style.icons}>
-                <EditOutlined className={style.edit} />
-                <DeleteOutlined className={style.delete} />
-              </div>
-            </List.Item>
-          )}
-        />
-      </InfiniteScroll>
-    </div>
+    <>
+      {reservations?.map((el) => (
+        <OneReservation el={el} key={el.id} />
+      ))}
+    </>
   );
-};
-export default App;
+}

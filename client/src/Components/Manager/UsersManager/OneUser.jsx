@@ -23,7 +23,6 @@ export default function OneUser({ el }) {
       credentials: "include",
     });
     const result = await response.json();
-    console.log("RESULT", result);
     if (result) {
       setDisplay(false);
     }

@@ -17,7 +17,8 @@ const tables = require('./src/routes/tables');
 const createOrder = require('./src/routes/createOrder');
 const checkUser = require('./src/routes/checkUser');
 const addReservation = require('./src/routes/addReservation');
-const reservations = require('./src/routes/reservations')
+const reservations = require('./src/routes/reservations');
+const deleteReservation = require('./src/routes/deleteReservation');
 
 const app = express();
 app.use(morgan('dev'));
@@ -59,7 +60,8 @@ app.use('/tables', tables);
 app.use('/create_order', createOrder);
 app.use('/check_user', checkUser);
 app.use('/add_reservation', addReservation);
-app.use('/reservations', reservations)
+app.use('/reservations', reservations);
+app.use('/delete_reservation', deleteReservation);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);
