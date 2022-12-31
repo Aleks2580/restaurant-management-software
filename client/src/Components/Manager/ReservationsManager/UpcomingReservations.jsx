@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import style from "./UpcomingReservations.module.css";
 import OneReservation from "./OneReservation";
+import { Spin } from "antd";
 
 export default function UpcomingReservations() {
   const [reservations, setReservations] = useState();
+  const [loading, setLoading] = useState(true);
 
   // const [loading, setLoading] = useState(false);
   // const [data, setData] = useState([]);
@@ -24,7 +26,7 @@ export default function UpcomingReservations() {
       });
       const result = await response.json();
       setReservations(result.data);
-      //setLoading(false);
+      setLoading(false);
     })();
   }, []);
 
@@ -39,11 +41,13 @@ export default function UpcomingReservations() {
   //   });
   //   console.log(data);
   // };
-  return (
+  return !loading ? (
     <>
       {reservations?.map((el) => (
         <OneReservation el={el} key={el.id} />
       ))}
     </>
+  ) : (
+    <Spin size="large" />
   );
 }

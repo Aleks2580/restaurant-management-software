@@ -18,6 +18,7 @@ import NewReservation from './Components/Manager/ReservationsManager/NewReservat
 import { useEffect } from 'react';
 import {loginUser} from "./store/loginUser/actionCreators"; 
 import { useDispatch } from "react-redux";  
+import EditReservation from './Components/Manager/ReservationsManager/EditReservation';
 
 function App() {
   const dispatch = useDispatch()
@@ -56,7 +57,7 @@ function App() {
             <Route path='reservations' element={<ReservationsManager />}>
               <Route path='new' element={<NewReservation />} />
               <Route path='upcoming' element={<UpcomingReservations />} />
-              {/* <Route path='edit' element={<EditUser />} /> */}
+              <Route path='edit' element={<EditReservation />} />
             </Route>
           </Route>
          </Routes>

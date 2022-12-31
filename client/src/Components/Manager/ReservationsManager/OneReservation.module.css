@@ -43,3 +43,10 @@
 .delete:hover {
   color: brown;
 }
+
+.modal {
+  width: 250px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

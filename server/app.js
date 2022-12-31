@@ -19,6 +19,7 @@ const checkUser = require('./src/routes/checkUser');
 const addReservation = require('./src/routes/addReservation');
 const reservations = require('./src/routes/reservations');
 const deleteReservation = require('./src/routes/deleteReservation');
+const editReservation = require('./src/routes/editReservation');
 
 const app = express();
 app.use(morgan('dev'));
@@ -62,6 +63,7 @@ app.use('/check_user', checkUser);
 app.use('/add_reservation', addReservation);
 app.use('/reservations', reservations);
 app.use('/delete_reservation', deleteReservation);
+app.use('/edit_reservation', editReservation)
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);
