@@ -3,9 +3,12 @@ import style from "./OneReservation.module.css";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { editReservation } from "../../../store/editReservation/actionCreators";
 
 export default function OneReservation({ el }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [display, setDisplay] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,6 +36,14 @@ export default function OneReservation({ el }) {
   };
 
   const editHandler = () => {
+    dispatch(
+      editReservation({
+        date: el.date,
+        time: el.time,
+        name: el.name,
+        guests: el.guests,
+      })
+    );
     navigate("../edit");
   };
   return (
