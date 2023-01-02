@@ -79,7 +79,7 @@ export default function MainWaiter() {
             ),
 
             getItem(
-              <Link to="/waiter/main/reservations">Reservations</Link>,
+              <Link to="/waiter/main/reservations">Today's bookings</Link>,
               "3",
               <TeamOutlined />
             ),
