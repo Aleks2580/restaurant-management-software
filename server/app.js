@@ -63,7 +63,7 @@ app.use('/check_user', checkUser);
 app.use('/add_reservation', addReservation);
 app.use('/reservations', reservations);
 app.use('/delete_reservation', deleteReservation);
-app.use('/edit_reservation', editReservation)
+app.use('/edit_reservation', editReservation);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);

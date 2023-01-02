@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../db/models');
 
-router.post('/', async (req, res) => {
+router.put('/', async (req, res) => {
   const { fullName, password, role, id} = req.body
   try {
     await User.update({ fullName, password, role }, { where: { id } });

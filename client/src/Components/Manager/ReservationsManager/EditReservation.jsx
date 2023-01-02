@@ -2,66 +2,80 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { doneEditing } from "../../../store/editReservation/actionCreators";
-import { TimePicker, Calendar, Input, Button, message } from "antd";
+import { Input, Button, message } from "antd";
 import style from "./EditReservation.module.css";
-import dayjs from "dayjs";
-
-const format = "HH:mm";
 
 export default function EditReservation() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { date, time, name, guests } = useSelector(
+  const { date, time, name, guests, id } = useSelector(
     (state) => state.editReservation
   );
 
-  console.log("TIME", typeof time);
-
   const [input, setInput] = useState({
+    date: date,
+    time: time,
     name: name,
     guests: guests,
   });
-  const [dateToEdit, setDateToEdit] = useState(date);
-  const [timeToEdit, settimeToEdit] = useState(time);
 
-  const handleDate = () => {};
-  const handleChange = async () => {};
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const inputHandler = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleChange = async (e) => {
+    const response = await fetch("http://localhost:4000/edit_reservation", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        date: input.date,
+        time: input.time,
+        name: input.name,
+        guests: input.guests,
+        id: id,
+      }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    if (result) {
+      messageApi.open({
+        type: "success",
+        content: "The reservation has been changed",
+      });
+      dispatch(doneEditing());
+      setTimeout(() => {
+        navigate("../upcoming");
+      }, 1000);
+    }
+  };
   return (
     <>
+      {contextHolder}
       <div className={style.calendar}>
         <div className={style.when}>When?</div>
-        {/* <Calendar
-          //defaultValue={date}
-          fullscreen={false}
-          onSelect={handleDate}
-        /> */}
         <Input
-          //onChange={inputHandler}
+          onChange={inputHandler}
           name="date"
-          //placeholder="full name"
-          value={dateToEdit}
+          value={input.date}
           className={style.input}
         />
       </div>
       <div className={style.what_time}>What time?</div>
-      {/* <TimePicker
-        className={style.time}
-        //defaultValue={dayjs({ time }, format)}
-        //format={format}
-        //onSelect={handleTime}
-        //value={timeToEdit}
-      /> */}
+
       <Input
-        //onChange={inputHandler}
+        onChange={inputHandler}
         name="time"
-        //placeholder="full name"
-        value={timeToEdit}
+        value={input.time}
         className={style.input}
       />
       <div className={style.who}>Who?</div>
       <Input
-        //onChange={inputHandler}
+        onChange={inputHandler}
         name="name"
         placeholder="full name"
         value={input.name}
@@ -69,7 +83,7 @@ export default function EditReservation() {
       />
       <div className={style.how_many}>How many people?</div>
       <Input
-        //onChange={inputHandler}
+        onChange={inputHandler}
         name="guests"
         placeholder="number of guests"
         value={input.guests}
