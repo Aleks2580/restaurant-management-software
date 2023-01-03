@@ -1,0 +1,29 @@
+.data {
+  display: flex;
+  align-items: center;
+}
+
+.date {
+  color: black;
+  font-size: 20px;
+  margin-right: 40px;
+}
+
+.time {
+  align-self: center;
+  color: black;
+  font-size: 20px;
+  margin-right: 40px;
+}
+
+.name {
+  align-self: center;
+  color: black;
+  font-size: 20px;
+  margin-right: 40px;
+}
+
+.guests {
+  margin-right: 40px;
+}
+

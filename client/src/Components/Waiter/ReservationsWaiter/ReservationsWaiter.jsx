@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./ReservationsWaiter.module.css";
 import { Spin } from "antd";
-import OneReservation from "./OneReservation";
+import OneReservationWaiter from "./OneReservationWaiter";
 
 export default function ReservationsWaiter() {
   const [reservations, setReservations] = useState();
@@ -25,7 +25,7 @@ export default function ReservationsWaiter() {
   return !loading ? (
     <>
       {reservations?.map((el) => (
-        <OneReservation el={el} key={el.id} />
+        <OneReservationWaiter el={el} key={el.id} />
       ))}
     </>
   ) : (
