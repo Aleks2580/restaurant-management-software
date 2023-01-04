@@ -9,6 +9,7 @@ export default function NewReservation() {
   const [input, setInput] = useState({
     name: "",
     guests: "",
+    phone: "",
   });
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -49,7 +50,7 @@ export default function NewReservation() {
           duration: 2,
         });
       }, 1000);
-      setInput({ name: "", guests: "" });
+      setInput({ name: "", guests: "", phone: "" });
       setDate("");
       setTime("");
     }
@@ -82,6 +83,14 @@ export default function NewReservation() {
         name="guests"
         placeholder="number of guests"
         value={input.guests}
+        className={style.input}
+      />
+      <div className={style.phone}>Phone number</div>
+      <Input
+        onChange={inputHandler}
+        name="phone"
+        placeholder="phone number"
+        value={input.phone}
         className={style.input}
       />
       <Button
