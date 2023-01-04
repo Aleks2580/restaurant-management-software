@@ -64,10 +64,8 @@ export default function NewReservation() {
       <div className={style.what_time}>What time?</div>
       <TimePicker
         className={style.time}
-        //defaultValue={dayjs("12:08", format)}
         format={format}
         onSelect={handleTime}
-        //value={time}
       />
       <div className={style.who}>Who?</div>
       <Input

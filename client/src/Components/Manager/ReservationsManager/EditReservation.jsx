@@ -9,7 +9,7 @@ export default function EditReservation() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { date, time, name, guests, id } = useSelector(
+  const { date, time, name, guests, phone, id } = useSelector(
     (state) => state.editReservation
   );
 
@@ -18,6 +18,7 @@ export default function EditReservation() {
     time: time,
     name: name,
     guests: guests,
+    phone: phone,
   });
 
   const [messageApi, contextHolder] = message.useMessage();
@@ -37,6 +38,7 @@ export default function EditReservation() {
         time: input.time,
         name: input.name,
         guests: input.guests,
+        phone: input.phone,
         id: id,
       }),
       credentials: "include",
@@ -87,6 +89,14 @@ export default function EditReservation() {
         name="guests"
         placeholder="number of guests"
         value={input.guests}
+        className={style.input}
+      />
+      <div className={style.phone}>Phone number</div>
+      <Input
+        onChange={inputHandler}
+        name="phone"
+        placeholder="phone number"
+        value={input.phone}
         className={style.input}
       />
       <Button onClick={handleChange} className={style.button} htmlType="submit">

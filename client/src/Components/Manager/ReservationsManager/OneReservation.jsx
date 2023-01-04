@@ -42,6 +42,7 @@ export default function OneReservation({ el }) {
         time: el.time,
         name: el.name,
         guests: el.guests,
+        phone: el.phone,
         id: el.id,
       })
     );
@@ -64,6 +65,7 @@ export default function OneReservation({ el }) {
           <div className={style.time}>{el.time}</div>
           <div className={style.name}>{el.name}</div>
           <div className={style.guests}>{el.guests} guests</div>
+          <div className={style.phone}>{el.phone}</div>
           <div className={style.icons}>
             <EditOutlined onClick={editHandler} className={style.edit} />
             <DeleteOutlined onClick={deleteHandler} className={style.delete} />
