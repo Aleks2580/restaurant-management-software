@@ -18,25 +18,42 @@ export default function UpcomingReservations() {
       const result = await response.json();
       setReservations(result.data);
       setLoading(false);
-      setDates(result.data.map((el) => el.date));
+      const noDuplicateDates = [...new Set(result.data.map((el) => el.date))];
+      setDates(noDuplicateDates);
     })();
   }, []);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
+  const handleChange = async (e) => {
+    setValue({ ...value, [e.target.name]: e.target.value });
+    const response = await fetch("http://localhost:4000/reservations_filter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        date: e.target.value,
+      }),
+      credentials: "include",
+    });
+    const result = await response.json();
 
-  console.log(value);
+    setReservations(result.dates);
+  };
 
   return !loading ? (
     <>
       <div className={style.filter_div}>
         <select onChange={handleChange} className={style.select}>
-          <option className={style.option} value="all">
+          <option className={style.option} value="all" name="all">
             all
           </option>
           {dates?.map((el) => (
-            <option className={style.option} key={dates.indexOf(el)} value={el}>
+            <option
+              className={style.option}
+              //key={dates.indexOf(el)}
+              value={el}
+              name={el}
+            >
               {el}
             </option>
           ))}
