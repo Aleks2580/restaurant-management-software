@@ -22,7 +22,10 @@
 }
 
 .content {
-  margin: 0 auto;
+  margin-left: 100px;
+  text-align: center;
+  
+ 
 }
 
 .menu {
