@@ -1,43 +1,13 @@
 import React, { useEffect, useState } from "react";
 import style from "./UpcomingReservations.module.css";
 import OneReservation from "./OneReservation";
-import { Spin, Dropdown, Space } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-
-// const items = [
-//   {
-//     label: <a href="https://www.antgroup.com">1st menu item</a>,
-//     key: "0",
-//   },
-//   {
-//     label: <a href="https://www.aliyun.com">2nd menu item</a>,
-//     key: "1",
-//   },
-//   {
-//     label: "3rd menu item",
-//     key: "2",
-//   },
+import { Spin } from "antd";
 
 export default function UpcomingReservations() {
   const [reservations, setReservations] = useState();
   const [loading, setLoading] = useState(true);
-  const [dates, setDates] = useState();
-
-  const items = [
-    // {
-    //   label: "",
-    //   key: "",
-    // },
-    // ,
-    // {
-    //   label: <a href="https://www.aliyun.com">2nd menu item</a>,
-    //   key: "1",
-    // },
-    // {
-    //   label: "3rd menu item",
-    //   key: "2",
-    // },
-  ];
+  const [dates, setDates] = useState([]);
+  const [value, setValue] = useState();
 
   useEffect(() => {
     (async function () {
@@ -48,34 +18,30 @@ export default function UpcomingReservations() {
       const result = await response.json();
       setReservations(result.data);
       setLoading(false);
-      const datesFromBack = result.data.map((el) => el.date);
-      const test = datesFromBack.map((el) =>
-        items.push({ label: el, key: datesFromBack.indexOf(el) })
-      );
-      //setDates(items);
+      setDates(result.data.map((el) => el.date));
     })();
   }, []);
 
-  console.log(dates);
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
 
-  //console.log(dates);
+  console.log(value);
 
   return !loading ? (
     <>
-      <Dropdown
-        className={style.filter}
-        menu={{
-          items,
-        }}
-        trigger={["click"]}
-      >
-        <a onClick={(e) => e.preventDefault()}>
-          <Space>
-            Filter
-            <DownOutlined />
-          </Space>
-        </a>
-      </Dropdown>
+      <div className={style.filter_div}>
+        <select onChange={handleChange} className={style.select}>
+          <option className={style.option} value="all">
+            all
+          </option>
+          {dates?.map((el) => (
+            <option className={style.option} key={dates.indexOf(el)} value={el}>
+              {el}
+            </option>
+          ))}
+        </select>
+      </div>
       {reservations?.map((el) => (
         <OneReservation el={el} key={el.id} />
       ))}
