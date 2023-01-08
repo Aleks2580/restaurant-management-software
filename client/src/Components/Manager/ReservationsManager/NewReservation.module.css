@@ -1,7 +1,6 @@
 .calendar {
   width: 300px;
- 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .when {
@@ -13,12 +12,12 @@
 }
 
 .time {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .input {
   width: 250px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   
 }
 
