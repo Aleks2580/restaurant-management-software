@@ -2,9 +2,11 @@ import React from "react";
 import style from "./OneTable.module.css";
 import { useState } from "react";
 import { Modal } from "antd";
+import { useNavigate } from "react-router-dom";
 
 export default function OneTable({ el }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleOk = async (e) => {
     setIsModalOpen(false);
@@ -17,6 +19,7 @@ export default function OneTable({ el }) {
       credentials: "include",
     });
     const result = await response.json();
+    navigate("../create_order");
   };
 
   const handleCancel = () => {
@@ -28,7 +31,7 @@ export default function OneTable({ el }) {
   };
 
   const viewOrder = () => {
-    console.log(`You view this order ${el.id}`);
+    navigate("../view_order");
   };
 
   return (

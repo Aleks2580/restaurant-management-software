@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import style from "./CurrentOrdersWaiter.module.css";
 import OneOrder from "./OneOrder";
 
 export default function CurrentOrders() {

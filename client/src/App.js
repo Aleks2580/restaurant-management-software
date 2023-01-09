@@ -19,6 +19,8 @@ import { useEffect } from 'react';
 import {loginUser} from "./store/loginUser/actionCreators"; 
 import { useDispatch } from "react-redux";  
 import EditReservation from './Components/Manager/ReservationsManager/EditReservation';
+import CreateOrder from './Components/Waiter/CreateOrder/CreateOrder';
+import ViewOrder from './Components/Waiter/ViewOrder/ViewOrder';
 
 function App() {
   const dispatch = useDispatch()
@@ -46,6 +48,8 @@ function App() {
             <Route path='layout' element={<LayoutWaiter />} />
             <Route path='orders' element={<CurrentOrdersWaiter />} />
             <Route path='reservations' element={<ReservationsWaiter />} />
+            <Route path='create_order' element={<CreateOrder />} />
+            <Route path='view_order' element={<ViewOrder />} />
           </Route>
           <Route path='/manager/main' element={<MainManager />}>
             <Route path='dashboard' element={<DashboardManager />} />
