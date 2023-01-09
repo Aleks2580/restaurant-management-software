@@ -3,10 +3,13 @@ import style from "./OneTable.module.css";
 import { useState } from "react";
 import { Modal } from "antd";
 import { useNavigate } from "react-router-dom";
+import { getTable } from "../../../store/createOrder/actionCreators";
+import { useDispatch } from "react-redux";
 
 export default function OneTable({ el }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleOk = async (e) => {
     setIsModalOpen(false);
@@ -20,6 +23,7 @@ export default function OneTable({ el }) {
     });
     const result = await response.json();
     navigate("../create_order");
+    dispatch(getTable(el.number));
   };
 
   const handleCancel = () => {
