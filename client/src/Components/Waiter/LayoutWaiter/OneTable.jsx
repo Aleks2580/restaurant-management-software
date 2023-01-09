@@ -25,7 +25,6 @@ export default function OneTable({ el }) {
 
   const createOrderHandler = () => {
     setIsModalOpen(true);
-    console.log(el);
   };
 
   const viewOrder = () => {
@@ -57,9 +56,6 @@ export default function OneTable({ el }) {
           {el.number}
         </div>
       )}
-      {/* <div onClick={createOrderHandler} className={style.table_first_row}>
-        {el.number}
-      </div> */}
     </>
   );
 }
