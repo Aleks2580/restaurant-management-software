@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import style from "./CurrentOrdersWaiter.module.css";
+import OneOrder from "./OneOrder";
 
 export default function CurrentOrders() {
   const [orders, setOrders] = useState();
@@ -15,5 +16,11 @@ export default function CurrentOrders() {
     })();
   }, []);
 
-  return <div>CurrentOrders</div>;
+  return (
+    <>
+      {orders?.map((el) => (
+        <OneOrder el={el} key={el.id} />
+      ))}
+    </>
+  );
 }

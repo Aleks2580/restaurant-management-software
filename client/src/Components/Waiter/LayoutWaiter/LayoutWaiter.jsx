@@ -4,7 +4,6 @@ import OneTable from "./OneTable";
 
 export default function LayoutWaiter() {
   const [tables, setTables] = useState();
-  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     (async function () {
@@ -17,15 +16,10 @@ export default function LayoutWaiter() {
     })();
   }, []);
 
-  const handleClick = () => {
-    setClicked(!clicked);
-  };
-  console.log(clicked);
-
   return (
     <>
       {tables?.map((el) => (
-        <OneTable onClick={handleClick} el={el} key={el.id} />
+        <OneTable el={el} key={el.id} />
       ))}
     </>
   );

@@ -22,6 +22,7 @@ const deleteReservation = require('./src/routes/deleteReservation');
 const editReservation = require('./src/routes/editReservation');
 const todaysReservations = require('./src/routes/todaysReservations');
 const reservationsFilter = require('./src/routes/reservationsFilter');
+const currentOrders = require('./src/routes/currentOrders');
 
 
 const app = express();
@@ -69,6 +70,7 @@ app.use('/delete_reservation', deleteReservation);
 app.use('/edit_reservation', editReservation);
 app.use('/todays_reservations', todaysReservations);
 app.use('/reservations_filter', reservationsFilter);
+app.use('/current_orders', currentOrders);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);
