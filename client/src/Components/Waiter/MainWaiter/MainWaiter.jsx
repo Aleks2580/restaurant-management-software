@@ -54,10 +54,10 @@ export default function MainWaiter() {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          console.log(broken);
+          //console.log(broken);
         }}
         onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
+          //console.log(collapsed, type);
         }}
       >
         <div className="logo" />
@@ -65,7 +65,6 @@ export default function MainWaiter() {
           className={style.menu}
           theme="light"
           mode="inline"
-          // defaultSelectedKeys={["4"]}
           items={[
             getItem(
               <Link to="/waiter/main/layout">Layout</Link>,
