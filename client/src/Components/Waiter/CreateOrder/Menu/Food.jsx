@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Drinks.module.css";
+import style from "./Food.module.css";
 
 export default function Food() {
   return (

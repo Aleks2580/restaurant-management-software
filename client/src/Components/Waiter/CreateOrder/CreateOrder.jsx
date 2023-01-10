@@ -5,14 +5,16 @@ import style from "./CreateOrder.module.css";
 import { Link, Outlet } from "react-router-dom";
 
 export default function CreateOrder() {
-  // const [foodClicked, setFoodClicked] = useState(false);
-  // const [drinksClicked, setDrinksClicked] = useState(false);
+  const [clickFood, setClickFood] = useState(false);
+  const [clickDrinks, setClickDrinks] = useState(false);
+
   const waiter = useSelector((state) => state.loginUser.name);
   const tableNumber = useSelector((state) => state.createOrder);
-  console.log(tableNumber);
-  const onChange = (value) => {
-    console.log("changed", value);
-  };
+
+  const onChange = (value) => {};
+
+  const handleClick = (e) => {};
+
   return (
     <div className={style.main}>
       <div className={style.data}>
@@ -31,11 +33,15 @@ export default function CreateOrder() {
           <div>Total: 0$</div>
         </div>
         <div className={style.menu}>
-          <Link to="/waiter/main/create_order/food">
-            <div className={style.food}>FOOD</div>
+          <Link name="food" to="/waiter/main/create_order/food">
+            <div onClick={handleClick} className={style.food}>
+              FOOD
+            </div>
           </Link>
           <Link to="/waiter/main/create_order/drinks">
-            <div className={style.drinks}>DRINKS</div>
+            <div onClick={handleClick} className={style.drinks} name="drinks">
+              DRINKS
+            </div>
           </Link>
         </div>
       </div>
