@@ -1,0 +1,31 @@
+.menu {
+  display:flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.food {
+  display: flex;
+  border: 1px rgb(194, 193, 193) solid;
+  width: 200px;
+  height: 100px;
+  background-color:rgb(168, 221, 244);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.drinks {
+  display: flex;
+  border: 1px rgb(194, 193, 193) solid;
+  width: 200px;
+  height: 100px;
+  background-color:rgb(168, 221, 244);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.outlet {
+  margin-top: 20px;
+}
