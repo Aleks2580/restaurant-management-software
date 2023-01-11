@@ -13,7 +13,14 @@ export default function CreateOrder() {
 
   const onChange = (value) => {};
 
-  const handleClick = (e) => {};
+  const handleClickFood = () => {
+    setClickFood(!clickFood);
+    setClickDrinks(false);
+  };
+  const handleClickDrinks = () => {
+    setClickDrinks(!clickDrinks);
+    setClickFood(false);
+  };
 
   return (
     <div className={style.main}>
@@ -34,14 +41,26 @@ export default function CreateOrder() {
         </div>
         <div className={style.menu}>
           <Link name="food" to="/waiter/main/create_order/food">
-            <div onClick={handleClick} className={style.food}>
-              FOOD
-            </div>
+            {clickFood ? (
+              <div onClick={handleClickFood} className={style.foodclicked}>
+                FOOD
+              </div>
+            ) : (
+              <div onClick={handleClickFood} className={style.food}>
+                FOOD
+              </div>
+            )}
           </Link>
           <Link to="/waiter/main/create_order/drinks">
-            <div onClick={handleClick} className={style.drinks} name="drinks">
-              DRINKS
-            </div>
+            {clickDrinks ? (
+              <div onClick={handleClickDrinks} className={style.drinksclicked}>
+                DRINKS
+              </div>
+            ) : (
+              <div onClick={handleClickDrinks} className={style.drinks}>
+                DRINKS
+              </div>
+            )}
           </Link>
         </div>
       </div>

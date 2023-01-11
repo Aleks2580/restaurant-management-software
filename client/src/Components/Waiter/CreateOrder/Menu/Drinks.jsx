@@ -7,7 +7,7 @@ export default function Drinks() {
       <div className={style.category}>Tea</div>
       <div className={style.category}>Coffee</div>
       <div className={style.category}>Cocktails</div>
-      <div className={style.category}>Bear</div>
+      <div className={style.category}>Beer</div>
       <div className={style.category}>Soft</div>
     </div>
   );
