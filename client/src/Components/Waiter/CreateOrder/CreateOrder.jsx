@@ -7,7 +7,7 @@ import { Link, Outlet } from "react-router-dom";
 export default function CreateOrder() {
   const [clickFood, setClickFood] = useState(false);
   const [clickDrinks, setClickDrinks] = useState(false);
-  const [sections, setSections] = useState([]);
+  const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
 
   const waiter = useSelector((state) => state.loginUser.name);
   const tableNumber = useSelector((state) => state.createOrder);
@@ -56,11 +56,11 @@ export default function CreateOrder() {
           <Link name="food" to="/waiter/main/create_order/food">
             {clickFood ? (
               <div onClick={handleClickFood} className={style.foodclicked}>
-                {sections[0].name}
+                {sections[0]?.name}
               </div>
             ) : (
               <div onClick={handleClickFood} className={style.food}>
-                {sections[0].name}
+                {sections[0]?.name}
               </div>
             )}
           </Link>

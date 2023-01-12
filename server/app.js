@@ -24,6 +24,9 @@ const todaysReservations = require('./src/routes/todaysReservations');
 const reservationsFilter = require('./src/routes/reservationsFilter');
 const currentOrders = require('./src/routes/currentOrders');
 const menuSections = require('./src/routes/menuSections');
+const foodCategories = require('./src/routes/foodCategories');
+const drinksCategories = require('./src/routes/drinksCategories');
+
 
 
 const app = express();
@@ -73,6 +76,9 @@ app.use('/todays_reservations', todaysReservations);
 app.use('/reservations_filter', reservationsFilter);
 app.use('/current_orders', currentOrders);
 app.use('/menu_sections', menuSections);
+app.use('/menu_categories_food', foodCategories);
+app.use('/menu_categories_drinks', drinksCategories);
+
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);
