@@ -13,7 +13,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       menuSectionId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'MenuSections',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
