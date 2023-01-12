@@ -56,22 +56,22 @@ export default function CreateOrder() {
           <Link name="food" to="/waiter/main/create_order/food">
             {clickFood ? (
               <div onClick={handleClickFood} className={style.foodclicked}>
-                FOOD
+                {sections[0].name}
               </div>
             ) : (
               <div onClick={handleClickFood} className={style.food}>
-                FOOD
+                {sections[0].name}
               </div>
             )}
           </Link>
           <Link to="/waiter/main/create_order/drinks">
             {clickDrinks ? (
               <div onClick={handleClickDrinks} className={style.drinksclicked}>
-                DRINKS
+                {sections[1].name}
               </div>
             ) : (
               <div onClick={handleClickDrinks} className={style.drinks}>
-                DRINKS
+                {sections[1].name}
               </div>
             )}
           </Link>
