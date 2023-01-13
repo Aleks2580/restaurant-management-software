@@ -5,23 +5,12 @@ import style from "./CreateOrder.module.css";
 import { Link, Outlet } from "react-router-dom";
 
 export default function CreateOrder() {
-  const [clickFood, setClickFood] = useState(false);
-  const [clickDrinks, setClickDrinks] = useState(false);
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
 
   const waiter = useSelector((state) => state.loginUser.name);
   const tableNumber = useSelector((state) => state.createOrder);
 
   const onChange = (value) => {};
-
-  const handleClickFood = () => {
-    setClickFood(!clickFood);
-    setClickDrinks(false);
-  };
-  const handleClickDrinks = () => {
-    setClickDrinks(!clickDrinks);
-    setClickFood(false);
-  };
 
   useEffect(() => {
     (async function () {
@@ -56,43 +45,11 @@ export default function CreateOrder() {
           {sections?.map((section) => (
             <Link
               key={section.id}
-              name="food"
               to={`/waiter/main/create_order/${section.id}`}
             >
-              {/* {clickFood ? (
-               <div onClick={handleClickFood} className={style.foodclicked}>
-                 {sections[0]?.name}
-               </div>
-             ) : (
-               <div onClick={handleClickFood} className={style.food}>
-                 {sections[0]?.name}
-               </div>
-             )} */}
-              <div>{section.name}</div>
+              <div className={style.section}>{section.name}</div>
             </Link>
           ))}
-          {/* <Link name="food" to="/waiter/main/create_order/food">
-            {clickFood ? (
-              <div onClick={handleClickFood} className={style.foodclicked}>
-                {sections[0]?.name}
-              </div>
-            ) : (
-              <div onClick={handleClickFood} className={style.food}>
-                {sections[0]?.name}
-              </div>
-            )}
-          </Link> */}
-          {/* <Link to="/waiter/main/create_order/drinks">
-            {clickDrinks ? (
-              <div onClick={handleClickDrinks} className={style.drinksclicked}>
-                {sections[1].name}
-              </div>
-            ) : (
-              <div onClick={handleClickDrinks} className={style.drinks}>
-                {sections[1].name}
-              </div>
-            )}
-          </Link> */}
         </div>
       </div>
       <div className={style.outlet}>

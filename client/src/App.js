@@ -21,9 +21,8 @@ import { useDispatch } from "react-redux";
 import EditReservation from './Components/Manager/ReservationsManager/EditReservation';
 import CreateOrder from './Components/Waiter/CreateOrder/CreateOrder';
 import ViewOrder from './Components/Waiter/ViewOrder/ViewOrder';
-import Food from './Components/Waiter/CreateOrder/Menu/Food';
-import Drinks from './Components/Waiter/CreateOrder/Menu/Drinks';
 import MenuCategories from './Components/Waiter/CreateOrder/Menu/MenuCategories';
+import MenuItems from './Components/Waiter/CreateOrder/Menu/MenuItems';
 
 function App() {
   const dispatch = useDispatch()
@@ -52,9 +51,9 @@ function App() {
             <Route path='orders' element={<CurrentOrdersWaiter />} />
             <Route path='reservations' element={<ReservationsWaiter />} />
             <Route path='create_order' element={<CreateOrder />}>
-              {/* <Route path='food' element={<Food />} />
-              <Route path='drinks' element={<Drinks />} /> */}
-              <Route path='/waiter/main/create_order/:id' element={<MenuCategories />}></Route>
+              <Route path='/waiter/main/create_order/:id' element={<MenuCategories />}>
+                <Route path='/waiter/main/create_order/:id/:id' element={<MenuItems />} />
+              </Route>
             </Route>
             <Route path='view_order' element={<ViewOrder />} />
           </Route>
