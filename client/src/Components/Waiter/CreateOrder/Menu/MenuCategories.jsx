@@ -23,17 +23,19 @@ export default function MenuCategories() {
   }, [id]);
 
   return (
-    <div className={style.main}>
-      <div className={style.categories}>
-        {categories.map((category) => (
-          <Link key={category.id} to={`${category.id}`}>
-            <div className={style.category}>{category.name}</div>
-          </Link>
-        ))}
+    <>
+      <div className={style.main}>
+        <div className={style.categories}>
+          {categories.map((category) => (
+            <Link key={category.id} to={`${category.id}`}>
+              <div className={style.category}>{category.name}</div>
+            </Link>
+          ))}
+        </div>
       </div>
       <div className={style.outlet}>
         <Outlet />
       </div>
-    </div>
+    </>
   );
 }

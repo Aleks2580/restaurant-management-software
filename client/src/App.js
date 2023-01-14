@@ -51,8 +51,8 @@ function App() {
             <Route path='orders' element={<CurrentOrdersWaiter />} />
             <Route path='reservations' element={<ReservationsWaiter />} />
             <Route path='create_order' element={<CreateOrder />}>
-              <Route path='/waiter/main/create_order/:id' element={<MenuCategories />}>
-                <Route path='/waiter/main/create_order/:id/:id' element={<MenuItems />} />
+              <Route path=':id' element={<MenuCategories />}>
+                <Route path=':item' element={<MenuItems />} />
               </Route>
             </Route>
             <Route path='view_order' element={<ViewOrder />} />
