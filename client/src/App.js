@@ -16,7 +16,7 @@ import ReservationsManager from './Components/Manager/ReservationsManager/Reserv
 import UpcomingReservations from './Components/Manager/ReservationsManager/UpcomingReservations';
 import NewReservation from './Components/Manager/ReservationsManager/NewReservation';
 import { useEffect } from 'react';
-import {loginUser} from "./store/loginUser/actionCreators"; 
+import { loginUser } from "./store/loginUser/actionCreators"; 
 import { useDispatch } from "react-redux";  
 import EditReservation from './Components/Manager/ReservationsManager/EditReservation';
 import CreateOrder from './Components/Waiter/CreateOrder/CreateOrder';
@@ -38,7 +38,7 @@ function App() {
     })()
   }, [])
 
-``
+
   return (
     <>
         

@@ -18,3 +18,7 @@
 .category:hover {
   background-color:rgba(123, 186, 51, 0.946);
 }
+
+.outlet {
+  margin-top: 80px;
+}

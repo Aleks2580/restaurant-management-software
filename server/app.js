@@ -25,6 +25,7 @@ const reservationsFilter = require('./src/routes/reservationsFilter');
 const currentOrders = require('./src/routes/currentOrders');
 const menuSections = require('./src/routes/menuSections');
 const menuCategories = require('./src/routes/menuCategories');
+const items = require('./src/routes/items');
 
 
 
@@ -77,6 +78,7 @@ app.use('/reservations_filter', reservationsFilter);
 app.use('/current_orders', currentOrders);
 app.use('/menu_sections', menuSections);
 app.use('/menu_categories', menuCategories);
+app.use('/items', items);
 
 
 
