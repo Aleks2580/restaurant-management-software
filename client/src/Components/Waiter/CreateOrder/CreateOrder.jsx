@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { InputNumber } from "antd";
+import { InputNumber, Button } from "antd";
 import { useSelector } from "react-redux";
 import style from "./CreateOrder.module.css";
 import { Link, Outlet } from "react-router-dom";
@@ -25,36 +25,49 @@ export default function CreateOrder() {
   }, []);
 
   return (
-    <div className={style.main}>
-      <div className={style.data}>
-        <div>
-          <div>Waiter: {waiter}</div>
-          <div>Table number:{tableNumber}</div>
-          <div>
-            Number of guests:
-            <InputNumber
-              min={1}
-              max={30}
-              defaultValue={2}
-              onChange={onChange}
-            />
+    <>
+      <div className={style.main}>
+        <div className={style.data}>
+          <div className={style.info}>
+            <div className={style.name}>Waiter: {waiter}</div>
+            <div className={style.table}>Table number:{tableNumber}</div>
+            <div>
+              Number of guests:
+              <InputNumber
+                className={style.input_guests}
+                min={1}
+                max={30}
+                defaultValue={2}
+                onChange={onChange}
+              />
+            </div>
           </div>
-          <div>Total: 0$</div>
+          <div className={style.menu}>
+            {sections?.map((section) => (
+              <Link
+                key={section.id}
+                to={`/waiter/main/create_order/${section.id}`}
+              >
+                <div name={section.name} className={style.section}>
+                  {section.name}
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-        <div className={style.menu}>
-          {sections?.map((section) => (
-            <Link
-              key={section.id}
-              to={`/waiter/main/create_order/${section.id}`}
-            >
-              <div className={style.section}>{section.name}</div>
-            </Link>
-          ))}
+        <div className={style.outlet}>
+          <Outlet />
+        </div>
+        <div className={style.button_done}>
+          <Button type="primary" className={style.button_done}>
+            Done
+          </Button>
         </div>
       </div>
-      <div className={style.outlet}>
-        <Outlet />
+      <div className={style.main_order}>
+        <div className={style.order}>ORDER:</div>
+        <div className={style.total}>TOTAL:</div>
       </div>
-    </div>
+    </>
   );
 }

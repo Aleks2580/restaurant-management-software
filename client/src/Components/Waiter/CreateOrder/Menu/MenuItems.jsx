@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import style from "./MenuItems.module.css";
+import { getTable } from "../../../../store/createOrder/actionCreators";
+import { useDispatch } from "react-redux";
 
 export default function MenuItems() {
   const { item } = useParams();
   const [items, setItems] = useState([]);
+  //const [orders, setOrders] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async function () {
@@ -22,13 +26,29 @@ export default function MenuItems() {
     })();
   }, [item]);
 
+  const handleClick = (e) => {
+    dispatch(getTable(e.target.innerText, e.target.id));
+  };
+
   return (
     <div className={style.items}>
       {items?.map((item) => (
-        <div className={style.item} key={item.id}>
+        <div
+          name={item.name}
+          onClick={handleClick}
+          className={style.item}
+          key={item.id}
+          id={item.priceUSD}
+        >
           {item.name}
         </div>
       ))}
+      {/* {order?.map((el) => (
+        <>
+          <span>{el.name}</span>
+          <span>{el.price}</span>
+        </>
+      ))} */}
     </div>
   );
 }

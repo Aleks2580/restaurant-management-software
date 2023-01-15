@@ -42,3 +42,36 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.button_done {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.main_order {
+  margin-left: 35px;
+  display: flex;
+  width: 250px;
+  height: 570px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.total {
+  justify-items: end;
+}
+
+.input_guests {
+  height: 30px;
+  width: 55px;
+  margin-left: 5px;
+}
+
+.name {
+  margin-bottom: 10px;
+}
+
+
+
+
