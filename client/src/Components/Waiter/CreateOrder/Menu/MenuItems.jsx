@@ -43,12 +43,6 @@ export default function MenuItems() {
           {item.name}
         </div>
       ))}
-      {/* {order?.map((el) => (
-        <>
-          <span>{el.name}</span>
-          <span>{el.price}</span>
-        </>
-      ))} */}
     </div>
   );
 }
