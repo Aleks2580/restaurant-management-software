@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import style from "./MenuItems.module.css";
 import { getTable } from "../../../../store/createOrder/actionCreators";
 import { useDispatch } from "react-redux";
+import { placeOrder } from "../../../../store/placeOrder/actionCreators";
 
 export default function MenuItems() {
   const { item } = useParams();
@@ -27,7 +28,7 @@ export default function MenuItems() {
   }, [item]);
 
   const handleClick = (e) => {
-    dispatch(getTable(e.target.innerText, e.target.id));
+    dispatch(placeOrder({ item: e.target.innerText, price: e.target.id }));
   };
 
   return (

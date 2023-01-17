@@ -30,6 +30,7 @@ export default function Waiter() {
           credentials: "include",
         });
         const result = await response.json();
+        console.log(result);
 
         if (result === "Password is incorrect") {
           setPassword("");
