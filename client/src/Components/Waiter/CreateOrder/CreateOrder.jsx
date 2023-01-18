@@ -10,6 +10,7 @@ export default function CreateOrder() {
   const waiter = useSelector((state) => state.loginUser.name);
   const tableNumber = useSelector((state) => state.createOrder);
   const order = useSelector((state) => state.placeOrder);
+  const total = useSelector((state) => state.total);
 
   const onChange = (value) => {};
 
@@ -73,7 +74,7 @@ export default function CreateOrder() {
             <div>{el.price}$</div>
           </div>
         ))}
-        <div className={style.total}>TOTAL:</div>
+        <div className={style.total}>TOTAL:{total}$</div>
       </div>
     </>
   );

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import style from "./MenuItems.module.css";
-import { getTable } from "../../../../store/createOrder/actionCreators";
 import { useDispatch } from "react-redux";
 import { placeOrder } from "../../../../store/placeOrder/actionCreators";
+import { addTotal } from "../../../../store/total/actionCreators";
 
 export default function MenuItems() {
   const { item } = useParams();
   const [items, setItems] = useState([]);
-  //const [orders, setOrders] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,6 +28,7 @@ export default function MenuItems() {
 
   const handleClick = (e) => {
     dispatch(placeOrder({ item: e.target.innerText, price: e.target.id }));
+    dispatch(addTotal(+e.target.id));
   };
 
   return (
