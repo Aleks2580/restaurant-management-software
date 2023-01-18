@@ -3,6 +3,7 @@ import { InputNumber, Button } from "antd";
 import { useSelector } from "react-redux";
 import style from "./CreateOrder.module.css";
 import { Link, Outlet } from "react-router-dom";
+import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
 
 export default function CreateOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
@@ -72,6 +73,9 @@ export default function CreateOrder() {
           <div>
             <div>{el.item}</div>
             <div>{el.price}$</div>
+            <PlusOutlined />
+            <MinusOutlined />
+            <DeleteOutlined />
           </div>
         ))}
         <div className={style.total}>TOTAL:{total}$</div>
