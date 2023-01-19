@@ -75,10 +75,12 @@
 .name_amount_price {
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
 .item {
   display: flex;
+  margin-top: 15px;
   justify-content: space-between;
   position: relative;
 }
@@ -92,6 +94,7 @@
 
 .icon {
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .name {

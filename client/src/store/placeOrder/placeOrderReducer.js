@@ -1,4 +1,4 @@
-import { PLACE_ORDER, ORDERED } from "./actionTypes";
+import { PLACE_ORDER, DELETE_ITEM, ORDERED } from "./actionTypes";
 
 const initialState = []
 
@@ -9,6 +9,9 @@ export default function placeOrderReducer (state = initialState, action) {
     }
     case ORDERED: {
       return {}
+    }
+    case DELETE_ITEM: {
+      return state.filter((el) => state.indexOf(el) !== action.payload)
     }
     default:
       return state;

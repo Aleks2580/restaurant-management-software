@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { InputNumber, Button } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./CreateOrder.module.css";
 import { Link, Outlet } from "react-router-dom";
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
+import { deleteItem } from "../../../store/placeOrder/actionCreators";
 
 export default function CreateOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
-
+  const dispatch = useDispatch();
   const waiter = useSelector((state) => state.loginUser.name);
   const tableNumber = useSelector((state) => state.createOrder);
   const order = useSelector((state) => state.placeOrder);
+  //const [itemDelete, setItemDelete] = useState({});
   const total = useSelector((state) => state.total);
+  //console.log("ORDER", order);
 
   const onChange = (value) => {};
 
@@ -26,6 +29,11 @@ export default function CreateOrder() {
       setSections(result.sections);
     })();
   }, []);
+
+  const handleDelete = (e, index) => {
+    dispatch(deleteItem(index));
+  };
+  //console.log("ITEMSDELETED", itemDelete);
 
   return (
     <>
@@ -68,25 +76,31 @@ export default function CreateOrder() {
         </div>
       </div>
       <div className={style.main_order}>
-        <div className={style.order}>ORDER:</div>
-        <div className={style.name_amount_price}>
-          <div className={style.name}>Name</div>
-          <div>Quantity</div>
-          <div>Price</div>
-        </div>
-        {order?.map((el) => (
-          <div className={style.item}>
-            <div className={style.item_name}>{el.item}</div>
-            <div>0</div>
-            <div>{el.price}$</div>
-            <div className={style.icons}>
-              <PlusOutlined className={style.icon} />
-              <MinusOutlined className={style.icon} />
-              <DeleteOutlined className={style.icon} />
-            </div>
+        <div className={style.order}>
+          ORDER:
+          <div className={style.name_amount_price}>
+            <div className={style.name}>Name</div>
+            <div>Quantity</div>
+            <div>Price</div>
           </div>
-        ))}
-        <div className={style.total}>TOTAL:{total}$</div>
+          {order?.map((el, index) => (
+            <div className={style.item}>
+              <div className={style.item_name}>{el.item}</div>
+              <div>1</div>
+              <div>{el.price}$</div>
+              <div className={style.icons}>
+                <PlusOutlined className={style.icon} />
+                <MinusOutlined className={style.icon} />
+                <DeleteOutlined
+                  onClick={(e) => handleDelete(e, index)}
+                  className={style.icon}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className={style.total}>TOTAL: {total}$</div>
       </div>
     </>
   );
