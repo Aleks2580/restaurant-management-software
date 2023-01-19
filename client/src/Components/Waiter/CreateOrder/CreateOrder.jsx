@@ -69,13 +69,21 @@ export default function CreateOrder() {
       </div>
       <div className={style.main_order}>
         <div className={style.order}>ORDER:</div>
+        <div className={style.name_amount_price}>
+          <div className={style.name}>Name</div>
+          <div>Quantity</div>
+          <div>Price</div>
+        </div>
         {order?.map((el) => (
-          <div>
-            <div>{el.item}</div>
+          <div className={style.item}>
+            <div className={style.item_name}>{el.item}</div>
+            <div>0</div>
             <div>{el.price}$</div>
-            <PlusOutlined />
-            <MinusOutlined />
-            <DeleteOutlined />
+            <div className={style.icons}>
+              <PlusOutlined className={style.icon} />
+              <MinusOutlined className={style.icon} />
+              <DeleteOutlined className={style.icon} />
+            </div>
           </div>
         ))}
         <div className={style.total}>TOTAL:{total}$</div>

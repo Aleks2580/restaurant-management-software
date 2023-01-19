@@ -72,6 +72,36 @@
   margin-bottom: 10px;
 }
 
+.name_amount_price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 115%;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.name {
+  width: 120px;
+}
+
+.item_name {
+  width: 120px;
+}
+
 
 
 
