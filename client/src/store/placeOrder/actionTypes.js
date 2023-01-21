@@ -1,3 +1,5 @@
 export const PLACE_ORDER = 'PLACE_ORDER'
 export const ORDERED = 'ORDERED'
 export const DELETE_ITEM = 'DELETE_ITEM'
+export const ADD_ITEM = 'ADD_ITEM'
+export const SUBTR_ITEM = 'SUBTR_ITEM'

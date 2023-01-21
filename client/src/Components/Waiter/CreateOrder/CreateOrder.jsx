@@ -6,6 +6,10 @@ import { Link, Outlet } from "react-router-dom";
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { deleteItem } from "../../../store/placeOrder/actionCreators";
 import { subtractTotal } from "../../../store/total/actionCreators";
+import {
+  addItem,
+  subtractItem,
+} from "../../../store/placeOrder/actionCreators";
 
 export default function CreateOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
@@ -13,9 +17,7 @@ export default function CreateOrder() {
   const waiter = useSelector((state) => state.loginUser.name);
   const tableNumber = useSelector((state) => state.createOrder);
   const order = useSelector((state) => state.placeOrder);
-  //const [itemDelete, setItemDelete] = useState({});
   const total = useSelector((state) => state.total);
-  //console.log("ORDER", order);
 
   const onChange = (value) => {};
 
@@ -35,7 +37,14 @@ export default function CreateOrder() {
     dispatch(deleteItem(index));
     dispatch(subtractTotal(price));
   };
-  //console.log("ITEMSDELETED", itemDelete);
+
+  const handleAdd = (e, index) => {
+    dispatch(addItem(index));
+  };
+
+  const handleSubtract = (e, index) => {
+    dispatch(subtractItem(index));
+  };
 
   return (
     <>
@@ -88,11 +97,17 @@ export default function CreateOrder() {
           {order?.map((el, index) => (
             <div className={style.item}>
               <div className={style.item_name}>{el.item}</div>
-              <div>1</div>
+              <div>{el.quantity}</div>
               <div>{el.price}$</div>
               <div className={style.icons}>
-                <PlusOutlined className={style.icon} />
-                <MinusOutlined className={style.icon} />
+                <PlusOutlined
+                  className={style.icon}
+                  onClick={(e) => handleAdd(e, index)}
+                />
+                <MinusOutlined
+                  className={style.icon}
+                  onClick={(e) => handleSubtract(e, index)}
+                />
                 <DeleteOutlined
                   onClick={(e) => handleDelete(e, index, el.price)}
                   className={style.icon}

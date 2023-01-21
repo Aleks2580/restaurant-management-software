@@ -4,11 +4,15 @@ import style from "./MenuItems.module.css";
 import { useDispatch } from "react-redux";
 import { placeOrder } from "../../../../store/placeOrder/actionCreators";
 import { addTotal } from "../../../../store/total/actionCreators";
+import { useSelector } from "react-redux";
 
 export default function MenuItems() {
   const { item } = useParams();
   const [items, setItems] = useState([]);
   const dispatch = useDispatch();
+  const order = useSelector((state) => state.placeOrder);
+
+  console.log(order);
 
   useEffect(() => {
     (async function () {
@@ -27,7 +31,22 @@ export default function MenuItems() {
   }, [item]);
 
   const handleClick = (e) => {
-    dispatch(placeOrder({ item: e.target.innerText, price: e.target.id }));
+    // order.map((el) => {
+    //   if (el.item === e.target.innerText) {
+    //     el.quanity++;
+    //   } else {
+    //     dispatch(
+    //       placeOrder({
+    //         item: e.target.innerText,
+    //         quantity: 1,
+    //         price: e.target.id,
+    //       })
+    //     );
+    //   }
+    // });
+    dispatch(
+      placeOrder({ item: e.target.innerText, quantity: 1, price: e.target.id })
+    );
     dispatch(addTotal(+e.target.id));
   };
 
