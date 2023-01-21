@@ -5,6 +5,7 @@ import style from "./CreateOrder.module.css";
 import { Link, Outlet } from "react-router-dom";
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { deleteItem } from "../../../store/placeOrder/actionCreators";
+import { subtractTotal } from "../../../store/total/actionCreators";
 
 export default function CreateOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
@@ -30,8 +31,9 @@ export default function CreateOrder() {
     })();
   }, []);
 
-  const handleDelete = (e, index) => {
+  const handleDelete = (e, index, price) => {
     dispatch(deleteItem(index));
+    dispatch(subtractTotal(price));
   };
   //console.log("ITEMSDELETED", itemDelete);
 
@@ -92,7 +94,7 @@ export default function CreateOrder() {
                 <PlusOutlined className={style.icon} />
                 <MinusOutlined className={style.icon} />
                 <DeleteOutlined
-                  onClick={(e) => handleDelete(e, index)}
+                  onClick={(e) => handleDelete(e, index, el.price)}
                   className={style.icon}
                 />
               </div>

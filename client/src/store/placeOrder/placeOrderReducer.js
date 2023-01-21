@@ -6,7 +6,7 @@ export default function placeOrderReducer (state = initialState, action) {
   switch (action.type) {
     case PLACE_ORDER: {
       let result = state.reduce((finalArray,current) => {
-        let obj = finalArray.find(item => item.name === current.name);
+        let obj = finalArray.find(item => item.item === current.item);
 
         if(obj) {
           return finalArray
