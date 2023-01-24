@@ -45,9 +45,13 @@ export default function CreateOrder() {
     dispatch(addTotal(price));
   };
 
-  const handleSubtract = (e, index, price) => {
-    dispatch(subtractItem(index));
-    dispatch(subtractTotal(price));
+  const handleSubtract = (e, index, price, quantity) => {
+    if (quantity === 1) {
+      dispatch(deleteItem(index));
+    } else {
+      dispatch(subtractItem(index));
+      dispatch(subtractTotal(price));
+    }
   };
 
   return (
@@ -112,7 +116,9 @@ export default function CreateOrder() {
                 />
                 <MinusOutlined
                   className={style.icon}
-                  onClick={(e) => handleSubtract(e, index, el.price)}
+                  onClick={(e) =>
+                    handleSubtract(e, index, el.price, el.quantity)
+                  }
                 />
                 <DeleteOutlined
                   onClick={(e) => handleDelete(e, index, el.price, el.quantity)}
