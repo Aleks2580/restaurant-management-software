@@ -30,17 +30,31 @@ export default function placeOrderReducer (state = initialState, action) {
       return state.filter((el) => state.indexOf(el) !== action.payload)
     }
     case ADD_ITEM: {
-      const obj = state.map((el) => {
-        if (state.indexOf(el) === action.payload){
-          el.quantity ++
+
+      let obj = [...state];
+      obj.map((el,i) => {
+        if (i === action.payload) {
+          el.quantity ++;
+          
         }
+        return el;
       });
-      console.log(obj)
-      return state
+
+      return [...state];
     }
     case SUBTR_ITEM: {
-      return state.filter((el) => state.indexOf(el) !== action.payload)
+      let obj = [...state];
+      obj.map((el,i) => {
+        if (i === action.payload) {
+          el.quantity --;
+          
+        }
+        return el;
+      });
+
+      return [...state];
     }
+    
     default:
       return state;
   }
