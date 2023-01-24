@@ -10,6 +10,7 @@ import {
   addItem,
   subtractItem,
 } from "../../../store/placeOrder/actionCreators";
+import { addTotal } from "../../../store/total/actionCreators";
 
 export default function CreateOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
@@ -33,17 +34,20 @@ export default function CreateOrder() {
     })();
   }, []);
 
-  const handleDelete = (e, index, price) => {
+  const handleDelete = (e, index, price, quantity) => {
+    let totalSum = price * quantity;
     dispatch(deleteItem(index));
-    dispatch(subtractTotal(price));
+    dispatch(subtractTotal(totalSum));
   };
 
-  const handleAdd = (e, index) => {
+  const handleAdd = (e, index, price) => {
     dispatch(addItem(index));
+    dispatch(addTotal(price));
   };
 
-  const handleSubtract = (e, index) => {
+  const handleSubtract = (e, index, price) => {
     dispatch(subtractItem(index));
+    dispatch(subtractTotal(price));
   };
 
   return (
@@ -91,25 +95,27 @@ export default function CreateOrder() {
           ORDER:
           <div className={style.name_amount_price}>
             <div className={style.name}>Name</div>
-            <div>Quantity</div>
-            <div>Price</div>
+            <div className={style.quantity}>Quantity</div>
+            <div className={style.price}>Price</div>
+            <div className={style.total}>Total</div>
           </div>
           {order?.map((el, index) => (
             <div className={style.item}>
               <div className={style.item_name}>{el.item}</div>
-              <div>{el.quantity}</div>
-              <div>{el.price}$</div>
+              <div className={style.item_quantity}>{el.quantity}</div>
+              <div className={style.item_price}>{el.price}$</div>
+              <div className={style.item_total}>{el.price * el.quantity}$</div>
               <div className={style.icons}>
                 <PlusOutlined
                   className={style.icon}
-                  onClick={(e) => handleAdd(e, index)}
+                  onClick={(e) => handleAdd(e, index, el.price)}
                 />
                 <MinusOutlined
                   className={style.icon}
-                  onClick={(e) => handleSubtract(e, index)}
+                  onClick={(e) => handleSubtract(e, index, el.price)}
                 />
                 <DeleteOutlined
-                  onClick={(e) => handleDelete(e, index, el.price)}
+                  onClick={(e) => handleDelete(e, index, el.price, el.quantity)}
                   className={style.icon}
                 />
               </div>

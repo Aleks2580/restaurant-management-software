@@ -12,8 +12,6 @@ export default function MenuItems() {
   const dispatch = useDispatch();
   const order = useSelector((state) => state.placeOrder);
 
-  console.log(order);
-
   useEffect(() => {
     (async function () {
       const response = await fetch("http://localhost:4000/items", {
@@ -30,24 +28,15 @@ export default function MenuItems() {
     })();
   }, [item]);
 
-  const handleClick = (e) => {
-    // order.map((el) => {
-    //   if (el.item === e.target.innerText) {
-    //     el.quanity++;
-    //   } else {
-    //     dispatch(
-    //       placeOrder({
-    //         item: e.target.innerText,
-    //         quantity: 1,
-    //         price: e.target.id,
-    //       })
-    //     );
-    //   }
-    // });
+  const handleClick = (e, price) => {
     dispatch(
-      placeOrder({ item: e.target.innerText, quantity: 1, price: e.target.id })
+      placeOrder({
+        item: e.target.innerText,
+        quantity: 1,
+        price: price,
+      })
     );
-    dispatch(addTotal(+e.target.id));
+    dispatch(addTotal(price));
   };
 
   return (
@@ -55,10 +44,9 @@ export default function MenuItems() {
       {items?.map((item) => (
         <div
           name={item.name}
-          onClick={handleClick}
+          onClick={(e, price) => handleClick(e, item.priceUSD)}
           className={style.item}
           key={item.id}
-          id={item.priceUSD}
         >
           {item.name}
         </div>

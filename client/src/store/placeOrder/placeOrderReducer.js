@@ -31,28 +31,27 @@ export default function placeOrderReducer (state = initialState, action) {
     }
     case ADD_ITEM: {
 
-      let obj = [...state];
-      obj.map((el,i) => {
-        if (i === action.payload) {
-          el.quantity ++;
-          
+      const changedItemIndex = action.payload;
+      
+      const newItem = state.map((item,index) => {
+        if (index === changedItemIndex) {
+          return {...item, quantity: item.quantity + 1}
         }
-        return el;
-      });
-
-      return [...state];
-    }
+         return item;
+      })
+     return newItem;
+      }
+  
     case SUBTR_ITEM: {
-      let obj = [...state];
-      obj.map((el,i) => {
-        if (i === action.payload) {
-          el.quantity --;
-          
+      const changedItemIndex = action.payload;
+      
+      const newItem = state.map((item,index) => {
+        if (index === changedItemIndex) {
+          return {...item, quantity: item.quantity - 1}
         }
-        return el;
-      });
-
-      return [...state];
+         return item;
+      })
+     return newItem;
     }
     
     default:
