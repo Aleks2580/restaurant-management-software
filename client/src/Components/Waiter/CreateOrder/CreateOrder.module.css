@@ -4,6 +4,12 @@
   justify-content: space-between;
   margin-left: 100px;
 }
+ .main {
+  width: 520px;
+  height: 582px;
+  justify-content: space-between;
+ }
+
 
 .section {
   display: flex;
@@ -47,6 +53,9 @@
   margin-top: 100px;
   display: flex;
   justify-content: center;
+  justify-items: end;
+  align-self: flex-end;
+  position: fixed;
 }
 
 .main_order {
@@ -58,7 +67,7 @@
   justify-content: space-between;
 }
 
-.total {
+.total_sum {
   justify-items: end;
 }
 
@@ -66,6 +75,7 @@
   height: 30px;
   width: 55px;
   margin-left: 5px;
+  background-color: transparent;
 }
 
 .name {
@@ -140,6 +150,29 @@
   width: 60px;
   text-align: center;
 }
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info_name {
+  margin-bottom: 15px;
+}
+
+.info_table {
+  margin-bottom: 15px;
+}
+
+.info_guests {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
 
 
 

@@ -48,6 +48,7 @@ export default function CreateOrder() {
   const handleSubtract = (e, index, price, quantity) => {
     if (quantity === 1) {
       dispatch(deleteItem(index));
+      dispatch(subtractTotal(price));
     } else {
       dispatch(subtractItem(index));
       dispatch(subtractTotal(price));
@@ -57,37 +58,39 @@ export default function CreateOrder() {
   return (
     <>
       <div className={style.main}>
-        <div className={style.data}>
-          <div className={style.info}>
-            <div className={style.name}>Waiter: {waiter}</div>
-            <div className={style.table}>Table number:{tableNumber}</div>
-            <div>
-              Number of guests:
-              <InputNumber
-                className={style.input_guests}
-                min={1}
-                max={30}
-                defaultValue={2}
-                onChange={onChange}
-              />
+        <section className={style.section_main}>
+          <div className={style.data}>
+            <div className={style.info}>
+              <div className={style.info_name}>Waiter: {waiter}</div>
+              <div className={style.info_table}>Table number:{tableNumber}</div>
+              <div className={style.info_guests}>
+                <span>Number of guests:</span>
+                <InputNumber
+                  className={style.input_guests}
+                  min={1}
+                  max={30}
+                  defaultValue={2}
+                  onChange={onChange}
+                />
+              </div>
+            </div>
+            <div className={style.menu}>
+              {sections?.map((section) => (
+                <Link
+                  key={section.id}
+                  to={`/waiter/main/create_order/${section.id}`}
+                >
+                  <div name={section.name} className={style.section}>
+                    {section.name}
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
-          <div className={style.menu}>
-            {sections?.map((section) => (
-              <Link
-                key={section.id}
-                to={`/waiter/main/create_order/${section.id}`}
-              >
-                <div name={section.name} className={style.section}>
-                  {section.name}
-                </div>
-              </Link>
-            ))}
+          <div className={style.outlet}>
+            <Outlet />
           </div>
-        </div>
-        <div className={style.outlet}>
-          <Outlet />
-        </div>
+        </section>
         <div className={style.button_done}>
           <Button type="primary" className={style.button_done}>
             Done
@@ -129,7 +132,7 @@ export default function CreateOrder() {
           ))}
         </div>
 
-        <div className={style.total}>TOTAL: {total}$</div>
+        <div className={style.total_sum}>TOTAL: {total}$</div>
       </div>
     </>
   );
