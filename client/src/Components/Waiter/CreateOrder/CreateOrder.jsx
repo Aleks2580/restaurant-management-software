@@ -91,7 +91,7 @@ export default function CreateOrder() {
             <Outlet />
           </div>
         </section>
-        <div className={style.button_done}>
+        <div className={style.button_done_div}>
           <Button type="primary" className={style.button_done}>
             Done
           </Button>

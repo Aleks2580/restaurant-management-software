@@ -36,11 +36,12 @@
 }
 
 .section:hover {
-  background-color:rgba(123, 186, 51, 0.946);
+  background-color:rgba(62, 92, 29, 0.946);
 }
 
 .outlet {
   margin-top: 80px;
+  height: 365px;
 }
 
 .data {
@@ -50,12 +51,23 @@
 }
 
 .button_done {
-  margin-top: 100px;
+  /* margin-top: 100px; */
   display: flex;
   justify-content: center;
   justify-items: end;
-  align-self: flex-end;
-  position: fixed;
+  align-self: center;
+  background-color:rgba(123, 186, 51, 0.946);
+}
+
+.button_done:hover {
+  background-color:rgba(67, 103, 26, 0.946) !important;
+}
+
+.button_done_div {
+  display: flex;
+  justify-content: center;
+  justify-items: end;
+  align-self: center;
 }
 
 .main_order {
@@ -69,6 +81,7 @@
 
 .total_sum {
   justify-items: end;
+  text-align: center;
 }
 
 .input_guests {
