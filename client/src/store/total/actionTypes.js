@@ -1,2 +1,3 @@
 export const ADD_TOTAL= 'ADD_TOTAL'
 export const SUBTRACT_TOTAL= 'SUBTRACT_TOTAL'
+export const RESET_TOTAL = 'RESET_TOTAL'

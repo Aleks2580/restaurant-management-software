@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "./CreateOrder.module.css";
 import { Link, Outlet } from "react-router-dom";
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
-import { deleteItem } from "../../../store/placeOrder/actionCreators";
-import { subtractTotal } from "../../../store/total/actionCreators";
+import { deleteItem, ordered } from "../../../store/placeOrder/actionCreators";
+import { subtractTotal, resetTotal } from "../../../store/total/actionCreators";
 import {
   addItem,
   subtractItem,
@@ -55,6 +55,11 @@ export default function CreateOrder() {
     }
   };
 
+  const handleDone = () => {
+    dispatch(ordered());
+    dispatch(resetTotal());
+  };
+
   return (
     <>
       <div className={style.main}>
@@ -92,7 +97,11 @@ export default function CreateOrder() {
           </div>
         </section>
         <div className={style.button_done_div}>
-          <Button type="primary" className={style.button_done}>
+          <Button
+            onClick={handleDone}
+            type="primary"
+            className={style.button_done}
+          >
             Done
           </Button>
         </div>
