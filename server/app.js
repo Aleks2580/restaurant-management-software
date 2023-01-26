@@ -26,6 +26,7 @@ const currentOrders = require('./src/routes/currentOrders');
 const menuSections = require('./src/routes/menuSections');
 const menuCategories = require('./src/routes/menuCategories');
 const items = require('./src/routes/items');
+const newOrder = require('./src/routes/newOrder');
 
 
 
@@ -79,6 +80,7 @@ app.use('/current_orders', currentOrders);
 app.use('/menu_sections', menuSections);
 app.use('/menu_categories', menuCategories);
 app.use('/items', items);
+app.use('/new_order', newOrder);
 
 
 

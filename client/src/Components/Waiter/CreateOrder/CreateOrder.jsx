@@ -14,13 +14,19 @@ import { addTotal } from "../../../store/total/actionCreators";
 
 export default function CreateOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
+  const [guestsNumber, setGuestsNumber] = useState();
   const dispatch = useDispatch();
   const waiter = useSelector((state) => state.loginUser.name);
+  const waiterId = useSelector((state) => state.loginUser.id);
   const tableNumber = useSelector((state) => state.createOrder);
   const order = useSelector((state) => state.placeOrder);
   const total = useSelector((state) => state.total);
 
-  const onChange = (value) => {};
+  console.log(typeof tableNumber);
+
+  const onChange = (value) => {
+    setGuestsNumber(value);
+  };
 
   useEffect(() => {
     (async function () {
@@ -55,7 +61,24 @@ export default function CreateOrder() {
     }
   };
 
-  const handleDone = () => {
+  const handleDone = async () => {
+    const response = await fetch("http://localhost:4000/new_order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        waiterId,
+        waiter,
+        tableNumber,
+        guestsNumber,
+        order,
+        total,
+      }),
+      credentials: "include",
+    });
+
+    const result = await response.json();
     dispatch(ordered());
     dispatch(resetTotal());
   };
