@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { InputNumber, Button } from "antd";
+import { InputNumber, Button, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./CreateOrder.module.css";
 import { Link, Outlet } from "react-router-dom";
@@ -11,10 +11,11 @@ import {
   subtractItem,
 } from "../../../store/placeOrder/actionCreators";
 import { addTotal } from "../../../store/total/actionCreators";
+import { resetTable } from "../../../store/createOrder/actionCreators";
 
 export default function CreateOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
-  const [guestsNumber, setGuestsNumber] = useState();
+  const [guestsNumber, setGuestsNumber] = useState(0);
   const dispatch = useDispatch();
   const waiter = useSelector((state) => state.loginUser.name);
   const waiterId = useSelector((state) => state.loginUser.id);
@@ -62,25 +63,34 @@ export default function CreateOrder() {
   };
 
   const handleDone = async () => {
-    const response = await fetch("http://localhost:4000/new_order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        waiterId,
-        waiter,
-        tableNumber,
-        guestsNumber,
-        order,
-        total,
-      }),
-      credentials: "include",
-    });
+    if (guestsNumber === 0) {
+      message.error({
+        content: "Number or guests has to be more than 0",
+        duration: 3,
+      });
+    } else {
+      const response = await fetch("http://localhost:4000/new_order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          waiterId,
+          waiter,
+          tableNumber,
+          guestsNumber,
+          order,
+          total,
+        }),
+        credentials: "include",
+      });
 
-    const result = await response.json();
-    dispatch(ordered());
-    dispatch(resetTotal());
+      const result = await response.json();
+      dispatch(ordered());
+      dispatch(resetTotal());
+      dispatch(resetTable());
+      setGuestsNumber(0);
+    }
   };
 
   return (
@@ -97,7 +107,7 @@ export default function CreateOrder() {
                   className={style.input_guests}
                   min={1}
                   max={30}
-                  defaultValue={2}
+                  defaultValue={0}
                   onChange={onChange}
                 />
               </div>

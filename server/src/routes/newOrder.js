@@ -6,7 +6,7 @@ router.post('/', async (req, res) => {
   console.log(req.body)
   // try {
   //   await Order.create({ fullName, password, role });
-  //   res.json('Done')
+  res.json('Done')
   // } catch (error) {
   //   res.json(`Error while creating user ${error}`);
   // }
