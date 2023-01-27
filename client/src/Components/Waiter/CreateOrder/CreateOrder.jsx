@@ -17,13 +17,11 @@ export default function CreateOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
   const [guestsNumber, setGuestsNumber] = useState(0);
   const dispatch = useDispatch();
-  const waiter = useSelector((state) => state.loginUser.name);
+  const waiterName = useSelector((state) => state.loginUser.name);
   const waiterId = useSelector((state) => state.loginUser.id);
   const tableNumber = useSelector((state) => state.createOrder);
   const order = useSelector((state) => state.placeOrder);
   const total = useSelector((state) => state.total);
-
-  console.log(typeof tableNumber);
 
   const onChange = (value) => {
     setGuestsNumber(value);
@@ -63,10 +61,11 @@ export default function CreateOrder() {
   };
 
   const handleDone = async () => {
-    if (guestsNumber === 0) {
+    if (guestsNumber === 0 || !tableNumber) {
       message.error({
-        content: "Number or guests has to be more than 0",
-        duration: 3,
+        content:
+          "Number of guests has to be more than 0 and table number cannot be empty. Go to layout to choose the table",
+        duration: 5,
       });
     } else {
       const response = await fetch("http://localhost:4000/new_order", {
@@ -75,17 +74,23 @@ export default function CreateOrder() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          waiterName,
           waiterId,
-          waiter,
           tableNumber,
-          guestsNumber,
-          order,
+          guests: guestsNumber,
+          items: order,
           total,
         }),
         credentials: "include",
       });
 
       const result = await response.json();
+      // setTimeout(() => {
+      //   message.success({
+      //     content: "New order has been created",
+      //     duration: 1,
+      //   });
+      // }, 1000);
       dispatch(ordered());
       dispatch(resetTotal());
       dispatch(resetTable());
@@ -99,7 +104,7 @@ export default function CreateOrder() {
         <section className={style.section_main}>
           <div className={style.data}>
             <div className={style.info}>
-              <div className={style.info_name}>Waiter: {waiter}</div>
+              <div className={style.info_name}>Waiter: {waiterName}</div>
               <div className={style.info_table}>Table number:{tableNumber}</div>
               <div className={style.info_guests}>
                 <span>Number of guests:</span>
