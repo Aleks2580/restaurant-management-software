@@ -5,6 +5,7 @@ import editReservationReducer from './editReservation/editReservationReducer';
 import createOrderReducer from './createOrder/createOrderReducer';
 import placeOrderReducer from './placeOrder/placeOrderReducer';
 import totalReducer from './total/totalReducer';
+import viewOrderReducer from './viewOrder/viewOrderReducer';
 
 export default combineReducers({
   editUser: editUserReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   createOrder: createOrderReducer,
   placeOrder: placeOrderReducer,
   total: totalReducer,
+  viewOrder: viewOrderReducer,
  });

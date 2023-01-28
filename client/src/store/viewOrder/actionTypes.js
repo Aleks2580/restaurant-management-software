@@ -1,0 +1,1 @@
+export const TABLE_NUMBER = 'TABLE_NUMBER'
