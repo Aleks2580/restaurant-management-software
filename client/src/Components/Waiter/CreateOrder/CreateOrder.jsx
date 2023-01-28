@@ -22,6 +22,7 @@ export default function CreateOrder() {
   const tableNumber = useSelector((state) => state.createOrder);
   const order = useSelector((state) => state.placeOrder);
   const total = useSelector((state) => state.total);
+  const navigate = useNavigate();
 
   const onChange = (value) => {
     setGuestsNumber(value);
@@ -86,16 +87,15 @@ export default function CreateOrder() {
       });
 
       const result = await response.json();
-      // setTimeout(() => {
-      //   message.success({
-      //     content: "New order has been created",
-      //     duration: 1,
-      //   });
-      // }, 1000);
+      message.success({
+        content: "New order has been created",
+        duration: 2,
+      });
       dispatch(ordered());
       dispatch(resetTotal());
       dispatch(resetTable());
       setGuestsNumber(0);
+      navigate("../layout");
     }
   };
 
