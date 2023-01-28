@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { InputNumber, Button, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./CreateOrder.module.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { deleteItem, ordered } from "../../../store/placeOrder/actionCreators";
 import { subtractTotal, resetTotal } from "../../../store/total/actionCreators";
@@ -80,6 +80,7 @@ export default function CreateOrder() {
           guests: guestsNumber,
           items: order,
           total,
+          open: true,
         }),
         credentials: "include",
       });

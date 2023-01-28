@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     tableId: DataTypes.INTEGER,
     guests: DataTypes.INTEGER,
     items: DataTypes.TEXT,
-    total: DataTypes.INTEGER
+    total: DataTypes.INTEGER,
+    open: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Order',

@@ -30,6 +30,9 @@ module.exports = {
       total: {
         type: Sequelize.INTEGER
       },
+      open: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

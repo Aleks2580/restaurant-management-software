@@ -2,10 +2,10 @@ const router = require('express').Router();
 const { Order } = require('../../db/models');
 
 router.post('/', async (req, res) => {
-  console.log(req.body);
-  const { waiterName, waiterId, tableNumber, guests, items, total } = req.body;;
+  const { waiterName, waiterId, tableNumber, guests, total, open } = req.body;
+  const items = JSON.stringify(req.body.items);
   try {
-    await Order.create({ waiterName});
+    await Order.create({ waiterName, waiterId, tableNumber, guests, total, items, open });
    res.json('Done')
   } catch (error) {
     res.json(`Error while creating order ${error}`);
