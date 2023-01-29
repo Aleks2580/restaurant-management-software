@@ -5,6 +5,7 @@ import { Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import { getTable } from "../../../store/createOrder/actionCreators";
 import { useDispatch } from "react-redux";
+import { tableNumber } from "../../../store/viewOrder/actionCreators";
 
 export default function OneTable({ el }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,6 +36,7 @@ export default function OneTable({ el }) {
   };
 
   const viewOrder = () => {
+    dispatch(tableNumber(el.number));
     navigate("../view_order");
   };
 
