@@ -27,6 +27,7 @@ const menuSections = require('./src/routes/menuSections');
 const menuCategories = require('./src/routes/menuCategories');
 const items = require('./src/routes/items');
 const newOrder = require('./src/routes/newOrder');
+const viewOrder = require('./src/routes/viewOrder');
 
 
 
@@ -81,7 +82,7 @@ app.use('/menu_sections', menuSections);
 app.use('/menu_categories', menuCategories);
 app.use('/items', items);
 app.use('/new_order', newOrder);
-
+app.use('/view_order', viewOrder);
 
 
 app.listen(PORT ?? 5000, () => {
