@@ -23,6 +23,8 @@ export default function ViewOrder() {
 
   const handleEdit = () => {};
 
+  const handleBill = () => {};
+
   return (
     <div className={style.main}>
       <section className={style.section_main}>
@@ -67,6 +69,15 @@ export default function ViewOrder() {
               className={style.button_edit}
             >
               Edit
+            </Button>
+          </div>
+          <div>
+            <Button
+              onClick={handleBill}
+              type="primary"
+              className={style.button_bill}
+            >
+              Bill
             </Button>
           </div>
           <div>TOTAL: {order.total}$</div>
