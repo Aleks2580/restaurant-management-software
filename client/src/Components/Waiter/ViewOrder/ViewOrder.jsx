@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import style from "./ViewOrder.module.css";
 import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 export default function ViewOrder() {
   const tableNumber = useSelector((state) => state.viewOrder);
   const [order, setOrder] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     (async function () {
       const response = await fetch("http://localhost:4000/view_order", {
@@ -21,7 +23,9 @@ export default function ViewOrder() {
     })();
   }, [tableNumber]);
 
-  const handleEdit = () => {};
+  const handleEdit = () => {
+    navigate("../edit_order");
+  };
 
   const handleBill = () => {};
 

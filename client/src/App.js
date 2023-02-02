@@ -23,6 +23,7 @@ import CreateOrder from './Components/Waiter/CreateOrder/CreateOrder';
 import ViewOrder from './Components/Waiter/ViewOrder/ViewOrder';
 import MenuCategories from './Components/Waiter/CreateOrder/Menu/MenuCategories';
 import MenuItems from './Components/Waiter/CreateOrder/Menu/MenuItems';
+import EditOrder from './Components/Waiter/EditOrder/EditOrder';
 
 function App() {
   const dispatch = useDispatch()
@@ -56,6 +57,7 @@ function App() {
               </Route>
             </Route>
             <Route path='view_order' element={<ViewOrder />} />
+            <Route path='edit_order' element={<EditOrder />} />
           </Route>
           <Route path='/manager/main' element={<MainManager />}>
             <Route path='dashboard' element={<DashboardManager />} />
