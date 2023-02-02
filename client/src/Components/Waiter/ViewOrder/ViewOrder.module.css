@@ -1,12 +1,9 @@
-.menu {
-  display:flex;
-  justify-content: space-between;
-  margin-left: 100px;
-}
+
  .main {
-  width: 520px;
+  width: 580px;
   height: 582px;
   justify-content: space-between;
+  display: flex;
  }
 
 
@@ -34,14 +31,8 @@
   color: black;
 }
 
-.section:hover {
-  background-color:rgba(62, 92, 29, 0.946);
-}
 
-.outlet {
-  margin-top: 80px;
-  height: 365px;
-}
+
 
 .data {
   display: flex;
@@ -49,16 +40,17 @@
   justify-content: space-around;
 }
 
-.button_done {
+.button_edit {
   /* margin-top: 100px; */
   display: flex;
   justify-content: center;
   justify-items: end;
   align-self: center;
   background-color:rgba(123, 186, 51, 0.946);
+  margin-right: 30px;
 }
 
-.button_done:hover {
+.button_edit:hover {
   background-color:rgba(67, 103, 26, 0.946) !important;
 }
 
@@ -79,6 +71,8 @@
 }
 
 .total_sum {
+  display: flex;
+  align-items: center;
   justify-items: end;
   text-align: center;
 }

@@ -6,6 +6,7 @@ router.post('/', async (req, res) => {
 
   try {
     const order = await Order.findOne({ where: { tableNumber, open: true }, raw: true });
+    order.items = JSON.parse(order.items)
     console.log(order)
     res.json({ order });
   } catch (error) {

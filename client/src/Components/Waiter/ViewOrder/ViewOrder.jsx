@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { InputNumber, Button, message } from "antd";
 import style from "./ViewOrder.module.css";
-import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 
 export default function ViewOrder() {
   const tableNumber = useSelector((state) => state.viewOrder);
-  const [order, setOrder] = useState([""]);
-  const [items, setItems] = useState([]);
+  const [order, setOrder] = useState([]);
   useEffect(() => {
     (async function () {
       const response = await fetch("http://localhost:4000/view_order", {
@@ -20,16 +18,10 @@ export default function ViewOrder() {
       });
       const result = await response.json();
       setOrder(result.order);
-      // if (order.items) {
-      //   setItems(JSON.parse(order.items));
-      // } else {
-      //   setItems([]);
-      // }
     })();
   }, [tableNumber]);
 
-  console.log(items);
-  console.log(order);
+  const handleEdit = () => {};
 
   return (
     <div className={style.main}>
@@ -55,7 +47,7 @@ export default function ViewOrder() {
             <div className={style.price}>Price</div>
             <div className={style.total}>Total</div>
           </div>
-          {JSON.parse(order.items)?.map((item) => (
+          {order.items?.map((item) => (
             <div className={style.item}>
               <div className={style.item_name}>{item.item}</div>
               <div className={style.item_quantity}>{item.quantity}</div>
@@ -67,7 +59,18 @@ export default function ViewOrder() {
           ))}
         </div>
 
-        <div className={style.total_sum}>TOTAL: {order.total}$</div>
+        <div className={style.total_sum}>
+          <div>
+            <Button
+              onClick={handleEdit}
+              type="primary"
+              className={style.button_edit}
+            >
+              Edit
+            </Button>
+          </div>
+          <div>TOTAL: {order.total}$</div>
+        </div>
       </div>
     </div>
   );
