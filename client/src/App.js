@@ -57,7 +57,11 @@ function App() {
               </Route>
             </Route>
             <Route path='view_order' element={<ViewOrder />} />
-            <Route path='edit_order' element={<EditOrder />} />
+            <Route path='edit_order' element={<EditOrder />}>
+            <Route path=':id' element={<MenuCategories />}>
+                <Route path=':item' element={<MenuItems />} />
+              </Route>
+            </Route>
           </Route>
           <Route path='/manager/main' element={<MainManager />}>
             <Route path='dashboard' element={<DashboardManager />} />
