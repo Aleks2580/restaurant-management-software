@@ -6,9 +6,10 @@ import { InputNumber, Button, message } from "antd";
 
 export default function EditOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
-  const [guestsNumber, setGuestsNumber] = useState(0);
+  const [guestsNumber, setGuestsNumber] = useState();
   const dispatch = useDispatch();
   const waiterName = useSelector((state) => state.loginUser.name);
+  const tableNumber = useSelector((state) => state.viewOrder);
 
   useEffect(() => {
     (async function () {
@@ -21,6 +22,30 @@ export default function EditOrder() {
       setSections(result.sections);
     })();
   }, []);
+
+  useEffect(() => {
+    (async function () {
+      const response = await fetch("http://localhost:4000/view_order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tableNumber }),
+        credentials: "include",
+      });
+      const result = await response.json();
+      console.log(result);
+      setGuestsNumber(result.order.guests);
+      //setOrder(result.order);
+    })();
+  }, [tableNumber]);
+
+  const onChange = (value) => {
+    setGuestsNumber(value);
+  };
+
+  console.log(guestsNumber);
+
   return (
     <>
       <div className={style.main}>
@@ -28,15 +53,15 @@ export default function EditOrder() {
           <div className={style.data}>
             <div className={style.info}>
               <div className={style.info_name}>Waiter: {waiterName}</div>
-              <div className={style.info_table}>Table number:tableNumber</div>
+              <div className={style.info_table}>Table number:{tableNumber}</div>
               <div className={style.info_guests}>
                 <span>Number of guests:</span>
                 <InputNumber
                   className={style.input_guests}
                   min={1}
                   max={30}
-                  defaultValue={0}
-                  //onChange={onChange}
+                  value={guestsNumber}
+                  onChange={onChange}
                 />
               </div>
             </div>
