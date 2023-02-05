@@ -4,15 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { InputNumber, Button, message } from "antd";
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
+import { placeOrder } from "../../../store/placeOrder/actionCreators";
 
 export default function EditOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
   const [guestsNumber, setGuestsNumber] = useState(0);
   const [order, setOrder] = useState([]);
   const dispatch = useDispatch();
+  const orderEdit = useSelector((state) => state.placeOrder);
   const waiterName = useSelector((state) => state.loginUser.name);
   const tableNumber = useSelector((state) => state.viewOrder);
 
+  //console.log(orderEdit);
   useEffect(() => {
     (async function () {
       const response = await fetch("http://localhost:4000/menu_sections", {
@@ -36,11 +39,18 @@ export default function EditOrder() {
         credentials: "include",
       });
       const result = await response.json();
+      console.log(result.order.items);
       setGuestsNumber(result.order.guests);
       setOrder(result.order);
+
+      let itemsToEdit = Object.assign({}, result.order.items)
+      // for (let i = 0; i < result.order.items; i++) {
+      //   Object.assign(itemsToEdit, result.order.items[i]);
+      // }
+      console.log("ITEMS TO EDIT", itemsToEdit);
+      dispatch(placeOrder(result.order.items));
     })();
   }, []);
-  //console.log([order]);
 
   const onChange = (value) => {
     setGuestsNumber(value);
