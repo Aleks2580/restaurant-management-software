@@ -5,15 +5,17 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { InputNumber, Button, message } from "antd";
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { placeOrder } from "../../../store/placeOrder/actionCreators";
+import { addTotal } from "../../../store/total/actionCreators";
 
 export default function EditOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
   const [guestsNumber, setGuestsNumber] = useState(0);
-  const [order, setOrder] = useState([]);
+  //const [order, setOrder] = useState([]);
   const dispatch = useDispatch();
   const orderEdit = useSelector((state) => state.placeOrder);
   const waiterName = useSelector((state) => state.loginUser.name);
   const tableNumber = useSelector((state) => state.viewOrder);
+  const total = useSelector((state) => state.total);
 
   console.log("orderToEdit", orderEdit);
   useEffect(() => {
@@ -40,10 +42,11 @@ export default function EditOrder() {
       });
       const result = await response.json();
       setGuestsNumber(result.order.guests);
-      setOrder(result.order);
+      //setOrder(result.order);
 
       result.order.items.forEach((item) => {
         dispatch(placeOrder(item));
+        dispatch(addTotal(item.price));
       });
     })();
   }, []);
@@ -156,7 +159,7 @@ export default function EditOrder() {
           ))}
         </div>
 
-        <div className={style.total_sum}>TOTAL: total$</div>
+        <div className={style.total_sum}>TOTAL: {total}$</div>
       </div>
     </>
   );
