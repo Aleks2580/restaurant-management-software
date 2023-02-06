@@ -15,7 +15,7 @@ export default function EditOrder() {
   const waiterName = useSelector((state) => state.loginUser.name);
   const tableNumber = useSelector((state) => state.viewOrder);
 
-  //console.log(orderEdit);
+  console.log("orderToEdit", orderEdit);
   useEffect(() => {
     (async function () {
       const response = await fetch("http://localhost:4000/menu_sections", {
@@ -39,16 +39,12 @@ export default function EditOrder() {
         credentials: "include",
       });
       const result = await response.json();
-      console.log(result.order.items);
       setGuestsNumber(result.order.guests);
       setOrder(result.order);
 
-      let itemsToEdit = Object.assign({}, result.order.items)
-      // for (let i = 0; i < result.order.items; i++) {
-      //   Object.assign(itemsToEdit, result.order.items[i]);
-      // }
-      console.log("ITEMS TO EDIT", itemsToEdit);
-      dispatch(placeOrder(result.order.items));
+      result.order.items.forEach((item) => {
+        dispatch(placeOrder(item));
+      });
     })();
   }, []);
 
@@ -134,7 +130,7 @@ export default function EditOrder() {
             <div className={style.price}>Price</div>
             <div className={style.total}>Total</div>
           </div>
-          {order.items?.map((el, index) => (
+          {orderEdit?.map((el, index) => (
             <div className={style.item}>
               <div className={style.item_name}>{el.item}</div>
               <div className={style.item_quantity}>{el.quantity}</div>
