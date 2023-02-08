@@ -17,12 +17,12 @@ import { resetTable } from "../../../store/createOrder/actionCreators";
 export default function EditOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
   const [guestsNumber, setGuestsNumber] = useState(0);
-  //const [order, setOrder] = useState([]);
   const dispatch = useDispatch();
   const orderEdit = useSelector((state) => state.placeOrder);
   const waiterName = useSelector((state) => state.loginUser.name);
   const tableNumber = useSelector((state) => state.viewOrder);
   const total = useSelector((state) => state.total);
+  const navigate = useNavigate();
 
   console.log("orderToEdit", orderEdit);
   useEffect(() => {
@@ -49,7 +49,6 @@ export default function EditOrder() {
       });
       const result = await response.json();
       setGuestsNumber(result.order.guests);
-      //setOrder(result.order);
 
       result.order.items.forEach((item) => {
         dispatch(placeOrder(item));
@@ -82,6 +81,18 @@ export default function EditOrder() {
       dispatch(subtractItem(index));
       dispatch(subtractTotal(price));
     }
+  };
+
+  const handleDone = () => {
+    message.success({
+      content: "The order has been changed",
+      duration: 2,
+    });
+    dispatch(ordered());
+    dispatch(resetTotal());
+    dispatch(resetTable());
+    setGuestsNumber(0);
+    navigate("../layout");
   };
 
   return (
@@ -122,7 +133,7 @@ export default function EditOrder() {
         </section>
         <div className={style.button_done_div}>
           <Button
-            //onClick={handleDone}
+            onClick={handleDone}
             type="primary"
             className={style.button_done}
           >
