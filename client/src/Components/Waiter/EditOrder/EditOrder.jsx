@@ -6,6 +6,13 @@ import { InputNumber, Button, message } from "antd";
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { placeOrder } from "../../../store/placeOrder/actionCreators";
 import { addTotal } from "../../../store/total/actionCreators";
+import { deleteItem, ordered } from "../../../store/placeOrder/actionCreators";
+import { subtractTotal, resetTotal } from "../../../store/total/actionCreators";
+import {
+  addItem,
+  subtractItem,
+} from "../../../store/placeOrder/actionCreators";
+import { resetTable } from "../../../store/createOrder/actionCreators";
 
 export default function EditOrder() {
   const [sections, setSections] = useState([{ name: "" }, { name: "" }]);
@@ -56,27 +63,26 @@ export default function EditOrder() {
   };
 
   const handleDelete = (e, index, price, quantity) => {
-    // let totalSum = price * quantity;
-    // dispatch(deleteItem(index));
-    // dispatch(subtractTotal(totalSum));
+    console.log(index);
+    let totalSum = price * quantity;
+    dispatch(deleteItem(index));
+    dispatch(subtractTotal(totalSum));
   };
 
   const handleAdd = (e, index, price) => {
-    // dispatch(addItem(index));
-    // dispatch(addTotal(price));
+    dispatch(addItem(index));
+    dispatch(addTotal(price));
   };
 
   const handleSubtract = (e, index, price, quantity) => {
-    // if (quantity === 1) {
-    //   dispatch(deleteItem(index));
-    //   dispatch(subtractTotal(price));
-    // } else {
-    //   dispatch(subtractItem(index));
-    //   dispatch(subtractTotal(price));
-    // }
+    if (quantity === 1) {
+      dispatch(deleteItem(index));
+      dispatch(subtractTotal(price));
+    } else {
+      dispatch(subtractItem(index));
+      dispatch(subtractTotal(price));
+    }
   };
-
-  //console.log(guestsNumber);
 
   return (
     <>
