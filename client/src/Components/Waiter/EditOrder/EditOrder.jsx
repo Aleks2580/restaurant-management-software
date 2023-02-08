@@ -24,7 +24,6 @@ export default function EditOrder() {
   const total = useSelector((state) => state.total);
   const navigate = useNavigate();
 
-  console.log("orderToEdit", orderEdit);
   useEffect(() => {
     (async function () {
       const response = await fetch("http://localhost:4000/menu_sections", {
@@ -55,7 +54,7 @@ export default function EditOrder() {
         dispatch(addTotal(item.price));
       });
     })();
-  }, []);
+  }, [tableNumber]);
 
   const onChange = (value) => {
     setGuestsNumber(value);
@@ -84,15 +83,22 @@ export default function EditOrder() {
   };
 
   const handleDone = () => {
-    message.success({
-      content: "The order has been changed",
-      duration: 2,
-    });
-    dispatch(ordered());
-    dispatch(resetTotal());
-    dispatch(resetTable());
-    setGuestsNumber(0);
-    navigate("../layout");
+    if (guestsNumber === 0) {
+      message.error({
+        content: "Number of guests has to be more than 0",
+        duration: 5,
+      });
+    } else {
+      message.success({
+        content: "The order has been changed",
+        duration: 2,
+      });
+      dispatch(ordered());
+      dispatch(resetTotal());
+      dispatch(resetTable());
+      setGuestsNumber(0);
+      navigate("../layout");
+    }
   };
 
   return (
