@@ -23,6 +23,7 @@ export default function EditOrder() {
   const tableNumber = useSelector((state) => state.viewOrder);
   const total = useSelector((state) => state.total);
   const navigate = useNavigate();
+  const waiterId = useSelector((state) => state.loginUser.id);
 
   useEffect(() => {
     (async function () {
@@ -61,7 +62,6 @@ export default function EditOrder() {
   };
 
   const handleDelete = (e, index, price, quantity) => {
-    console.log(index);
     let totalSum = price * quantity;
     dispatch(deleteItem(index));
     dispatch(subtractTotal(totalSum));
@@ -82,23 +82,31 @@ export default function EditOrder() {
     }
   };
 
-  const handleDone = () => {
-    if (guestsNumber === 0) {
-      message.error({
-        content: "Number of guests has to be more than 0",
-        duration: 5,
-      });
-    } else {
-      message.success({
-        content: "The order has been changed",
-        duration: 2,
-      });
-      dispatch(ordered());
-      dispatch(resetTotal());
-      dispatch(resetTable());
-      setGuestsNumber(0);
-      navigate("../layout");
-    }
+  const handleDone = async () => {
+    const response = await fetch("http://localhost:4000/edit_order", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        waiterName,
+        waiterId,
+        tableNumber,
+        guests: guestsNumber,
+        items: orderEdit,
+        total,
+      }),
+      credentials: "include",
+    });
+
+    const result = await response.json();
+    dispatch(ordered());
+    dispatch(resetTotal());
+    dispatch(resetTable());
+    setGuestsNumber(0);
+    navigate("../layout");
+    message.success({
+      content: "The order has been changed",
+      duration: 2,
+    });
   };
 
   return (
