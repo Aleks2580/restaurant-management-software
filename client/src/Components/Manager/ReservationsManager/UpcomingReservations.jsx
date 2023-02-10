@@ -48,12 +48,7 @@ export default function UpcomingReservations() {
             all
           </option>
           {dates?.map((el) => (
-            <option
-              className={style.option}
-              //key={dates.indexOf(el)}
-              value={el}
-              name={el}
-            >
+            <option className={style.option} value={el} name={el}>
               {el}
             </option>
           ))}

@@ -34,12 +34,12 @@ export default function ViewOrder() {
       <section className={style.section_main}>
         <div className={style.data}>
           <div className={style.info}>
-            <div className={style.info_name}>Waiter: {order.waiterName}</div>
+            <div className={style.info_name}>Waiter: {order?.waiterName}</div>
             <div className={style.info_table}>
-              Table number:{order.tableNumber}
+              Table number:{order?.tableNumber}
             </div>
             <div className={style.info_guests}>
-              <span>Number of guests: {order.guests}</span>
+              <span>Number of guests: {order?.guests}</span>
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function ViewOrder() {
             <div className={style.price}>Price</div>
             <div className={style.total}>Total</div>
           </div>
-          {order.items?.map((item) => (
+          {order?.items?.map((item) => (
             <div className={style.item}>
               <div className={style.item_name}>{item.item}</div>
               <div className={style.item_quantity}>{item.quantity}</div>
@@ -84,7 +84,7 @@ export default function ViewOrder() {
               Bill
             </Button>
           </div>
-          <div>TOTAL: {order.total}$</div>
+          <div>TOTAL: {order?.total}$</div>
         </div>
       </div>
     </div>

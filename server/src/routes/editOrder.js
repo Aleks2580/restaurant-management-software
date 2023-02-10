@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Order } = require('../../db/models');
 
 router.put('/', async (req, res) => {
-  //console.log(req.body);
   const {
     waiterName, waiterId, tableNumber, guests, total,
   } = req.body;
