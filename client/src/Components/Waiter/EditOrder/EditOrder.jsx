@@ -55,6 +55,8 @@ export default function EditOrder() {
         dispatch(addTotal(item.price));
       });
     })();
+    dispatch(ordered());
+    dispatch(resetTotal());
   }, [tableNumber]);
 
   const onChange = (value) => {

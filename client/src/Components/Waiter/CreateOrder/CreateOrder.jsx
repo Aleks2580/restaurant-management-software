@@ -38,7 +38,9 @@ export default function CreateOrder() {
 
       setSections(result.sections);
     })();
-  }, []);
+    dispatch(ordered());
+    dispatch(resetTotal());
+  }, [tableNumber]);
 
   const handleDelete = (e, index, price, quantity) => {
     let totalSum = price * quantity;
