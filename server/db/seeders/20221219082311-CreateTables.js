@@ -10,6 +10,7 @@ module.exports = {
           number: 101,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -17,6 +18,7 @@ module.exports = {
           number: 102,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -24,6 +26,7 @@ module.exports = {
           number: 103,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -31,6 +34,7 @@ module.exports = {
           number: 104,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -38,6 +42,7 @@ module.exports = {
           number: 105,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -45,6 +50,7 @@ module.exports = {
           number: 201,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -52,6 +58,7 @@ module.exports = {
           number: 202,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -59,6 +66,7 @@ module.exports = {
           number: 203,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -66,6 +74,7 @@ module.exports = {
           number: 204,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -73,6 +82,7 @@ module.exports = {
           number: 205,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -80,6 +90,7 @@ module.exports = {
           number: 301,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -87,6 +98,7 @@ module.exports = {
           number: 302,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -94,6 +106,7 @@ module.exports = {
           number: 303,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -101,6 +114,7 @@ module.exports = {
           number: 304,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -108,6 +122,7 @@ module.exports = {
           number: 305,
           waiter_id: null,
           available: true,
+          billPrinted: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },

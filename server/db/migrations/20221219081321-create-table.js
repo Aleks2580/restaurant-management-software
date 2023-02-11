@@ -17,7 +17,11 @@ module.exports = {
       },
       available: {
         type: Sequelize.BOOLEAN
+      }, 
+      billPrinted: {
+        type: Sequelize.BOOLEAN
       },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
