@@ -11,7 +11,7 @@ export default function CurrentOrders() {
         credentials: "include",
       });
       const result = await response.json();
-      setOrders(result.orders);
+      setOrders(result.orders.sort((a, b) => a.number - b.number));
     })();
   }, []);
 

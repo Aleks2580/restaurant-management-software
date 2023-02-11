@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     guests: DataTypes.INTEGER,
     items: DataTypes.TEXT,
     total: DataTypes.INTEGER,
-    open: DataTypes.BOOLEAN
+    open: DataTypes.BOOLEAN,
+    billPrinted: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Order',

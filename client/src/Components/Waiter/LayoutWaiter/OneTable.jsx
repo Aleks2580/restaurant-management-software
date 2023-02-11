@@ -12,17 +12,17 @@ export default function OneTable({ el }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleOk = async (e) => {
+  const handleOk = (e) => {
     setIsModalOpen(false);
-    const response = await fetch("http://localhost:4000/create_order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id: el.id }),
-      credentials: "include",
-    });
-    const result = await response.json();
+    // const response = await fetch("http://localhost:4000/create_order", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ id: el.id }),
+    //   credentials: "include",
+    // });
+    // const result = await response.json();
     navigate("../create_order");
     dispatch(getTable(el.number));
   };
