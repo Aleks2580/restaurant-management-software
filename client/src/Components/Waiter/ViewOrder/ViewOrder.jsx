@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import style from "./ViewOrder.module.css";
-import { Button, Modal } from "antd";
+import { Button, Modal, message } from "antd";
 import { useNavigate } from "react-router-dom";
 
 export default function ViewOrder() {
@@ -36,15 +36,29 @@ export default function ViewOrder() {
     setIsModalOpen(false);
   };
 
-  const handleOk = () => {
+  const handleOk = async () => {
     setIsModalOpen(false);
+    const response = await fetch("http://localhost:4000/print_bill", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ tableNumber }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    message.success({
+      content: "The bill has been printed",
+      duration: 2,
+    });
+    navigate("../layout");
   };
 
   return (
     <>
       <Modal
         className={style.modal}
-        title="New order"
+        title="Bill"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}

@@ -84,6 +84,7 @@ export default function CreateOrder() {
           items: order,
           total,
           open: true,
+          billPrinted: false,
         }),
         credentials: "include",
       });

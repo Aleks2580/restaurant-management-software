@@ -29,6 +29,7 @@ const items = require('./src/routes/items');
 const newOrder = require('./src/routes/newOrder');
 const viewOrder = require('./src/routes/viewOrder');
 const edirOrder = require('./src/routes/editOrder');
+const printBill = require('./src/routes/printBill');
 
 
 
@@ -85,6 +86,7 @@ app.use('/items', items);
 app.use('/new_order', newOrder);
 app.use('/view_order', viewOrder);
 app.use('/edit_order', edirOrder);
+app.use('/print_bill', printBill);
 
 
 app.listen(PORT ?? 5000, () => {
