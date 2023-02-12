@@ -152,6 +152,11 @@
   align-items: center;
 }
 
+.button_cancel {
+  margin-right: 30px;
+  background-color: rgba(195, 29, 29, 0.874);
+}
+
 
 
 

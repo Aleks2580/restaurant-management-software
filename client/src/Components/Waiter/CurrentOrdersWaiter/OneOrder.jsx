@@ -3,6 +3,7 @@ import style from "./OneOrder.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { tableNumber } from "../../../store/viewOrder/actionCreators";
+import { DollarOutlined } from "@ant-design/icons";
 
 export default function OneOrder({ el }) {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function OneOrder({ el }) {
 
   return (
     <div onClick={handleClick} className={style.orders}>
+      {el.billPrinted ? <DollarOutlined className={style.icon_dollar} /> : null}
       {el.number}
     </div>
   );

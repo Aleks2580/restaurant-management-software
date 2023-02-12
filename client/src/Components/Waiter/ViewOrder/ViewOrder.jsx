@@ -54,6 +54,10 @@ export default function ViewOrder() {
     navigate("../layout");
   };
 
+  const handlePay = () => {};
+
+  const handleCancelBill = () => {};
+
   return (
     <>
       <Modal
@@ -102,23 +106,46 @@ export default function ViewOrder() {
 
           <div className={style.total_sum}>
             <div>
-              <Button
-                onClick={handleEdit}
-                type="primary"
-                className={style.button_edit}
-              >
-                Edit
-              </Button>
+              {!order?.billPrinted ? (
+                <Button
+                  onClick={handleEdit}
+                  type="primary"
+                  className={style.button_edit}
+                >
+                  Edit
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleCancelBill}
+                  type="primary"
+                  className={style.button_cancel}
+                >
+                  Cancel bill
+                </Button>
+              )}
             </div>
-            <div>
-              <Button
-                onClick={handleBill}
-                type="primary"
-                className={style.button_bill}
-              >
-                Bill
-              </Button>
-            </div>
+            {!order?.billPrinted ? (
+              <div>
+                <Button
+                  onClick={handleBill}
+                  type="primary"
+                  className={style.button_bill}
+                >
+                  Bill
+                </Button>
+              </div>
+            ) : (
+              <div>
+                <Button
+                  onClick={handlePay}
+                  type="primary"
+                  className={style.button_bill}
+                >
+                  Pay
+                </Button>
+              </div>
+            )}
+
             <div>TOTAL: {order?.total}$</div>
           </div>
         </div>
