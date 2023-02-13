@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function ViewOrder() {
   const tableNumber = useSelector((state) => state.viewOrder);
+  const [isModalCancelBillOpen, setIsModalCancelBillOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [order, setOrder] = useState([]);
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function ViewOrder() {
       const result = await response.json();
       setOrder(result.order);
     })();
-  }, [tableNumber]);
+  }, [tableNumber, order]);
 
   const handleEdit = () => {
     navigate("../edit_order");
@@ -43,7 +44,7 @@ export default function ViewOrder() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ tableNumber }),
+      body: JSON.stringify({ tableNumber, billPrinted: true }),
       credentials: "include",
     });
     const result = await response.json();
@@ -56,7 +57,31 @@ export default function ViewOrder() {
 
   const handlePay = () => {};
 
-  const handleCancelBill = () => {};
+  const handleCancelBill = () => {
+    setIsModalCancelBillOpen(true);
+  };
+
+  const handleOkCancelBill = async () => {
+    setIsModalCancelBillOpen(false);
+    const response = await fetch("http://localhost:4000/print_bill", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ tableNumber, billPrinted: false }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    message.success({
+      content: "The bill has been cancelled",
+      duration: 2,
+    });
+    navigate("../view_order");
+  };
+
+  const handleCancelCancelBill = () => {
+    setIsModalCancelBillOpen(false);
+  };
 
   return (
     <>
@@ -68,6 +93,16 @@ export default function ViewOrder() {
         onCancel={handleCancel}
       >
         <p>Print a bill?</p>
+      </Modal>
+      <Modal
+        className={style.modal}
+        title="Cancel the bill"
+        open={isModalCancelBillOpen}
+        onOk={handleOkCancelBill}
+        onCancel={handleCancelCancelBill}
+      >
+        <p>Canceling bill requires manager's password</p>
+        <input type="password" />
       </Modal>
       <div className={style.main}>
         <section className={style.section_main}>
