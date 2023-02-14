@@ -1,15 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import style from "./ViewOrder.module.css";
-import { Button, Modal, message } from "antd";
+import { Button, Modal, message, Form } from "antd";
 import { useNavigate } from "react-router-dom";
+import { digits } from "../../Manager/LoginManager/mockdata";
+import { CloseCircleOutlined } from "@ant-design/icons";
 
 export default function ViewOrder() {
   const tableNumber = useSelector((state) => state.viewOrder);
   const [isModalCancelBillOpen, setIsModalCancelBillOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [order, setOrder] = useState([]);
+  const [cancelled, setCancelled] = useState(false);
+  const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState(false);
+  const [checkRole, setCheckRole] = useState(false);
   const navigate = useNavigate();
+
+  const inputHandler = (e) => {
+    setPassword((prev) => prev + e.target.innerText);
+  };
+
+  const resetHandler = () => {
+    setPassword("");
+  };
+
   useEffect(() => {
     (async function () {
       const response = await fetch("http://localhost:4000/view_order", {
@@ -23,7 +38,7 @@ export default function ViewOrder() {
       const result = await response.json();
       setOrder(result.order);
     })();
-  }, [tableNumber, order]);
+  }, [tableNumber, cancelled]);
 
   const handleEdit = () => {
     navigate("../edit_order");
@@ -77,6 +92,7 @@ export default function ViewOrder() {
       duration: 2,
     });
     navigate("../view_order");
+    setCancelled(true);
   };
 
   const handleCancelCancelBill = () => {
@@ -96,13 +112,73 @@ export default function ViewOrder() {
       </Modal>
       <Modal
         className={style.modal}
-        title="Cancel the bill"
+        title="Manager's password is required"
         open={isModalCancelBillOpen}
         onOk={handleOkCancelBill}
         onCancel={handleCancelCancelBill}
       >
-        <p>Canceling bill requires manager's password</p>
-        <input type="password" />
+        <Form
+          className={style.form}
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          initialValues={{ remember: true }}
+          autoComplete="off"
+        >
+          <span className={style.span}>Enter a 6 digit password</span>
+          <div className={style.digits}>
+            {digits.map((el) => (
+              <Button
+                onClick={inputHandler}
+                className={style.button_manager}
+                type="primary"
+                shape="circle"
+              >
+                {el}
+              </Button>
+            ))}
+          </div>
+          <div>
+            <input
+              className={style.input_manager}
+              name="password"
+              value={password
+                .split("")
+                .map((el) => (el = "*"))
+                .join("")}
+            />
+          </div>
+
+          {checkPassword ? (
+            <div className={style.incorrect}>
+              <CloseCircleOutlined />
+              Incorrect password
+            </div>
+          ) : (
+            ""
+          )}
+
+          {checkRole ? (
+            <div className={style.incorrect}>
+              <CloseCircleOutlined />
+              Access denied
+            </div>
+          ) : (
+            ""
+          )}
+
+          <Form.Item>
+            <div className={style.form_buttons}>
+              <Button
+                onClick={resetHandler}
+                className={style.button_reset}
+                type="primary"
+              >
+                Reset
+              </Button>
+            </div>
+          </Form.Item>
+        </Form>
       </Modal>
       <div className={style.main}>
         <section className={style.section_main}>
