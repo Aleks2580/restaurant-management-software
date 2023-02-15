@@ -112,7 +112,7 @@ export default function ViewOrder() {
       </Modal>
       <Modal
         className={style.modal}
-        title="Manager's password is required"
+        //title="Manager's password is required"
         open={isModalCancelBillOpen}
         onOk={handleOkCancelBill}
         onCancel={handleCancelCancelBill}
@@ -125,7 +125,7 @@ export default function ViewOrder() {
           initialValues={{ remember: true }}
           autoComplete="off"
         >
-          <span className={style.span}>Enter a 6 digit password</span>
+          <span className={style.span}>Manager's password is required</span>
           <div className={style.digits}>
             {digits.map((el) => (
               <Button
