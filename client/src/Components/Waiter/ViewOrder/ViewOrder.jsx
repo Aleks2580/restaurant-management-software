@@ -14,7 +14,6 @@ export default function ViewOrder() {
   const [cancelled, setCancelled] = useState(false);
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState(false);
-  const [checkRole, setCheckRole] = useState(false);
   const navigate = useNavigate();
 
   const inputHandler = (e) => {
@@ -77,7 +76,6 @@ export default function ViewOrder() {
   };
 
   const handleOkCancelBill = async () => {
-    setIsModalCancelBillOpen(false);
     const response = await fetch("http://localhost:4000/cancel_print_bill", {
       method: "POST",
       headers: {
@@ -87,13 +85,22 @@ export default function ViewOrder() {
       credentials: "include",
     });
     const result = await response.json();
-    message.success({
-      content: "The bill has been cancelled",
-      duration: 2,
-    });
-    setPassword("");
-    navigate("../view_order");
-    setCancelled(true);
+    if (result === "Password is incorrect") {
+      setPassword("");
+      setCheckPassword(true);
+      setTimeout(() => {
+        setCheckPassword(false);
+      }, 2000);
+    } else {
+      message.success({
+        content: "The bill has been cancelled",
+        duration: 2,
+      });
+      setPassword("");
+      navigate("../view_order");
+      setCancelled(true);
+      setIsModalCancelBillOpen(false);
+    }
   };
 
   const handleCancelCancelBill = () => {
@@ -153,17 +160,8 @@ export default function ViewOrder() {
 
           {checkPassword ? (
             <div className={style.incorrect}>
-              <CloseCircleOutlined />
+              <CloseCircleOutlined className={style.icon_circle} />
               Incorrect password
-            </div>
-          ) : (
-            ""
-          )}
-
-          {checkRole ? (
-            <div className={style.incorrect}>
-              <CloseCircleOutlined />
-              Access denied
             </div>
           ) : (
             ""

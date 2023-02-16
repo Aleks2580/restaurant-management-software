@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
       { where: { number: tableNumber, available: false } });
     res.json('Done');
   } catch (error) {
-    res.json(`Error while printing/cancelling bill ${error}`);
+    res.json(`Error while printing bill ${error}`);
   }
 });
 
