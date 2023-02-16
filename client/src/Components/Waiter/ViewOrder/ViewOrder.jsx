@@ -78,12 +78,12 @@ export default function ViewOrder() {
 
   const handleOkCancelBill = async () => {
     setIsModalCancelBillOpen(false);
-    const response = await fetch("http://localhost:4000/print_bill", {
+    const response = await fetch("http://localhost:4000/cancel_print_bill", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ tableNumber, billPrinted: false }),
+      body: JSON.stringify({ tableNumber, billPrinted: false, password }),
       credentials: "include",
     });
     const result = await response.json();
@@ -91,13 +91,16 @@ export default function ViewOrder() {
       content: "The bill has been cancelled",
       duration: 2,
     });
+    setPassword("");
     navigate("../view_order");
     setCancelled(true);
   };
 
   const handleCancelCancelBill = () => {
     setIsModalCancelBillOpen(false);
+    setPassword("");
   };
+  console.log(password);
 
   return (
     <>
@@ -112,7 +115,6 @@ export default function ViewOrder() {
       </Modal>
       <Modal
         className={style.modal}
-        //title="Manager's password is required"
         open={isModalCancelBillOpen}
         onOk={handleOkCancelBill}
         onCancel={handleCancelCancelBill}

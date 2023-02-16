@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const { Order, Table } = require('../../db/models');
+const { Order, Table, User } = require('../../db/models');
 
 router.post('/', async (req, res) => {
-  const { tableNumber, billPrinted } = req.body;
-
+  const { tableNumber, billPrinted, password } = req.body;
+  //console.log('BODYYYY', req.body)
   try {
+    const checkManagerPassword = await User.findOne({ where: { password, role: 'manager' } });
+    console.log('CHECKPASSWORD', checkManagerPassword)
     await Order.update({ billPrinted }, { where: { tableNumber, open: true } });
     await Table.update({ billPrinted }, 
       { where: { number: tableNumber, available: false } });
