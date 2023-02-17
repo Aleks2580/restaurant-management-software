@@ -69,7 +69,22 @@ export default function ViewOrder() {
     navigate("../layout");
   };
 
-  const handlePay = () => {};
+  const handlePay = async () => {
+    const response = await fetch("http://localhost:4000/pay", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ tableNumber, open: false, available: true }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    message.success({
+      content: "The bill has been paid",
+      duration: 2,
+    });
+    navigate("../layout");
+  };
 
   const handleCancelBill = () => {
     setIsModalCancelBillOpen(true);
@@ -107,7 +122,6 @@ export default function ViewOrder() {
     setIsModalCancelBillOpen(false);
     setPassword("");
   };
-  console.log(password);
 
   return (
     <>
