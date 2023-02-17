@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./DashboardManager.module.css";
+import { useState, useEffect } from "react";
 import {
   CheckOutlined,
   DollarCircleOutlined,
@@ -8,6 +9,25 @@ import {
 } from "@ant-design/icons";
 
 export default function DashboardManager() {
+  const [totalOrders, setTotalOrders] = useState();
+  const [totalPaidOrders, setTotalPaidOrders] = useState();
+  const [totalActiveOrders, setTotalActiveOrders] = useState();
+  const [reservations, setReservations] = useState();
+
+  useEffect(() => {
+    (async function () {
+      const response = await fetch("http://localhost:4000/dashboard", {
+        method: "GET",
+        credentials: "include",
+      });
+      const result = await response.json();
+      //setReservations(result.data);
+      //setLoading(false);
+      //const noDuplicateDates = [...new Set(result.data.map((el) => el.date))];
+      //setDates(noDuplicateDates);
+    })();
+  }, []);
+
   return (
     <div className={style.dashboard}>
       <div className={style.info}>
