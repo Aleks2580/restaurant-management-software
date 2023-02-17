@@ -75,7 +75,12 @@ export default function ViewOrder() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ tableNumber, open: false, available: true }),
+      body: JSON.stringify({
+        tableNumber,
+        open: false,
+        available: true,
+        billPrinted: false,
+      }),
       credentials: "include",
     });
     const result = await response.json();

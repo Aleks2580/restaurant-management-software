@@ -2,11 +2,11 @@ const router = require('express').Router();
 const { Order, Table } = require('../../db/models');
 
 router.post('/', async (req, res) => {
-  const { tableNumber, open, available } = req.body;
+  const { tableNumber, open, available, billPrinted } = req.body;
   try {
     await Order.update({ open }, { where: { tableNumber, open: true } });
     await Table.update(
-      { available },
+      { available, billPrinted },
       { where: { number: tableNumber, available: false } },
     );
     res.json('Done');
