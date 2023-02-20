@@ -35,6 +35,11 @@ export default function DashboardManager() {
         activeOrdersTotal: result.activeOrdersTotal,
         activeOrdersGuests: result.activeOrdersGuests,
       });
+      setTotalOrders({
+        totalOrdersAverageCheck: result.totalOrdersAverageCheck,
+        totalOrdersTotal: result.totalOrdersTotal,
+        totalOrdersGuests: result.totalOrdersGuests,
+      });
       //setReservations(result.data);
       //setLoading(false);
       //const noDuplicateDates = [...new Set(result.data.map((el) => el.date))];
@@ -48,13 +53,19 @@ export default function DashboardManager() {
         <div className={style.title}>Total Orders</div>
         <div className={style.data}>
           <div>
-            total sum: <span className={style.digit}>0</span>$
+            total sum:{" "}
+            <span className={style.digit}>{totalOrders.totalOrdersTotal}</span>$
           </div>
           <div>
-            guests: <span className={style.digit}>0</span>
+            guests:{" "}
+            <span className={style.digit}>{totalOrders.totalOrdersGuests}</span>
           </div>
           <div>
-            average check: <span className={style.digit}>0</span>$
+            average check:{" "}
+            <span className={style.digit}>
+              {totalOrders.totalOrdersAverageCheck}
+            </span>
+            $
           </div>
         </div>
         <CheckOutlined className={style.icon} />
