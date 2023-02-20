@@ -9,10 +9,14 @@ import {
 } from "@ant-design/icons";
 
 export default function DashboardManager() {
-  const [totalOrders, setTotalOrders] = useState();
-  const [totalPaidOrders, setTotalPaidOrders] = useState();
-  const [totalActiveOrders, setTotalActiveOrders] = useState();
-  const [reservations, setReservations] = useState();
+  //const [totalOrders, setTotalOrders] = useState();
+  //const [totalPaidOrders, setTotalPaidOrders] = useState();
+  const [activeOrders, setActiveOrders] = useState({
+    activeOrdersAverageCheck: 0,
+    activeOrdersTotal: 0,
+    activeOrdersGuests: 0,
+  });
+  //const [reservations, setReservations] = useState();
 
   useEffect(() => {
     (async function () {
@@ -21,6 +25,8 @@ export default function DashboardManager() {
         credentials: "include",
       });
       const result = await response.json();
+      console.log("RESULT", result.activeOrdersAverageCheck);
+
       //setReservations(result.data);
       //setLoading(false);
       //const noDuplicateDates = [...new Set(result.data.map((el) => el.date))];
