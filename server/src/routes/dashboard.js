@@ -31,12 +31,19 @@ router.get('/', async (req, res) => {
       totalOrdersTotal += order.total;
       totalOrdersGuests += order.guests;
     });
-
     totalOrdersAverageCheck = Math.round(totalOrdersTotal / totalOrders.length);
-    // console.log(activeOrdersTotal, activeOrdersGuests, activeOrdersAverageCheck)
+
+    const paidOrders = totalOrdersFromBack.filter((order) => order.createdAt.toDateString() === new Date(today).toDateString() && order.open === false && order.billPrinted === true);
+    paidOrders.forEach((paidOrder) => {
+      totalPaidOrdersTotal += paidOrder.total;
+      totalPaidOrdersGuests += paidOrder.guests;
+    });
+
+    totalPaidOrdersAverageCheck = Math.round(totalPaidOrdersTotal / paidOrders.length);
+    //console.log(totalPaidOrdersTotal, totalPaidOrdersGuests, totalPaidOrdersAverageCheck);
     // const dataFromBack = await Reservation.findAll({ raw: true });
     // const data = dataFromBack.filter((el) => new Date(el.date) >= today);
-    //console.log(totalOrdersTotal, totalOrdersGuests, totalOrdersAverageCheck);
+    // console.log(totalOrdersTotal, totalOrdersGuests, totalOrdersAverageCheck);
     res.json({
       activeOrdersAverageCheck,
       activeOrdersTotal,
@@ -44,6 +51,9 @@ router.get('/', async (req, res) => {
       totalOrdersTotal,
       totalOrdersGuests,
       totalOrdersAverageCheck,
+      totalPaidOrdersAverageCheck,
+      totalPaidOrdersGuests,
+      totalPaidOrdersTotal,
     });
   } catch (error) {
     res.send(`Error while loading data! ${error}`);

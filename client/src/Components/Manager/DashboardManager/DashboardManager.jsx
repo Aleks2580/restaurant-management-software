@@ -14,7 +14,11 @@ export default function DashboardManager() {
     totalOrdersTotal: 0,
     totalOrdersGuests: 0,
   });
-  //const [totalPaidOrders, setTotalPaidOrders] = useState();
+  const [totalPaidOrders, setTotalPaidOrders] = useState({
+    totalPaidOrdersAverageCheck: 0,
+    totalPaidOrdersTotal: 0,
+    totalPaidOrdersGuests: 0,
+  });
   const [activeOrders, setActiveOrders] = useState({
     activeOrdersAverageCheck: 0,
     activeOrdersTotal: 0,
@@ -39,6 +43,11 @@ export default function DashboardManager() {
         totalOrdersAverageCheck: result.totalOrdersAverageCheck,
         totalOrdersTotal: result.totalOrdersTotal,
         totalOrdersGuests: result.totalOrdersGuests,
+      });
+      setTotalPaidOrders({
+        totalPaidOrdersAverageCheck: result.totalPaidOrdersAverageCheck,
+        totalPaidOrdersTotal: result.totalPaidOrdersTotal,
+        totalPaidOrdersGuests: result.totalPaidOrdersGuests,
       });
       //setReservations(result.data);
       //setLoading(false);
@@ -75,13 +84,24 @@ export default function DashboardManager() {
         <div className={style.title}>Total Paid Orders</div>
         <div className={style.data}>
           <div>
-            total sum: <span className={style.digit}>0</span>$
+            total sum:{" "}
+            <span className={style.digit}>
+              {totalPaidOrders.totalPaidOrdersTotal}
+            </span>
+            $
           </div>
           <div>
-            guests: <span className={style.digit}>0</span>
+            guests:{" "}
+            <span className={style.digit}>
+              {totalPaidOrders.totalPaidOrdersGuests}
+            </span>
           </div>
           <div>
-            average check: <span className={style.digit}>0</span>$
+            average check:{" "}
+            <span className={style.digit}>
+              {totalPaidOrders.totalPaidOrdersAverageCheck}
+            </span>
+            $
           </div>
         </div>
         <DollarCircleOutlined className={style.icon} />
