@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Order, Reservation } = require('../../db/models');
 
 router.get('/', async (req, res) => {
-  //const today = new Date().setHours(0, 0, 0, 0);
+  const today = (new Date().setHours(0, 0, 0, 0));
   let activeOrdersTotal = 0;
   let activeOrdersGuests = 0;
   let activeOrdersAverageCheck;
@@ -13,6 +13,9 @@ router.get('/', async (req, res) => {
     activeOrders.forEach((activeOrder) => {
      activeOrdersTotal += activeOrder.total;
      activeOrdersGuests += activeOrder.guests;
+     console.log(activeOrder.createdAt.toDateString());
+     console.log(new Date(today).toDateString());
+     //console.log(today)
     })
     activeOrdersAverageCheck = Math.round(activeOrdersTotal / activeOrders.length);
     //console.log(activeOrdersTotal, activeOrdersGuests, activeOrdersAverageCheck)

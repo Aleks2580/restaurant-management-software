@@ -9,7 +9,11 @@ import {
 } from "@ant-design/icons";
 
 export default function DashboardManager() {
-  //const [totalOrders, setTotalOrders] = useState();
+  const [totalOrders, setTotalOrders] = useState({
+    totalOrdersAverageCheck: 0,
+    totalOrdersTotal: 0,
+    totalOrdersGuests: 0,
+  });
   //const [totalPaidOrders, setTotalPaidOrders] = useState();
   const [activeOrders, setActiveOrders] = useState({
     activeOrdersAverageCheck: 0,
@@ -25,8 +29,12 @@ export default function DashboardManager() {
         credentials: "include",
       });
       const result = await response.json();
-      console.log("RESULT", result.activeOrdersAverageCheck);
-
+      //console.log("RESULT", result.activeOrdersAverageCheck);
+      setActiveOrders({
+        activeOrdersAverageCheck: result.activeOrdersAverageCheck,
+        activeOrdersTotal: result.activeOrdersTotal,
+        activeOrdersGuests: result.activeOrdersGuests,
+      });
       //setReservations(result.data);
       //setLoading(false);
       //const noDuplicateDates = [...new Set(result.data.map((el) => el.date))];
@@ -72,13 +80,24 @@ export default function DashboardManager() {
         <div className={style.title}>Total Active Orders</div>
         <div className={style.data}>
           <div>
-            total sum: <span className={style.digit}>0</span>$
+            total sum:{" "}
+            <span className={style.digit}>
+              {activeOrders.activeOrdersTotal}
+            </span>
+            $
           </div>
           <div>
-            guests: <span className={style.digit}>0</span>
+            guests:{" "}
+            <span className={style.digit}>
+              {activeOrders.activeOrdersGuests}
+            </span>
           </div>
           <div>
-            average check: <span className={style.digit}>0</span>$
+            average check:{" "}
+            <span className={style.digit}>
+              {activeOrders.activeOrdersAverageCheck}
+            </span>
+            $
           </div>
         </div>
         <RiseOutlined className={style.icon} />
