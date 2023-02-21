@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
       activeOrdersGuests += activeOrder.guests;
     });
     activeOrdersAverageCheck = Math.round(activeOrdersTotal / activeOrders.length);
+    let activeOrdersTables = activeOrders.length;
 
     const totalOrdersFromBack = await Order.findAll({ raw: true });
     const totalOrders = totalOrdersFromBack
@@ -32,6 +33,7 @@ router.get('/', async (req, res) => {
       totalOrdersGuests += order.guests;
     });
     totalOrdersAverageCheck = Math.round(totalOrdersTotal / totalOrders.length);
+    let totalOrdersTables = totalOrders.length;
 
     const paidOrders = totalOrdersFromBack.filter((order) => order.createdAt.toDateString() === new Date(today).toDateString() && order.open === false && order.billPrinted === true);
     paidOrders.forEach((paidOrder) => {
@@ -40,6 +42,7 @@ router.get('/', async (req, res) => {
     });
 
     totalPaidOrdersAverageCheck = Math.round(totalPaidOrdersTotal / paidOrders.length);
+    let totalPaidOrdersTables = paidOrders.length;
 
     const reservationsFromBack = await Reservation.findAll({ raw: true });
     const reservations = reservationsFromBack.filter((reservation) => new Date(reservation.date).setHours(0, 0, 0, 0) === today);
@@ -54,12 +57,15 @@ router.get('/', async (req, res) => {
       activeOrdersAverageCheck,
       activeOrdersTotal,
       activeOrdersGuests,
+      activeOrdersTables,
       totalOrdersTotal,
       totalOrdersGuests,
       totalOrdersAverageCheck,
+      totalOrdersTables,
       totalPaidOrdersAverageCheck,
       totalPaidOrdersGuests,
       totalPaidOrdersTotal,
+      totalPaidOrdersTables,
       reservationsTables,
       projectedRevenue,
       reservationsGuests,

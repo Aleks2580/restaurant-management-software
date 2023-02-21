@@ -13,16 +13,19 @@ export default function DashboardManager() {
     totalOrdersAverageCheck: 0,
     totalOrdersTotal: 0,
     totalOrdersGuests: 0,
+    tables: 0,
   });
   const [totalPaidOrders, setTotalPaidOrders] = useState({
     totalPaidOrdersAverageCheck: 0,
     totalPaidOrdersTotal: 0,
     totalPaidOrdersGuests: 0,
+    tables: 0,
   });
   const [activeOrders, setActiveOrders] = useState({
     activeOrdersAverageCheck: 0,
     activeOrdersTotal: 0,
     activeOrdersGuests: 0,
+    tables: 0,
   });
   const [reservations, setReservations] = useState({
     reservationsTables: 0,
@@ -41,16 +44,19 @@ export default function DashboardManager() {
         activeOrdersAverageCheck: result.activeOrdersAverageCheck,
         activeOrdersTotal: result.activeOrdersTotal,
         activeOrdersGuests: result.activeOrdersGuests,
+        tables: result.activeOrdersTables,
       });
       setTotalOrders({
         totalOrdersAverageCheck: result.totalOrdersAverageCheck,
         totalOrdersTotal: result.totalOrdersTotal,
         totalOrdersGuests: result.totalOrdersGuests,
+        tables: result.totalOrdersTables,
       });
       setTotalPaidOrders({
         totalPaidOrdersAverageCheck: result.totalPaidOrdersAverageCheck,
         totalPaidOrdersTotal: result.totalPaidOrdersTotal,
         totalPaidOrdersGuests: result.totalPaidOrdersGuests,
+        tables: result.totalPaidOrdersTables,
       });
       setReservations({
         reservationsTables: result.reservationsTables,
@@ -65,6 +71,9 @@ export default function DashboardManager() {
       <div className={style.info}>
         <div className={style.title}>Total Orders</div>
         <div className={style.data}>
+          <div>
+            tables: <span className={style.digit}>{totalOrders.tables}</span>
+          </div>
           <div>
             total sum:{" "}
             <span className={style.digit}>{totalOrders.totalOrdersTotal}</span>$
@@ -87,6 +96,10 @@ export default function DashboardManager() {
       <div className={style.info}>
         <div className={style.title}>Total Paid Orders</div>
         <div className={style.data}>
+          <div>
+            tables:{" "}
+            <span className={style.digit}>{totalPaidOrders.tables}</span>
+          </div>
           <div>
             total sum:{" "}
             <span className={style.digit}>
@@ -115,12 +128,16 @@ export default function DashboardManager() {
         <div className={style.title}>Total Active Orders</div>
         <div className={style.data}>
           <div>
+            tables: <span className={style.digit}>{activeOrders.tables}</span>
+          </div>
+          <div>
             total sum:{" "}
             <span className={style.digit}>
               {activeOrders.activeOrdersTotal}
             </span>
             $
           </div>
+
           <div>
             guests:{" "}
             <span className={style.digit}>
