@@ -12,15 +12,15 @@ router.get('/', async (req, res) => {
   let totalPaidOrdersTotal = 0;
   let totalPaidOrdersGuests = 0;
   let totalPaidOrdersAverageCheck = 0;
+  let reservationsTables = 0;
+  let reservationsGuests = 0;
+  let projectedRevenue = 0;
 
   try {
     const activeOrders = await Order.findAll({ where: { open: true }, raw: true });
     activeOrders.forEach((activeOrder) => {
       activeOrdersTotal += activeOrder.total;
       activeOrdersGuests += activeOrder.guests;
-      // console.log(activeOrder.createdAt.toDateString());
-      // console.log(new Date(today).toDateString());
-      // console.log(today)
     });
     activeOrdersAverageCheck = Math.round(activeOrdersTotal / activeOrders.length);
 
@@ -40,10 +40,16 @@ router.get('/', async (req, res) => {
     });
 
     totalPaidOrdersAverageCheck = Math.round(totalPaidOrdersTotal / paidOrders.length);
-    //console.log(totalPaidOrdersTotal, totalPaidOrdersGuests, totalPaidOrdersAverageCheck);
-    // const dataFromBack = await Reservation.findAll({ raw: true });
-    // const data = dataFromBack.filter((el) => new Date(el.date) >= today);
-    // console.log(totalOrdersTotal, totalOrdersGuests, totalOrdersAverageCheck);
+
+    const reservationsFromBack = await Reservation.findAll({ raw: true });
+    const reservations = reservationsFromBack.filter((reservation) => new Date(reservation.date).setHours(0, 0, 0, 0) === today);
+
+    reservationsTables = reservations.length;
+    projectedRevenue = reservationsTables * totalOrdersAverageCheck;
+    reservations.forEach((reservation) => {
+      reservationsGuests += +reservation.guests;
+    });
+
     res.json({
       activeOrdersAverageCheck,
       activeOrdersTotal,
@@ -54,6 +60,10 @@ router.get('/', async (req, res) => {
       totalPaidOrdersAverageCheck,
       totalPaidOrdersGuests,
       totalPaidOrdersTotal,
+      reservationsTables,
+      projectedRevenue,
+      reservationsGuests,
+
     });
   } catch (error) {
     res.send(`Error while loading data! ${error}`);

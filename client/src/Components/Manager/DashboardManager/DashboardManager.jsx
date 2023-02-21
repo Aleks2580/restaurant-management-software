@@ -24,7 +24,11 @@ export default function DashboardManager() {
     activeOrdersTotal: 0,
     activeOrdersGuests: 0,
   });
-  //const [reservations, setReservations] = useState();
+  const [reservations, setReservations] = useState({
+    reservationsTables: 0,
+    projectedRevenue: 0,
+    reservationsGuests: 0,
+  });
 
   useEffect(() => {
     (async function () {
@@ -33,7 +37,6 @@ export default function DashboardManager() {
         credentials: "include",
       });
       const result = await response.json();
-      //console.log("RESULT", result.activeOrdersAverageCheck);
       setActiveOrders({
         activeOrdersAverageCheck: result.activeOrdersAverageCheck,
         activeOrdersTotal: result.activeOrdersTotal,
@@ -49,10 +52,11 @@ export default function DashboardManager() {
         totalPaidOrdersTotal: result.totalPaidOrdersTotal,
         totalPaidOrdersGuests: result.totalPaidOrdersGuests,
       });
-      //setReservations(result.data);
-      //setLoading(false);
-      //const noDuplicateDates = [...new Set(result.data.map((el) => el.date))];
-      //setDates(noDuplicateDates);
+      setReservations({
+        reservationsTables: result.reservationsTables,
+        projectedRevenue: result.projectedRevenue,
+        reservationsGuests: result.reservationsGuests,
+      });
     })();
   }, []);
 
@@ -138,13 +142,21 @@ export default function DashboardManager() {
         <div className={style.title}>Reservations</div>
         <div className={style.data}>
           <div>
-            tables: <span className={style.digit}>0</span>
+            tables:{" "}
+            <span className={style.digit}>
+              {reservations.reservationsTables}
+            </span>
           </div>
           <div>
-            guests: <span className={style.digit}>0</span>
+            guests:{" "}
+            <span className={style.digit}>
+              {reservations.reservationsGuests}
+            </span>
           </div>
           <div>
-            projected revenue: <span className={style.digit}>0</span>${" "}
+            projected revenue:{" "}
+            <span className={style.digit}>{reservations.projectedRevenue}</span>
+            ${" "}
           </div>
         </div>
         <ToTopOutlined className={style.icon} />
