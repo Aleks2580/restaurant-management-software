@@ -82,7 +82,7 @@ export default function MainManager() {
             ),
 
             getItem(
-              <Link to="/manager/main/users">Statistics</Link>,
+              <Link to="/manager/main/statistics">Statistics</Link>,
               "3",
               <DatabaseOutlined />
             ),
@@ -92,7 +92,7 @@ export default function MainManager() {
               <FileDoneOutlined />
             ),
             getItem(
-              <Link to="/manager/main/users">Stock</Link>,
+              <Link to="/manager/main/stock">Stock</Link>,
               "5",
               <InfoCircleOutlined />
             ),

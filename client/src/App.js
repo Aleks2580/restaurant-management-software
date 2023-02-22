@@ -25,6 +25,8 @@ import MenuCategories from './Components/Waiter/CreateOrder/Menu/MenuCategories'
 import MenuItems from './Components/Waiter/CreateOrder/Menu/MenuItems';
 import EditOrder from './Components/Waiter/EditOrder/EditOrder';
 import ProductsManager from './Components/Manager/ProductsManager/ProductsManager';
+import StatisticsManager from './Components/Manager/StatisticsManager/StatisticsManager';
+import StockManager from './Components/Manager/StockManager/StockManager';
 
 function App() {
   const dispatch = useDispatch()
@@ -71,7 +73,9 @@ function App() {
               <Route path='new' element={<NewUserForm />} />
               <Route path='edit' element={<EditUser />} />
             </Route>
+            <Route path='statistics' element={<StatisticsManager />} />
             <Route path='products' element={<ProductsManager />} />
+            <Route path='stock' element={<StockManager />} />
             <Route path='reservations' element={<ReservationsManager />}>
               <Route path='new' element={<NewReservation />} />
               <Route path='upcoming' element={<UpcomingReservations />} />
