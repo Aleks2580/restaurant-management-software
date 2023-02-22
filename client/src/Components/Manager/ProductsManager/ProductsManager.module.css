@@ -1,0 +1,31 @@
+.main_div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+ 
+}
+
+.button {
+  margin-top: 20px;
+  background-color: rgba(240, 163, 9, 0.584);
+  color: rgb(35, 34, 34);
+  width: 100px;
+}
+
+.button:hover {
+  background-color: rgba(208, 130, 6, 0.584) !important;
+}
+
+.content {
+  margin: 0 auto;
+}
+
+.menu {
+  background-color: transparent !important;
+  border-inline-end: none !important;
+}

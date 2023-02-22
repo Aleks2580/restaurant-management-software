@@ -27,6 +27,8 @@ import EditOrder from './Components/Waiter/EditOrder/EditOrder';
 import ProductsManager from './Components/Manager/ProductsManager/ProductsManager';
 import StatisticsManager from './Components/Manager/StatisticsManager/StatisticsManager';
 import StockManager from './Components/Manager/StockManager/StockManager';
+import AllProducts from './Components/Manager/ProductsManager/AllProducts';
+import NewProduct from './Components/Manager/ProductsManager/NewProduct';
 
 function App() {
   const dispatch = useDispatch()
@@ -74,7 +76,10 @@ function App() {
               <Route path='edit' element={<EditUser />} />
             </Route>
             <Route path='statistics' element={<StatisticsManager />} />
-            <Route path='products' element={<ProductsManager />} />
+            <Route path='products' element={<ProductsManager />}>
+              <Route path='all' element={<AllProducts />} />
+              <Route path='new' element={<NewProduct />} />
+            </Route>
             <Route path='stock' element={<StockManager />} />
             <Route path='reservations' element={<ReservationsManager />}>
               <Route path='new' element={<NewReservation />} />
