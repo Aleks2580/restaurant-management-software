@@ -87,7 +87,7 @@ export default function MainManager() {
               <DatabaseOutlined />
             ),
             getItem(
-              <Link to="/manager/main/users">Products</Link>,
+              <Link to="/manager/main/products">Products</Link>,
               "4",
               <FileDoneOutlined />
             ),
