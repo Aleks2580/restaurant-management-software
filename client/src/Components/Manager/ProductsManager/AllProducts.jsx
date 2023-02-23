@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import OneProduct from "./OneProduct";
+import { Spin } from "antd";
+import style from "./AllProducts.module.css";
+import { Pagination } from "antd";
 
 export default function AllProducts() {
   const [products, setProducts] = useState();
@@ -12,9 +15,23 @@ export default function AllProducts() {
         credentials: "include",
       });
       const result = await response.json();
+      console.log(result);
       setProducts(result.products);
       setLoading(false);
     })();
   }, []);
-  return <div>AllProducts</div>;
+  return !loading ? (
+    <div className={style.all_products}>
+      <div className={style.products}>
+        {products?.map((el) => (
+          <OneProduct el={el} key={el.id} />
+        ))}
+      </div>
+      <div className={style.pagination}>
+        <Pagination defaultCurrent={1} total={50} />
+      </div>
+    </div>
+  ) : (
+    <Spin size="large" />
+  );
 }

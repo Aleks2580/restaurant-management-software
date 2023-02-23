@@ -1,0 +1,19 @@
+.products {
+  /* height: 300px; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 25px;
+  
+}
+
+.all_products {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination {
+ justify-self: flex-end;
+}
