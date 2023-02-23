@@ -1,9 +1,21 @@
 const router = require('express').Router();
-const { Item } = require('../../db/models');
+const { Item, MenuSection, MenuCategory } = require('../../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    const products = await Item.findAll({ raw: true });
+    const products = await Item.findAll({
+      raw: true,
+      include: [
+        {
+          model: MenuSection,
+          attributes: ['name'],
+        },
+        {
+          model: MenuCategory,
+          attributes: ['name'],
+        },
+      ],
+    });
     res.json({ products });
   } catch (error) {
     res.send(`Error while loading products! ${error}`);
