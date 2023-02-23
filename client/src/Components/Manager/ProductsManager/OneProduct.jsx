@@ -11,6 +11,10 @@ export default function OneProduct({ el }) {
   const navigate = useNavigate();
   const [display, setDisplay] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const deleteHandler = () => {};
+
+  const editHandler = () => {};
   return (
     <>
       {display ? (
@@ -21,9 +25,12 @@ export default function OneProduct({ el }) {
               <div className={style.role}>{el.priceUSD}$</div>
             </div>
             <div className={style.icons}>
-              {/* <DeleteOutlined onClick={deleteHandler} className={style.icon} /> */}
+              <DeleteOutlined
+                onClick={deleteHandler}
+                className={style.icon_delete}
+              />
 
-              {/* <EditOutlined onClick={editHandler} className={style.icon} /> */}
+              <EditOutlined onClick={editHandler} className={style.icon} />
             </div>
           </>
         </div>
