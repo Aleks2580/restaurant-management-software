@@ -33,6 +33,7 @@ const printBill = require('./src/routes/printBill');
 const cancelPrintBill = require('./src/routes/cancelPrintBill');
 const pay = require('./src/routes/pay');
 const dashboard = require('./src/routes/dashboard');
+const products = require('./src/routes/products');
 
 
 
@@ -93,6 +94,7 @@ app.use('/print_bill', printBill);
 app.use('/cancel_print_bill', cancelPrintBill);
 app.use('/pay', pay);
 app.use('/dashboard', dashboard);
+app.use('/products', products);
 
 
 app.listen(PORT ?? 5000, () => {

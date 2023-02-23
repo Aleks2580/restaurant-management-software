@@ -12,8 +12,8 @@ export default function AllProducts() {
         credentials: "include",
       });
       const result = await response.json();
-      //setUsers(result.users);
-      //setLoading(false);
+      setProducts(result.products);
+      setLoading(false);
     })();
   }, []);
   return <div>AllProducts</div>;
