@@ -12,11 +12,42 @@ export default function OneProduct({ el }) {
   const [display, setDisplay] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const deleteHandler = () => {};
+  const handleOk = async () => {
+    const response = await fetch("http://localhost:4000/delete_product", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: el.id }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    if (result) {
+      setDisplay(false);
+    }
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const deleteHandler = () => {
+    setIsModalOpen(true);
+  };
 
   const editHandler = () => {};
   return (
     <>
+      <Modal
+        className={style.modal}
+        title="Confirmation"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>Delete this product?</p>
+      </Modal>
       {display ? (
         <div className={style.card}>
           <>

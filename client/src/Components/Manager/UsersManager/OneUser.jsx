@@ -33,7 +33,7 @@ export default function OneUser({ el }) {
     setIsModalOpen(false);
   };
 
-  const deleteHandler = async (e) => {
+  const deleteHandler = () => {
     setIsModalOpen(true);
   };
 
