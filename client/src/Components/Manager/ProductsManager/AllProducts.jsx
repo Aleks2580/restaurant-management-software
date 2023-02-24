@@ -8,6 +8,7 @@ export default function AllProducts() {
   const [products, setProducts] = useState();
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
+  const [categoryName, setCategoryName] = useState();
 
   useEffect(() => {
     (async function () {
@@ -16,7 +17,6 @@ export default function AllProducts() {
         credentials: "include",
       });
       const result = await response.json();
-      //console.log(result);
       setProducts(result.products);
       setLoading(false);
     })();
@@ -31,11 +31,27 @@ export default function AllProducts() {
       const result = await response.json();
       console.log(result);
       setCategories(result.categories);
-      // setLoading(false);
     })();
   }, []);
 
-  const handleChange = () => {};
+  const handleChange = async (e) => {
+    //console.log(e.target.value);
+    setCategoryName(e.target.value);
+    const response = await fetch("http://localhost:4000/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: e.target.value,
+      }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    setProducts(result.products);
+  };
+
+  console.log(categoryName);
 
   return !loading ? (
     <div className={style.all_products}>
@@ -45,7 +61,7 @@ export default function AllProducts() {
             all
           </option>
           {categories?.map((el) => (
-            <option className={style.option} value={el} name={el}>
+            <option className={style.option} value={el.name} name={el}>
               {el.name}
             </option>
           ))}
