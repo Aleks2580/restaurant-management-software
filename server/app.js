@@ -35,7 +35,7 @@ const pay = require('./src/routes/pay');
 const dashboard = require('./src/routes/dashboard');
 const products = require('./src/routes/products');
 const deleteProduct = require('./src/routes/deleteProduct');
-const productsCategories = require('./src/routes/productsCategories');
+const productsCategoriesSections = require('./src/routes/productsCategoriesSections');
 
 
 
@@ -98,7 +98,7 @@ app.use('/pay', pay);
 app.use('/dashboard', dashboard);
 app.use('/products', products);
 app.use('/delete_product', deleteProduct);
-app.use('/products_categories', productsCategories);
+app.use('/products_categories_sections', productsCategoriesSections);
 
 
 app.listen(PORT ?? 5000, () => {

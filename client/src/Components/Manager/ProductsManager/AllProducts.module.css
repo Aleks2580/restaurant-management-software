@@ -17,3 +17,13 @@
 .pagination {
  justify-self: flex-end;
 }
+
+.filters {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.select {
+  margin-left: 5px;
+  margin-right: 20px;
+}
