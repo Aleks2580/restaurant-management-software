@@ -9,6 +9,7 @@ export default function AllProducts() {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [sections, setSections] = useState([]);
+  const [filter, setFilter] = useState({ section: "all", category: "all" });
 
   useEffect(() => {
     (async function () {
@@ -36,15 +37,14 @@ export default function AllProducts() {
   }, []);
 
   const handleChange = async (e) => {
-    //console.log(e.target.value);
-    //setCategoryName(e.target.value);
+    setFilter({ ...filter, [e.target.name]: e.target.value });
     const response = await fetch("http://localhost:4000/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: e.target.value,
+        filter: { ...filter, [e.target.name]: e.target.value },
       }),
       credentials: "include",
     });
@@ -52,14 +52,18 @@ export default function AllProducts() {
     setProducts(result.products);
   };
 
-  //console.log(categoryName);
+  console.log(filter);
 
   return !loading ? (
     <div className={style.all_products}>
       <div className={style.filters}>
         <div className={style.filter_div}>
           Section
-          <select onChange={handleChange} className={style.select}>
+          <select
+            onChange={handleChange}
+            className={style.select}
+            name="section"
+          >
             <option className={style.option} value="all" name="section">
               all
             </option>
@@ -72,7 +76,11 @@ export default function AllProducts() {
         </div>
         <div className={style.filter_div}>
           Category
-          <select onChange={handleChange} className={style.select}>
+          <select
+            onChange={handleChange}
+            className={style.select}
+            name="category"
+          >
             <option className={style.option} value="all" name="category">
               all
             </option>
