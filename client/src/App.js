@@ -29,6 +29,8 @@ import StatisticsManager from './Components/Manager/StatisticsManager/Statistics
 import StockManager from './Components/Manager/StockManager/StockManager';
 import AllProducts from './Components/Manager/ProductsManager/AllProducts';
 import NewProduct from './Components/Manager/ProductsManager/NewProduct';
+import NewSection from './Components/Manager/ProductsManager/NewSection';
+import NewCategory from './Components/Manager/ProductsManager/NewCategory';
 
 function App() {
   const dispatch = useDispatch()
@@ -79,8 +81,8 @@ function App() {
             <Route path='products' element={<ProductsManager />}>
               <Route path='all' element={<AllProducts />} />
               <Route path='new_product' element={<NewProduct />} />
-              <Route path='new_section' element={<NewProduct />} />
-              <Route path='new_category' element={<NewProduct />} />
+              <Route path='new_section' element={<NewSection />} />
+              <Route path='new_category' element={<NewCategory />} />
             </Route>
             <Route path='stock' element={<StockManager />} />
             <Route path='reservations' element={<ReservationsManager />}>

@@ -1,0 +1,26 @@
+.section {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.existing_sections {
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color:rgb(168, 221, 244);
+  width: 100px;
+  align-self: center;
+
+}
+
+.input {
+  width: 250px;
+  margin-bottom: 15px;
+  
+}
+.form {
+  display:flex;
+  flex-direction: column;
+  
+}

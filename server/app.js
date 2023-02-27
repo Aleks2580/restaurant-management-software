@@ -36,6 +36,7 @@ const dashboard = require('./src/routes/dashboard');
 const products = require('./src/routes/products');
 const deleteProduct = require('./src/routes/deleteProduct');
 const productsCategoriesSections = require('./src/routes/productsCategoriesSections');
+const newMenuSection = require('./src/routes/newMenuSection')
 
 
 
@@ -99,6 +100,7 @@ app.use('/dashboard', dashboard);
 app.use('/products', products);
 app.use('/delete_product', deleteProduct);
 app.use('/products_categories_sections', productsCategoriesSections);
+app.use('/new_section', newMenuSection);
 
 
 app.listen(PORT ?? 5000, () => {
