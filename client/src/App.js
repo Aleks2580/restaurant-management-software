@@ -78,7 +78,9 @@ function App() {
             <Route path='statistics' element={<StatisticsManager />} />
             <Route path='products' element={<ProductsManager />}>
               <Route path='all' element={<AllProducts />} />
-              <Route path='new' element={<NewProduct />} />
+              <Route path='new_product' element={<NewProduct />} />
+              <Route path='new_section' element={<NewProduct />} />
+              <Route path='new_category' element={<NewProduct />} />
             </Route>
             <Route path='stock' element={<StockManager />} />
             <Route path='reservations' element={<ReservationsManager />}>

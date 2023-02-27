@@ -10,6 +10,7 @@ export default function AllProducts() {
   const [categories, setCategories] = useState([]);
   const [sections, setSections] = useState([]);
   const [filter, setFilter] = useState({ section: "all", category: "all" });
+  const [resetClicked, setResetClicked] = useState(false);
 
   useEffect(() => {
     (async function () {
@@ -33,8 +34,9 @@ export default function AllProducts() {
       console.log(result.sections);
       setCategories(result.categories);
       setSections(result.sections);
+      setResetClicked(false);
     })();
-  }, []);
+  }, [resetClicked]);
 
   const handleChange = async (e) => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
@@ -50,8 +52,15 @@ export default function AllProducts() {
     });
     const result = await response.json();
     setProducts(result.products);
+    setCategories(result.categories);
   };
 
+  const handleResetFilters = () => {
+    //setFilter({ section: "all", category: "all" });
+    setCategories([]);
+    setSections([]);
+    setResetClicked(true);
+  };
   console.log(filter);
 
   return !loading ? (
@@ -91,6 +100,7 @@ export default function AllProducts() {
             ))}
           </select>
         </div>
+        <button onClick={handleResetFilters}>reset filters</button>
       </div>
       <div className={style.products}>
         {products?.map((el) => (

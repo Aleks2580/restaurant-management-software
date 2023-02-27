@@ -26,12 +26,20 @@ router.get('/', async (req, res) => {
 module.exports = router;
 
 router.post('/', async (req, res) => {
-  // console.log(req.body);
-  // const { name } = req.body;
   const { section, category } = req.body.filter;
-  // console.log(section, category);
   if (section !== 'all' && category !== 'all') {
     try {
+      const categories = await MenuCategory.findAll(
+        {
+          raw: true,
+          include: 
+            {
+              model: MenuSection,
+              attributes: ['name'],
+              where: { name: section },
+            },
+        }
+      )
       const products = await Item.findAll({
         raw: true,
         include: [
@@ -49,12 +57,18 @@ router.post('/', async (req, res) => {
           },
         ],
       });
-      res.json({ products });
+      res.json({ products, categories });
     } catch (error) {
       res.send(`Error while loading products! ${error}`);
     }
   } else if (section === 'all' && category !== 'all') {
     try {
+
+      const categories = await MenuCategory.findAll(
+        {
+          raw: true,
+        }
+      )
       const products = await Item.findAll({
         raw: true,
         include: [
@@ -71,12 +85,23 @@ router.post('/', async (req, res) => {
           },
         ],
       });
-      res.json({ products });
+      res.json({ products, categories });
     } catch (error) {
       res.send(`Error while loading products! ${error}`);
     }
   } else if (section !== 'all' && category === 'all') {
     try {
+      const categories = await MenuCategory.findAll(
+        {
+          raw: true,
+          include: 
+            {
+              model: MenuSection,
+              attributes: ['name'],
+              where: { name: section },
+            },
+        }
+      )
       const products = await Item.findAll({
         raw: true,
         include: [
@@ -91,12 +116,18 @@ router.post('/', async (req, res) => {
           },
         ],
       });
-      res.json({ products });
+      res.json({ products, categories });
     } catch (error) {
       res.send(`Error while loading products! ${error}`);
     }
   } else {
     try {
+
+      const categories = await MenuCategory.findAll(
+        {
+          raw: true,
+        }
+      )
       const products = await Item.findAll({
         raw: true,
         include: [
@@ -110,7 +141,7 @@ router.post('/', async (req, res) => {
           },
         ],
       });
-      res.json({ products });
+      res.json({ products, categories });
     } catch (error) {
       res.send(`Error while loading products! ${error}`);
     }
