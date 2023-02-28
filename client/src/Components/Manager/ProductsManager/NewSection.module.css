@@ -1,10 +1,18 @@
 .section {
   margin-left: 5px;
   margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
 }
 
 .existing_sections {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 60px;
 }
 
 .button {
@@ -22,5 +30,27 @@
 .form {
   display:flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   
+}
+.text {
+  margin-bottom: 20px;
+}
+
+.sections {
+  width: 500px;
+  /* height: 400px; */
+  display: flex;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.main {
+  height: 500px;
+}
+
+::placeholder {
+  text-align: center;
 }

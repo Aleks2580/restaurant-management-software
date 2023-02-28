@@ -64,19 +64,21 @@ export default function NewSection() {
 
   return (
     <>
-      <div>
+      <div className={style.main}>
         <div className={style.existing_sections}>
-          <span>Existing sections:</span>
-          {sections?.map((section) => (
-            <span className={style.section}>{section.name}</span>
-          ))}
+          <div className={style.text}>Existing sections:</div>
+          <div className={style.sections}>
+            {sections?.map((section) => (
+              <span className={style.section}>{section.name}</span>
+            ))}
+          </div>
         </div>
       </div>
       <div className={style.form}>
         <Input
           onChange={handleInput}
           name="name"
-          placeholder="name of the new section "
+          placeholder="name of the new section"
           value={input.name}
           className={style.input}
         />
