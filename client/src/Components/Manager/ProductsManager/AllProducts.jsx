@@ -31,7 +31,6 @@ export default function AllProducts() {
         }
       );
       const result = await response.json();
-      console.log(result.sections);
       setCategories(result.categories);
       setSections(result.sections);
       setResetClicked(false);
