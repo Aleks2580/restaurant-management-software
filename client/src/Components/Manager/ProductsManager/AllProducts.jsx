@@ -55,12 +55,10 @@ export default function AllProducts() {
   };
 
   const handleResetFilters = () => {
-    //setFilter({ section: "all", category: "all" });
     setCategories([]);
     setSections([]);
     setResetClicked(true);
   };
-  console.log(filter);
 
   return !loading ? (
     <div className={style.all_products}>

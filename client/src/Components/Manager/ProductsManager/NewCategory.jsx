@@ -5,7 +5,7 @@ import { Input, Button, message } from "antd";
 export default function NewCategory() {
   const [categories, setCategories] = useState();
   const [sections, setSections] = useState();
-  const [input, setInput] = useState({ section: "", name: "" });
+  const [input, setInput] = useState({ menuSectionId: "", name: "" });
   const [submitClicked, setSubmitClicked] = useState(false);
 
   useEffect(() => {
@@ -28,10 +28,51 @@ export default function NewCategory() {
       const result = await response.json();
       setSections(result.sections);
     })();
-  }, []);
+  }, [submitClicked]);
 
-  const handleInput = () => {
-    setInput();
+  const handleChange = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    setSubmitClicked(true);
+    const key = "updatable";
+    const hasValue = categories.some((category) =>
+      Object.values(category).includes(input.name)
+    );
+    if (hasValue) {
+      message.error({
+        content: "Section already exists!",
+        key,
+        duration: 2,
+      });
+    } else {
+      const response = await fetch("http://localhost:4000/new_category", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(input),
+        credentials: "include",
+      });
+      const result = await response.json();
+
+      if (result) {
+        message.loading({
+          content: "Creating new menu category...",
+          key,
+        });
+        setTimeout(() => {
+          message.success({
+            content: "New category has been created",
+            key,
+            duration: 2,
+          });
+        }, 1000);
+        setInput({ menuSectionId: "", name: "" });
+      }
+    }
+    setSubmitClicked(false);
   };
 
   return (
@@ -50,26 +91,31 @@ export default function NewCategory() {
         <div className={style.filter_div}>
           Choose a section
           <select
-            //onChange={handleChange}
+            onChange={handleChange}
             className={style.select}
-            name="section"
+            name="menuSectionId"
           >
             {sections?.map((el) => (
-              <option className={style.option} value={el.name} name="section">
+              <option
+                className={style.option}
+                key={el.id}
+                value={el.id}
+                name="section"
+              >
                 {el.name}
               </option>
             ))}
           </select>
         </div>
         <Input
-          //onChange={handleInput}
+          onChange={handleChange}
           name="name"
           placeholder="name of the new category"
           value={input.name}
           className={style.input}
         />
         <Button
-          //onClick={handleSubmit}
+          onClick={handleSubmit}
           className={style.button}
           htmlType="submit"
         >
