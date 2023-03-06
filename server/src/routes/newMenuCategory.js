@@ -5,12 +5,14 @@ router.post("/", async (req, res) => {
   const { name } = req.body;
   const menuSectionId = +req.body.menuSectionId;
 
-  // try {
-  //   await MenuCategory.create({ name });
-  //   res.json('Done');
-  // } catch (error) {
-  //   res.json(`Error while creating new section ${error}`);
-  // }
+  console.log(name, menuSectionId);
+
+  try {
+    await MenuCategory.create({ name, menuSectionId });
+    res.json("Done");
+  } catch (error) {
+    res.json(`Error while creating new category ${error}`);
+  }
 });
 
 module.exports = router;

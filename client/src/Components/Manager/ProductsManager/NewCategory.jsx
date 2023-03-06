@@ -5,7 +5,7 @@ import { Input, Button, message } from "antd";
 export default function NewCategory() {
   const [categories, setCategories] = useState();
   const [sections, setSections] = useState();
-  const [input, setInput] = useState({ menuSectionId: "", name: "" });
+  const [input, setInput] = useState({ menuSectionId: "1", name: "" });
   const [submitClicked, setSubmitClicked] = useState(false);
 
   useEffect(() => {
@@ -40,12 +40,13 @@ export default function NewCategory() {
     const hasValue = categories.some((category) =>
       Object.values(category).includes(input.name)
     );
-    if (hasValue) {
+    if (hasValue || input.name === "") {
       message.error({
-        content: "Section already exists!",
+        content: "Category already exists or Input can't be empty",
         key,
         duration: 2,
       });
+      setInput({ menuSectionId: "1", name: "" });
     } else {
       const response = await fetch("http://localhost:4000/new_category", {
         method: "POST",
@@ -69,7 +70,7 @@ export default function NewCategory() {
             duration: 2,
           });
         }, 1000);
-        setInput({ menuSectionId: "", name: "" });
+        setInput({ menuSectionId: "1", name: "" });
       }
     }
     setSubmitClicked(false);
