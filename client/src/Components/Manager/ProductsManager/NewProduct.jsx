@@ -33,6 +33,12 @@ export default function NewProduct() {
   const handleShowProducts = () => {
     setShowProducts(!showProducts);
   };
+
+  const handleChange = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  console.log(input);
   return (
     <>
       <div className={style.main}>
@@ -58,17 +64,12 @@ export default function NewProduct() {
         <div className={style.filter_div}>
           <span className={style.choose_section}>Choose a section</span>
           <select
-            //onChange={handleChange}
+            onChange={handleChange}
             className={style.select}
             name="menuSectionId"
           >
             {sections?.map((el) => (
-              <option
-                className={style.option}
-                key={el.id}
-                value={el.id}
-                //name="section"
-              >
+              <option className={style.option} key={el.id} value={el.id}>
                 {el.name}
               </option>
             ))}
@@ -77,32 +78,27 @@ export default function NewProduct() {
         <div className={style.filter_div}>
           <span className={style.choose_category}>Choose a category</span>
           <select
-            //onChange={handleChange}
+            onChange={handleChange}
             className={style.select}
             name="categoryId"
           >
             {categories?.map((el) => (
-              <option
-                className={style.option}
-                key={el.id}
-                value={el.id}
-                //name="section"
-              >
+              <option className={style.option} key={el.id} value={el.id}>
                 {el.name}
               </option>
             ))}
           </select>
         </div>
         <Input
-          //onChange={handleChange}
+          onChange={handleChange}
           name="name"
           placeholder="name of the new product"
           value={input.name}
           className={style.input}
         />
         <Input
-          //onChange={handleChange}
-          name="price"
+          onChange={handleChange}
+          name="priceUSD"
           placeholder="price of the new product"
           value={input.priceUSD}
           className={style.input}
@@ -117,5 +113,4 @@ export default function NewProduct() {
       </div>
     </>
   );
-  //<div>NewProduct</div>;
 }
