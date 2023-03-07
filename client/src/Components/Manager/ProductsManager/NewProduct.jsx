@@ -6,6 +6,7 @@ export default function NewProduct() {
   const [categories, setCategories] = useState();
   const [sections, setSections] = useState();
   const [products, setProducts] = useState();
+  const [showProducts, setShowProducts] = useState(false);
   const [input, setInput] = useState({
     menuSectionId: "1",
     categoryId: "1",
@@ -29,16 +30,28 @@ export default function NewProduct() {
     })();
   }, [submitClicked]);
 
+  const handleShowProducts = () => {
+    setShowProducts(!showProducts);
+  };
   return (
     <>
       <div className={style.main}>
         <div className={style.existing_products}>
-          <div className={style.text}>Existing products:</div>
-          <div className={style.products}>
-            {products?.map((category) => (
-              <span className={style.product}>{category.name}</span>
-            ))}
+          <div className={style.text}>
+            Existing products:{" "}
+            <button onClick={handleShowProducts}>
+              {showProducts ? "Hide" : "Show"}
+            </button>
           </div>
+          {showProducts ? (
+            <div className={style.products}>
+              {products?.map((category) => (
+                <span className={style.product}>{category.name}</span>
+              ))}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className={style.form}>
