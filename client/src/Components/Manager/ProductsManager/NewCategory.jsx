@@ -40,9 +40,16 @@ export default function NewCategory() {
     const hasValue = categories.some((category) =>
       Object.values(category).includes(input.name)
     );
-    if (hasValue || input.name === "") {
+    if (hasValue) {
       message.error({
-        content: "Category already exists or Input can't be empty",
+        content: "Category already exists",
+        key,
+        duration: 2,
+      });
+      setInput({ menuSectionId: "1", name: "" });
+    } else if (input.name === "") {
+      message.error({
+        content: "Input can't be empty",
         key,
         duration: 2,
       });

@@ -5,8 +5,6 @@ router.post("/", async (req, res) => {
   const { name } = req.body;
   const menuSectionId = +req.body.menuSectionId;
 
-  console.log(name, menuSectionId);
-
   try {
     await MenuCategory.create({ name, menuSectionId });
     res.json("Done");

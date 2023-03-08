@@ -30,7 +30,7 @@ export default function NewProduct() {
     })();
   }, [submitClicked]);
 
-  const handleShowProducts = () => {
+  const handleShowProducts = async () => {
     setShowProducts(!showProducts);
   };
 
@@ -38,7 +38,72 @@ export default function NewProduct() {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = async (e) => {
+    setSubmitClicked(true);
+    const key = "updatable";
+    const hasValue = products.some((product) =>
+      Object.values(product).includes(input.name)
+    );
+    if (hasValue) {
+      message.error({
+        content: "Product already exists",
+        key,
+        duration: 2,
+      });
+      setInput({
+        menuSectionId: "1",
+        categoryId: "1",
+        name: "",
+        priceUSD: null,
+      });
+    } else if (input.name === "" || input.priceUSD === "") {
+      message.error({
+        content: "Inputs cannot be empty",
+        key,
+        duration: 2,
+      });
+      setInput({
+        menuSectionId: "1",
+        categoryId: "1",
+        name: "",
+        priceUSD: null,
+      });
+    } else {
+      const response = await fetch("http://localhost:4000/new_product", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(input),
+        credentials: "include",
+      });
+      const result = await response.json();
+
+      if (result) {
+        message.loading({
+          content: "Adding new product...",
+          key,
+        });
+        setTimeout(() => {
+          message.success({
+            content: "New product has been added",
+            key,
+            duration: 2,
+          });
+        }, 1000);
+        setInput({
+          menuSectionId: "1",
+          categoryId: "1",
+          name: "",
+          priceUSD: null,
+        });
+      }
+    }
+    setSubmitClicked(false);
+  };
+
   console.log(input);
+
   return (
     <>
       <div className={style.main}>
@@ -104,7 +169,7 @@ export default function NewProduct() {
           className={style.input}
         />
         <Button
-          //onClick={handleSubmit}
+          onClick={handleSubmit}
           className={style.button}
           htmlType="submit"
         >

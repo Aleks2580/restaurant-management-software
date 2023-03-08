@@ -14,7 +14,7 @@ const usersFilter = require("./src/routes/usersFilter");
 const deleteUser = require("./src/routes/deleteUser");
 const editUser = require("./src/routes/editUser");
 const tables = require("./src/routes/tables");
-//const createOrder = require('./src/routes/createOrder');
+// const createOrder = require('./src/routes/createOrder');
 const checkUser = require("./src/routes/checkUser");
 const addReservation = require("./src/routes/addReservation");
 const reservations = require("./src/routes/reservations");
@@ -38,6 +38,7 @@ const deleteProduct = require("./src/routes/deleteProduct");
 const productsCategoriesSections = require("./src/routes/productsCategoriesSections");
 const newMenuSection = require("./src/routes/newMenuSection");
 const newMenuCategory = require("./src/routes/newMenuCategory");
+const newProduct = require("./src/routes/newProduct");
 
 const app = express();
 app.use(morgan("dev"));
@@ -70,7 +71,7 @@ app.use("/users_filter", usersFilter);
 app.use("/delete_user", deleteUser);
 app.use("/edit_user", editUser);
 app.use("/tables", tables);
-//app.use('/create_order', createOrder);
+// app.use('/create_order', createOrder);
 app.use("/check_user", checkUser);
 app.use("/add_reservation", addReservation);
 app.use("/reservations", reservations);
@@ -94,6 +95,7 @@ app.use("/delete_product", deleteProduct);
 app.use("/products_categories_sections", productsCategoriesSections);
 app.use("/new_section", newMenuSection);
 app.use("/new_category", newMenuCategory);
+app.use("/new_product", newProduct);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);
