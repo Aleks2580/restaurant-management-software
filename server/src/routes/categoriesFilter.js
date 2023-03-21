@@ -3,12 +3,9 @@ const { MenuCategory } = require("../../db/models");
 
 router.post("/", async (req, res) => {
   const { menuSectionId } = req.body;
-  // const roleUser = role.all;
-  // console.log(menuSectionId);
   if (menuSectionId === 0) {
     try {
       const categories = await MenuCategory.findAll({ raw: true });
-      console.log(categories);
       res.json({ categories });
     } catch (error) {
       res.json(`Something went wrong ${error}`);
@@ -19,7 +16,6 @@ router.post("/", async (req, res) => {
         where: { menuSectionId },
         raw: true,
       });
-      console.log(categories);
       res.json({ categories });
     } catch (error) {
       res.json(`Something went wrong ${error}`);

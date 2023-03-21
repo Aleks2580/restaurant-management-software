@@ -5,9 +5,8 @@ import { Input, Button, message } from "antd";
 export default function NewCategory() {
   const [categories, setCategories] = useState();
   const [sections, setSections] = useState();
-  const [input, setInput] = useState({ menuSectionId: "1", name: "" });
+  const [input, setInput] = useState({ menuSectionId: "", name: "" });
   const [submitClicked, setSubmitClicked] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
     (async function () {
@@ -29,11 +28,25 @@ export default function NewCategory() {
       const result = await response.json();
       setSections(result.sections);
     })();
-    //setOptionChosen(false);
-  }, [submitClicked, selectedOption]);
+  }, [submitClicked]);
 
-  const handleChange = async (e) => {
-    console.log(typeof e.target.value);
+  const handleChangeInput = async (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+    // const response = await fetch("http://localhost:4000/categories_filter", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     menuSectionId: +e.target.value,
+    //   }),
+    //   credentials: "include",
+    // });
+    // const result = await response.json();
+    // setCategories(result.categories);
+  };
+
+  const handleChangeSection = async (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
     const response = await fetch("http://localhost:4000/categories_filter", {
       method: "POST",
@@ -47,16 +60,6 @@ export default function NewCategory() {
     });
     const result = await response.json();
     setCategories(result.categories);
-    //setUsers(result.roles);
-    // setCategories((prevCategories) => {
-    //   return prevCategories.filter(
-    //     (category) => category.menuSectionId === +e.target.value
-    //   );
-    // });
-    //setSelectedOption(e.target.value);
-    //setSelectedOption(event.target.value);
-    //setOptionChosen(true);
-    //console.log(typeof categories[0].menuSectionId);
   };
 
   const handleSubmit = async () => {
@@ -71,14 +74,14 @@ export default function NewCategory() {
         key,
         duration: 2,
       });
-      setInput({ menuSectionId: "1", name: "" });
-    } else if (input.name === "") {
+      setInput({ menuSectionId: "", name: "" });
+    } else if (input.name === "" || input.menuSectionId === "") {
       message.error({
-        content: "Input can't be empty",
+        content: "Input/section can't be empty",
         key,
         duration: 2,
       });
-      setInput({ menuSectionId: "1", name: "" });
+      setInput({ menuSectionId: "", name: "" });
     } else {
       const response = await fetch("http://localhost:4000/new_category", {
         method: "POST",
@@ -102,11 +105,13 @@ export default function NewCategory() {
             duration: 2,
           });
         }, 1000);
-        setInput({ menuSectionId: "1", name: "" });
+        setInput({ menuSectionId: "", name: "" });
       }
     }
     setSubmitClicked(false);
   };
+
+  console.log(input);
 
   return (
     <>
@@ -124,16 +129,12 @@ export default function NewCategory() {
         <div className={style.filter_div}>
           Choose a section
           <select
-            onChange={handleChange}
+            onChange={handleChangeSection}
             className={style.select}
             name="menuSectionId"
+            value={input.menuSectionId}
           >
-            <option
-              className={style.option}
-              //key={el.id}
-              //value={el.id}
-              name="section"
-            ></option>
+            <option className={style.option} name="menuSectionId"></option>
             {sections?.map((el) => (
               <option
                 className={style.option}
@@ -147,7 +148,7 @@ export default function NewCategory() {
           </select>
         </div>
         <Input
-          onChange={handleChange}
+          onChange={handleChangeInput}
           name="name"
           placeholder="name of the new category"
           value={input.name}
