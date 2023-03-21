@@ -39,6 +39,7 @@ const productsCategoriesSections = require("./src/routes/productsCategoriesSecti
 const newMenuSection = require("./src/routes/newMenuSection");
 const newMenuCategory = require("./src/routes/newMenuCategory");
 const newProduct = require("./src/routes/newProduct");
+const categoriesFilter = require("./src/routes/categoriesFilter");
 
 const app = express();
 app.use(morgan("dev"));
@@ -96,6 +97,7 @@ app.use("/products_categories_sections", productsCategoriesSections);
 app.use("/new_section", newMenuSection);
 app.use("/new_category", newMenuCategory);
 app.use("/new_product", newProduct);
+app.use("/categories_filter", categoriesFilter);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);

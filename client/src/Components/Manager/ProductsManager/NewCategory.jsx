@@ -7,6 +7,7 @@ export default function NewCategory() {
   const [sections, setSections] = useState();
   const [input, setInput] = useState({ menuSectionId: "1", name: "" });
   const [submitClicked, setSubmitClicked] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
     (async function () {
@@ -28,10 +29,34 @@ export default function NewCategory() {
       const result = await response.json();
       setSections(result.sections);
     })();
-  }, [submitClicked]);
+    //setOptionChosen(false);
+  }, [submitClicked, selectedOption]);
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
+    console.log(typeof e.target.value);
     setInput({ ...input, [e.target.name]: e.target.value });
+    const response = await fetch("http://localhost:4000/categories_filter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        menuSectionId: +e.target.value,
+      }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    setCategories(result.categories);
+    //setUsers(result.roles);
+    // setCategories((prevCategories) => {
+    //   return prevCategories.filter(
+    //     (category) => category.menuSectionId === +e.target.value
+    //   );
+    // });
+    //setSelectedOption(e.target.value);
+    //setSelectedOption(event.target.value);
+    //setOptionChosen(true);
+    //console.log(typeof categories[0].menuSectionId);
   };
 
   const handleSubmit = async () => {
@@ -103,6 +128,12 @@ export default function NewCategory() {
             className={style.select}
             name="menuSectionId"
           >
+            <option
+              className={style.option}
+              //key={el.id}
+              //value={el.id}
+              name="section"
+            ></option>
             {sections?.map((el) => (
               <option
                 className={style.option}
