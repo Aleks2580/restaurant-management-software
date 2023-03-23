@@ -8,12 +8,13 @@ export default function NewProduct() {
   const [products, setProducts] = useState();
   const [showProducts, setShowProducts] = useState(false);
   const [input, setInput] = useState({
-    menuSectionId: "1",
-    categoryId: "1",
+    menuSectionId: "",
+    categoryId: "",
     name: "",
     priceUSD: null,
   });
   const [submitClicked, setSubmitClicked] = useState(false);
+
   useEffect(() => {
     (async function () {
       const response = await fetch(
@@ -34,7 +35,27 @@ export default function NewProduct() {
     setShowProducts(!showProducts);
   };
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+    const response = await fetch(
+      "http://localhost:4000/sections_categories_filter",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: { ...input, [e.target.name]: e.target.value },
+        }),
+        credentials: "include",
+      }
+    );
+    const result = await response.json();
+    setProducts(result.products);
+    setCategories(result.categories);
+  };
+
+  const handleInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
@@ -51,20 +72,25 @@ export default function NewProduct() {
         duration: 2,
       });
       setInput({
-        menuSectionId: "1",
-        categoryId: "1",
+        menuSectionId: "",
+        categoryId: "",
         name: "",
         priceUSD: null,
       });
-    } else if (input.name === "" || input.priceUSD === "") {
+    } else if (
+      input.name === "" ||
+      input.priceUSD === "" ||
+      input.menuSectionId === "" ||
+      input.categoryId === ""
+    ) {
       message.error({
-        content: "Inputs cannot be empty",
+        content: "Fields cannot be empty",
         key,
         duration: 2,
       });
       setInput({
-        menuSectionId: "1",
-        categoryId: "1",
+        menuSectionId: "",
+        categoryId: "",
         name: "",
         priceUSD: null,
       });
@@ -92,8 +118,8 @@ export default function NewProduct() {
           });
         }, 1000);
         setInput({
-          menuSectionId: "1",
-          categoryId: "1",
+          menuSectionId: "",
+          categoryId: "",
           name: "",
           priceUSD: null,
         });
@@ -132,7 +158,9 @@ export default function NewProduct() {
             onChange={handleChange}
             className={style.select}
             name="menuSectionId"
+            value={input.menuSectionId}
           >
+            <option className={style.option} name="menuSectionId"></option>
             {sections?.map((el) => (
               <option className={style.option} key={el.id} value={el.id}>
                 {el.name}
@@ -146,7 +174,9 @@ export default function NewProduct() {
             onChange={handleChange}
             className={style.select}
             name="categoryId"
+            value={input.categoryId}
           >
+            <option className={style.option} name="categoryId"></option>
             {categories?.map((el) => (
               <option className={style.option} key={el.id} value={el.id}>
                 {el.name}
@@ -155,14 +185,14 @@ export default function NewProduct() {
           </select>
         </div>
         <Input
-          onChange={handleChange}
+          onChange={handleInput}
           name="name"
           placeholder="name of the new product"
           value={input.name}
           className={style.input}
         />
         <Input
-          onChange={handleChange}
+          onChange={handleInput}
           name="priceUSD"
           placeholder="price of the new product"
           value={input.priceUSD}

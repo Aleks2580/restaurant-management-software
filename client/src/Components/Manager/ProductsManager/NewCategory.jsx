@@ -32,18 +32,6 @@ export default function NewCategory() {
 
   const handleChangeInput = async (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
-    // const response = await fetch("http://localhost:4000/categories_filter", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     menuSectionId: +e.target.value,
-    //   }),
-    //   credentials: "include",
-    // });
-    // const result = await response.json();
-    // setCategories(result.categories);
   };
 
   const handleChangeSection = async (e) => {
@@ -110,8 +98,6 @@ export default function NewCategory() {
     }
     setSubmitClicked(false);
   };
-
-  console.log(input);
 
   return (
     <>
