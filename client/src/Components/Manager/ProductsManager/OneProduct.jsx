@@ -5,6 +5,7 @@ import style from "./OneProduct.module.css";
 import { Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { editProduct } from "../../../store/editProduct/actionCreators";
 
 export default function OneProduct({ el }) {
   const dispatch = useDispatch();
@@ -36,7 +37,15 @@ export default function OneProduct({ el }) {
     setIsModalOpen(true);
   };
 
-  const editHandler = () => {};
+  const editHandler = () => {
+    dispatch(
+      editProduct({
+        name: el.name,
+        price: el.priceUSD,
+      })
+    );
+    navigate("../edit");
+  };
   return (
     <>
       <Modal

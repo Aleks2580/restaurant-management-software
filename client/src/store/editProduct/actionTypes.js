@@ -1,0 +1,2 @@
+export const GET_PRODUCT_TO_EDIT = "GET_PRODUCT_TO_EDIT";
+export const DONE_EDITING = "DONE_EDITING";

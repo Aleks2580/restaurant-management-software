@@ -54,6 +54,8 @@ export default function AllProducts() {
     setCategories(result.categories);
   };
 
+  console.log(filter);
+
   const handleResetFilters = () => {
     setCategories([]);
     setSections([]);
