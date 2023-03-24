@@ -3,11 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Input, message } from "antd";
 import style from "./EditProduct.module.css";
-//import { doneEditing } from "../../../store/editUser/actionCreators";
+import { doneEditing } from "../../../store/editProduct/actionCreators";
 
 export default function EditProduct() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { name, price } = useSelector((state) => state.editProduct);
+  const [input, setInput] = useState({
+    name: name,
+    price: price,
+  });
 
   return (
     <>
@@ -16,14 +22,14 @@ export default function EditProduct() {
           //onChange={inputHandler}
           name="fullName"
           placeholder="name"
-          //value={input.fullName}
+          value={input.name}
           className={style.input}
         />
 
         <Input
           //onChange={inputHandler}
           name="Role"
-          //value={input.Role}
+          value={input.price}
           placeholder="price"
           className={style.input}
         />
