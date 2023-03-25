@@ -14,7 +14,6 @@ const usersFilter = require("./src/routes/usersFilter");
 const deleteUser = require("./src/routes/deleteUser");
 const editUser = require("./src/routes/editUser");
 const tables = require("./src/routes/tables");
-// const createOrder = require('./src/routes/createOrder');
 const checkUser = require("./src/routes/checkUser");
 const addReservation = require("./src/routes/addReservation");
 const reservations = require("./src/routes/reservations");
@@ -41,6 +40,7 @@ const newMenuCategory = require("./src/routes/newMenuCategory");
 const newProduct = require("./src/routes/newProduct");
 const categoriesFilter = require("./src/routes/categoriesFilter");
 const sectionsCategoriesFilter = require("./src/routes/sectionsCategoriesFilter");
+const editProduct = require("./src/routes/editProduct");
 
 const app = express();
 app.use(morgan("dev"));
@@ -73,7 +73,6 @@ app.use("/users_filter", usersFilter);
 app.use("/delete_user", deleteUser);
 app.use("/edit_user", editUser);
 app.use("/tables", tables);
-// app.use('/create_order', createOrder);
 app.use("/check_user", checkUser);
 app.use("/add_reservation", addReservation);
 app.use("/reservations", reservations);
@@ -100,6 +99,7 @@ app.use("/new_category", newMenuCategory);
 app.use("/new_product", newProduct);
 app.use("/categories_filter", categoriesFilter);
 app.use("/sections_categories_filter", sectionsCategoriesFilter);
+app.use("/edit_product", editProduct);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);

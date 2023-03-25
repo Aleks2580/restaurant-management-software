@@ -42,6 +42,7 @@ export default function OneProduct({ el }) {
       editProduct({
         name: el.name,
         price: el.priceUSD,
+        id: el.id,
       })
     );
     navigate("../edit");
