@@ -11,13 +11,18 @@ export default function AllProducts() {
   const [sections, setSections] = useState([]);
   const [filter, setFilter] = useState({ section: "all", category: "all" });
   const [resetClicked, setResetClicked] = useState(false);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/products", {
-        method: "GET",
-        credentials: "include",
-      });
+      const response = await fetch(
+        `http://localhost:4000/products?page=${page}&pageSize=${pageSize}`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
       const result = await response.json();
       setProducts(result.products);
       setLoading(false);
@@ -35,7 +40,12 @@ export default function AllProducts() {
       setSections(result.sections);
       setResetClicked(false);
     })();
-  }, [resetClicked]);
+  }, [resetClicked, page, pageSize]);
+
+  const handlePageChange = (page, pageSize) => {
+    setPage(page);
+    setPageSize(pageSize);
+  };
 
   const handleChange = async (e) => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
@@ -107,7 +117,12 @@ export default function AllProducts() {
         ))}
       </div>
       <div className={style.pagination}>
-        <Pagination defaultCurrent={1} total={50} />
+        <Pagination
+          defaultCurrent={1}
+          defaultPageSize={10}
+          total={50}
+          onChange={handlePageChange}
+        />
       </div>
     </div>
   ) : (
