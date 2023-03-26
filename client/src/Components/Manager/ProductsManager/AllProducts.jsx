@@ -48,26 +48,33 @@ export default function AllProducts() {
   const handlePageChange = (page, pageSize) => {
     setPage(page);
     setPageSize(pageSize);
+    handleChange();
   };
 
   const handleChange = async (e) => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
-    const response = await fetch("http://localhost:4000/products", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        filter: { ...filter, [e.target.name]: e.target.value },
-      }),
-      credentials: "include",
-    });
+
+    const response = await fetch(
+      `http://localhost:4000/products?page=${page}&pageSize=${pageSize}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          filter: { ...filter, [e.target.name]: e.target.value },
+        }),
+        credentials: "include",
+      }
+    );
     const result = await response.json();
     setProducts(result.products);
     setCategories(result.categories);
+    setTotal(result.totalCount);
   };
 
   const handleResetFilters = () => {
+    setFilter({ section: "all", category: "all" });
     setCategories([]);
     setSections([]);
     setResetClicked(true);
@@ -82,12 +89,13 @@ export default function AllProducts() {
             onChange={handleChange}
             className={style.select}
             name="section"
+            value={filter.section}
           >
             <option className={style.option} value="all" name="section">
               all
             </option>
             {sections?.map((el) => (
-              <option className={style.option} value={el.name} name={el}>
+              <option className={style.option} value={el.name} name="section">
                 {el.name}
               </option>
             ))}
@@ -99,12 +107,13 @@ export default function AllProducts() {
             onChange={handleChange}
             className={style.select}
             name="category"
+            value={filter.category}
           >
             <option className={style.option} value="all" name="category">
               all
             </option>
             {categories?.map((el) => (
-              <option className={style.option} value={el.name} name={el}>
+              <option className={style.option} value={el.name} name="category">
                 {el.name}
               </option>
             ))}
