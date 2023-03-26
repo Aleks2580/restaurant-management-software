@@ -12,7 +12,8 @@ export default function AllProducts() {
   const [filter, setFilter] = useState({ section: "all", category: "all" });
   const [resetClicked, setResetClicked] = useState(false);
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(20);
+  const [total, setTotal] = useState(1000);
 
   useEffect(() => {
     (async function () {
@@ -26,7 +27,9 @@ export default function AllProducts() {
       const result = await response.json();
       setProducts(result.products);
       setLoading(false);
+      setTotal(result.totalCount);
     })();
+
     (async function () {
       const response = await fetch(
         "http://localhost:4000/products_categories_sections",
@@ -63,8 +66,6 @@ export default function AllProducts() {
     setProducts(result.products);
     setCategories(result.categories);
   };
-
-  console.log(filter);
 
   const handleResetFilters = () => {
     setCategories([]);
@@ -119,8 +120,8 @@ export default function AllProducts() {
       <div className={style.pagination}>
         <Pagination
           defaultCurrent={1}
-          defaultPageSize={10}
-          total={50}
+          defaultPageSize={20}
+          total={total}
           onChange={handlePageChange}
         />
       </div>

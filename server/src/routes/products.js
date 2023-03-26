@@ -5,10 +5,12 @@ const { Item, MenuSection, MenuCategory } = require("../../db/models");
 router.get("/", async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const pageSize = parseInt(req.query.pageSize) || 10;
+    const pageSize = parseInt(req.query.pageSize) || 20;
 
     const offset = (page - 1) * pageSize;
     const limit = pageSize;
+
+    const totalCount = await Item.count();
 
     const products = await Item.findAll({
       offset,
@@ -25,7 +27,7 @@ router.get("/", async (req, res) => {
         },
       ],
     });
-    res.json({ products });
+    res.json({ products, totalCount });
   } catch (error) {
     res.send(`Error while loading products! ${error}`);
   }
