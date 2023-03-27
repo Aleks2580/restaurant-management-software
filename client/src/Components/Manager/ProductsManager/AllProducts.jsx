@@ -18,7 +18,7 @@ export default function AllProducts() {
   useEffect(() => {
     (async function () {
       const response = await fetch(
-        `http://localhost:4000/products?page=${page}&pageSize=${pageSize}`,
+        `http://localhost:4000/products?page=${page}&pageSize=${pageSize}&section=${filter.section}&category=${filter.category}`,
         {
           method: "GET",
           credentials: "include",
