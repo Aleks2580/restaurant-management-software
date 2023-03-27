@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LoginManager from "./Components/Manager/LoginManager/LoginManager";
 import LoginWaiter from "./Components/Waiter/LoginWaiter/LoginWaiter";
 import MainWaiter from "./Components/Waiter/MainWaiter/MainWaiter";
@@ -36,8 +36,6 @@ import EditProduct from "./Components/Manager/ProductsManager/EditProduct";
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.loginUser);
-
-  console.log(user.name);
 
   useEffect(() => {
     (async function () {

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
   DashboardOutlined,
@@ -9,7 +9,7 @@ import {
   TeamOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Switch } from "antd";
 import style from "./MainManager.module.css";
 import { logoutUser } from "../../../store/loginUser/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,9 +49,14 @@ export default function MainManager() {
     }, 1000);
     return () => clearInterval(clock);
   }, []);
+  const [theme, setTheme] = useState(false);
+
+  const handleThemeChange = () => {
+    setTheme(!theme);
+  };
 
   return (
-    <Layout className={style.layout}>
+    <Layout className={!theme ? style.layout : style.layout_toggled}>
       <Sider
         className={style.sider}
         breakpoint="lg"
@@ -145,6 +150,7 @@ export default function MainManager() {
           }}
         ></Footer>
       </Layout>
+      <Switch className={style.switch} onChange={handleThemeChange} />
     </Layout>
   );
 }

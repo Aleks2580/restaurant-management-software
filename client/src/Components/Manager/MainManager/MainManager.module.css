@@ -11,6 +11,19 @@
   position: relative;
 }
 
+.layout_toggled {
+  height: 98vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(249, 250, 251, 0.775),
+      rgba(244, 164, 51, 0.428)
+    ),
+    url('../../../../public/img/main_manager.jpg');
+  background-size: cover;
+  background-position: top;
+  position: relative;
+}
+
 .sider {
   background-color: transparent !important;
   margin-top: 90px;
@@ -56,5 +69,10 @@
   font-size: 18px;
   color: rgb(61, 61, 61);
   letter-spacing: 1px;
+}
+
+.switch {
+  margin-top: 5px;
+  margin-right: 5px;
 }
 
