@@ -32,6 +32,9 @@ import NewProduct from "./Components/Manager/ProductsManager/NewProduct";
 import NewSection from "./Components/Manager/ProductsManager/NewSection";
 import NewCategory from "./Components/Manager/ProductsManager/NewCategory";
 import EditProduct from "./Components/Manager/ProductsManager/EditProduct";
+import Revenue from "./Components/Manager/StatisticsManager/Revenue";
+import Waiters from "./Components/Manager/StatisticsManager/Waiters";
+import Products from "./Components/Manager/StatisticsManager/Products";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,7 +67,11 @@ function App() {
               <Route path="new" element={<NewUserForm />} />
               <Route path="edit" element={<EditUser />} />
             </Route>
-            <Route path="statistics" element={<StatisticsManager />} />
+            <Route path="statistics" element={<StatisticsManager />}>
+              <Route path="revenue" element={<Revenue />} />
+              <Route path="waiters" element={<Waiters />} />
+              <Route path="products" element={<Products />} />
+            </Route>
             <Route path="products" element={<ProductsManager />}>
               <Route path="all" element={<AllProducts />} />
               <Route path="new_product" element={<NewProduct />} />

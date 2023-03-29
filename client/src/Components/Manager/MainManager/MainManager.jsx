@@ -96,11 +96,11 @@ export default function MainManager() {
               "4",
               <FileDoneOutlined />
             ),
-            getItem(
-              <Link to="/manager/main/stock">Stock</Link>,
-              "5",
-              <InfoCircleOutlined />
-            ),
+            // getItem(
+            //   <Link to="/manager/main/stock">Stock</Link>,
+            //   "5",
+            //   <InfoCircleOutlined />
+            // ),
             getItem(
               <Link to="/manager/main/reservations">Reservations</Link>,
               "6",
