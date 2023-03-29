@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { TimePicker, Calendar, Input, Button, message } from "antd";
-import dayjs from "dayjs";
 import style from "./NewReservation.module.css";
 
 const format = "HH:mm";
