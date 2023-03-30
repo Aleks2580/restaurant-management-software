@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DatePicker, Button } from "antd";
+import { DatePicker, Button, message } from "antd";
 import {
   SearchOutlined,
   DownloadOutlined,
@@ -17,14 +17,20 @@ export default function Revenue() {
     setDateRange(formattedDates);
   };
 
-  console.log(dateRange);
-
   const handleSearchButton = async () => {
-    // const formattedDates = dateRange.map((date) =>
-    //   moment(date).format("YYYY-MM-DD")
-    // );
-    // console.log(formattedDates);
+    const key = "updatable";
+    const response = await fetch("http://localhost:4000/statistics_revenue", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ dateRange }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    console.log(result);
   };
+  console.log(dateRange);
   return (
     <div className={style.main_div}>
       <div>
