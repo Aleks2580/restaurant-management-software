@@ -1,15 +1,32 @@
 const router = require("express").Router();
+
 const { Order } = require("../../db/models");
+const { Op, Sequelize } = require("sequelize");
 
 router.post("/", async (req, res) => {
-  // const today = new Date().setHours(0, 0, 0, 0);
-  // try {
-  //   const dataFromBack = await Order.findAll({ raw: true });
-  //   const data = dataFromBack.filter((el) => new Date(el.date) > today);
-  //   res.json({ data });
-  // } catch (error) {
-  //   res.send(`Error while loading reservations! ${error}`);
-  // }
+  const { startDate, endDate } = req.body;
+
+  try {
+    const revenue = await Order.findAll({
+      where: {
+        createdAt: {
+          [Op.between]: [startDate, endDate],
+        },
+      },
+      attributes: [
+        "guests",
+        "total",
+        [
+          Sequelize.fn("date_format", Sequelize.col("createdAt"), "%Y-%m-%d"),
+          "createdAt",
+        ],
+      ],
+    });
+    console.log(revenue);
+    res.json({ revenue });
+  } catch (error) {
+    res.send(`Error while loading data! ${error}`);
+  }
 });
 
 module.exports = router;

@@ -10,11 +10,14 @@ const { RangePicker } = DatePicker;
 
 export default function Revenue() {
   const [data, setData] = useState([]);
-  const [dateRange, setDateRange] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const handleDate = (dates) => {
     const formattedDates = dates.map((date) => date.format("YYYY-MM-DD"));
-    setDateRange(formattedDates);
+    const [startDate, endDate] = formattedDates;
+    setStartDate(startDate);
+    setEndDate(endDate);
   };
 
   const handleSearchButton = async () => {
@@ -24,13 +27,13 @@ export default function Revenue() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ dateRange }),
+      body: JSON.stringify({ startDate, endDate }),
       credentials: "include",
     });
     const result = await response.json();
     console.log(result);
   };
-  console.log(dateRange);
+
   return (
     <div className={style.main_div}>
       <div>
