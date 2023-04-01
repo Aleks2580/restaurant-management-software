@@ -1,7 +1,7 @@
 const router = require("express").Router();
-
+const Sequelize = require("sequelize");
+const { Op } = Sequelize;
 const { Order } = require("../../db/models");
-const { Op, Sequelize } = require("sequelize");
 
 router.post("/", async (req, res) => {
   const { startDate, endDate } = req.body;
@@ -14,15 +14,18 @@ router.post("/", async (req, res) => {
         },
       },
       attributes: [
-        "guests",
-        "total",
         [
-          Sequelize.fn("date_format", Sequelize.col("createdAt"), "%Y-%m-%d"),
-          "createdAt",
+          Sequelize.fn("TO_CHAR", Sequelize.col("createdAt"), "YYYY-MM-DD"),
+          "date",
         ],
+        [Sequelize.fn("SUM", Sequelize.col("guests")), "totalGuests"],
+        [Sequelize.fn("SUM", Sequelize.col("total")), "totalRevenue"],
       ],
+      group: ["date"],
+      order: Sequelize.col("date"),
+      raw: true,
     });
-    console.log(revenue);
+
     res.json({ revenue });
   } catch (error) {
     res.send(`Error while loading data! ${error}`);
