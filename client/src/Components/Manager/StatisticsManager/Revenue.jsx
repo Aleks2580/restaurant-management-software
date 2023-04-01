@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DatePicker, Button, message } from "antd";
+import { DatePicker, Button, message, Table, Pagination } from "antd";
 import {
   SearchOutlined,
   DownloadOutlined,
@@ -9,7 +9,8 @@ import style from "./Revenue.module.css";
 const { RangePicker } = DatePicker;
 
 export default function Revenue() {
-  const [data, setData] = useState([]);
+  const [perDateData, setPerDateData] = useState([]);
+  const [overallData, setOverallData] = useState([]);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
@@ -31,7 +32,8 @@ export default function Revenue() {
       credentials: "include",
     });
     const result = await response.json();
-    console.log(result);
+    setPerDateData(result.revenue.perDate);
+    setOverallData(result.revenue.overall);
   };
 
   return (
@@ -50,7 +52,14 @@ export default function Revenue() {
           onClick={handleSearchButton}
         />
       </div>
-      <div className={style.data}>Data</div>
+      <div className={style.data}>
+        {Object.entries(overallData).map(([key, value]) => (
+          <div>
+            {key}
+            {value}
+          </div>
+        ))}
+      </div>
       <div>
         <Button className={style.button_download} icon={<DownloadOutlined />}>
           download

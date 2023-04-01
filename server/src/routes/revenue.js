@@ -7,7 +7,7 @@ router.post("/", async (req, res) => {
   const { startDate, endDate } = req.body;
 
   try {
-    const revenue = await Order.findAll({
+    const perDateRevenue = await Order.findAll({
       where: {
         createdAt: {
           [Op.between]: [startDate, endDate],
@@ -25,6 +25,23 @@ router.post("/", async (req, res) => {
       order: Sequelize.col("date"),
       raw: true,
     });
+    const overallRevenue = await Order.findOne({
+      attributes: [
+        [Sequelize.literal(`SUM("guests")`), "overallGuests"],
+        [Sequelize.literal(`SUM("total")`), "overallRevenue"],
+      ],
+      where: {
+        createdAt: {
+          [Op.between]: [startDate, endDate],
+        },
+      },
+      raw: true,
+    });
+
+    const revenue = {
+      perDate: perDateRevenue,
+      overall: overallRevenue,
+    };
 
     res.json({ revenue });
   } catch (error) {
