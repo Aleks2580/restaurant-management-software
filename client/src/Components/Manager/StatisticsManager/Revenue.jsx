@@ -17,6 +17,7 @@ export default function Revenue() {
   const [averageCheckPerGuest, setAverageCheckPerGuest] = useState([]);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [showCloseButton, setShowCloseButton] = useState(false);
 
   const handleDate = (dates) => {
     const formattedDates = dates?.map((date) => date.format("YYYY-MM-DD"));
@@ -91,6 +92,9 @@ export default function Revenue() {
     <div className={style.main_div}>
       <div>
         <RangePicker
+          onMouseEnter={() => setShowCloseButton(true)}
+          onMouseLeave={() => setShowCloseButton(false)}
+          allowClear={!showCloseButton}
           onChange={handleDate}
           value={[
             isValidDate(startDate) ? moment(startDate) : null,
