@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DatePicker, Button, Table, Pagination } from "antd";
+import { DatePicker, Button, Table, message } from "antd";
 import {
   SearchOutlined,
   DownloadOutlined,
@@ -7,6 +7,8 @@ import {
 } from "@ant-design/icons";
 import style from "./Revenue.module.css";
 import moment from "moment";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 const { RangePicker } = DatePicker;
 
 export default function Revenue() {
@@ -71,6 +73,20 @@ export default function Revenue() {
     },
   ];
 
+  const exportToExcel = (dataSource) => {
+    const worksheet = XLSX.utils.json_to_sheet(dataSource);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: "xlsx",
+      type: "array",
+    });
+    const data = new Blob([excelBuffer], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    });
+    saveAs(data, "table-data.xlsx");
+  };
+
   return (
     <div className={style.main_div}>
       <div>
@@ -114,8 +130,18 @@ export default function Revenue() {
       </div>
 
       <div>
-        <Button className={style.button_download} icon={<DownloadOutlined />}>
-          download PDF
+        <Button
+          className={style.button_download}
+          icon={<DownloadOutlined />}
+          onClick={() => {
+            if (dataSourse.length > 0) {
+              exportToExcel(dataSourse);
+            } else {
+              message.warning("No data available to download!");
+            }
+          }}
+        >
+          download Excel
         </Button>
       </div>
     </div>
