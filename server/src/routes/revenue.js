@@ -27,8 +27,8 @@ router.post("/", async (req, res) => {
     });
     const overallRevenue = await Order.findOne({
       attributes: [
-        [Sequelize.literal(`SUM("guests")`), "overallGuests"],
-        [Sequelize.literal(`SUM("total")`), "overallRevenue"],
+        [Sequelize.literal(`SUM("guests")`), "total guests"],
+        [Sequelize.literal(`SUM("total")`), "total revenue"],
       ],
       where: {
         createdAt: {
@@ -38,9 +38,14 @@ router.post("/", async (req, res) => {
       raw: true,
     });
 
+    const averageCheckPerGuests = (
+      overallRevenue["total revenue"] / overallRevenue["total guests"]
+    ).toFixed(2);
+
     const revenue = {
       perDate: perDateRevenue,
       overall: overallRevenue,
+      ACPG: averageCheckPerGuests,
     };
 
     res.json({ revenue });
