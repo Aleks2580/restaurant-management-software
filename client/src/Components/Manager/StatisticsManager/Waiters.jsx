@@ -13,20 +13,17 @@ const { RangePicker } = DatePicker;
 
 export default function Waiters() {
   const [waiters, setWaiters] = useState([]);
+  const [filter, setFilter] = useState({ waiter: "all", dateRange: [] });
 
   useEffect(() => {
     (async function () {
-      const response = await fetch(
-        `http://localhost:4000/products?page=${page}&pageSize=${pageSize}&section=${filter.section}&category=${filter.category}`,
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`http://localhost:4000/statistics_waiters`, {
+        method: "GET",
+        credentials: "include",
+      });
       const result = await response.json();
-      setProducts(result.products);
-      setLoading(false);
-      setTotal(result.totalCount);
+      console.log(result);
+      setWaiters(result.waiters);
     })();
   }, []);
 
@@ -42,11 +39,11 @@ export default function Waiters() {
         <option className={style.option} value="all" name="section">
           all
         </option>
-        {/* {sections?.map((el) => (
-        <option className={style.option} value={el.name} name="section">
-          {el.name}
-        </option>
-      ))} */}
+        {waiters?.map((el) => (
+          <option className={style.option} value={el.name} name="section">
+            {el.fullName}
+          </option>
+        ))}
       </select>
     </div>
   );
