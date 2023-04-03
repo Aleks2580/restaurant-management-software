@@ -1,3 +1,9 @@
+.modal {
+  width: 300px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .card {
   width: 150px;
   height: 150px;
@@ -5,11 +11,17 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  background-color:rgb(168, 221, 244);
+  background-color: #89b0ae;
   border-radius: 8px;
   margin-right: 10px;
   margin-bottom: 10px;
-  /* margin-left: 10px; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .info {
@@ -20,11 +32,14 @@
   font-size: 18px;
   margin-bottom: 8px;
   letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .role {
- letter-spacing: 1px;
- color: rgb(49, 49, 49);
+  letter-spacing: 1px;
+  color: #f8f8f8;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .icons {
@@ -33,17 +48,12 @@
   margin-top: 5px;
   margin-bottom: 10px;
   font-size: 18px;
-  color: rgb(57, 55, 55);
+  color: #f8f8f8;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .icon:hover {
   cursor: pointer;
-  color: rgb(255, 98, 0);
-}
-
-.modal {
-  width: 300px !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: #f8f8f8;
+  text-shadow: 1px 1px 1px rgba(248, 248, 248, 0.3);
 }

@@ -3,7 +3,6 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-left: 25px;
-  
 }
 
 .all_users {
@@ -14,6 +13,43 @@
 }
 
 .checkboxes {
-  font-size: 18px;
+  display: flex;
+  align-items: center;
   margin-bottom: 30px;
+}
+
+.checkboxes input[type="radio"] {
+  margin-right: 8px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkboxes input[type="radio"]:checked {
+  border-color: #0077ff;
+}
+
+.checkboxes label {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkboxes label:hover {
+  color: #0077ff;
+}
+
+.checkboxes input[type="radio"] + label {
+  margin-right: 16px;
+}
+
+.checkboxes input[type="radio"] + label:last-of-type {
+  margin-right: 0;
 }

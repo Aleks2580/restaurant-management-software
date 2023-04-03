@@ -36,7 +36,6 @@ export default function Revenue() {
   };
 
   const handleSearchButton = async () => {
-    const key = "updatable";
     const response = await fetch("http://localhost:4000/statistics_revenue", {
       method: "POST",
       headers: {
