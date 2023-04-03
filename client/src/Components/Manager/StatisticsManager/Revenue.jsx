@@ -6,7 +6,6 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import style from "./Revenue.module.css";
-import moment from "moment";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import dayjs from "dayjs";
@@ -19,7 +18,6 @@ export default function Revenue() {
   const [averageCheckPerGuest, setAverageCheckPerGuest] = useState([]);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [showCloseButton, setShowCloseButton] = useState(false);
 
   const handleDate = (dates) => {
     if (dates && dates.length > 0) {

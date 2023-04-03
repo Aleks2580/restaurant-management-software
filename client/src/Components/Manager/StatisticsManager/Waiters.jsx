@@ -6,7 +6,7 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import style from "./Waiters.module.css";
-import moment from "moment";
+
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import dayjs from "dayjs";
@@ -15,10 +15,25 @@ const { RangePicker } = DatePicker;
 
 export default function Waiters() {
   const [waiters, setWaiters] = useState([]);
+  const [data, setData] = useState([]);
   const [filterAndDates, setFilterAndDates] = useState({
-    waiter: "all",
+    waiterName: "all",
     dateRange: [],
   });
+
+  useEffect(() => {
+    (async function () {
+      const response = await fetch(
+        `http://localhost:4000/statistics_waiters_filter`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
+      const result = await response.json();
+      setWaiters(result.waiters);
+    })();
+  }, []);
 
   const columns = [
     {
@@ -60,23 +75,22 @@ export default function Waiters() {
       setFilterAndDates({ ...filterAndDates, dateRange: null });
     }
   };
-
-  console.log(filterAndDates);
-
-  const handleResetButton = () => {
-    setFilterAndDates({ waiter: "all", dateRange: [] });
+  const handleSearchButton = async () => {
+    const response = await fetch("http://localhost:4000/statistics_waiters", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ filterAndDates }),
+      credentials: "include",
+    });
+    const result = await response.json();
+    console.log(result);
   };
 
-  useEffect(() => {
-    (async function () {
-      const response = await fetch(`http://localhost:4000/statistics_waiters`, {
-        method: "GET",
-        credentials: "include",
-      });
-      const result = await response.json();
-      setWaiters(result.waiters);
-    })();
-  }, []);
+  const handleResetButton = () => {
+    setFilterAndDates({ waiterName: "all", dateRange: [] });
+  };
 
   return (
     <div className={style.main_div}>
@@ -86,14 +100,18 @@ export default function Waiters() {
           <select
             onChange={handleChange}
             className={style.select}
-            name="waiter"
-            value={filterAndDates.waiter}
+            name="waiterName"
+            value={filterAndDates.waiterName}
           >
-            <option className={style.option} value="all" name="section">
+            <option className={style.option} value="all" name="waiterName">
               all
             </option>
             {waiters?.map((el) => (
-              <option className={style.option} value={el.name} name="section">
+              <option
+                className={style.option}
+                value={el.waiterName}
+                name="waiterName"
+              >
                 {el.fullName}
               </option>
             ))}
@@ -116,7 +134,7 @@ export default function Waiters() {
             shape="circle"
             className={style.button_search}
             icon={<SearchOutlined />}
-            //onClick={handleSearchButton}
+            onClick={handleSearchButton}
           />
           <Button
             className={style.button_reset}

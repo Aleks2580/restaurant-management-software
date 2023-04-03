@@ -42,6 +42,7 @@ const categoriesFilter = require("./src/routes/categoriesFilter");
 const sectionsCategoriesFilter = require("./src/routes/sectionsCategoriesFilter");
 const editProduct = require("./src/routes/editProduct");
 const revenue = require("./src/routes/revenue");
+const statisticsWaitersFilter = require("./src/routes/statisticsWaitersFilter");
 const statisticsWaiters = require("./src/routes/statisticsWaiters");
 
 const app = express();
@@ -103,6 +104,7 @@ app.use("/categories_filter", categoriesFilter);
 app.use("/sections_categories_filter", sectionsCategoriesFilter);
 app.use("/edit_product", editProduct);
 app.use("/statistics_revenue", revenue);
+app.use("/statistics_waiters_filter", statisticsWaitersFilter);
 app.use("/statistics_waiters", statisticsWaiters);
 
 app.listen(PORT ?? 5000, () => {

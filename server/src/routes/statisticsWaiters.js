@@ -1,15 +1,40 @@
 const router = require("express").Router();
-const { User } = require("../../db/models");
+const Sequelize = require("sequelize");
 
-router.get("/", async (req, res) => {
-  try {
-    const waiters = await User.findAll({
-      where: { role: "waiter" },
-      raw: true,
-    });
-    res.json({ waiters });
-  } catch (error) {
-    res.send(`Error while loading categories! ${error}`);
+const { Op } = Sequelize;
+const { Order } = require("../../db/models");
+
+router.post("/", async (req, res) => {
+  const {
+    filterAndDates: {
+      waiterName,
+      dateRange: [startDate, endDate],
+    },
+  } = req.body;
+
+  console.log(waiterName);
+
+  if (waiterName) {
+    try {
+      const data = await Order.findAll({
+        // attributes: [
+        //   [
+        //     Sequelize.fn("TO_CHAR", Sequelize.col("createdAt"), "YYYY-MM-DD"),
+        //     "date",
+        //   ],
+
+        //   [Sequelize.fn("SUM", Sequelize.col("guests")), "totalGuests"],
+        //   [Sequelize.fn("SUM", Sequelize.col("total")), "totalRevenue"],
+        // ],
+
+        // group: ["waiterName"],
+        raw: true,
+      });
+      console.log("DATA", data);
+      res.json({ data });
+    } catch (error) {
+      res.send(`Error while loading data! ${error}`);
+    }
   }
 });
 
