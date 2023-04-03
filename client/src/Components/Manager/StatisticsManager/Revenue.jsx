@@ -9,6 +9,8 @@ import style from "./Revenue.module.css";
 import moment from "moment";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import dayjs from "dayjs";
+
 const { RangePicker } = DatePicker;
 
 export default function Revenue() {
@@ -20,16 +22,17 @@ export default function Revenue() {
   const [showCloseButton, setShowCloseButton] = useState(false);
 
   const handleDate = (dates) => {
-    const formattedDates = dates?.map((date) => date.format("YYYY-MM-DD"));
-    const [startDate, endDate] = formattedDates;
-    setStartDate(startDate);
-    setEndDate(endDate);
-  };
-
-  const isValidDate = (dateString) => {
-    const dateFormat = "YYYY-MM-DD";
-    const date = moment(dateString, dateFormat);
-    return date.isValid();
+    if (dates && dates.length > 0) {
+      const formattedDates = dates?.map((date) =>
+        dayjs(date).format("YYYY-MM-DD")
+      );
+      const [startDate, endDate] = formattedDates;
+      setStartDate(startDate);
+      setEndDate(endDate);
+    } else {
+      setEndDate(null);
+      setStartDate(null);
+    }
   };
 
   const handleSearchButton = async () => {
@@ -92,13 +95,10 @@ export default function Revenue() {
     <div className={style.main_div}>
       <div>
         <RangePicker
-          onMouseEnter={() => setShowCloseButton(true)}
-          onMouseLeave={() => setShowCloseButton(false)}
-          allowClear={!showCloseButton}
           onChange={handleDate}
           value={[
-            isValidDate(startDate) ? moment(startDate) : null,
-            isValidDate(endDate) ? moment(endDate) : null,
+            startDate ? dayjs(startDate) : null,
+            endDate ? dayjs(endDate) : null,
           ]}
         />
         <Button
