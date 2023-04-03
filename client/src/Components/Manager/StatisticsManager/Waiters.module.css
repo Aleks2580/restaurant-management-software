@@ -1,0 +1,78 @@
+.main_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.button_search {
+  margin-left: 10px;
+}
+
+.button_reset {
+  margin-left: 10px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  height: 65vh;
+}
+
+.total_info {
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+}
+
+.key {
+  margin-right: 3px;
+}
+
+.table_revenue {
+  width: 50vw;
+  height: 500px !important;
+  text-align: center;
+}
+
+.data_all {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.filter_dates {
+  display: flex;
+  align-items: center;
+}
+
+.filter_div {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  margin-left: 10px;
+  width: 5vw;
+  text-align: center;
+  padding: 6px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #555;
+  appearance: none;
+  outline: none;
+}
+
+.option {
+  font-size: 16px;
+  color: #555;
+}
+label {
+  font-size: 16px;
+  color: #333;
+}
