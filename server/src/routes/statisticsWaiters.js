@@ -23,6 +23,7 @@ router.post("/", async (req, res) => {
           "waiterName",
           [Sequelize.fn("sum", Sequelize.col("guests")), "totalGuests"],
           [Sequelize.fn("sum", Sequelize.col("total")), "totalAmount"],
+          [Sequelize.literal("sum(total) / sum(guests)"), "acpg"],
         ],
         group: ["date", "waiterName"],
         order: [["date", "ASC"]],
@@ -49,26 +50,12 @@ router.post("/", async (req, res) => {
           "waiterName",
           [Sequelize.fn("sum", Sequelize.col("guests")), "totalGuests"],
           [Sequelize.fn("sum", Sequelize.col("total")), "totalAmount"],
+          [Sequelize.literal("sum(total) / sum(guests)"), "acpg"],
         ],
         group: ["date", "waiterName"],
         order: [["date", "ASC"]],
         raw: true,
       });
-      // const data = await Order.findAll({
-      //   where: { waiterName },
-      //   attributes: [
-      //     [
-      //       Sequelize.fn("TO_CHAR", Sequelize.col("createdAt"), "YYYY-MM-DD"),
-      //       "date",
-      //     ],
-      //     "waiterName",
-      //     [Sequelize.fn("sum", Sequelize.col("guests")), "totalGuests"],
-      //     [Sequelize.fn("sum", Sequelize.col("total")), "totalAmount"],
-      //   ],
-      //   group: ["date"],
-      //   order: [["date", "ASC"]],
-      //   raw: true,
-      // });
       res.json({ data });
     } catch (error) {
       res.send(`Error while loading data! ${error}`);
@@ -87,6 +74,7 @@ router.post("/", async (req, res) => {
           "waiterName",
           [Sequelize.fn("sum", Sequelize.col("guests")), "totalGuests"],
           [Sequelize.fn("sum", Sequelize.col("total")), "totalAmount"],
+          [Sequelize.literal("sum(total) / sum(guests)"), "acpg"],
         ],
         group: ["date", "waiterName"],
         order: [["date", "ASC"]],

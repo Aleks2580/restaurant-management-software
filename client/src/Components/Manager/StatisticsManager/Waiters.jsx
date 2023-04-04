@@ -35,26 +35,40 @@ export default function Waiters() {
     })();
   }, []);
 
+  const dataSourse = data;
   const columns = [
     {
       title: "Date",
       dataIndex: "date",
       key: "date",
+      sorter: (a, b) => new Date(a.date) - new Date(b.date),
+      sortDirections: ["descend"],
     },
     {
       title: "Waiter",
-      dataIndex: "waiter",
-      key: "waiter",
+      dataIndex: "waiterName",
+      key: "waiterName",
     },
     {
       title: "Total guests",
       dataIndex: "totalGuests",
       key: "totalGuests",
+      sorter: (a, b) => a.totalGuests - b.totalGuests,
+      sortDirections: ["descend"],
     },
     {
-      title: "Total revenue",
-      dataIndex: "totalRevenue",
-      key: "totalRevenue",
+      title: "Total revenue $",
+      dataIndex: "totalAmount",
+      key: "totalAmount",
+      sorter: (a, b) => a.totalAmount - b.totalAmount,
+      sortDirections: ["descend"],
+    },
+    {
+      title: "ACPG $",
+      dataIndex: "acpg",
+      key: "acpg",
+      sorter: (a, b) => a.acpg - b.acpg,
+      sortDirections: ["descend"],
     },
   ];
 
@@ -85,11 +99,12 @@ export default function Waiters() {
       credentials: "include",
     });
     const result = await response.json();
-    console.log(result);
+    setData(result.data);
   };
 
   const handleResetButton = () => {
     setFilterAndDates({ waiterName: "all", dateRange: [] });
+    setData([]);
   };
 
   return (
@@ -155,7 +170,7 @@ export default function Waiters() {
 
         <Table
           className={style.table_revenue}
-          //dataSource={dataSourse}
+          dataSource={dataSourse}
           columns={columns}
           pagination={{
             position: ["bottomCenter"],
