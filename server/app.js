@@ -44,6 +44,7 @@ const editProduct = require("./src/routes/editProduct");
 const revenue = require("./src/routes/revenue");
 const statisticsWaitersFilter = require("./src/routes/statisticsWaitersFilter");
 const statisticsWaiters = require("./src/routes/statisticsWaiters");
+const statisticsProducts = require("./src/routes/statisticsProducts");
 
 const app = express();
 app.use(morgan("dev"));
@@ -106,6 +107,7 @@ app.use("/edit_product", editProduct);
 app.use("/statistics_revenue", revenue);
 app.use("/statistics_waiters_filter", statisticsWaitersFilter);
 app.use("/statistics_waiters", statisticsWaiters);
+app.use("/statistics_products", statisticsProducts);
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);
