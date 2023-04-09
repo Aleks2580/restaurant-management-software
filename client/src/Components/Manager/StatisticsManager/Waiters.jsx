@@ -7,8 +7,8 @@ import {
 } from "@ant-design/icons";
 import style from "./Waiters.module.css";
 
-import * as XLSX from "xlsx";
-import { saveAs } from "file-saver";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 import dayjs from "dayjs";
 
 const { RangePicker } = DatePicker;
@@ -71,6 +71,40 @@ export default function Waiters() {
       sortDirections: ["descend"],
     },
   ];
+
+  function downloadPDF(data) {
+    const unit = "pt";
+    const size = "A4";
+    const orientation = "portrait";
+
+    const marginLeft = 40;
+    const doc = new jsPDF(orientation, unit, size);
+
+    doc.setFontSize(16);
+    doc.setTextColor(40);
+
+    doc.text("Waiters Statistics", marginLeft, 40);
+
+    const headers = [
+      ["Date", "Waiter", "Total guests", "Total revenue $", "ACPG $"],
+    ];
+    const tableData = data.map((item) => [
+      item.date,
+      item.waiterName,
+      item.totalGuests,
+      item.totalAmount,
+      item.acpg,
+    ]);
+
+    let content = {
+      startY: 70,
+      head: headers,
+      body: tableData,
+    };
+
+    doc.autoTable(content);
+    doc.save("waiters-statistics.pdf");
+  }
 
   const handleChange = async (e, dates) => {
     setFilterAndDates({
@@ -159,14 +193,7 @@ export default function Waiters() {
         </div>
       </div>
       <div className={style.data}>
-        <div className={style.data_all}>
-          {/* {Object.entries(overallData)?.map(([key, value]) => (
-            <div key={key} className={style.total_info}>
-              <div className={style.key}>{key}:</div> <div>{value}</div>
-            </div>
-          ))}
-          <div>ACPG: {averageCheckPerGuest}$</div> */}
-        </div>
+        <div className={style.data_all}></div>
 
         <Table
           className={style.table_revenue}
@@ -181,13 +208,13 @@ export default function Waiters() {
         <Button
           className={style.button_download}
           icon={<DownloadOutlined />}
-          // onClick={() => {
-          //   if (dataSourse.length > 0) {
-          //     exportToExcel(dataSourse);
-          //   } else {
-          //     message.warning("No data available to download!");
-          //   }
-          // }}
+          onClick={() => {
+            if (dataSourse.length > 0) {
+              downloadPDF(data);
+            } else {
+              message.warning("No data available to download!");
+            }
+          }}
         >
           download PDF
         </Button>
