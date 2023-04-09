@@ -1,11 +1,10 @@
 .products {
-  height: 300px;
+  height: 55vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-left: 25px;
   margin-top: 50px;
-  
 }
 
 .all_products {
@@ -16,18 +15,82 @@
 }
 
 .pagination {
- justify-self: flex-end;
- margin-top: 100px;
+  justify-self: flex-end;
+  margin-top: 100px;
 }
 
 .filters {
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
-.select {
-  margin-left: 5px;
+.filter_div {
+  display: flex;
+  align-items: center;
   margin-right: 20px;
-  width: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #444;
 }
 
+.filter_div span {
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #444;
+}
+
+.filter_div select,
+button {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #444;
+}
+
+.select {
+  width: 100px;
+  margin-left: 5px;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+.select:focus {
+  outline: none;
+  box-shadow: 0px 0px 2px 2px #b3d4fc;
+  border: 1px solid #b3d4fc;
+}
+
+.option {
+  font-size: 14px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.reset_button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #1e88e5;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+.reset_button:hover {
+  background-color: #1565c0;
+}
+
+.reset_button:focus {
+  outline: none;
+  box-shadow: 0px 0px 2px 2px #b3d4fc;
+}

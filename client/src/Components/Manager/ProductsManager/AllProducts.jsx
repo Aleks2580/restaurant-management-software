@@ -119,7 +119,9 @@ export default function AllProducts() {
             ))}
           </select>
         </div>
-        <button onClick={handleResetFilters}>reset filters</button>
+        <button className={style.reset_button} onClick={handleResetFilters}>
+          reset filters
+        </button>
       </div>
       <div className={style.products}>
         {products?.map((el) => (

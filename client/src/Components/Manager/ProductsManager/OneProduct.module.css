@@ -1,14 +1,22 @@
 .card {
-  width: 170px;
-  height: 70px;
+  width: 10vw;
+  height: 10vh;
   display: flex;
   flex-direction: row;
-  justify-content:  space-between;
+  justify-content: space-between;
   align-items: center;
-  background-color:rgba(168, 221, 244, 0.671);
+  background-color: #fff4e6;
+  border: 2px solid #e6b800;
   border-radius: 8px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
   margin-right: 10px;
   margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
 }
 
 .info {
@@ -18,8 +26,14 @@
   padding: 10px;
 }
 .name {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
   margin-bottom: 8px;
+  color: #303030;
+}
+.role {
+  font-size: 14px;
+  color: #858585;
 }
 
 .icons {
@@ -28,23 +42,65 @@
   margin-top: 5px;
   margin-bottom: 10px;
   font-size: 18px;
-  color: rgb(57, 55, 55);
+  color: #858585;
   padding: 15px;
+}
+
+.icon {
+  margin: 0 5px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
 }
 
 .icon:hover {
   cursor: pointer;
-  color: rgb(255, 98, 0);
+  color: #007bff;
 }
 
 .icon_delete:hover {
   cursor: pointer;
-  color: rgb(255, 98, 0);
+  color: #dc3545;
 }
 
 .icon_delete {
   margin-right: 3px;
 }
+.modal {
+  width: 300px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #858585;
+  padding: 15px;
+}
+
+.icon {
+  margin: 0 5px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.icon:hover {
+  color: #007bff;
+}
+
+.icon_delete {
+  margin-right: 3px;
+}
+
+.icon_delete:hover {
+  color: #dc3545;
+}
+
 .modal {
   width: 300px !important;
   display: flex;
