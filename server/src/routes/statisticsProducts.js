@@ -38,16 +38,22 @@ router.get("/", async (req, res) => {
 
     console.log("ITEMS", orders);
 
-    const itemsData = {};
+    const itemsData = [];
     orders.forEach((order) => {
       const items = JSON.parse(order.items);
       items.forEach((orderItem) => {
         const { item, quantity, price } = orderItem;
-        if (!itemsData[item]) {
-          itemsData[item] = { quantity: 0, total: 0 };
+        const itemData = itemsData.find((data) => data.name === item);
+        if (itemData) {
+          itemData.quantity += quantity;
+          itemData.total += quantity * price;
+        } else {
+          itemsData.push({
+            name: item,
+            quantity,
+            total: quantity * price,
+          });
         }
-        itemsData[item].quantity += quantity;
-        itemsData[item].total += quantity * price;
       });
     });
     console.log("ITEMS", itemsData);
