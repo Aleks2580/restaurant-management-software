@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
+import style from "./Products.module.css";
 
 export default function Products() {
   const [topMenuSections, setTopMenuSections] = useState([]);
@@ -137,10 +138,16 @@ export default function Products() {
   }, [bestSellingProducts, topMenuCategories, topMenuSections]);
 
   return (
-    <div>
-      <canvas id="myChart" width="200" height="300"></canvas>
-      <canvas id="myChart2" width="200" height="300"></canvas>
-      <canvas id="myChart3" width="200" height="300"></canvas>
+    <div className={style.charts}>
+      <div className={style["chart-container"]}>
+        <canvas id="myChart" width="400" height="430"></canvas>
+      </div>
+      <div className={style["chart-container"]}>
+        <canvas id="myChart2" width="400" height="300"></canvas>
+      </div>
+      <div className={style["chart-container"]}>
+        <canvas id="myChart3" width="400" height="430"></canvas>
+      </div>
     </div>
   );
 }
