@@ -19,11 +19,9 @@ export default function Products() {
       );
       const result = await response.json();
       console.log(result);
-      setBestSellingProducts(result.itemsData);
+      setBestSellingProducts(result.finalData);
     })();
   }, []);
-
-  console.log(bestSellingProducts[0]);
 
   useEffect(() => {
     if (chartRef.current) {
@@ -37,11 +35,16 @@ export default function Products() {
         datasets: [
           {
             label: "Quantity Sold",
-            data: bestSellingProducts
-              ?.map((product) => product.quantity)
-              .sort((a, b) => b - a),
+            data: bestSellingProducts?.map((product) => product.quantity),
             backgroundColor: "rgba(54, 162, 235, 0.2)",
             borderColor: "rgba(54, 162, 235, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "Revenue $",
+            data: bestSellingProducts?.map((product) => product.total),
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgba(255, 99, 132, 1)",
             borderWidth: 1,
           },
         ],
