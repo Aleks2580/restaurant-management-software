@@ -7,6 +7,8 @@ export default function Products() {
   const [bestSellingProducts, setBestSellingProducts] = useState([]);
 
   const chartRef = useRef(null);
+  const chartRef2 = useRef(null);
+  const chartRef3 = useRef(null);
 
   useEffect(() => {
     (async function fetchData() {
@@ -20,6 +22,8 @@ export default function Products() {
       const result = await response.json();
       console.log(result);
       setBestSellingProducts(result.finalData);
+      setTopMenuCategories(result.categoryTotals);
+      setTopMenuSections(result.sectionTotals);
     })();
   }, []);
 
@@ -57,8 +61,86 @@ export default function Products() {
         },
       },
     });
-    chartRef.current = chart;
-  }, [bestSellingProducts]);
 
-  return <canvas id="myChart" width="800" height="500"></canvas>;
+    if (chartRef2.current) {
+      chartRef2.current.destroy();
+    }
+    const ctx2 = document.getElementById("myChart2").getContext("2d");
+    const colors = ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"];
+    const chart2 = new Chart(ctx2, {
+      type: "doughnut",
+      data: {
+        labels: topMenuSections?.map((section) => section.name),
+        datasets: [
+          {
+            label: "Quantity Sold",
+            data: topMenuSections?.map((section) => section.quantity),
+            backgroundColor: colors,
+            borderColor: "rgba(54, 162, 235, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "Revenue $",
+            data: topMenuSections?.map((section) => section.total),
+            backgroundColor: colors.map((color) => `${color}33`),
+            borderColor: "rgba(255, 99, 132, 1)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+
+    if (chartRef3.current) {
+      chartRef3.current.destroy();
+    }
+    const ctx3 = document.getElementById("myChart3").getContext("2d");
+    const chart3 = new Chart(ctx3, {
+      type: "line",
+      data: {
+        labels: topMenuCategories?.map((category) => category.name),
+        datasets: [
+          {
+            label: "Quantity Sold",
+            data: topMenuCategories?.map((category) => category.quantity),
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            borderColor: "rgba(54, 162, 235, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "Revenue $",
+            data: topMenuCategories?.map((category) => category.total),
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgba(255, 99, 132, 1)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+
+    chartRef.current = chart;
+    chartRef2.current = chart2;
+    chartRef3.current = chart3;
+  }, [bestSellingProducts, topMenuCategories, topMenuSections]);
+
+  return (
+    <div>
+      <canvas id="myChart" width="200" height="300"></canvas>
+      <canvas id="myChart2" width="200" height="300"></canvas>
+      <canvas id="myChart3" width="200" height="300"></canvas>
+    </div>
+  );
 }
