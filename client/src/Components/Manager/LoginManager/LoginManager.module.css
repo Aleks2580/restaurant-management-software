@@ -5,7 +5,7 @@
       rgba(249, 250, 251, 0.982),
       rgba(7, 229, 249, 0.17)
     ),
-    url('../../../../public/img/manager.jpg');
+    url("../../../../public/img/manager.jpg");
   background-size: cover;
   background-position: top;
   position: relative;
@@ -22,13 +22,17 @@
   gap: 5px;
   margin-bottom: 50px;
   margin-top: 50px;
+  font-family: "Futura", sans-serif;
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .digits :first-child {
   grid-column: 2/3;
   grid-row: 4/5;
 }
-
 
 .input_manager {
   margin-bottom: 35px;
@@ -45,6 +49,10 @@
   height: 70px;
   border-radius: 0% !important;
   background-color: rgba(0, 0, 0, 0.637);
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .button_manager:hover {
@@ -52,8 +60,6 @@
   color: rgba(0, 0, 0, 0.637) !important;
   font-weight: bold;
 }
-
-
 
 .form {
   width: 300px;
@@ -67,11 +73,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  
 }
 .button {
-    margin-right: 10px;
-    background-color: rgba(0, 0, 0, 0.637);
+  margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0.637);
 }
 
 .button:hover {
@@ -82,6 +87,7 @@
 
 .button_reset {
   background-color: rgba(0, 0, 0, 0.637);
+  font-family: "Futura", sans-serif;
 }
 
 .button_reset:hover {
@@ -92,6 +98,7 @@
 
 .span {
   font-size: 18px;
+  font-family: "Futura", sans-serif;
 }
 
 .icon_back {
@@ -103,8 +110,20 @@
 }
 
 .incorrect {
-  color: red;
+  font-family: "Futura", sans-serif;
+  color: rgb(242, 77, 77);
   font-size: 24px;
   position: absolute;
-  top: 65%;
+  top: 67%;
+  animation: fade-in 1s ease-in-out;
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

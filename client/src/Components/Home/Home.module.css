@@ -6,10 +6,13 @@ body {
 }
 
 .main {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   height: 100vh;
   background-image: url("../../../public/img/home.jpg");
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
   position: relative;
   display: flex;
@@ -31,8 +34,11 @@ body {
 }
 
 .menu {
-  color: black;
+  margin-top: 2rem;
+  color: rgb(47, 46, 46);
   background-color: transparent !important;
+  font-family: "Futura";
+  font-size: 16px;
 }
 
 .icon {
@@ -40,12 +46,104 @@ body {
 }
 
 .popout {
-  font-family: Futura, sans-serif;
+  font-family: "Futura", sans-serif;
   font-weight: 700;
   font-size: 48px;
-  margin-left: 330px;
   margin-top: 50px;
-  color: #454646;
+  color: #454646b8;
   text-shadow: -0.08em 0.08em lightblue;
   text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.div_span {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1600px) {
+  .popout {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .popout {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .popout {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 950px) {
+  .popout {
+    font-size: 24px;
+  }
+
+  .menu {
+    font-size: 14px;
+  }
+
+  .icon {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .popout {
+    font-size: 16px;
+    color: rgba(224, 227, 227, 0.884);
+    text-shadow: none;
+    margin-top: 15px;
+  }
+
+  .menu {
+    margin-top: 20px;
+    color: rgba(224, 227, 227, 0.884);
+  }
+
+  .main {
+    background-image: url("../../../public/img/home-small.jpeg");
+    background-position: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .popout {
+    font-size: 14px;
+    margin-left: 15px;
+  }
+
+  li:hover {
+    color: rgb(21, 99, 223) !important;
+  }
+
+  a::before:hover {
+    color: rgb(21, 99, 223) !important;
+  }
+
+  .main {
+    background-image: url("../../../public/img/home-small.jpeg");
+    background-position: right;
+  }
+
+  .menu {
+    margin-top: 25px;
+    color: azure;
+    font-size: 12px;
+  }
+  .icon {
+    font-size: 16px !important;
+  }
+
+  .icon:hover {
+    color: red;
+  }
 }
