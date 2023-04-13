@@ -37,30 +37,32 @@ const Home = () => {
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
+
   return (
-    <div className={style.main}>
-      <div
-        style={{
-          width: 150,
-        }}
-      >
-        <Button
-          className={style.button_menu}
-          type="primary"
-          onClick={toggleCollapsed}
+    <div className={style.home}>
+      <div className={style.main}>
+        <div
+          style={{
+            width: 150,
+          }}
         >
-          {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        </Button>
-        <Menu
-          className={style.menu}
-          defaultOpenKeys={["sub1"]}
-          mode="inline"
-          // theme="dark"
-          inlineCollapsed={collapsed}
-          items={items}
-        />
+          <Button
+            className={style.button_menu}
+            type="primary"
+            onClick={toggleCollapsed}
+          >
+            {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          </Button>
+          <Menu
+            className={style.menu}
+            defaultOpenKeys={["sub1"]}
+            mode="inline"
+            inlineCollapsed={collapsed}
+            items={items}
+          />
+        </div>
+        <p className={style.popout}>RESTAURANT MANAGEMENT SYSTEM</p>
       </div>
-      <p className={style.popout}>RESTAURANT MANAGEMENT SYSTEM</p>
     </div>
   );
 };
