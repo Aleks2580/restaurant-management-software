@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import {
@@ -27,6 +27,8 @@ export default function MainWaiter() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const name = useSelector((state) => state.loginUser.name);
+  const [menuClosed, setMenuClosed] = useState();
+  const [menuFolded, setMenuFolded] = useState();
 
   useEffect(() => {
     const clock = setInterval(() => {
@@ -54,10 +56,11 @@ export default function MainWaiter() {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          //console.log(broken);
+          console.log(broken);
+          setMenuFolded(broken);
         }}
-        onCollapse={(collapsed, type) => {
-          //console.log(collapsed, type);
+        onCollapse={(collapsed) => {
+          setMenuClosed(collapsed);
         }}
       >
         <div className="logo" />
@@ -69,25 +72,25 @@ export default function MainWaiter() {
             getItem(
               <Link to="/waiter/main/layout">Layout</Link>,
               "1",
-              <LayoutOutlined />
+              <LayoutOutlined className={style.icon} />
             ),
             getItem(
               <Link to="/waiter/main/orders">Current Orders</Link>,
               "2",
-              <SecurityScanOutlined />
+              <SecurityScanOutlined className={style.icon} />
             ),
 
             getItem(
               <Link to="/waiter/main/reservations">Today's bookings</Link>,
               "3",
-              <TeamOutlined />
+              <TeamOutlined className={style.icon} />
             ),
             getItem(
               <Link onClick={handleLogout} to="/">
                 Logout
               </Link>,
               "4",
-              <LogoutOutlined />
+              <LogoutOutlined className={style.icon} />
             ),
           ]}
         />
@@ -101,7 +104,11 @@ export default function MainWaiter() {
         >
           <div className={style.header_div}>
             <span className={style.welcome}>Welcome, {name}!</span>
-            <span ref={time} className={style.time} />
+            {menuClosed || !menuFolded ? (
+              <span ref={time} className={style.time} />
+            ) : (
+              <span ref={time} style={{ display: "none" }} />
+            )}
           </div>
         </Header>
         <Content
