@@ -1,4 +1,4 @@
-
+/* 
 .table_first_row_green {
   margin-top: 30px;
   width: 150px;
@@ -32,4 +32,49 @@
 .icon_dollar {
   margin-right: 10px;
 }
+ */
 
+.table_first_row_green {
+  margin-top: 30px;
+  width: 150px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9ac9a1;
+  color: white;
+  font-size: 24px;
+  margin-right: 30px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+}
+
+.table_first_row_red {
+  cursor: pointer;
+  margin-top: 30px;
+  width: 150px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e06a6a;
+  color: white;
+  font-size: 24px;
+  margin-right: 30px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+}
+
+.icon_dollar {
+  margin-right: 10px;
+}
+
+.table_first_row_green:hover,
+.table_first_row_red:hover {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
