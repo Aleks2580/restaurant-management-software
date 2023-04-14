@@ -56,10 +56,11 @@ export default function MainWaiter() {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          console.log(broken);
+          console.log("FOLDED", broken);
           setMenuFolded(broken);
         }}
         onCollapse={(collapsed) => {
+          console.log("MENUCLOSED", collapsed);
           setMenuClosed(collapsed);
         }}
       >
@@ -119,7 +120,11 @@ export default function MainWaiter() {
           }}
         >
           <div
-            className={menuClosed ? style.content : style.content_collapsed}
+            className={
+              menuClosed || !menuFolded
+                ? style.content
+                : style.content_collapsed
+            }
             style={{
               padding: 24,
               minHeight: 360,
