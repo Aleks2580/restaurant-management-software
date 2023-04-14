@@ -155,4 +155,10 @@
     font-size: 20px;
     background: rgb(255, 255, 255);
   }
+
+  .content_collapsed {
+    position: absolute;
+    top: 18%;
+    left: 20%;
+  }
 }

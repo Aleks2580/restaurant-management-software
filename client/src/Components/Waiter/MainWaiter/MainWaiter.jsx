@@ -119,7 +119,7 @@ export default function MainWaiter() {
           }}
         >
           <div
-            className={style.content}
+            className={menuClosed ? style.content : style.content_collapsed}
             style={{
               padding: 24,
               minHeight: 360,
