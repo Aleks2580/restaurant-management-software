@@ -101,6 +101,18 @@
     width: 600px;
   }
 
+  .content_collapsed {
+    width: 600px;
+    position: absolute;
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    left: 20%;
+  }
+
   .welcome {
     margin-left: 15px;
     font-size: 12px;
@@ -119,12 +131,6 @@
     font-size: 20px;
     background: rgb(255, 255, 255);
   }
-
-  .content_collapsed {
-    position: absolute;
-    top: 35%;
-    left: 40%;
-  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -133,7 +139,6 @@
   }
   .time {
     font-size: 10px;
-    /* margin-right: 5px; */
     left: 5%;
   }
 
@@ -163,8 +168,14 @@
   }
 
   .content_collapsed {
+    width: 500px;
     position: absolute;
     top: 20%;
-    left: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    left: -10%;
   }
 }
