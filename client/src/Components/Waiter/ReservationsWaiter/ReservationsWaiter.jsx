@@ -28,7 +28,7 @@ export default function ReservationsWaiter() {
       {reservations.length !== 0 ? (
         reservations.map((el) => <OneReservationWaiter el={el} key={el.id} />)
       ) : (
-        <Empty />
+        <Empty className={style.empty} />
       )}
     </>
   ) : (
