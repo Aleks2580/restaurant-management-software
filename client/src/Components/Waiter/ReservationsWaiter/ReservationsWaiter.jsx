@@ -24,14 +24,14 @@ export default function ReservationsWaiter() {
   }, []);
 
   return !loading ? (
-    <>
+    <div className={style.reservations}>
       {reservations.length !== 0 ? (
         reservations.map((el) => <OneReservationWaiter el={el} key={el.id} />)
       ) : (
         <Empty className={style.empty} />
       )}
-    </>
+    </div>
   ) : (
-    <Spin size="large" />
+    <Spin className={style.spin} size="large" />
   );
 }
