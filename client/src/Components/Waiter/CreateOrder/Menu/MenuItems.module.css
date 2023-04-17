@@ -12,8 +12,18 @@
   align-items: center;
   cursor: pointer;
   background-color: rgba(202, 102, 30, 0.538);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 16px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
 }
 
 .item:hover {
   background-color: rgba(249, 132, 48, 0.842);
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
