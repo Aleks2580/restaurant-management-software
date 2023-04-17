@@ -18,7 +18,7 @@
 .menu {
   background-color: transparent !important;
   border-inline-end: none !important;
-  font-family: "Futura";
+  font-family: "Futura", sans-serif;
   color: rgba(61, 61, 61, 0.954);
   font-size: 16px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);

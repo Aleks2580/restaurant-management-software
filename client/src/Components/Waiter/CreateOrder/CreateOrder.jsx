@@ -105,7 +105,7 @@ export default function CreateOrder() {
   return (
     <>
       <div className={style.main}>
-        <section className={style.section_main}>
+        <div className={style.section_main}>
           <div className={style.data}>
             <div className={style.info}>
               <div className={style.info_name}>Waiter: {waiterName}</div>
@@ -137,7 +137,7 @@ export default function CreateOrder() {
           <div className={style.outlet}>
             <Outlet />
           </div>
-        </section>
+        </div>
         <div className={style.button_done_div}>
           <Button
             onClick={handleDone}

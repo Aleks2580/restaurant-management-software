@@ -1,6 +1,6 @@
 .items {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .item {
@@ -11,9 +11,9 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color:rgba(202, 102, 30, 0.538);
+  background-color: rgba(202, 102, 30, 0.538);
 }
 
 .item:hover {
-  background-color:rgba(249, 132, 48, 0.842);
+  background-color: rgba(249, 132, 48, 0.842);
 }
