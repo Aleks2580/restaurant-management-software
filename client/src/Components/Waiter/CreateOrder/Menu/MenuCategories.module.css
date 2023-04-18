@@ -47,3 +47,17 @@
     margin-top: 30px;
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .category {
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  .outlet {
+    margin-top: 15px;
+  }
+}

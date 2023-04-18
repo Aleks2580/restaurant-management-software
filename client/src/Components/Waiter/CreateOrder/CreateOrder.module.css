@@ -92,7 +92,7 @@
 .input_guests {
   height: 30px;
   width: 55px;
-  margin-left: 5px;
+  margin-left: 2px;
   background-color: transparent;
   font-family: "Futura", sans-serif;
   font-size: 18px;
@@ -221,7 +221,7 @@
   }
 
   .main_order {
-    margin-left: 10px;
+    margin-left: 20px;
     width: 300px;
   }
   .input_guests {
@@ -230,5 +230,88 @@
 
   .icons {
     left: 105%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .menu {
+    margin-left: 0px;
+    height: 120px;
+  }
+
+  .main {
+    width: 220px;
+  }
+
+  .section {
+    width: 90%;
+    height: 30px;
+    font-size: 16px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+
+  .outlet {
+    margin-top: 0px;
+  }
+
+  .data {
+    font-size: 14px;
+  }
+
+  .main_order {
+    margin-left: 20px;
+    width: 230px;
+    font-size: 12px;
+  }
+  .input_guests {
+    font-size: 14px;
+  }
+
+  .icons {
+    left: 105%;
+  }
+
+  .info_name {
+    margin-bottom: 5px;
+  }
+
+  .info_table {
+    margin-bottom: 5px;
+  }
+
+  .input_guests {
+    height: 30px;
+    width: 55px;
+    margin-left: 2px;
+    background-color: transparent;
+    font-family: "Futura", sans-serif;
+    font-size: 12px;
+    text-align: center;
+  }
+  /* .button_done_div {
+    top: 88%;
+    left: 29%;
+  } */
+
+  .name_amount_price {
+    margin-top: 5px;
+  }
+
+  .item {
+    margin-top: 5px;
+  }
+
+  .icon {
+    margin-right: 2px;
+    height: 3px;
+    width: 8px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .button_done_div {
+    top: 88%;
+    left: 29%;
   }
 }
