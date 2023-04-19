@@ -65,7 +65,8 @@
 
 .button_done_div {
   display: flex;
-  position: absolute;
+  align-self: center;
+  position: fixed;
   top: 90%;
   left: 45%;
   transform: translate(-50%, -50%);
@@ -179,6 +180,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  font-size: 20px;
 }
 
 .info_name {
@@ -289,10 +291,9 @@
     font-size: 12px;
     text-align: center;
   }
-  /* .button_done_div {
-    top: 88%;
-    left: 29%;
-  } */
+  .button_done_div {
+    left: 36%;
+  }
 
   .name_amount_price {
     margin-top: 5px;
@@ -303,7 +304,7 @@
   }
 
   .icon {
-    margin-right: 2px;
+    margin-right: 4px;
     height: 3px;
     width: 8px;
   }
@@ -311,7 +312,39 @@
 
 @media only screen and (max-width: 600px) {
   .button_done_div {
-    top: 88%;
-    left: 29%;
+    left: 30%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .button_done_div {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 3px;
+  }
+
+  .main {
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .main_order {
+    height: 280px;
+    margin-left: 5px;
+  }
+
+  .section {
+    border-radius: 0;
+  }
+
+  .info {
+    font-size: 12px;
+  }
+
+  .input_guests {
+    position: fixed;
+    margin-top: 45px;
+    margin-left: 40px;
   }
 }
