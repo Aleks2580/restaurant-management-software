@@ -1,16 +1,16 @@
-
- .main {
+.main {
   width: 530px;
   height: 582px;
   justify-content: space-between;
   display: flex;
- }
-
+}
 
 .data {
   display: flex;
-  align-items: center;
   justify-content: space-around;
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954);
+  font-size: 18px;
 }
 
 .button_edit {
@@ -18,12 +18,12 @@
   justify-content: center;
   justify-items: end;
   align-self: center;
-  background-color:rgba(123, 186, 51, 0.946);
+  background-color: rgba(123, 186, 51, 0.946);
   margin-right: 30px;
 }
 
 .button_edit:hover {
-  background-color:rgba(67, 103, 26, 0.946) !important;
+  background-color: rgba(67, 103, 26, 0.946) !important;
 }
 
 .button_bill {
@@ -41,9 +41,13 @@
   margin-left: 35px;
   display: flex;
   width: 320px;
-  height: 570px;
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
+  border: 1px rgba(5, 5, 5, 0.475) solid;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: rgba(250, 235, 215, 0.617);
 }
 
 .total_sum {
@@ -103,13 +107,11 @@
   width: 40px;
   margin-right: 10px;
   text-align: center;
-  
 }
 
 .total {
   width: 60px;
   text-align: center;
-  
 }
 
 .item_name {
@@ -170,7 +172,6 @@
   grid-row: 4/5;
 }
 
-
 .input_manager {
   margin-bottom: 5px;
   text-align: center;
@@ -194,8 +195,6 @@
   font-weight: bold;
 }
 
-
-
 .form {
   width: 300px;
   display: flex;
@@ -208,11 +207,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  
 }
 .button {
-    margin-right: 10px;
-    background-color: rgba(0, 0, 0, 0.637);
+  margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0.637);
 }
 
 .button:hover {
@@ -222,7 +220,7 @@
 }
 
 .button_reset {
-  background-color:  rgba(249, 93, 32, 0.637);
+  background-color: rgba(249, 93, 32, 0.637);
   margin-bottom: 40px;
 }
 
@@ -236,7 +234,6 @@
   font-size: 18px;
 }
 
-
 .incorrect {
   color: red;
   font-size: 16px;
@@ -247,14 +244,11 @@
 .modal {
   display: flex;
   justify-content: center;
-} 
-
+}
 
 .icon_circle {
   margin-right: 5px;
 }
 
-
-
-
-
+@media only screen and (max-width: 1400px) {
+}
