@@ -20,6 +20,9 @@
   align-self: center;
   background-color: rgba(123, 186, 51, 0.946);
   margin-right: 30px;
+  position: fixed;
+  bottom: 10%;
+  left: 48%;
 }
 
 .button_edit:hover {
@@ -28,6 +31,9 @@
 
 .button_bill {
   margin-right: 30px;
+  position: fixed;
+  bottom: 10%;
+  left: 52%;
 }
 
 .button_done_div {
@@ -48,13 +54,13 @@
   padding: 8px;
   border-radius: 10px;
   background-color: rgba(250, 235, 215, 0.617);
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954);
 }
 
 .total_sum {
   display: flex;
-  align-items: center;
-  justify-items: end;
-  text-align: center;
+  justify-content: center;
 }
 
 .input_guests {
@@ -157,6 +163,13 @@
 .button_cancel {
   margin-right: 30px;
   background-color: rgba(195, 29, 29, 0.874);
+  position: fixed;
+  bottom: 10%;
+  left: 44%;
+}
+
+.button_cancel:hover {
+  background-color: rgba(142, 19, 19, 0.874) !important;
 }
 .digits {
   display: grid;
@@ -165,6 +178,11 @@
   gap: 5px;
   margin-bottom: 10px;
   margin-top: 40px;
+  font-family: "Futura", sans-serif;
+  border: 3px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .digits :first-child {
@@ -251,4 +269,68 @@
 }
 
 @media only screen and (max-width: 1400px) {
+  .button_cancel {
+    left: 42%;
+  }
+
+  .button_bill {
+    left: 54%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .button_cancel {
+    bottom: 5%;
+    left: 42%;
+  }
+
+  .button_bill {
+    bottom: 5%;
+    left: 58%;
+  }
+}
+
+@media only screen and (max-width: 660px) {
+  .button_cancel {
+    bottom: 5%;
+    left: 32%;
+  }
+
+  .main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info {
+    margin-bottom: 5px;
+    margin-left: 40px;
+  }
+
+  .button_bill {
+    bottom: 5%;
+    left: 66%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .button_cancel {
+    bottom: -13%;
+    left: 24%;
+  }
+
+  .button_bill {
+    bottom: -13%;
+    left: 72%;
+  }
+
+  .main {
+    position: fixed;
+    top: 53%;
+    left: 46%;
+    transform: translate(-50%, -50%);
+  }
+
+  .main_order {
+    height: 100%;
+  }
 }
