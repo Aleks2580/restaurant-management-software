@@ -276,10 +276,19 @@
   .button_bill {
     left: 54%;
   }
+
+  .button_edit {
+    left: 42%;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
   .button_cancel {
+    bottom: 5%;
+    left: 42%;
+  }
+
+  .button_edit {
     bottom: 5%;
     left: 42%;
   }
@@ -310,10 +319,19 @@
     bottom: 5%;
     left: 66%;
   }
+  .button_edit {
+    bottom: 5%;
+    left: 32%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
   .button_cancel {
+    bottom: -13%;
+    left: 24%;
+  }
+
+  .button_edit {
     bottom: -13%;
     left: 24%;
   }

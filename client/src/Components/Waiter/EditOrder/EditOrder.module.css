@@ -1,4 +1,4 @@
-.menu {
+/* .menu {
   display: flex;
   flex-direction: column;
   margin-left: 100px;
@@ -195,4 +195,352 @@
 .info_guests {
   display: flex;
   align-items: center;
+} */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  height: 230px;
+}
+.main {
+  width: 600px;
+  height: 100%;
+}
+
+.section {
+  display: flex;
+  border: 1px rgb(194, 193, 193) solid;
+  width: 90%;
+  height: 50px;
+  background-color: #9ac9a1;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+}
+
+.section:hover {
+  background-color: rgba(62, 92, 29, 0.946);
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.outlet {
+  margin-top: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.data {
+  display: flex;
+  justify-content: space-around;
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954);
+  font-size: 18px;
+}
+
+.button_done {
+  display: flex;
+  justify-content: center;
+  justify-items: end;
+  align-self: flex-end;
+  background-color: #e06a6a;
+  font-family: "Futura", sans-serif;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+}
+
+.button_done:hover {
+  background-color: #e06a6ab9 !important;
+}
+
+.button_done_div {
+  display: flex;
+  align-self: center;
+  position: fixed;
+  top: 90%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
+.main_order {
+  margin-left: 35px;
+  display: flex;
+  width: 350px;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px rgba(5, 5, 5, 0.475) solid;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: rgba(250, 235, 215, 0.617);
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954);
+}
+
+.total_sum {
+  justify-items: end;
+  text-align: center;
+}
+
+.input_guests {
+  height: 30px;
+  width: 55px;
+  margin-left: 2px;
+  background-color: transparent;
+  font-family: "Futura", sans-serif;
+  font-size: 18px;
+}
+
+.name {
+  margin-bottom: 10px;
+}
+
+.name_amount_price {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.item {
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+  position: relative;
+  color: rgba(61, 61, 61, 0.954);
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 115%;
+}
+
+.icon {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.name {
+  width: 120px;
+}
+
+.quantity {
+  width: 60px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.price {
+  width: 40px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.total {
+  width: 60px;
+  text-align: center;
+}
+
+.item_name {
+  width: 120px;
+}
+
+.item_quantity {
+  width: 60px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.item_price {
+  width: 40px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.item_total {
+  width: 60px;
+  text-align: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 20px;
+}
+
+.info_name {
+  margin-bottom: 15px;
+}
+
+.info_table {
+  margin-bottom: 15px;
+}
+
+.info_guests {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1400px) {
+  .menu {
+    margin-left: 0px;
+    height: 200px;
+  }
+
+  .main {
+    width: 380px;
+  }
+
+  .section {
+    width: 90%;
+    height: 40px;
+    font-size: 18px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+  }
+
+  .outlet {
+    margin-top: 8px;
+  }
+
+  .data {
+    font-size: 16px;
+  }
+
+  .main_order {
+    margin-left: 20px;
+    width: 300px;
+  }
+  .input_guests {
+    font-size: 16px;
+  }
+
+  .icons {
+    left: 105%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .menu {
+    margin-left: 0px;
+    height: 140px;
+  }
+
+  .main {
+    width: 220px;
+  }
+
+  .section {
+    width: 90%;
+    height: 30px;
+    font-size: 16px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+
+  .outlet {
+    margin-top: 0px;
+  }
+
+  .data {
+    font-size: 14px;
+  }
+
+  .main_order {
+    margin-left: 20px;
+    width: 230px;
+    font-size: 12px;
+  }
+  .input_guests {
+    font-size: 14px;
+  }
+
+  .icons {
+    left: 105%;
+  }
+
+  .info_name {
+    margin-bottom: 5px;
+  }
+
+  .info_table {
+    margin-bottom: 5px;
+  }
+
+  .input_guests {
+    height: 30px;
+    width: 55px;
+    margin-left: 2px;
+    background-color: transparent;
+    font-family: "Futura", sans-serif;
+    font-size: 12px;
+    text-align: center;
+  }
+  .button_done_div {
+    left: 36%;
+  }
+
+  .name_amount_price {
+    margin-top: 5px;
+  }
+
+  .item {
+    margin-top: 5px;
+  }
+
+  .icon {
+    margin-right: 4px;
+    height: 3px;
+    width: 8px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .button_done_div {
+    left: 30%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .button_done_div {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 3px;
+  }
+
+  .main {
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .main_order {
+    height: 280px;
+    margin-left: 5px;
+  }
+
+  .section {
+    border-radius: 0;
+  }
+
+  .info {
+    font-size: 12px;
+  }
+
+  .input_guests {
+    position: fixed;
+    margin-top: 45px;
+    margin-left: 40px;
+  }
 }
