@@ -5,7 +5,6 @@ import {
   UserOutlined,
   DatabaseOutlined,
   FileDoneOutlined,
-  InfoCircleOutlined,
   TeamOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
@@ -30,6 +29,8 @@ export default function MainManager() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const name = useSelector((state) => state.loginUser.name);
+  const [menuClosed, setMenuClosed] = useState();
+  const [menuFolded, setMenuFolded] = useState();
 
   async function handleLogout() {
     const response = await fetch("http://localhost:4000/logout", {
@@ -62,10 +63,12 @@ export default function MainManager() {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          //console.log(broken);
+          console.log("FOLDED", broken);
+          setMenuFolded(broken);
         }}
-        onCollapse={(collapsed, type) => {
-          //console.log(collapsed, type);
+        onCollapse={(collapsed) => {
+          console.log("MENUCLOSED", collapsed);
+          setMenuClosed(collapsed);
         }}
       >
         <div className="logo" />
@@ -78,40 +81,35 @@ export default function MainManager() {
             getItem(
               <Link to="/manager/main/dashboard">Dashboard</Link>,
               "1",
-              <DashboardOutlined />
+              <DashboardOutlined className={style.icon} />
             ),
             getItem(
               <Link to="/manager/main/users">Users</Link>,
               "2",
-              <UserOutlined />
+              <UserOutlined className={style.icon} />
             ),
 
             getItem(
               <Link to="/manager/main/statistics">Statistics</Link>,
               "3",
-              <DatabaseOutlined />
+              <DatabaseOutlined className={style.icon} />
             ),
             getItem(
               <Link to="/manager/main/products">Products</Link>,
               "4",
-              <FileDoneOutlined />
+              <FileDoneOutlined className={style.icon} />
             ),
-            // getItem(
-            //   <Link to="/manager/main/stock">Stock</Link>,
-            //   "5",
-            //   <InfoCircleOutlined />
-            // ),
             getItem(
               <Link to="/manager/main/reservations">Reservations</Link>,
               "6",
-              <TeamOutlined />
+              <TeamOutlined className={style.icon} />
             ),
             getItem(
               <Link onClick={handleLogout} to="/">
                 Logout
               </Link>,
               "7",
-              <LogoutOutlined />
+              <LogoutOutlined className={style.icon} />
             ),
           ]}
         />
@@ -125,7 +123,11 @@ export default function MainManager() {
         >
           <div className={style.header_div}>
             <span className={style.welcome}>Welcome, {name}!</span>
-            <span ref={time} className={style.time} />
+            {menuClosed || !menuFolded ? (
+              <span ref={time} className={style.time} />
+            ) : (
+              <span ref={time} style={{ display: "none" }} />
+            )}
           </div>
         </Header>
         <Content
@@ -150,7 +152,12 @@ export default function MainManager() {
           }}
         ></Footer>
       </Layout>
-      <Switch className={style.switch} onChange={handleThemeChange} />
+      <Switch
+        className={
+          menuClosed || !menuFolded ? style.switch : style.switch_collapsed
+        }
+        onChange={handleThemeChange}
+      />
     </Layout>
   );
 }
