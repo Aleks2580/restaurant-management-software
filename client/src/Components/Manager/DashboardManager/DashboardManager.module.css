@@ -2,6 +2,11 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+  width: 75%;
+  margin-left: 25px;
 }
 
 .info {
@@ -16,6 +21,8 @@
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
+  margin-bottom: 20px;
+  margin-right: 10px;
 }
 
 .info:hover {
@@ -87,4 +94,58 @@
   font-size: 24px;
   font-weight: 600;
   color: gray;
+}
+
+@media only screen and (max-width: 1100px) {
+  .info {
+    width: 320px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .info {
+    width: 300px;
+    height: 200px;
+  }
+
+  .data {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .digit {
+    font-size: 20px;
+  }
+
+  .dashboard {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 690px) {
+  .info {
+    width: 250px;
+    height: 150px;
+  }
+
+  .data {
+    font-size: 12px;
+    gap: 1px;
+  }
+
+  .title {
+    font-size: 12px;
+  }
+
+  .digit {
+    font-size: 18px;
+  }
+
+  .dashboard {
+    width: 95%;
+    height: auto;
+  }
 }
