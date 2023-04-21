@@ -136,7 +136,11 @@ export default function MainManager() {
           }}
         >
           <div
-            className={style.content}
+            className={
+              menuClosed || !menuFolded
+                ? style.content
+                : style.content_collapsed
+            }
             style={{
               padding: 24,
               minHeight: 360,

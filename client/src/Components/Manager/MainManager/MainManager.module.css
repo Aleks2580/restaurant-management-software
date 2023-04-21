@@ -190,13 +190,12 @@
   .content_collapsed {
     width: 500px;
     position: absolute;
-    top: 20%;
+    top: 25%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-    left: -10%;
   }
 
   .switch_collapsed {
