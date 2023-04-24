@@ -1,13 +1,18 @@
 .data {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 2px;
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954);
+  width: 100%;
 }
 
 .date {
   width: 120px;
   text-align: start;
-  color: black;
+  color: rgba(61, 61, 61, 0.954);
   font-size: 20px;
   margin-right: 40px;
 }
@@ -15,7 +20,7 @@
 .time {
   width: 60px;
   text-align: start;
-  color: black;
+  color: rgba(61, 61, 61, 0.954);
   font-size: 20px;
   margin-right: 30px;
 }
@@ -23,19 +28,19 @@
 .name {
   width: 60px;
   text-align: start;
-  color: black;
+  color: rgba(61, 61, 61, 0.954);
   font-size: 20px;
   margin-right: 40px;
 }
 
 .guests {
   margin-right: 40px;
-  
+  width: 70px;
 }
 
 .phone {
- width: 120px;
- text-align: start;
+  width: 120px;
+  text-align: start;
   margin-right: 40px;
 }
 
@@ -60,9 +65,107 @@
   color: brown;
 }
 
+.icons {
+  width: 80px;
+}
 .modal {
   width: 250px !important;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 769px) {
+  .date {
+    width: 100px;
+    font-size: 16px;
+    margin-right: 20px;
+  }
+
+  .time {
+    width: 40px;
+    font-size: 16px;
+    margin-right: 15px;
+  }
+
+  .name {
+    width: 50px;
+    text-align: start;
+    color: rgba(61, 61, 61, 0.954);
+    font-size: 16px;
+    margin-right: 20px;
+  }
+
+  .guests {
+    margin-right: 30px;
+    width: 60px;
+    color: rgba(61, 61, 61, 0.954);
+  }
+
+  .phone {
+    width: 80px;
+    margin-right: 20px;
+    color: rgba(61, 61, 61, 0.954);
+  }
+
+  .edit {
+    font-size: 18px;
+    margin-right: 10px;
+    color: gray;
+    cursor: pointer;
+  }
+
+  .delete {
+    font-size: 18px;
+    color: gray;
+    cursor: pointer;
+  }
+
+  .icons {
+    width: 60px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .date {
+    width: 65px;
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .time {
+    width: 30px;
+    font-size: 12px;
+    margin-right: 10px;
+  }
+
+  .name {
+    width: 34px;
+    margin-right: 10px;
+    font-size: 12px;
+  }
+
+  .guests {
+    margin-right: 10px;
+    width: 45px;
+    font-size: 12px;
+  }
+
+  .phone {
+    width: 60px;
+    margin-right: 10px;
+    font-size: 12px;
+  }
+
+  .edit {
+    font-size: 14px;
+  }
+
+  .delete {
+    font-size: 14px;
+  }
+
+  .icons {
+    width: 40px;
+  }
 }
