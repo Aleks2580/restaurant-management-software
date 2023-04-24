@@ -41,7 +41,7 @@ export default function UpcomingReservations() {
   };
 
   return !loading ? (
-    <>
+    <div className={style.main_div}>
       <div className={style.filter_div}>
         <select onChange={handleChange} className={style.select}>
           <option className={style.option} value="all" name="all">
@@ -57,7 +57,7 @@ export default function UpcomingReservations() {
       {reservations?.map((el) => (
         <OneReservation el={el} key={el.id} />
       ))}
-    </>
+    </div>
   ) : (
     <Spin size="large" />
   );
