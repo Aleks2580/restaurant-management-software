@@ -57,3 +57,9 @@
   color: #f8f8f8;
   text-shadow: 1px 1px 1px rgba(248, 248, 248, 0.3);
 }
+
+@media only screen and (max-width: 500px) {
+  .card {
+    height: auto;
+  }
+}

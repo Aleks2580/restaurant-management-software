@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-left: 25px;
+  color: rgba(61, 61, 61, 0.954);
 }
 
 .all_users {
@@ -10,12 +11,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .checkboxes {
+  margin-top: 40px;
   display: flex;
   align-items: center;
   margin-bottom: 30px;
+  color: rgba(61, 61, 61, 0.954);
 }
 
 .checkboxes input[type="radio"] {
@@ -37,7 +43,7 @@
 
 .checkboxes label {
   font-size: 16px;
-  color: #333;
+  color: rgba(61, 61, 61, 0.954);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
@@ -52,4 +58,19 @@
 
 .checkboxes input[type="radio"] + label:last-of-type {
   margin-right: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  .all_users {
+    width: 100%;
+  }
+
+  .checkboxes label {
+    font-size: 12px;
+  }
+
+  .checkboxes input[type="radio"] {
+    width: 12px;
+    height: 12px;
+  }
 }
