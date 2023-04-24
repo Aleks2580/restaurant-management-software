@@ -140,13 +140,14 @@ export default function Products() {
   return (
     <div className={style.charts}>
       <div className={style["chart-container"]}>
-        <canvas id="myChart" width="400" height="430"></canvas>
+        <canvas id="myChart"></canvas>
       </div>
       <div className={style["chart-container"]}>
-        <canvas id="myChart2" width="400" height="300"></canvas>
+        <canvas id="myChart2"></canvas>
       </div>
       <div className={style["chart-container"]}>
-        <canvas id="myChart3" width="400" height="430"></canvas>
+        <canvas id="myChart3" width="380" height="430"></canvas>
+        {/* <canvas id="myChart3" className={style.chart_1}></canvas> */}
       </div>
     </div>
   );
