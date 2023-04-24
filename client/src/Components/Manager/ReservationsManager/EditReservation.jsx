@@ -56,7 +56,7 @@ export default function EditReservation() {
     }
   };
   return (
-    <>
+    <div className={style.main_div}>
       {contextHolder}
       <div className={style.calendar}>
         <div className={style.when}>When?</div>
@@ -102,6 +102,6 @@ export default function EditReservation() {
       <Button onClick={handleChange} className={style.button} htmlType="submit">
         Change
       </Button>
-    </>
+    </div>
   );
 }
