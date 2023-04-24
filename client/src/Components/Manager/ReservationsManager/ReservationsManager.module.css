@@ -7,7 +7,9 @@
   display: flex;
   flex-direction: column;
   margin-left: 30px;
- 
+  position: fixed;
+  left: 12%;
+  top: 17%;
 }
 
 .button {
@@ -23,12 +25,39 @@
 
 .content {
   margin: 0 auto;
-  /* text-align: center; */
-  
- 
 }
 
 .menu {
   background-color: transparent !important;
   border-inline-end: none !important;
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954) !important;
+}
+@media only screen and (max-width: 1450px) {
+  .buttons {
+    left: 95%;
+    top: 10%;
+    transform: translate(-95%, -10%);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .buttons {
+    left: 90%;
+    top: 10%;
+    transform: translate(-90%, -9%);
+    margin-bottom: 0;
+  }
+
+  .menu {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .buttons {
+    left: 90%;
+    top: 5%;
+    transform: translate(-90%, -5%);
+  }
 }

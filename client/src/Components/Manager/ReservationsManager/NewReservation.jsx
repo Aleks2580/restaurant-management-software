@@ -55,7 +55,7 @@ export default function NewReservation() {
     }
   };
   return (
-    <>
+    <div className={style.main_div}>
       <div className={style.calendar}>
         <div className={style.when}>When?</div>
         <Calendar fullscreen={false} onSelect={handleDate} />
@@ -97,6 +97,6 @@ export default function NewReservation() {
       >
         Submit
       </Button>
-    </>
+    </div>
   );
 }
