@@ -69,7 +69,7 @@ export default function Products() {
     const ctx2 = document.getElementById("myChart2").getContext("2d");
     const colors = ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0"];
     const chart2 = new Chart(ctx2, {
-      type: "doughnut",
+      type: "line",
       data: {
         labels: topMenuSections?.map((section) => section.name),
         datasets: [
@@ -124,11 +124,24 @@ export default function Products() {
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           y: {
             beginAtZero: true,
           },
         },
+        plugins: {
+          legend: {
+            display: true,
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "Sales by Month",
+          },
+        },
+        height: 400,
       },
     });
 
@@ -139,15 +152,16 @@ export default function Products() {
 
   return (
     <div className={style.charts}>
-      <div className={style["chart-container"]}>
+      <div className={style.chart_container}>
         <canvas id="myChart"></canvas>
       </div>
-      <div className={style["chart-container"]}>
+      <div className={style.chart_container}>
         <canvas id="myChart2"></canvas>
+        {/* <canvas id="myChart2"></canvas> */}
       </div>
-      <div className={style["chart-container"]}>
-        <canvas id="myChart3" width="380" height="430"></canvas>
-        {/* <canvas id="myChart3" className={style.chart_1}></canvas> */}
+      <div className={style.chart_container}>
+        <canvas id="myChart3"></canvas>
+        {/* <canvas id="myChart3" className={style.chart_3}></canvas> */}
       </div>
     </div>
   );
