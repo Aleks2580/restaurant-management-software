@@ -1,17 +1,6 @@
-/* .charts {
-  margin-top: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%);
-  width: 65%;
-} */
 .charts {
   margin-top: 80px;
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -36,20 +25,45 @@
   height: 400px;
 }
 
-canvas {
-  width: 100%;
-  height: 100%;
+@media screen and (max-width: 1755px) {
+  .charts {
+    left: 95%;
+    transform: translateX(-95%);
+  }
 }
 
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 1400px) {
   .charts {
-    flex-direction: column;
-    align-items: stretch;
+    left: 55%;
+    transform: translateX(-55%);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .chart_container {
+    width: 50%;
+    height: 250px;
+    margin-top: 5px;
   }
 
-  .chart-container {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
+  .charts {
+    margin-top: 5px;
+    flex-direction: column;
   }
-} */
+}
+
+@media screen and (max-width: 740px) {
+  .chart_container {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .chart_container {
+    width: 85%;
+  }
+
+  .charts {
+    left: 50%;
+  }
+}

@@ -55,9 +55,21 @@ export default function Products() {
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           y: {
             beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "Products",
           },
         },
       },
@@ -90,9 +102,21 @@ export default function Products() {
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           y: {
             beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "Menu sections",
           },
         },
       },
@@ -138,10 +162,9 @@ export default function Products() {
           },
           title: {
             display: true,
-            text: "Sales by Month",
+            text: "Menu categories",
           },
         },
-        height: 400,
       },
     });
 
@@ -157,11 +180,9 @@ export default function Products() {
       </div>
       <div className={style.chart_container}>
         <canvas id="myChart2"></canvas>
-        {/* <canvas id="myChart2"></canvas> */}
       </div>
       <div className={style.chart_container}>
         <canvas id="myChart3"></canvas>
-        {/* <canvas id="myChart3" className={style.chart_3}></canvas> */}
       </div>
     </div>
   );
