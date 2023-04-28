@@ -143,7 +143,7 @@ label {
   }
 
   .data {
-    margin-top: 60px;
+    margin-top: 5px;
   }
 
   .key {
@@ -156,10 +156,57 @@ label {
   }
 
   .button_download {
-    bottom: -5%;
+    bottom: -3%;
   }
 
   .select {
     width: 10vw;
+  }
+
+  .filter_dates {
+    margin-top: 100px;
+  }
+
+  .filter_div {
+    margin-right: 1px;
+  }
+
+  :global .ant-table-wrapper .ant-table-tbody > tr > td {
+    padding: 0px 0px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main_div {
+    left: 50%;
+    margin-top: 10px;
+  }
+  .button_search {
+    margin-left: 1px;
+  }
+
+  .button_reset {
+    margin-left: 1px;
+  }
+
+  .table_revenue {
+    width: auto;
+  }
+
+  .button_download {
+    bottom: 0%;
+  }
+
+  .select {
+    width: 8vw;
+  }
+
+  .filter_dates {
+    margin-top: 90px;
+  }
+
+  .range_picker {
+    width: 180px;
   }
 }

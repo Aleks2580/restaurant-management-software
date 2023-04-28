@@ -168,6 +168,7 @@ export default function Waiters() {
         </div>
         <div>
           <RangePicker
+            className={style.range_picker}
             key={filterAndDates.dateRange?.length}
             onChange={handleDateRangeChange}
             value={[
