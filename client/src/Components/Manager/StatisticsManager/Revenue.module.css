@@ -52,3 +52,67 @@
   left: 50%;
   transform: translate(-50%);
 }
+
+@media screen and (max-width: 1000px) {
+  .main_div {
+    margin-top: 20px;
+  }
+  .button_search {
+    margin-left: 5px;
+  }
+
+  .button_reset {
+    margin-left: 5px;
+  }
+
+  .data {
+    margin-top: 90px;
+    height: 70vh;
+  }
+
+  .table_revenue {
+    width: 80vw;
+    text-align: center;
+  }
+
+  .button_download {
+    bottom: -5%;
+  }
+
+  .select {
+    width: 10vw;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .main_div {
+    left: 47%;
+    margin-top: 20px;
+    top: 20%;
+  }
+
+  .data {
+    margin-top: 5px;
+  }
+
+  .key {
+    margin-right: 3px;
+  }
+
+  .table_revenue {
+    width: 90vw;
+    height: 30vh !important;
+  }
+
+  .button_download {
+    bottom: -3%;
+  }
+
+  .select {
+    width: 10vw;
+  }
+
+  .filter_dates {
+    margin-top: 100px;
+  }
+}
