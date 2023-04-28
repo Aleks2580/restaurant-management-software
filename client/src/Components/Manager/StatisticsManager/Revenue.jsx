@@ -56,6 +56,7 @@ export default function Revenue() {
     setAverageCheckPerGuest([]);
   };
   const dataSourse = perDateData;
+  console.log(perDateData);
   const columns = [
     {
       title: "Date",
