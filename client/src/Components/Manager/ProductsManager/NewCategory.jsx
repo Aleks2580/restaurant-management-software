@@ -100,7 +100,7 @@ export default function NewCategory() {
   };
 
   return (
-    <>
+    <div className={style.main_div}>
       <div className={style.main}>
         <div className={style.existing_categories}>
           <div className={style.text}>Existing categories:</div>
@@ -148,6 +148,6 @@ export default function NewCategory() {
           Submit
         </Button>
       </div>
-    </>
+    </div>
   );
 }
