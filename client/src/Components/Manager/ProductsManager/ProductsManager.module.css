@@ -61,4 +61,8 @@
     top: 6%;
     transform: translate(-90%, -5%);
   }
+
+  .button {
+    margin-top: 5px;
+  }
 }

@@ -36,35 +36,6 @@
   color: #858585;
 }
 
-.icons {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #858585;
-  padding: 15px;
-}
-
-.icon {
-  margin: 0 5px;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
-}
-
-.icon:hover {
-  cursor: pointer;
-  color: #007bff;
-}
-
-.icon_delete:hover {
-  cursor: pointer;
-  color: #dc3545;
-}
-
-.icon_delete {
-  margin-right: 3px;
-}
 .modal {
   width: 300px !important;
   display: flex;
@@ -101,9 +72,64 @@
   color: #dc3545;
 }
 
-.modal {
-  width: 300px !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media only screen and (max-width: 1700px) {
+  .info {
+    padding: 5px;
+  }
+  .name {
+    font-size: 14px;
+  }
+  .role {
+    font-size: 12px;
+  }
+
+  .icons {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .icon {
+    margin: 0 2px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .card {
+    width: 13vw;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .card {
+    width: 16vw;
+    height: 5.5vh;
+  }
+
+  .name {
+    font-size: 12px;
+  }
+  .role {
+    font-size: 10px;
+  }
+
+  .icons {
+    font-size: 12px;
+    padding: 13px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .card {
+    width: 25vw;
+    margin-bottom: 1px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .card {
+    width: 35vw;
+  }
+  .name {
+    margin-bottom: 1px;
+  }
 }

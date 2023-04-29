@@ -21,6 +21,8 @@
 .pagination {
   justify-self: flex-end;
   margin-top: 100px;
+  position: fixed;
+  bottom: -15%;
 }
 
 .filters {
@@ -142,6 +144,9 @@ button {
     margin-right: 5px;
     font-size: 12px;
   }
+  .pagination {
+    margin-top: 150px;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -153,12 +158,12 @@ button {
     width: 50px;
     margin-left: 2px;
     margin-right: 5px;
-    font-size: 12px;
+    font-size: 10px;
     padding: 3px;
   }
 
   .pagination {
-    margin-top: 20px;
+    margin-top: 120px;
   }
 
   .reset_button {
@@ -167,6 +172,16 @@ button {
   }
 
   .products {
-    width: 70vw;
+    width: 80vw;
+    margin-top: 2px;
+    height: auto;
+  }
+
+  .option {
+    font-size: 10px;
+  }
+
+  .pagination {
+    bottom: -18%;
   }
 }
