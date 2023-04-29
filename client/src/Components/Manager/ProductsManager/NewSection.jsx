@@ -11,7 +11,8 @@ export default function NewSection() {
     setInput({ [e.target.name]: e.target.value });
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(e) {
+    e.preventDefault();
     setSubmitClicked(true);
     const key = "updatable";
     const hasValue = sections.some((section) =>
@@ -63,7 +64,7 @@ export default function NewSection() {
   }, [submitClicked]);
 
   return (
-    <>
+    <div className={style.main_div}>
       <div className={style.main}>
         <div className={style.existing_sections}>
           <div className={style.text}>Existing sections:</div>
@@ -90,6 +91,6 @@ export default function NewSection() {
           Submit
         </Button>
       </div>
-    </>
+    </div>
   );
 }

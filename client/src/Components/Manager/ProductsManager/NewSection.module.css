@@ -1,9 +1,16 @@
+.main_div {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+}
+
 .section {
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
-
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954) !important;
 }
 
 .existing_sections {
@@ -13,26 +20,27 @@
   align-items: center;
   margin-top: 30px;
   margin-bottom: 60px;
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954) !important;
 }
 
 .button {
-  background-color:rgb(168, 221, 244);
+  font-family: "Futura", sans-serif;
+  background-color: rgb(168, 221, 244);
   width: 100px;
   align-self: center;
-
 }
 
 .input {
   width: 250px;
   margin-bottom: 15px;
-  
+  font-family: "Futura", sans-serif;
 }
 .form {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 }
 .text {
   margin-bottom: 20px;
@@ -40,17 +48,29 @@
 
 .sections {
   width: 500px;
-  /* height: 400px; */
   display: flex;
   flex-wrap: wrap;
-  /* align-items: center; */
   justify-content: center;
 }
 
 .main {
-  height: 400px;
+  height: 300px;
 }
 
 ::placeholder {
   text-align: center;
+}
+
+@media only screen and (max-width: 500px) {
+  .main_div {
+    margin-top: 100px;
+  }
+
+  .main {
+    height: 200px;
+  }
+
+  .input {
+    width: 200px;
+  }
 }
