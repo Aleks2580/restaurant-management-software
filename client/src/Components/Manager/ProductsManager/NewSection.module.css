@@ -5,12 +5,14 @@
 }
 
 .section {
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 5px;
+  padding: 20px;
   font-family: "Futura", sans-serif;
-  color: rgba(61, 61, 61, 0.954) !important;
+  color: rgba(61, 61, 61, 0.954);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .existing_sections {
@@ -72,5 +74,11 @@
 
   .input {
     width: 200px;
+  }
+
+  .section {
+    margin: 10px 5px;
+    padding: 10px;
+    font-size: 12px;
   }
 }
