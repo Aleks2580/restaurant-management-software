@@ -54,10 +54,6 @@ export default function EditProduct() {
         type: "error",
         content: "Product with this name already exists",
       });
-      // dispatch(doneEditing());
-      // setTimeout(() => {
-      //   navigate("../all");
-      // }, 1000);
     }
   };
 

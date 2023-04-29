@@ -1,18 +1,19 @@
 .button {
-  background-color:rgb(168, 221, 244);
+  background-color: rgb(168, 221, 244);
   width: 100px;
   align-self: center;
-
 }
 
 .input {
   width: 250px;
   margin-bottom: 15px;
-  
 }
 .form {
-  display:flex;
+  display: flex;
   flex-direction: column;
   margin-top: 50px;
-  
+  position: fixed;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -30%);
 }
