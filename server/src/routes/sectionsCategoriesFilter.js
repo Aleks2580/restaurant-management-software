@@ -4,7 +4,6 @@ const { MenuCategory, Item } = require("../../db/models");
 router.post("/", async (req, res) => {
   const { menuSectionId } = req.body.data;
   const { categoryId } = req.body.data;
-  //console.log(req.body.data.menuSectionId);
   if (menuSectionId === "") {
     try {
       const products = await Item.findAll({ raw: true });

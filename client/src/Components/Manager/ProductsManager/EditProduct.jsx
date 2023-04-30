@@ -21,8 +21,6 @@ export default function EditProduct() {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  console.log(input);
-
   const changeHandler = async () => {
     const response = await fetch("http://localhost:4000/edit_product", {
       method: "PUT",
@@ -37,7 +35,7 @@ export default function EditProduct() {
       credentials: "include",
     });
     const result = await response.json();
-    console.log(result);
+
     if (result === "Done") {
       messageApi.open({
         type: "success",

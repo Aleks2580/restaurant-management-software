@@ -63,11 +63,9 @@ export default function MainManager() {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          console.log("FOLDED", broken);
           setMenuFolded(broken);
         }}
         onCollapse={(collapsed) => {
-          console.log("MENUCLOSED", collapsed);
           setMenuClosed(collapsed);
         }}
       >

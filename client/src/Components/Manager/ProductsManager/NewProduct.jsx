@@ -128,8 +128,6 @@ export default function NewProduct() {
     setSubmitClicked(false);
   };
 
-  console.log(input);
-
   return (
     <div className={style.main_div}>
       <div className={style.main}>

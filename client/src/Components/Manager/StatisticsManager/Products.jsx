@@ -21,7 +21,7 @@ export default function Products() {
         }
       );
       const result = await response.json();
-      console.log(result);
+
       setBestSellingProducts(result.finalData);
       setTopMenuCategories(result.categoryTotals);
       setTopMenuSections(result.sectionTotals);
