@@ -1,9 +1,18 @@
-.product {
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+.main_div {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+}
 
+.product {
+  margin: 10px 5px;
+  padding: 5px;
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .existing_products {
@@ -13,11 +22,12 @@
   align-items: center;
   margin-top: 30px;
   margin-bottom: 60px;
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954);
 }
 
 .products {
-  width: 500px;
-  height: 200px;
+  width: 55vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -28,28 +38,30 @@
 .input {
   width: 250px;
   margin-bottom: 15px;
-  
 }
 .form {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 }
-/* .main {
-  height: 410px;
-} */
+.main {
+  height: auto;
+}
 
 ::placeholder {
   text-align: center;
+  font-family: "Futura", sans-serif;
 }
 .filter_div {
   margin-bottom: 15px;
+  font-family: "Futura", sans-serif;
+  color: rgba(61, 61, 61, 0.954);
 }
 .select {
   margin-left: 10px;
   width: 100px;
+  border-radius: 5px;
 }
 .choose_section {
   margin-right: 15px;
@@ -58,8 +70,57 @@
   margin-right: 10px;
 }
 .button {
-  background-color:rgb(168, 221, 244);
+  background-color: rgb(168, 221, 244);
   width: 100px;
   align-self: center;
+}
 
+.button_hide_show {
+  padding: 6px;
+  border-radius: 5px;
+  background-color: #48a0ed;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button_hide_show:hover {
+  background-color: #1565c0;
+}
+.button_hide_show:focus {
+  outline: none;
+  box-shadow: 0px 0px 2px 2px #b3d4fc;
+}
+
+@media only screen and (max-width: 800px) {
+  .products {
+    width: 80vw;
+    margin: 1px 1px;
+    padding: 2px;
+  }
+
+  .main_div {
+    margin-top: 50px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .products {
+    width: 95vw;
+    font-size: 10px;
+  }
+
+  .main_div {
+    margin-top: 70px;
+  }
+
+  .input {
+    width: 200px;
+  }
+
+  .select {
+    margin-left: 6px;
+    width: 70px;
+  }
 }

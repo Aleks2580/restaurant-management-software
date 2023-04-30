@@ -131,12 +131,15 @@ export default function NewProduct() {
   console.log(input);
 
   return (
-    <>
+    <div className={style.main_div}>
       <div className={style.main}>
         <div className={style.existing_products}>
           <div className={style.text}>
             Existing products:{" "}
-            <button onClick={handleShowProducts}>
+            <button
+              className={style.button_hide_show}
+              onClick={handleShowProducts}
+            >
               {showProducts ? "Hide" : "Show"}
             </button>
           </div>
@@ -206,6 +209,6 @@ export default function NewProduct() {
           Submit
         </Button>
       </div>
-    </>
+    </div>
   );
 }
