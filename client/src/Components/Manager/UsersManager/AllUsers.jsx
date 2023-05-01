@@ -48,7 +48,7 @@ export default function AllUsers() {
             value="all"
             name="all"
           />
-          <label for="all">all</label>
+          <label htmlFor="all">all</label>
           <input
             id="manager"
             type="radio"
@@ -56,7 +56,7 @@ export default function AllUsers() {
             value="manager"
             name="all"
           />
-          <label for="manager">manager</label>
+          <label htmlFor="manager">manager</label>
           <input
             id="waiter"
             type="radio"
@@ -64,7 +64,7 @@ export default function AllUsers() {
             value="waiter"
             name="all"
           />
-          <label for="waiter">waiter</label>
+          <label htmlFor="waiter">waiter</label>
         </div>
       </div>
       <div className={style.users}>

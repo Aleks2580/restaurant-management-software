@@ -161,6 +161,7 @@ export default function ViewOrder() {
                 className={style.button_manager}
                 type="primary"
                 shape="circle"
+                key={el}
               >
                 {el}
               </Button>
@@ -174,6 +175,7 @@ export default function ViewOrder() {
                 .split("")
                 .map((el) => (el = "*"))
                 .join("")}
+              onChange={inputHandler}
             />
           </div>
 
@@ -223,7 +225,7 @@ export default function ViewOrder() {
               <div className={style.total}>Total</div>
             </div>
             {order?.items?.map((item) => (
-              <div className={style.item}>
+              <div className={style.item} key={item.id}>
                 <div className={style.item_name}>{item.item}</div>
                 <div className={style.item_quantity}>{item.quantity}</div>
                 <div className={style.item_price}>{item.price}$</div>

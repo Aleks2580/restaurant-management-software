@@ -158,7 +158,7 @@ export default function CreateOrder() {
             <div className={style.total}>Total</div>
           </div>
           {order?.map((el, index) => (
-            <div className={style.item}>
+            <div className={style.item} key={el.id}>
               <div className={style.item_name}>{el.item}</div>
               <div className={style.item_quantity}>{el.quantity}</div>
               <div className={style.item_price}>{el.price}$</div>
