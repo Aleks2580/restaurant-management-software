@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { loginUser } from "./store/loginUser/actionCreators";
+import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import LoginManager from "./Components/Manager/LoginManager/LoginManager";
 import LoginWaiter from "./Components/Waiter/LoginWaiter/LoginWaiter";
@@ -15,9 +18,6 @@ import EditUser from "./Components/Manager/UsersManager/EditUser";
 import ReservationsManager from "./Components/Manager/ReservationsManager/ReservationsManager";
 import UpcomingReservations from "./Components/Manager/ReservationsManager/UpcomingReservations";
 import NewReservation from "./Components/Manager/ReservationsManager/NewReservation";
-import { useEffect } from "react";
-import { loginUser } from "./store/loginUser/actionCreators";
-import { useDispatch, useSelector } from "react-redux";
 import EditReservation from "./Components/Manager/ReservationsManager/EditReservation";
 import CreateOrder from "./Components/Waiter/CreateOrder/CreateOrder";
 import ViewOrder from "./Components/Waiter/ViewOrder/ViewOrder";

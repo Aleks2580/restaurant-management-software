@@ -72,6 +72,7 @@ export default function Waiter() {
               className={style.button_waiter}
               type="primary"
               shape="circle"
+              key={el}
             >
               {el}
             </Button>
@@ -84,6 +85,7 @@ export default function Waiter() {
               .split("")
               .map((el) => (el = "*"))
               .join("")}
+            onChange={inputHandler}
           />
         </div>
 
