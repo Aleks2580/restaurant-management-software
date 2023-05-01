@@ -106,7 +106,9 @@ export default function NewCategory() {
           <div className={style.text}>Existing categories:</div>
           <div className={style.categories}>
             {categories?.map((category) => (
-              <span className={style.category}>{category.name}</span>
+              <span className={style.category} key={category.id}>
+                {category.name}
+              </span>
             ))}
           </div>
         </div>

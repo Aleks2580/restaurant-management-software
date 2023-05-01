@@ -95,7 +95,12 @@ export default function AllProducts() {
               all
             </option>
             {sections?.map((el) => (
-              <option className={style.option} value={el.name} name="section">
+              <option
+                className={style.option}
+                value={el.name}
+                name="section"
+                key={el.id}
+              >
                 {el.name}
               </option>
             ))}
@@ -113,7 +118,12 @@ export default function AllProducts() {
               all
             </option>
             {categories?.map((el) => (
-              <option className={style.option} value={el.name} name="category">
+              <option
+                className={style.option}
+                value={el.name}
+                name="category"
+                key={el.id}
+              >
                 {el.name}
               </option>
             ))}

@@ -160,6 +160,7 @@ export default function Waiters() {
                 className={style.option}
                 value={el.waiterName}
                 name="waiterName"
+                key={el.id}
               >
                 {el.fullName}
               </option>
