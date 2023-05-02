@@ -33,7 +33,7 @@ export default function MainManager() {
   const [menuFolded, setMenuFolded] = useState();
 
   async function handleLogout() {
-    const response = await fetch("http://localhost:4000/logout", {
+    const response = await fetch("/logout", {
       method: "GET",
       credentials: "include",
     });

@@ -6,7 +6,7 @@ export default function CurrentOrders() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/current_orders", {
+      const response = await fetch("/current_orders", {
         method: "GET",
         credentials: "include",
       });

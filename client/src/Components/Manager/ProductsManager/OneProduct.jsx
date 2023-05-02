@@ -14,7 +14,7 @@ export default function OneProduct({ el }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOk = async () => {
-    const response = await fetch("http://localhost:4000/delete_product", {
+    const response = await fetch("/delete_product", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

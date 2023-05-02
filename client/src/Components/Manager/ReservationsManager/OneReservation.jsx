@@ -13,7 +13,7 @@ export default function OneReservation({ el }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOk = async () => {
-    const response = await fetch("http://localhost:4000/delete_reservation", {
+    const response = await fetch("/delete_reservation", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

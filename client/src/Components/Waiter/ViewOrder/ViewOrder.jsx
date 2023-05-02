@@ -26,7 +26,7 @@ export default function ViewOrder() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/view_order", {
+      const response = await fetch("/view_order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export default function ViewOrder() {
 
   const handleOk = async () => {
     setIsModalOpen(false);
-    const response = await fetch("http://localhost:4000/print_bill", {
+    const response = await fetch("/print_bill", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ export default function ViewOrder() {
   };
 
   const handlePay = async () => {
-    const response = await fetch("http://localhost:4000/pay", {
+    const response = await fetch("/pay", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export default function ViewOrder() {
   };
 
   const handleOkCancelBill = async () => {
-    const response = await fetch("http://localhost:4000/cancel_print_bill", {
+    const response = await fetch("/cancel_print_bill", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -35,7 +35,7 @@ export default function DashboardManager() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/dashboard", {
+      const response = await fetch("/dashboard", {
         method: "GET",
         credentials: "include",
       });

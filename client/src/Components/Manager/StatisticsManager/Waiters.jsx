@@ -23,13 +23,10 @@ export default function Waiters() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch(
-        `http://localhost:4000/statistics_waiters_filter`,
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`/statistics_waiters_filter`, {
+        method: "GET",
+        credentials: "include",
+      });
       const result = await response.json();
       setWaiters(result.waiters);
     })();
@@ -124,7 +121,7 @@ export default function Waiters() {
     }
   };
   const handleSearchButton = async () => {
-    const response = await fetch("http://localhost:4000/statistics_waiters", {
+    const response = await fetch("/statistics_waiters", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -13,7 +13,7 @@ export default function NewUserForm() {
   async function submitHandler() {
     if (input.fullName && input.password && input.role) {
       const key = "updatable";
-      const response = await fetch("http://localhost:4000/add_user", {
+      const response = await fetch("/add_user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

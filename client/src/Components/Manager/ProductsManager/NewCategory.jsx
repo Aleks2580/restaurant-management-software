@@ -10,7 +10,7 @@ export default function NewCategory() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/menu_categories", {
+      const response = await fetch("/menu_categories", {
         method: "GET",
         credentials: "include",
       });
@@ -18,13 +18,10 @@ export default function NewCategory() {
       setCategories(result.categories);
     })();
     (async function () {
-      const response = await fetch(
-        "http://localhost:4000/products_categories_sections",
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
+      const response = await fetch("/products_categories_sections", {
+        method: "GET",
+        credentials: "include",
+      });
       const result = await response.json();
       setSections(result.sections);
     })();
@@ -36,7 +33,7 @@ export default function NewCategory() {
 
   const handleChangeSection = async (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
-    const response = await fetch("http://localhost:4000/categories_filter", {
+    const response = await fetch("/categories_filter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +68,7 @@ export default function NewCategory() {
       });
       setInput({ menuSectionId: "", name: "" });
     } else {
-      const response = await fetch("http://localhost:4000/new_category", {
+      const response = await fetch("/new_category", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

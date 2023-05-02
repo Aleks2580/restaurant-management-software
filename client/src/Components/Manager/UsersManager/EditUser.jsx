@@ -26,7 +26,7 @@ export default function EditUser() {
   };
 
   const changeHandler = async (e) => {
-    const response = await fetch("http://localhost:4000/edit_user", {
+    const response = await fetch("/edit_user", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

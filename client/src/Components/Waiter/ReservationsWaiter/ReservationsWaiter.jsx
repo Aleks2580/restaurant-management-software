@@ -10,7 +10,7 @@ export default function ReservationsWaiter() {
   useEffect(() => {
     (async function () {
       const response = await fetch(
-        "http://localhost:4000/todays_reservations",
+        "/todays_reservations",
         {
           method: "GET",
           credentials: "include",

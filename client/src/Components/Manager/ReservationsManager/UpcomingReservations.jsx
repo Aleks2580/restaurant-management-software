@@ -11,7 +11,7 @@ export default function UpcomingReservations() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/reservations", {
+      const response = await fetch("/reservations", {
         method: "GET",
         credentials: "include",
       });
@@ -25,7 +25,7 @@ export default function UpcomingReservations() {
 
   const handleChange = async (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
-    const response = await fetch("http://localhost:4000/reservations_filter", {
+    const response = await fetch("/reservations_filter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

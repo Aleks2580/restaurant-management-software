@@ -49,13 +49,13 @@ const statisticsProducts = require("./src/routes/statisticsProducts");
 const app = express();
 app.use(morgan("dev"));
 
-app.use(
-  cors({
-    credentials: true,
-    origin: ["https://restaurant-management-software.onrender.com"],
-  })
-);
-// app.use(cors({ credentials: true, origin: ["http://localhost:3000"] }));
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: ["https://restaurant-management-software.onrender.com"],
+//   })
+// );
+app.use(cors({ credentials: true, origin: ["http://localhost:3000"] }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));

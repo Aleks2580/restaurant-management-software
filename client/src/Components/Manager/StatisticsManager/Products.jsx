@@ -13,13 +13,10 @@ export default function Products() {
 
   useEffect(() => {
     (async function fetchData() {
-      const response = await fetch(
-        `http://localhost:4000/statistics_products`,
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`/statistics_products`, {
+        method: "GET",
+        credentials: "include",
+      });
       const result = await response.json();
 
       setBestSellingProducts(result.finalData);

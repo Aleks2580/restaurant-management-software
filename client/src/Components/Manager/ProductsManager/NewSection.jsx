@@ -25,7 +25,7 @@ export default function NewSection() {
         duration: 2,
       });
     } else {
-      const response = await fetch("http://localhost:4000/new_section", {
+      const response = await fetch("/new_section", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default function NewSection() {
   }
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/menu_sections", {
+      const response = await fetch("/menu_sections", {
         method: "GET",
         credentials: "include",
       });

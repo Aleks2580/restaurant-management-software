@@ -28,7 +28,7 @@ export default function EditReservation() {
   };
 
   const handleChange = async (e) => {
-    const response = await fetch("http://localhost:4000/edit_reservation", {
+    const response = await fetch("/edit_reservation", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

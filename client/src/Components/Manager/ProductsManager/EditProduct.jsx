@@ -22,7 +22,7 @@ export default function EditProduct() {
   };
 
   const changeHandler = async () => {
-    const response = await fetch("http://localhost:4000/edit_product", {
+    const response = await fetch("/edit_product", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

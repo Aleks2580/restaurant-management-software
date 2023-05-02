@@ -11,7 +11,7 @@ export default function AllUsers() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/users", {
+      const response = await fetch("/users", {
         method: "GET",
         credentials: "include",
       });
@@ -23,7 +23,7 @@ export default function AllUsers() {
 
   const handleRadioButton = async (e) => {
     setRole({ ...role, [e.target.name]: e.target.value });
-    const response = await fetch("http://localhost:4000/users_filter", {
+    const response = await fetch("/users_filter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

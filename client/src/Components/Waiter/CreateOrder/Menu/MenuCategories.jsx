@@ -8,7 +8,7 @@ export default function MenuCategories() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/menu_categories", {
+      const response = await fetch("/menu_categories", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

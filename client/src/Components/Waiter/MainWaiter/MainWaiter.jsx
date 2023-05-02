@@ -41,7 +41,7 @@ export default function MainWaiter() {
   }, []);
 
   async function handleLogout() {
-    const response = await fetch("http://localhost:4000/logout", {
+    const response = await fetch("/logout", {
       method: "GET",
       credentials: "include",
     });
@@ -56,11 +56,9 @@ export default function MainWaiter() {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          
           setMenuFolded(broken);
         }}
         onCollapse={(collapsed) => {
-         
           setMenuClosed(collapsed);
         }}
       >

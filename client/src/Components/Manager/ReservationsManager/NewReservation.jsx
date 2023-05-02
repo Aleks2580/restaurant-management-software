@@ -27,7 +27,7 @@ export default function NewReservation() {
 
   const submitHandler = async () => {
     const key = "updatable";
-    const response = await fetch("http://localhost:4000/add_reservation", {
+    const response = await fetch("/add_reservation", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

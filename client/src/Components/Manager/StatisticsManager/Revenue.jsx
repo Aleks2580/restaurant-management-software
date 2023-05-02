@@ -34,7 +34,7 @@ export default function Revenue() {
   };
 
   const handleSearchButton = async () => {
-    const response = await fetch("http://localhost:4000/statistics_revenue", {
+    const response = await fetch("/statistics_revenue", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

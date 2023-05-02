@@ -7,7 +7,7 @@ export default function LayoutWaiter() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/tables", {
+      const response = await fetch("/tables", {
         method: "GET",
         credentials: "include",
       });

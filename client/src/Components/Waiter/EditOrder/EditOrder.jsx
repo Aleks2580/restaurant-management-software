@@ -27,7 +27,7 @@ export default function EditOrder() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/menu_sections", {
+      const response = await fetch("/menu_sections", {
         method: "GET",
         credentials: "include",
       });
@@ -39,7 +39,7 @@ export default function EditOrder() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/view_order", {
+      const response = await fetch("/view_order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export default function EditOrder() {
   };
 
   const handleDone = async () => {
-    const response = await fetch("http://localhost:4000/edit_order", {
+    const response = await fetch("/edit_order", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

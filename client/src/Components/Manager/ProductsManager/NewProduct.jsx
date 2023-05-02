@@ -17,13 +17,10 @@ export default function NewProduct() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch(
-        "http://localhost:4000/products_categories_sections",
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
+      const response = await fetch("/products_categories_sections", {
+        method: "GET",
+        credentials: "include",
+      });
       const result = await response.json();
       setSections(result.sections);
       setCategories(result.categories);
@@ -37,19 +34,16 @@ export default function NewProduct() {
 
   const handleChange = async (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
-    const response = await fetch(
-      "http://localhost:4000/sections_categories_filter",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          data: { ...input, [e.target.name]: e.target.value },
-        }),
-        credentials: "include",
-      }
-    );
+    const response = await fetch("/sections_categories_filter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: { ...input, [e.target.name]: e.target.value },
+      }),
+      credentials: "include",
+    });
     const result = await response.json();
     setProducts(result.products);
     setCategories(result.categories);
@@ -95,7 +89,7 @@ export default function NewProduct() {
         priceUSD: null,
       });
     } else {
-      const response = await fetch("http://localhost:4000/new_product", {
+      const response = await fetch("/new_product", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

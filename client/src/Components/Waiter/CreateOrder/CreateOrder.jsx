@@ -30,7 +30,7 @@ export default function CreateOrder() {
 
   useEffect(() => {
     (async function () {
-      const response = await fetch("http://localhost:4000/menu_sections", {
+      const response = await fetch("/menu_sections", {
         method: "GET",
         credentials: "include",
       });
@@ -71,7 +71,7 @@ export default function CreateOrder() {
         duration: 5,
       });
     } else {
-      const response = await fetch("http://localhost:4000/new_order", {
+      const response = await fetch("/new_order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

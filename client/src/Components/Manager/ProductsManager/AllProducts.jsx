@@ -18,7 +18,7 @@ export default function AllProducts() {
   useEffect(() => {
     (async function () {
       const response = await fetch(
-        `http://localhost:4000/products?page=${page}&pageSize=${pageSize}&section=${filter.section}&category=${filter.category}`,
+        `/products?page=${page}&pageSize=${pageSize}&section=${filter.section}&category=${filter.category}`,
         {
           method: "GET",
           credentials: "include",
@@ -32,7 +32,7 @@ export default function AllProducts() {
 
     (async function () {
       const response = await fetch(
-        "http://localhost:4000/products_categories_sections",
+        "/products_categories_sections",
         {
           method: "GET",
           credentials: "include",
@@ -55,7 +55,7 @@ export default function AllProducts() {
     setFilter({ ...filter, [e.target.name]: e.target.value });
 
     const response = await fetch(
-      `http://localhost:4000/products?page=${page}&pageSize=${pageSize}`,
+      `/products?page=${page}&pageSize=${pageSize}`,
       {
         method: "POST",
         headers: {
