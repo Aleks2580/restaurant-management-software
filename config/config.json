@@ -1,7 +1,9 @@
 {
   "development": {
     "use_env_variable": "DATABASE_URL",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "migrationStoragePath": "server/db/migrations",
+    "seedersPath": "server/db/seeders"
   },
   "test": {
     "username": "root",
@@ -11,6 +13,8 @@
     "dialect": "postgres"
   },
   "production": {
-    "use_env_variable": "DATABASE_URL"
+    "use_env_variable": "DATABASE_URL",
+    "migrationStoragePath": "server/db/migrations",
+    "seedersPath": "server/db/seeders"
   }
 }
