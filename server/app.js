@@ -69,6 +69,10 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 
+// !!!!!!added
+
+app.use(express.static(path.join(__dirname, "../client/build")));
+
 app.use("/login", login);
 app.use("/logout", logout);
 app.use("/users", users);
@@ -108,6 +112,12 @@ app.use("/statistics_revenue", revenue);
 app.use("/statistics_waiters_filter", statisticsWaitersFilter);
 app.use("/statistics_waiters", statisticsWaiters);
 app.use("/statistics_products", statisticsProducts);
+
+// !!!ADDED
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve("../client/build/index.html"));
+});
 
 app.listen(PORT ?? 5000, () => {
   console.log(`Server started ${PORT}`);
