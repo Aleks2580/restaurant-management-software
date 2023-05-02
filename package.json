@@ -4,7 +4,7 @@
   "description": "restaurant management system",
   "main": "index.js",
   "scripts": {
-    "start": "cd client && npm start",
+    "start": "concurrently \"cd client && npm start\" \"cd server && npm start\"",
     "dev": "cd server && npm run dev",
     "build": "cd client && npm run build && cd ../server && npm run build",
     "test": "cd client && npm test",
@@ -42,6 +42,7 @@
     "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.3.0",
+    "concurrently": "^8.0.1",
     "cors": "^2.8.5",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
