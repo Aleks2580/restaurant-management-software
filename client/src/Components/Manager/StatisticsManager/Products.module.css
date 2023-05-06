@@ -27,43 +27,47 @@
 
 @media screen and (max-width: 1755px) {
   .charts {
-    left: 95%;
-    transform: translateX(-95%);
+    margin-top: 180px;
+    margin-left: 100px;
   }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1450px) {
   .charts {
     left: 55%;
     transform: translateX(-55%);
+    margin-top: 10px;
+    margin-left: 10px;
   }
 }
 
 @media screen and (max-width: 1200px) {
   .chart_container {
     width: 50%;
-    height: 250px;
-    margin-top: 5px;
+    height: 220px;
+    margin-top: 1px;
   }
 
   .charts {
-    margin-top: 5px;
+    margin-top: 1px;
     flex-direction: column;
   }
 }
 
 @media screen and (max-width: 740px) {
   .chart_container {
-    width: 75%;
+    width: 70%;
   }
 }
 
 @media screen and (max-width: 500px) {
   .chart_container {
-    width: 85%;
+    width: 80%;
+    height: 200px;
+    padding: 0;
   }
 
   .charts {
-    left: 50%;
+    margin-top: 70px;
   }
 }

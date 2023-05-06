@@ -31,13 +31,10 @@ export default function AllProducts() {
     })();
 
     (async function () {
-      const response = await fetch(
-        "/products_categories_sections",
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
+      const response = await fetch("/products_categories_sections", {
+        method: "GET",
+        credentials: "include",
+      });
       const result = await response.json();
       setCategories(result.categories);
       setSections(result.sections);
@@ -133,19 +130,18 @@ export default function AllProducts() {
           reset filters
         </button>
       </div>
+      <Pagination
+        defaultCurrent={1}
+        defaultPageSize={20}
+        total={total}
+        onChange={handlePageChange}
+      />
       <div className={style.products}>
         {products?.map((el) => (
           <OneProduct el={el} key={el.id} />
         ))}
       </div>
-      <div className={style.pagination}>
-        <Pagination
-          defaultCurrent={1}
-          defaultPageSize={20}
-          total={total}
-          onChange={handlePageChange}
-        />
-      </div>
+      <div className={style.pagination}></div>
     </div>
   ) : (
     <Spin size="large" />

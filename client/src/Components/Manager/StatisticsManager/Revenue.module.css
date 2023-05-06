@@ -48,7 +48,7 @@
 
 .button_download {
   position: fixed;
-  bottom: -20%;
+  bottom: -15%;
   left: 50%;
   transform: translate(-50%);
 }

@@ -2,11 +2,12 @@
   position: fixed;
   left: 50%;
   transform: translate(-50%);
+  width: 100%;
 }
 
 .product {
-  margin: 10px 5px;
-  padding: 5px;
+  margin: 5px 3px;
+  padding: 3px;
   font-family: "Futura", sans-serif;
   color: rgba(61, 61, 61, 0.954);
   background-color: #fff;
@@ -27,7 +28,7 @@
 }
 
 .products {
-  width: 55vh;
+  width: 60vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -97,30 +98,50 @@
   .products {
     width: 80vw;
     margin: 1px 1px;
-    padding: 2px;
+    padding: 1px;
   }
 
   .main_div {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 }
 
 @media only screen and (max-width: 500px) {
   .products {
-    width: 95vw;
+    width: 90vw;
     font-size: 10px;
   }
 
   .main_div {
-    margin-top: 70px;
+    margin-top: 80px;
   }
 
   .input {
-    width: 200px;
+    width: 250px;
+    margin-bottom: 10px;
   }
 
   .select {
-    margin-left: 6px;
-    width: 70px;
+    margin-left: 5px;
+    width: 90px;
+  }
+
+  .text {
+    margin-bottom: 10px;
+  }
+
+  .main {
+    height: auto;
+  }
+
+  .filter_div {
+    margin-bottom: 10px;
+  }
+
+  .choose_section {
+    margin-right: 18px;
+  }
+  .choose_category {
+    margin-right: 5px;
   }
 }
