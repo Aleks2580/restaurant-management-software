@@ -159,6 +159,8 @@
 
   .edit {
     font-size: 14px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
   .delete {

@@ -34,14 +34,15 @@
   text-align: center;
   font-family: "Futura", sans-serif;
   color: rgba(61, 61, 61, 0.954);
-  /* position: fixed;
-  left: 50%;
-  transform: translate(-50%); */
 }
 
 @media only screen and (max-width: 500px) {
   .select {
     font-size: 12px;
     padding: 2px 4px;
+  }
+
+  .main_div {
+    margin-top: 50px;
   }
 }

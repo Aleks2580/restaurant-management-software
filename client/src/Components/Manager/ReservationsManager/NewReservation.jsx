@@ -58,7 +58,11 @@ export default function NewReservation() {
     <div className={style.main_div}>
       <div className={style.calendar}>
         <div className={style.when}>When?</div>
-        <Calendar fullscreen={false} onSelect={handleDate} />
+        <Calendar
+          fullscreen={false}
+          onSelect={handleDate}
+          className={style.calendar_component}
+        />
       </div>
       <div className={style.what_time}>What time?</div>
       <TimePicker

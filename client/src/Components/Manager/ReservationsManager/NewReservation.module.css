@@ -49,10 +49,53 @@
 .main_div {
   height: 100%;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 1px;
   position: fixed;
   left: 50%;
   transform: translate(-50%);
   font-family: "Futura", sans-serif;
   color: rgba(61, 61, 61, 0.954);
+}
+
+@media only screen and (max-width: 800px) {
+  .calendar {
+    margin-bottom: 10px;
+  }
+
+  .when {
+    margin-bottom: 5px;
+  }
+
+  .what_time {
+    margin-bottom: 1px;
+  }
+
+  .time {
+    margin-bottom: 5px;
+  }
+
+  .input {
+    width: 200px;
+    margin-bottom: 5px;
+  }
+
+  .who {
+    margin-bottom: 1px;
+  }
+
+  .how_many {
+    margin-bottom: 1px;
+  }
+
+  .phone {
+    margin-bottom: 1px;
+  }
+
+  .button {
+    margin-top: 10px;
+  }
+
+  .main_div {
+    margin-top: 30px;
+  }
 }

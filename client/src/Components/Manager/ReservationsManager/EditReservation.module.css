@@ -51,3 +51,9 @@
   color: rgba(61, 61, 61, 0.954);
   margin-top: 20px;
 }
+
+@media only screen and (max-width: 500px) {
+  .main_div {
+    margin-top: 80px;
+  }
+}
