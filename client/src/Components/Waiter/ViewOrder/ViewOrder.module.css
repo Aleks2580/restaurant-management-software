@@ -327,32 +327,36 @@
 
 @media only screen and (max-width: 500px) {
   .button_cancel {
-    bottom: -13%;
+    position: absolute;
+    bottom: -8%;
     left: 24%;
   }
 
   .button_edit {
-    bottom: -13%;
+    position: absolute;
+    bottom: -8%;
     left: 24%;
   }
 
   .button_bill {
-    bottom: -13%;
+    position: absolute;
+    bottom: -8%;
     left: 72%;
   }
 
   .main {
+    margin-top: 20px;
     position: fixed;
     top: 47%;
     left: 46%;
     transform: translate(-50%, -50%);
-    overflow-y: auto;
-    max-height: calc(100vh - 150px);
+    /* overflow-y: auto;
+    max-height: calc(100vh - 150px); */
   }
 
   .main_order {
     overflow-y: auto;
-    max-height: calc(100vh - 100px);
+    /* max-height: calc(90vh - 250px); */
   }
 }
 

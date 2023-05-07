@@ -103,6 +103,6 @@
 @media only screen and (max-width: 800px) {
   .main_div {
     overflow-y: auto;
-    max-height: calc(100vh - 150px);
+    max-height: calc(90vh - 150px);
   }
 }
