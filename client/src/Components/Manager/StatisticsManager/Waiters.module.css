@@ -226,6 +226,11 @@ label {
   .button_download {
     bottom: 17%;
   }
+
+  .data {
+    overflow-y: auto;
+    max-height: calc(100vh - 330px);
+  }
 }
 @media screen and (max-width: 400px) {
   :global .ant-table-wrapper .ant-table-tbody > tr > td {
@@ -245,5 +250,9 @@ label {
 
   .button_download {
     bottom: 15%;
+  }
+  .data {
+    overflow-y: auto;
+    max-height: calc(100vh - 270px);
   }
 }

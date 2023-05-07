@@ -170,7 +170,8 @@ button {
   .products {
     width: 90vw;
     margin-top: 2px;
-    height: auto;
+    overflow-y: auto;
+    max-height: calc(100vh - 550px);
   }
 
   .option {

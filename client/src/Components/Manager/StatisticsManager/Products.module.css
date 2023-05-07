@@ -62,12 +62,15 @@
 
 @media screen and (max-width: 500px) {
   .chart_container {
-    width: 80%;
+    width: 90%;
     height: 200px;
     padding: 0;
   }
 
   .charts {
     margin-top: 70px;
+    display: block;
+    overflow-y: auto;
+    max-height: calc(100vh - 400px);
   }
 }
