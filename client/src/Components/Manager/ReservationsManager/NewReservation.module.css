@@ -101,8 +101,8 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .main_div {
+  .calendar {
     overflow-y: auto;
-    max-height: calc(90vh - 150px);
+    max-height: calc(35vh - 5px);
   }
 }
