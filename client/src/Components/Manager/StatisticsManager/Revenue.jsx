@@ -126,7 +126,7 @@ export default function Revenue() {
           dataSource={dataSourse}
           columns={columns}
           pagination={{
-            position: ["bottomCenter"],
+            position: ["topCenter"],
           }}
         />
       </div>

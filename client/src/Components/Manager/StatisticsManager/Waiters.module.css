@@ -175,7 +175,7 @@ label {
 
   :global .ant-table-wrapper .ant-table-tbody > tr > td {
     padding: 0px 0px;
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
@@ -196,10 +196,6 @@ label {
     width: auto;
   }
 
-  .button_download {
-    bottom: 0%;
-  }
-
   .select {
     width: 8vw;
   }
@@ -213,7 +209,7 @@ label {
   }
 
   :global .ant-table-wrapper .ant-table-tbody > tr > td {
-    padding: 0px 0px;
+    padding: 5px 0px;
     font-size: 9px;
   }
 
@@ -228,12 +224,12 @@ label {
   }
 
   .button_download {
-    bottom: 30%;
+    bottom: 17%;
   }
 }
 @media screen and (max-width: 400px) {
   :global .ant-table-wrapper .ant-table-tbody > tr > td {
-    padding: 0px 0px;
+    padding: 5px 0px;
     font-size: 9px;
   }
 
@@ -248,6 +244,6 @@ label {
   }
 
   .button_download {
-    bottom: 30%;
+    bottom: 15%;
   }
 }

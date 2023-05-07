@@ -55,7 +55,7 @@
 
 @media screen and (max-width: 1000px) {
   .main_div {
-    margin-top: 20px;
+    margin-top: 5px;
   }
   .button_search {
     margin-left: 5px;
@@ -66,7 +66,7 @@
   }
 
   .data {
-    margin-top: 90px;
+    margin-top: 7px;
     height: 70vh;
   }
 
@@ -76,7 +76,7 @@
   }
 
   .button_download {
-    bottom: -5%;
+    bottom: 0%;
   }
 
   .select {
@@ -105,7 +105,7 @@
   }
 
   .button_download {
-    bottom: -3%;
+    bottom: 0%;
   }
 
   .select {
@@ -113,6 +113,20 @@
   }
 
   .filter_dates {
-    margin-top: 100px;
+    margin-top: 70px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .button_download {
+    bottom: 24%;
+  }
+
+  .select {
+    width: 10vw;
+  }
+
+  .filter_dates {
+    margin-top: 60px;
   }
 }
