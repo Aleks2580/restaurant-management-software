@@ -171,7 +171,7 @@ button {
     width: 90vw;
     margin-top: 2px;
     overflow-y: auto;
-    max-height: calc(100vh - 550px);
+    max-height: calc(100vh - 350px);
   }
 
   .option {

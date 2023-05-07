@@ -326,7 +326,7 @@
     height: auto;
   }
   .button_done_div {
-    top: 75%;
+    top: 95%;
     left: 50%;
   }
 
@@ -335,7 +335,6 @@
   }
 
   .main_order {
-    margin-top: -200px;
     height: 200px;
     margin-left: 5px;
     overflow-wrap: normal;
@@ -354,14 +353,5 @@
     position: fixed;
     margin-top: 45px;
     margin-left: 40px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .main_order {
-    margin-top: -120px;
-  }
-  .button_done_div {
-    top: 80%;
   }
 }

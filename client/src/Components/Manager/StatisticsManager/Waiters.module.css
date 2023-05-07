@@ -224,7 +224,7 @@ label {
   }
 
   .button_download {
-    bottom: 17%;
+    bottom: -10%;
   }
 
   .data {
@@ -249,7 +249,7 @@ label {
   }
 
   .button_download {
-    bottom: 15%;
+    bottom: -5%;
   }
   .data {
     overflow-y: auto;

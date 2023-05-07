@@ -331,8 +331,9 @@
   }
 
   .main_order {
-    height: 280px;
     margin-left: 5px;
+    overflow: auto;
+    max-height: calc(50vh - 160px);
   }
 
   .section {

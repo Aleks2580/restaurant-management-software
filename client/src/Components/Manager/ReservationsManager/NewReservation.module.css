@@ -99,3 +99,10 @@
     margin-top: 30px;
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .main_div {
+    overflow-y: auto;
+    max-height: calc(100vh - 150px);
+  }
+}

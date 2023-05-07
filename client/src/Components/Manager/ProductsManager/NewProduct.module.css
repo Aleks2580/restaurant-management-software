@@ -110,6 +110,8 @@
   .products {
     width: 90vw;
     font-size: 10px;
+    overflow-y: auto;
+    max-height: calc(100vh - 500px);
   }
 
   .main_div {

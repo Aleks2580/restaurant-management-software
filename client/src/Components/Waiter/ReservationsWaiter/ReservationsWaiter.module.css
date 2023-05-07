@@ -30,13 +30,12 @@
 
 @media only screen and (max-width: 500px) {
   .reservations {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: auto;
     height: auto;
-    overflow-y: auto;
   }
 }

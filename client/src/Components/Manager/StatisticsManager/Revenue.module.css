@@ -73,6 +73,7 @@
   .table_revenue {
     width: 80vw;
     text-align: center;
+    height: 500px !important;
   }
 
   .button_download {
@@ -119,7 +120,7 @@
 
 @media screen and (max-width: 415px) {
   .button_download {
-    bottom: 24%;
+    bottom: 5%;
   }
 
   .select {
