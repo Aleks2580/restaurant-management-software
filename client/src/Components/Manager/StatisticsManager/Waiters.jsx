@@ -199,7 +199,7 @@ export default function Waiters() {
           dataSource={dataSourse}
           columns={columns}
           pagination={{
-            position: ["bottomCenter"],
+            position: ["topCenter"],
           }}
         />
       </div>
