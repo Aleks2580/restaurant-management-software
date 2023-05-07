@@ -18,13 +18,13 @@
   justify-content: center;
   align-items: center;
   width: 90%;
-  height: 80%;
+  height: auto;
 }
 
 @media only screen and (max-width: 1000px) {
   .reservations {
     width: 90%;
-    height: 100%;
+    height: auto;
   }
 }
 
@@ -36,6 +36,7 @@
     justify-content: center;
     align-items: center;
     width: 90%;
-    height: 100%;
+    height: auto;
+    overflow-y: auto;
   }
 }

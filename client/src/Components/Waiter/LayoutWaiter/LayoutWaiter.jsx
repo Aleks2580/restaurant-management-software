@@ -17,10 +17,10 @@ export default function LayoutWaiter() {
   }, []);
 
   return (
-    <>
+    <div className={style.main}>
       {tables?.map((el) => (
         <OneTable el={el} key={el.id} />
       ))}
-    </>
+    </div>
   );
 }

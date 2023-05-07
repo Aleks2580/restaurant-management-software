@@ -318,21 +318,28 @@
 }
 
 @media only screen and (max-width: 500px) {
+  .menu {
+    height: 100px;
+  }
+
+  .data {
+    height: auto;
+  }
   .button_done_div {
-    bottom: 0;
+    top: 75%;
     left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 3px;
   }
 
   .main {
     height: auto;
-    margin-bottom: 15px;
   }
 
   .main_order {
-    height: 280px;
+    margin-top: -200px;
+    height: 200px;
     margin-left: 5px;
+    overflow-wrap: normal;
+    overflow-y: scroll;
   }
 
   .section {
@@ -347,5 +354,14 @@
     position: fixed;
     margin-top: 45px;
     margin-left: 40px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .main_order {
+    margin-top: -120px;
+  }
+  .button_done_div {
+    top: 80%;
   }
 }

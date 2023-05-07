@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import style from "./CurrentOrders.module.css";
 import OneOrder from "./OneOrder";
 
 export default function CurrentOrders() {
@@ -16,10 +17,10 @@ export default function CurrentOrders() {
   }, []);
 
   return (
-    <>
+    <div className={style.main}>
       {orders?.map((el) => (
         <OneOrder el={el} key={el.id} />
       ))}
-    </>
+    </div>
   );
 }

@@ -343,12 +343,25 @@
 
   .main {
     position: fixed;
-    top: 53%;
+    top: 47%;
     left: 46%;
     transform: translate(-50%, -50%);
+    overflow-y: auto;
+    max-height: calc(100vh - 330px);
   }
 
   .main_order {
     height: 100%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .main {
+    max-height: calc(100vh - 300px);
+  }
+
+  .main_order {
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
   }
 }
