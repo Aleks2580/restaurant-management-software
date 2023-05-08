@@ -69,3 +69,12 @@ Displays a list of active (taken) tables. By clicking on a table, waiters can ac
 
 #### *Today's Bookings*: 
 Provides a list of upcoming reservations for the day. Waiters can refer to this list to anticipate the arrival of reserved guests and provide timely service.
+
+## Deployment
+RMS is deployed and accessible as a Minimal Viable Product (MVP) at the following URL: [https://restaurant-management-software.onrender.com](https://restaurant-management-software.onrender.com)
+
+To explore the MVP, you can use the following login credentials:
+- Manager's Password: 123456
+- Waiter's Password: 111111
+
+Please note that this is a simplified version of the software, and additional features and improvements are under development.
