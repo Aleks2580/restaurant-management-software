@@ -22,3 +22,50 @@ This software provides an intuitive interface and powerful tools to simplify day
 - Express
 - PostgreSQL
 - Sequelize
+
+## Features
+### Manager Section:
+
+#### *Dashboard*: 
+Provides an overview of key metrics for the day, including:
+- Total Orders: Displays the number of orders, along with the total amount, table count, total guests, and average check per guest.
+- Total Paid Orders: Shows the number of orders that have been paid, along with the same information as above.
+- Total Active Orders: Displays the number of currently active orders.
+- Reservations: Provides details about reservations, including table numbers, number of guests, and projected revenue.
+
+#### *Users Management*: 
+Enables the manager to create new users with specific roles, passwords, and permissions. It also provides a list of all users where the manager can edit or delete user information. Once a user is created, such as a waiter, they can log in with their password and access the software.
+
+#### *Statistics*:
+- Revenue: Allows the manager to select a range of dates and generate comprehensive sales statistics, including total revenue, number of guests, and average check per guest. This data can be downloaded as an Excel file.
+- Waiters: Enables the manager to select a specific waiter and view their sales information within a date range or for the entire period. This information can be downloaded as a PDF.
+- Products: Provides dynamic charts that represent the following information:
+   - Quantity and revenue of products sold, categorized by product.
+   - Quantity and revenue of products sold, categorized by menu sections.
+   - Quantity and revenue of products sold, categorized by menu categories.
+
+#### *Products Management*:
+- View All Products: Allows the manager to see a list of all the products available on the menu.
+- Edit and Delete Products: Provides the ability to edit product information such as name and price, or delete products that are no longer offered.
+- Add New Products: Enables the manager to add new products to the menu, including specifying the name, price and other relevant details.
+- Categories and Sections: Allows the manager to manage menu categories and sections, such as adding new categories or sections and assigning products to specific categories or sections.
+- 
+#### *Reservations Management*:
+
+- Create New Reservations: Provides a feature to create new reservations, including number of guests, date, and time.
+- Edit and Delete Reservations: Allows the manager to make changes or cancel existing reservations as needed.
+- List of Reservations: Provides a list of all reservations, displaying important details such as number of guests, date, and time.
+
+### Waiter Section:
+
+#### *Layout*: 
+Provides a visual representation of the restaurant's layout, indicating which tables are available and which ones are currently occupied. Waiters can easily identify the status of each table at a glance.
+ - Create New Order: By clicking on a table, waiters can create a new order for that table. They can view the list of available products, adjust the quantity of items, and save the order. This feature allows waiters to efficiently take orders from customers and customize them according to their preferences.
+- Edit Orders: Waiters can also edit existing orders, making modifications to the order items and quantities.
+- Print and Cancel Bill: Waiters can print the bill for a specific order, allowing customers to review the charges. Additionally, bill cancellation requires the manager's password for added security and control.
+
+#### *Current Orders*: 
+Displays a list of active (taken) tables. By clicking on a table, waiters can access and view the details of the active orders associated with that table. This feature enables waiters to monitor and manage ongoing orders, making necessary adjustments or updates based on customer requests.
+
+#### *Today's Bookings*: 
+Provides a list of upcoming reservations for the day. Waiters can refer to this list to anticipate the arrival of reserved guests and provide timely service.
