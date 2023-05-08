@@ -5,6 +5,9 @@ RMS (Restaurant Management System) is a comprehensive and fully responsive softw
 
 This software provides an intuitive interface and powerful tools to simplify day-to-day tasks, allowing restaurants to run smoothly and efficiently. The responsive design ensures that the RMS can be accessed and used seamlessly across different devices, including desktop computers, tablets, and mobile phones. Whether in the restaurant or on the go, users can efficiently manage their restaurant operations using RMS and deliver a seamless dining experience to their customers.
 
+![Manager Section Demo](https://github.com/Aleks2580/restaurant-management-software/blob/main/demo1.gif)
+![Manager Section Demo](https://github.com/Aleks2580/restaurant-management-software/blob/main/demo2.gif)
+
 ## Tech Stack
 
 ### Front-end Stack
