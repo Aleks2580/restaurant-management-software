@@ -16,7 +16,6 @@ This software provides an intuitive interface and powerful tools to simplify day
 - Chart.js
 - jsPDF
 - XLSX
-
 ### Back-end Stack
 - Node.js
 - Express
@@ -77,4 +76,29 @@ To explore the MVP, you can use the following login credentials:
 - Manager's Password: 123456
 - Waiter's Password: 111111
 
-Please note that this is a simplified version of the software, and additional features and improvements are under development.
+*Please note that this is a simplified version of the software, and additional features and improvements are under development.*
+
+## Getting Started
+To get started with the RMS project locally, follow these steps:
+
+1. Clone the repository: `git clone git@github.com:Aleks2580/restaurant-management-software.git`
+2. Install the dependencies:
+  - Front-end: Open the terminal, navigate to the client folder, and run npm install.
+  - Back-end: Open another terminal window, navigate to the server folder, and run npm install.
+3. Configure the environment variables:
+- Front-end: Create a .env file in the client directory and set the following environment variable: REACT_APP_API_URL=http://localhost:4000
+- Back-end: Create a .env file in the server directory and modify it depending on your specific configuration. Make sure to set the required environment variables according to your setup, such as the database connection details and session secret: 
+     - PORT=4000
+     - DATABASE_URL=postgres://yourUserName:yourPassword@localhost:5433/yourDataBaseName
+     - SESSION_SECRET=yourSessionSecret
+4. Install and Set Up the Database:
+   - Ensure that you have PostgreSQL installed on your system.
+   - Open a terminal window and run the following commands:
+       - npx sequelize db:create
+       - npx sequelize db:migrate
+       - npx sequelize db:seed:all
+
+5. Start the development servers:
+   - Front-end: In the terminal, navigate to the client folder and run npm start.
+   - Back-end: In a separate terminal window, navigate to the server folder and run npm start.
+
